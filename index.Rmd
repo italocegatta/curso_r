@@ -8,7 +8,7 @@ documentclass: book
 
 # Apresentação {-}
 
-Este site reúne os materiais utilizados no curso prático de análise de dados com a linguagem de programação R. O objetivo do curso é fornecer aos participantes as habilidades necessárias para iniciar uma análise utilizando o R de forma prática e rápida sem conhecimento prévio.
+Este site reúne os materiais utilizados no curso prático de análise de dados com a linguagem de programação R. O objetivo do curso é fornecer aos participantes, conhecimento prévio de programação, as habilidades necessárias para iniciar uma análise utilizando o R.
 
 
 ## Objetivos {-}
@@ -19,12 +19,12 @@ Após concluir este material, os alunos irão:
 * Seja capaz de visualizar seus dados
 * Ser capaz de executar etapas básicas de preparação de dados
 * Ser capaz de executar a transformação de dados e resumos
-* Ser capaz de calcular estatística básica
+* Ser capaz de calcular estatísticas básicas
 
 
 ## Estrutura {-}
 
-O curso é composto de 3 módulos sequenciais, cada um com uma carga horária de 16 horas. Este material é utilizado durante o curso e todos os códigos e exercícios são executados pelos alunos.
+O curso é composto de 3 módulos, cada um com uma carga horária de 16 horas. Este material é utilizado durante o curso e todos os códigos e exercícios são executados pelos alunos.
 
 
 ## Requisitos {-}
