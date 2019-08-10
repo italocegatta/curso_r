@@ -12,3 +12,10 @@ ui:
   chapter_name: 'Capítulo '
   
 before_chapter_script: "_util.R"
+
+rmd_files: [
+  "index.rmd",
+  "01-sobre-r.rmd",
+  "02-manipulacao.rmd",
+  "03-visualizacao.rmd"
+]

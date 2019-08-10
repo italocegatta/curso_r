@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Manipulação de dados | R para análise de dados</title>
+  <meta name="description" content="Manipulação de dados | R para análise de dados" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Manipulação de dados | R para análise de dados" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Manipulação de dados | R para análise de dados" />
+  
+  
+  
+
+<meta name="author" content="Ítalo Cegatta" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sobre-o-r.html">
+<link rel="next" href="visualizacao.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">R para análise de dados</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Apresentação</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivos"><i class="fa fa-check"></i>Objetivos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i>Estrutura</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#requisitos"><i class="fa fa-check"></i>Requisitos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#programa"><i class="fa fa-check"></i>Programa</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-i"><i class="fa fa-check"></i>Módulo I</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-ii"><i class="fa fa-check"></i>Módulo II</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-iii"><i class="fa fa-check"></i>Módulo III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sobre-o-r.html"><a href="sobre-o-r.html"><i class="fa fa-check"></i>Sobre o R</a><ul>
+<li class="chapter" data-level="" data-path="sobre-o-r.html"><a href="sobre-o-r.html#download-do-r-e-rstudio"><i class="fa fa-check"></i>Download do R e RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html"><i class="fa fa-check"></i>Manipulação de dados</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#warm-up"><i class="fa fa-check"></i>Warm-Up</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#conhecendo-os-dados"><i class="fa fa-check"></i>Conhecendo os dados</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#qual-o-lucro-medio-dos-filmes"><i class="fa fa-check"></i>Qual o lucro médio dos filmes?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#sobre-o-tidyverse"><i class="fa fa-check"></i>Sobre o Tidyverse</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#arrange"><i class="fa fa-check"></i>Arrange</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#select"><i class="fa fa-check"></i>Select</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#mutate"><i class="fa fa-check"></i>Mutate</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#summarise"><i class="fa fa-check"></i>Summarise</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#operador"><i class="fa fa-check"></i>Operador %&gt;%</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#graficos-rapidos"><i class="fa fa-check"></i>Gráficos rápidos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html"><i class="fa fa-check"></i>Visualização</a><ul>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#conceitos-basicos"><i class="fa fa-check"></i>Conceitos básicos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#layers"><i class="fa fa-check"></i>Layers</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#os-dados"><i class="fa fa-check"></i>Os dados</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#a-camada-de-geometria"><i class="fa fa-check"></i>A camada de geometria</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#a-camada-de-estatisticas"><i class="fa fa-check"></i>A camada de estatísticas</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#edicoes-de-eixos"><i class="fa fa-check"></i>Edições de eixos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#aesthetics"><i class="fa fa-check"></i>Aesthetics</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#grupos"><i class="fa fa-check"></i>Grupos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#geometrias"><i class="fa fa-check"></i>Geometrias</a><ul>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#histograma-e-densidade"><i class="fa fa-check"></i>Histograma e Densidade</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#densidade"><i class="fa fa-check"></i>Densidade</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#vilolin-e-dotplot"><i class="fa fa-check"></i>Vilolin e dotplot</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#barras"><i class="fa fa-check"></i>Barras</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#texto"><i class="fa fa-check"></i>Texto</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#escalas"><i class="fa fa-check"></i>Escalas</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#scale_xy_continuous"><i class="fa fa-check"></i>scale_x|y_continuous</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#escalas-de-cor"><i class="fa fa-check"></i>Escalas de cor</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#facets"><i class="fa fa-check"></i>Facets</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para análise de dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="manipulacao-de-dados" class="section level1 unnumbered">
+<h1>Manipulação de dados</h1>
+<div id="warm-up" class="section level2 unnumbered">
+<h2>Warm-Up</h2>
+<div id="conhecendo-os-dados" class="section level3 unnumbered">
+<h3>Conhecendo os dados</h3>
+<p>Vamos começar importando os dados do arquivo <code>filmes_imdb.csv</code>. Para indicar que o arquivo está dentro de uma pasta, é preciso utilizar a barra <code>/</code>,</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3">df &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;input/filmes_imdb.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5">df</a></code></pre></div>
+<p>Primeiro vamos fazer um histograma para poder ver a distribuição da variável <code>nota</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> df, <span class="kw">aes</span>(<span class="dt">x =</span> nota)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="st">  </span><span class="kw">geom_histogram</span>() </a></code></pre></div>
+<p>Agora, vamos ver a relação entre o <code>valor_captado</code> e o <code>publico</code> dos filmes.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> df, <span class="kw">aes</span>(<span class="dt">x =</span> orcamento, <span class="dt">y =</span> faturamento)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(orcamento, faturamento)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
+</div>
+<div id="qual-o-lucro-medio-dos-filmes" class="section level3 unnumbered">
+<h3>Qual o lucro médio dos filmes?</h3>
+<p>Nosso objetivo agora é calcular o lucro médio dos filmes. Primeiro vamos criar uma coluna e calcular o lucro de cada filme.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">df2 &lt;-<span class="st"> </span><span class="kw">mutate</span>(df, <span class="dt">lucro =</span> faturamento <span class="op">-</span><span class="st"> </span>orcamento)</a>
+<a class="sourceLine" id="cb5-2" title="2">df2</a></code></pre></div>
+<p>Vamos isolar os valores de lucro e colocar em um objeto e em seguida calcular a média.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">vec_lucro &lt;-<span class="st"> </span><span class="kw">pull</span>(df2, lucro)</a>
+<a class="sourceLine" id="cb6-2" title="2"></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="kw">mean</span>(vec_lucro)</a></code></pre></div>
+<p>Vamos refazer os 2 primeiros passos unindo os comandos em um só.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">vec_lucro &lt;-<span class="st"> </span><span class="kw">pull</span>(<span class="kw">mutate</span>(df, <span class="dt">lucro =</span> faturamento <span class="op">-</span><span class="st"> </span>orcamento))</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw">mean</span>(vec_lucro)</a></code></pre></div>
+<p>Seguindo a mesma ideia, podemos unificar todos os comandos em uma única chamada.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">mean</span>(<span class="kw">pull</span>(<span class="kw">mutate</span>(df, <span class="dt">lucro =</span> faturamento <span class="op">-</span><span class="st"> </span>orcamento), lucro))</a></code></pre></div>
+<p>Agora utilizando um operador especial chamado <code>pipe</code>, vamos executar as mesmas funções, porém de forma organizada e de fácil interpretação.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">lucro =</span> faturamento <span class="op">-</span><span class="st"> </span>orcamento) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="st">  </span><span class="kw">pull</span>(lucro) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">  </span><span class="kw">mean</span>()</a></code></pre></div>
+</div>
+</div>
+<div id="sobre-o-tidyverse" class="section level2 unnumbered">
+<h2>Sobre o Tidyverse</h2>
+<p>Neste curso utilizaremos como referência os pacotes vinculados ao <code>tidyverse</code>, grupo de funções que utilizam a mesma filosofia de programação e foram desenvolvidos para atuarem em conjunto. O <a href="https://www.tidyverse.org/">tidyverse</a> é mantido por um time de desenvolvedores do RStudio e liderado pelo seu idealizador <a href="http://hadley.nz/">Hadley Wickham</a>.</p>
+<p>Há diversas funções disponíveis nos pacotes do <code>tidyverse</code> que tem um equivalente direto nos pacotes <code>base</code> do R, mas com uma implementação mais moderna e consistente que facilita a estruturação do código. No decorrer do curso vamos ter vários exemplos desse comparativo.</p>
+<p>A manipulação de dados é, na maioria das vezes, realizado com <code>data.frames</code> e por isso iremos ver as principais funções que lidam com essa estrutura de forma rápida e prática.</p>
+<p>O pacote <code>dplyr</code> é hoje um dos pacotes mais utilizados para esta finalidade. Ele disponibiliza diversas funções que são “equivalentes” às funções básicas do R, mas como melhorias que nos poupam tempo e deixam o código muito mais fácil de interpretar.</p>
+<p>Como exemplo, vamos realizar uma análise exploratória dos dados de um inventário na floresta amazônica.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw">library</span>(readxl)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">inv_amazonia &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/inv_amazonia.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb11-2" title="2"></a>
+<a class="sourceLine" id="cb11-3" title="3">inv_amazonia</a></code></pre></div>
+<div id="filter" class="section level3 unnumbered">
+<h3>Filter</h3>
+<p>Com a função <code>filter()</code> é possível selecionar linhas específicas, de acordo com o fator que se deseja. Podem ser usados um ou vários fatores de seleção.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">filter</span>(inv_amazonia, cap <span class="op">&gt;</span><span class="st"> </span><span class="dv">300</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">filter</span>(inv_amazonia, cap <span class="op">&gt;</span><span class="st"> </span><span class="dv">300</span> <span class="op">&amp;</span><span class="st"> </span>qf <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">filter</span>(inv_amazonia, cap <span class="op">&gt;</span><span class="st"> </span><span class="dv">300</span> <span class="op">|</span><span class="st"> </span>hcom <span class="op">&gt;</span><span class="st"> </span><span class="dv">15</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">filter</span>(inv_amazonia, especie <span class="op">==</span><span class="st"> &quot;IPE&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">filter</span>(inv_amazonia, especie <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;COPAIBA&quot;</span>, <span class="st">&quot;IPE&quot;</span>))</a></code></pre></div>
+</div>
+<div id="arrange" class="section level3 unnumbered">
+<h3>Arrange</h3>
+<p>Para ordenar as colunas, podemos usar a função <code>arrange()</code>. A hierarquia é dada pela sequência dos fatores que são adicionados como argumentos da função.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">arrange</span>(inv_amazonia, cap)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">arrange</span>(inv_amazonia, <span class="op">-</span>cap)</a></code></pre></div>
+</div>
+<div id="select" class="section level3 unnumbered">
+<h3>Select</h3>
+<p>A função <code>select()</code> auxilia-nos na seleção de variáveis (colunas).</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">select</span>(inv_amazonia, especie, cap)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">select</span>(inv_amazonia, especie<span class="op">:</span>cap)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">select</span>(inv_amazonia, <span class="op">-</span>(familia<span class="op">:</span>comercial))</a></code></pre></div>
+</div>
+<div id="mutate" class="section level3 unnumbered">
+<h3>Mutate</h3>
+<p>Para criar novas variáveis, podemos usar a função <code>mutate()</code>. Um diferencial dessa função em relação à função base do R, é que podemos utilizar variáveis criadas dentro do próprio comando.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb22-2" title="2">  inv_amazonia,</a>
+<a class="sourceLine" id="cb22-3" title="3">  <span class="dt">dap =</span> cap <span class="op">/</span><span class="st"> </span>pi,</a>
+<a class="sourceLine" id="cb22-4" title="4">  <span class="dt">secao =</span> pi <span class="op">*</span><span class="st"> </span>dap<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb22-5" title="5">)</a></code></pre></div>
+<p>Note que se quisermos utilizar os dados calculados no futuro, temos de salvar em um objeto. No caso, vamos salvar no mesmo objeto <code>inv_amazonia2</code> de forma que ele será atualizado com as novas colunas.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">inv_amazonia2 &lt;-<span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb23-2" title="2">  inv_amazonia,</a>
+<a class="sourceLine" id="cb23-3" title="3">  <span class="dt">dap =</span> cap <span class="op">/</span><span class="st"> </span>pi</a>
+<a class="sourceLine" id="cb23-4" title="4">)</a></code></pre></div>
+</div>
+<div id="summarise" class="section level3 unnumbered">
+<h3>Summarise</h3>
+<p>A função <code>summarise</code> nos permite resumir dados. Também é possível resumir dados em função de vários fatores com o <code>group_by</code>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">summarise</span>(inv_amazonia2, <span class="dt">dap_medio =</span> <span class="kw">mean</span>(dap))</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">summarise</span>(inv_amazonia2, <span class="dt">hcom_medio =</span> <span class="kw">mean</span>(hcom))</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">summarise</span>(inv_amazonia2, <span class="dt">hcom_medio =</span> <span class="kw">mean</span>(hcom, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">inv_amazonia_by_esp &lt;-<span class="st"> </span><span class="kw">group_by</span>(inv_amazonia2, especie)</a>
+<a class="sourceLine" id="cb27-2" title="2"></a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="kw">summarise</span>(inv_amazonia_by_esp, <span class="dt">dap_medio =</span> <span class="kw">mean</span>(dap))</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">inv_amazonia_by_esp &lt;-<span class="st"> </span><span class="kw">group_by</span>(inv_amazonia2, especie)</a>
+<a class="sourceLine" id="cb28-2" title="2"></a>
+<a class="sourceLine" id="cb28-3" title="3">resumo_esp &lt;-<span class="st"> </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb28-4" title="4">  inv_amazonia_by_esp,</a>
+<a class="sourceLine" id="cb28-5" title="5">  <span class="dt">n =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb28-6" title="6">  <span class="dt">dap_medio =</span> <span class="kw">mean</span>(dap, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb28-7" title="7">  <span class="dt">hcom_medio =</span> <span class="kw">mean</span>(hcom, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb28-8" title="8">)</a>
+<a class="sourceLine" id="cb28-9" title="9"></a>
+<a class="sourceLine" id="cb28-10" title="10">resumo_esp </a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">filter</span>(resumo_esp, dap_medio <span class="op">&gt;</span><span class="st"> </span><span class="dv">50</span>)</a></code></pre></div>
+</div>
+<div id="operador" class="section level3 unnumbered">
+<h3>Operador %&gt;%</h3>
+<p>O pacote <code>dplyr</code> foi desenhado para trabalhar em conjunto que o operador em cadeia <code>%&gt;%</code>. O que esse operador faz é aplicar o que está no LHS no primeiro parâmetro da função do RHS. Podemos também direcionar o local onde o conteúdo do LHS será aplicado informando um <code>.</code> como argumento.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">inv_amazonia2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(especie) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb30-4" title="4">  <span class="dt">n =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb30-5" title="5">  <span class="dt">dap_medio =</span> <span class="kw">mean</span>(dap, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb30-6" title="6">  <span class="dt">hcom_medio =</span> <span class="kw">mean</span>(hcom, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb30-7" title="7">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-8" title="8"><span class="st">  </span><span class="kw">filter</span>(dap_medio <span class="op">&gt;</span><span class="st"> </span><span class="dv">50</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">inv_amazonia <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">filter</span>(comercial <span class="op">==</span><span class="st"> &quot;Sim&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb31-3" title="3"><span class="st">  </span><span class="kw">select</span>(especie, cap) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb31-4" title="4"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(cap)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb31-5" title="5"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a></code></pre></div>
+</div>
+<div id="graficos-rapidos" class="section level3 unnumbered">
+<h3>Gráficos rápidos</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">inv_amazonia2 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(especie) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">dap_medio =</span> <span class="kw">mean</span>(dap, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-4" title="4"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(dap_medio)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-5" title="5"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-6" title="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(especie, dap_medio)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-7" title="7"><span class="st">    </span><span class="kw">geom_col</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-8" title="8"><span class="st">    </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb32-9" title="9"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">inv_amazonia2 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(parcela) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-5" title="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="kw">factor</span>(parcela), n)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-6" title="6"><span class="st">    </span><span class="kw">geom_col</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-7" title="7"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">inv_amazonia2 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(dap, hcom)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb34-3" title="3"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb34-4" title="4"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">inv_amazonia2 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(dap, hcom, <span class="dt">color =</span> comercial)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-3" title="3"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-4" title="4"><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-5" title="5"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sobre-o-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualizacao.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

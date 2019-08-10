@@ -3,9 +3,9 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><strong><a href="./">Curso R</a></strong></li>
+        <li><strong><a href="./">R para análise de dados</a></strong></li>
     sharing: no
-    download: ["pdf"]
+    #download: ["pdf"]
     
-bookdown::pdf_book:
-  latex_engine: xelatex
+#bookdown::pdf_book:
+#  latex_engine: xelatex
