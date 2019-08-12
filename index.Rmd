@@ -16,7 +16,7 @@ Este site reúne os materiais utilizados no curso prático de análise de dados 
 Após concluir este material, os alunos irão:
 
 * Estar familiarizados com o ambiente de programação do R e RStudio
-* Seja capaz de visualizar seus dados
+* Ser capaz de visualizar seus dados
 * Ser capaz de executar etapas básicas de preparação de dados
 * Ser capaz de executar a transformação de dados e resumos
 * Ser capaz de calcular estatísticas básicas
@@ -34,15 +34,9 @@ Para realização dos curso, é necessário um computador com as versões mais r
 * [Software R](https://cran.r-project.org/bin/windows/base/)
 * [Software RStudio](https://www.rstudio.com/products/rstudio/download/#download)
 * Pacotes `install.packages(c("tidyverse", "readxl", "broom", "car", "agricolae"))`
-* Dados
-  * [TUME_134_2016.xlsx](https://github.com/italocegatta/cursoR_gmap/raw/master/input/TUME_134_2016.xlsx)
-  * [inv_amazonia.xlsx](https://github.com/italocegatta/cursoR_gmap/raw/master/input/inv_amazonia.xlsx)
-  * [onix.xlsx](https://github.com/italocegatta/cursoR_gmap/raw/master/input/onix.xlsx)
-  * [filmes_imdb.csv](https://github.com/italocegatta/cursoR_gmap/raw/master/input/filmes_imdb.csv)
-  * [progenies.csv](https://github.com/italocegatta/cursoR_gmap/raw/master/input/progenies.csv)
-  * [ibge_2015_area_floresta_plan.xlsx](https://github.com/italocegatta/cursoR_gmap/raw/master/input/ibge_2015_area_floresta_plan.xlsx)
-  * [base_prouni.xlsx](https://github.com/italocegatta/cursoR_gmap/raw/master/input/base_prouni.xlsx)
-  
+* [Bases de dados](https://github.com/italocegatta/curso_r/raw/master/input/dataset.zip)
+
+
 ## Programa {-}
 
 

@@ -17,5 +17,8 @@ rmd_files: [
   "index.rmd",
   "01-sobre-r.rmd",
   "02-manipulacao.rmd",
-  "03-visualizacao.rmd"
+  "03-visualizacao.rmd",
+  "04-regressao.rmd",
+  "05-objetos.rmd",
+  "06-indexacao.rmd"
 ]

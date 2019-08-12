@@ -1,0 +1,189 @@
+# Estatística experimental {-}
+
+
+## Regressão Linear {-}
+
+Uma regressão linear é um modelo estatístico que analisa a relação entre uma variável de resposta (muitas vezes chamada de y) e uma ou mais variáveis e suas interações (frequentemente chamadas x ou variáveis explicativas). Você faz esse tipo de relacionamento em sua cabeça o tempo todo, por exemplo, quando você calcula a idade de uma criança com base em sua altura, você está assumindo que quanto mais velha ela é, mais alta ela será. A regressão linear é um dos modelos estatísticos mais básicos, seus resultados podem ser interpretados por quase todos, e existe desde o século XIX. É precisamente isso que torna a regressão linear tão popular
+
+```{r}
+library(tidyverse)
+library(modelr)
+library(broom)  
+library(car)
+library(agricolae)
+
+vendas <- read_csv2("input/propagandas.csv")
+
+vendas
+```
+
+Regressão linear simples faz jus ao seu nome: é uma abordagem muito simples para prever uma resposta quantitativa $Y$ com base em uma única variável preditor X. Ele assume que há aproximadamente uma relação linear entre $X$ e $Y$. Usando nossos dados de publicidade, suponha que desejamos modelar a relação linear entre o orçamento de TV e as vendas. Podemos escrever isso como:
+
+$$ Y = \beta_0 + \beta_1X + \epsilon \tag{1}$$
+  
+(1)
+ 
+Onde:
+- $Y$ representa vendas
+- $X$ representa orçamento de publicidade na TV
+- $\beta_0$ intercepto do eixo Y
+- $\beta_1$ coeficiente (termo de inclinação) representando o relacionamento linear
+- $\epsilon$ erro aleatório com média zero
+
+Para construir este modelo em R usamos a notação de fórmula de $Y \sim X$.
+
+```{r}
+modelo1 <- lm(vendas ~ tv, data = vendas)
+```
+
+A função `lm`, que significa “modelo linear”, está produzindo o relacionamento linear de melhor ajuste, minimizando o critério de mínimos quadrados. Esse ajuste pode ser visualizado na ilustração a seguir, onde a linha do “melhor ajuste” é encontrada, minimizando a soma de erros quadrados (os erros são representados pelos segmentos de linhas pretas verticais).
+
+```{r echo=FALSE}
+modelo1 %>% 
+  augment() %>%
+  #sample_frac(0.3) %>% 
+  ggplot(aes(tv, vendas)) +
+    geom_line(aes(y = .fitted), color = "blue", alpha = 0.5) +
+    geom_segment(aes(xend = tv, yend = vendas - .resid), alpha = 0.7) +
+    geom_point(color = "red") +
+    theme_bw()
+```
+
+Para avaliação inicial do nosso modelo, podemos usar o `summary`. Isso nos fornece uma série de informações sobre o nosso modelo. Alternativamente, você também pode usar `glance(model1)` para ter o resultado em uma forma tabelada e mais “arrumada”.
+
+```{r}
+summary(modelo1)
+```
+
+A fórmula da equação apresenta o $\beta_0$ (intercepto) e o $\beta_1$ (coeficiente de inclinação). A forma de utilização do modelo é 
+
+$$ Y = 7.03 + 0.04X + \epsilon \tag{2}$$
+Alternativamente podemos acessar os coeficientes de uma forma mais organizada utilizando a função `tidy()`
+
+```{r}
+tidy(modelo1)
+```
+
+Em outras palavras, nossa estimativa de interceptação é de 7,03, portanto, quando o orçamento de publicidade na TV for zero, podemos esperar que as vendas sejam de 7.03. E para cada aumento de R$ 1 no orçamento de publicidade de TV, esperamos que o aumento médio nas vendas 0.04 unidades.
+
+Também é importante entender até que ponto o modelo se ajusta aos dados. Isto é tipicamente referido como o goodness-of-fit. 
+O RSE (erro padrão da estimativa) é uma estimativa do desvio padrão de $\epsilon$. Grosso modo, é a quantidade média que a resposta se desviará da verdadeira linha de regressão. Um valor de RSE de 3,2 significa que as vendas reais em cada mercado se desviarão da linha de regressão real em aproximadamente 3,2 unidades, em média.
+
+O RSE fornece uma medida absoluta sobre ajuste do modelo nos dados. Mas como a escala dele é na mesma unidades de $Y$, nem sempre é fácil de interpretar o resultado. O $R^2$ é uma estatística fornece uma medida alternativa de avaliação. Ele representa a proporção de variância explicada e, portanto, sempre assume um valor entre 0 e 1 e é independente da escala de $Y$.
+
+Não só é importante entender as medidas quantitativas com relação ao nosso coeficiente e precisão do modelo, mas também devemos entender as abordagens visuais para avaliar nosso modelo.
+
+```{r}
+ggplot(vendas, aes(tv, vendas)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  geom_smooth(se = FALSE, color = "red")
+```
+
+Primeiro é um gráfico de resíduos versus valores ajustados. Isso sinalizará duas preocupações importantes:
+
+1. Não-linearidade: se existir um padrão discernível (linha azul), isso sugere não-linearidade ou que outros atributos não foram adequadamente capturados. Nosso enredo indica que a suposição de linearidade é justa.
+2. Heteroscedasticidade: uma suposição importante da regressão linear é que os termos de erro têm uma variância constante, Se houver uma forma de funil com nossos resíduos, como em nossa trama, violamos essa suposição. Às vezes isso pode ser resolvido com uma transformação de log ou raiz quadrada de $Y$ em nosso modelo.
+
+```{r}
+modelo1_resultado <- augment(modelo1, vendas)
+
+ggplot(modelo1_resultado, aes(.fitted, .resid)) +
+  geom_ref_line(h = 0) +
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  ggtitle("Residuals vs Fitted")
+```
+
+Se quisermos executar um modelo que usa TV, rádio e jornal para prever vendas, então construímos esse modelo em R usando uma abordagem semelhante introduzida no tutorial Regressão Linear Simples.
+
+```{r}
+modelo2 <- lm(vendas ~ tv + radio + jornal, data = vendas)
+```
+
+Podemos também avaliar este modelo como antes:
+
+```{r}
+summary(modelo2)
+```
+
+A interpretação dos nossos coeficientes é a mesma de um modelo de regressão linear simples. Primeiro, vemos que nossos coeficientes para orçamento de publicidade de TV e rádio são estatisticamente significativos (p-valor <0,05), enquanto o coeficiente de jornal não é. Assim, as alterações no orçamento do jornal não parecem ter um relacionamento com as mudanças nas vendas. No entanto, para a TV, nosso coeficiente sugere que, para cada aumento de R\$ 1 no orçamento de publicidade de TV, mantendo todos os outros preditores constantes, podemos esperar um aumento de 0,045 unidades de vendas, em média (isso é semelhante ao que encontramos na regressão linear simples). O coeficiente de rádio sugere que para cada aumento de R$ 1 no orçamento de publicidade de rádio, mantendo todos os outros preditores constantes, podemos esperar um aumento de 0,188 unidades de vendas, em média.
+
+```{r}
+tidy(modelo2)
+```
+
+A avaliação da precisão do modelo é muito semelhante à avaliação de modelos de regressão linear simples. Se compararmos os resultados do nosso modelo de regressão linear simples (modelo1) com o modelo de regressão múltipla (modelo2), podemos fazer algumas comparações importantes e concluir que as estatísticas indicam uma melhora significativa no ajuste do modelo2
+
+```{r}
+glance(modelo1); glance(modelo2)
+```
+
+
+## ANOVA e Tukey {-}
+
+Iremos realizar uma análise paramétrica básica envolvendo análise de variância e teste de Tukey num conjunto de dados bastante simples. Além dos testes estatísticos, iremos fazer um gráfico para expressar o resultado de forma agradável.
+
+O banco de dados é proveniente de um Teste de Progênie, onde se testa diferentes materiais genéticos com o intuito selecionar indivíduos superiores.
+
+```{r}
+dados <- read_csv2("input/progenies.csv")
+
+dados
+```
+
+Uma ideia básica é verificar a distribuição dos dados. Utilizaremos o boxplot para isso.
+
+```{r}
+ggplot(dados, aes(progenie, volume)) +
+  geom_boxplot() +
+  theme_bw() 
+```
+
+Primeiro, vamos utilizar o teste de Levene para verificar se há homogeneidade de variância, ou homocedasticidade.
+
+```{r}
+leveneTest(volume ~ factor(progenie), data=dados)
+```
+
+Como o p-valor é maior que 5% não temos evidência significativa para rejeitar a hipótese nula de homogeneidade, ou seja, nossos dados tem homogeneidade de variância.
+
+O segundo pressuposto é a normalidade dos resíduos. Utilizaremos o teste de Shapiro-Wilk cuja hipótese nula é a de que os dados seguem uma distribuição normal. 
+
+```{r}
+anova <-  aov(volume ~ progenie, data=dados)
+
+shapiro.test(resid(anova))
+```
+
+Como o p-valor é superior ao limite de 5%, podemos aceitar a hipótese nula e considerar nossos dados normais.
+
+Uma vez que os pressupostos foram atendidos, seguiremos para a ANOVA. Note que, caso os testes de Levene e Shapiro-Wilk resultassem em um p-valor significante, ou seja, menor que 5%, teríamos que utilizar outro método estatístico para analisar nossos dados. Nesse caso, uma alternativa é utilizar testes não-paramétricos, uma vez que eles não exigem os pressupostos que acabamos de testar.
+
+```{r}
+summary(anova)
+```
+
+Nossa ANOVA resultou em um p-valor menor que 5%, portanto, temos evidências de que ao menos um tratamento se diferencia dos demais. Isso já é uma resposta, mas pouco acrescenta à nossa pesquisa pois queremos saber quem é este tratamento discrepante. Ou melhor, queremos poder comparar os tratamentos entre si e verificar quais são estatisticamente iguais ou diferentes.
+
+Para esta abordagem existem alguns testes de médias e cada um tem uma particularidade, mas de longe o mais utilizado é o de Tukey. 
+
+A interpretação do teste de Tukey é simples. Após determinarmos a diferença mínima significativa (ou Honest Significant Difference - HSD), podemos julgar se as médias são iguais ou não. Em termos práticos, esse valor nos dá uma margem de igualdade, pois se a diferença entre dois tratamentos for maior do que isso, os médias são diferentes.
+
+```{r}
+tukey <- HSD.test(anova, "progenie")
+
+tukey
+```
+
+Para deixar mais visual ainda, podemos construir um gráfico de barras com a média de cada tratamento e adicionar a sua letra correspondente ao teste de Tukey.
+
+```{r}
+tukey$groups %>% 
+  rownames_to_column(var = "trt") %>% 
+  ggplot(aes(reorder(trt, -volume), volume)) +
+    geom_bar(stat = "identity") +
+    geom_text(aes(label = groups), vjust = 1.8, size = 9, color = "white") +
+    labs(x = "Progênies", y = "Médias") +
+    theme_bw()
+```

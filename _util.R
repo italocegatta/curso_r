@@ -14,3 +14,5 @@ knitr::opts_chunk$set(
   # fig.asp = 0.618,  # 1 / phi
   # fig.show = "hold"
 )
+
+zip::zipr("input/dataset.zip", list.files("input", "csv|xlsx", full.names = TRUE))
