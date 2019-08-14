@@ -20,5 +20,7 @@ rmd_files: [
   "03-visualizacao.rmd",
   "04-regressao.rmd",
   "05-objetos.rmd",
-  "06-indexacao.rmd"
+  "06-indexacao.rmd",
+  "07-string-factor-date.rmd".
+  "08-joins.rmd"
 ]

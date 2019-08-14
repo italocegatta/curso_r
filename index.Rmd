@@ -8,7 +8,7 @@ documentclass: book
 
 # Apresentação {-}
 
-Este site reúne os materiais utilizados no curso prático de análise de dados com a linguagem de programação R. O objetivo do curso é fornecer aos participantes, conhecimento prévio de programação, as habilidades necessárias para iniciar uma análise utilizando o R.
+Este site reúne os materiais utilizados no curso prático de análise de dados com a linguagem de programação R. O objetivo do curso é fornecer aos participantes, sem conhecimento prévio de programação, as habilidades necessárias para iniciar uma análise de dadis utilizando o R.
 
 
 ## Objetivos {-}

@@ -1,0 +1,64 @@
+# Joins
+
+Estamos juntando dados de tabelas o tempo todo. Por diversos motivos parte das informações estão em uma tabela e parte estão em outra e precisamos parear esses dados para seguir com a análise. No Excel essa movimentação é feita pela função `PROCV()`, só que de maneira mais limitada.
+
+O pacote `dplyr` fornece uma família de funções para trabalhar com 'joins' no R. Vamos ver como as principais funcionam e como podemos aplicar nas nossas análises.
+
+Primeiro, temos que ter claro que iremos fazer a operação com duas tabelas e deixar claro quem é a tabela 1 (esquerda) e a tabela 2 (direita). A tabela 1 normalmente é nossa referencia e a partir dela iremos buscar algumas ou todas informações da tabela 2 a partir de pontos em comum. Veja no esquema abaixo as 4 principais que envolvem 'joins'.
+
+![](https://mikoontz.github.io/data-carpentry-week/img/dplyr-joins.png)
+
+```{r}
+library(tidyverse)
+
+set.seed(12345)
+
+x <- tibble(
+  chave = LETTERS[c(1:3, 5)], 
+  valor1 = sample(1:10, 4)
+)
+
+y <- tibble(
+  chave = LETTERS[c(1:4)], 
+  valor2 = sample(1:10, 4),
+  valor3 = sample(20:30, 4)
+)
+```
+
+
+```{r}
+x
+```
+
+```{r}
+y
+```
+
+Com base na tabela `x`, traga os valores da tabela `y` que correspondam com as chaves que existem na tabela `x`. Notem que a tabela 1 é o objeto `x` e eu quero ele como referencia.
+
+```{r}
+left_join(x, y, by = "chave")
+```
+
+Mas se eu quiser utilizar a tabela do objeto `y` como referência, ou eu mudo os objetos de posição na função ou utilizo a função `right_join`.
+
+```{r}
+right_join(x, y, by = "chave")
+```
+
+Agora, considerando apenas o que tem em comum nas duas tabelas e depois o juntando todas as possibilidades.
+
+```{r}
+inner_join(x, y)
+
+full_join(x, y)
+```
+
+Vimos até agora os 'joins' que movimentam colunas de uma tabela para outra, mas há os 'joins' que servem para filtrar linhas na tabela de referencia e não movimentam informações entre as tabelas. O `semi_join` mantém os registros com base na coluna `chave` que existem nas duas tabelas. Já o `anti_join` mantém o registro que existe na tabela 1, mas não na tabela 2.
+
+```{r}
+semi_join(x, y)
+
+anti_join(x, y)
+```
+

@@ -1,0 +1,230 @@
+# Strings, fatores e datas {-}
+
+Neste bloco vamos trabalhar com tipos de elementos que em bancos de dados. Aprender a manipular `strings` (palavras), `factors` e `dates` vai nos dar um poder de análise diversificado e útil.
+
+# Strings
+
+A verdade é que nem sempre nosso banco de dados está bem formatado. Por diversos motivos, os dados chegam com uma formatação muito distante do ideal e não é raro termos de limpar os dados antes de iniciar uma análise. Variável que trazem caracteres são as que mais precisam de atenção e limpeza.
+
+O R tem suporte à *regular expression* ou *regex*, uma forma muito utilizada em linguagens de programação para identificar padrões de caracteres através de uma sintaxe própria. Vamos ver alguns exemplos de como utilizá-la.
+
+As funções que iremos trabalhar estão disponíveis no pacote `stringr`, que faz parte do `tidyverse`. Como exemplo vamos utilizar um objeto interno (vetor) com nomes de frutas.
+
+```{r}
+fruit
+```
+
+O primeiro passo é detectar padrões dentro do vetor de caracteres. Podemos usar esse vetor lógico para filtrar os elementos que queremos.
+
+```{r}
+str_detect(fruit, pattern = "fruit")
+
+fruit[str_detect(fruit, pattern = "fruit")]
+
+
+tem_fruit <- str_subset(fruit, pattern = "fruit")
+```
+
+Podemos retirar uma parte fixa das palavras através da posição de cada caractere.
+
+```{r}
+str_sub(fruit, 1, 5)
+```
+Também podemos concatenar e colapsar palavras utilizando diferentes padrões.
+
+```{r}
+tem_berry <- str_subset(fruit, "berry") %>% sample(8)
+
+str_c(tem_fruit, tem_berry, sep = " & ")
+
+str_c(tem_fruit, tem_berry, sep = " + ", collapse = "; ")
+```
+
+Em muitos casos precisamos substituir determinada cadeia de caractere. Vamos ver alguns exemplos.
+
+```{r}
+str_replace(tem_berry, pattern = "berry", replacement = "beRRy")
+
+melons <- str_subset(fruit, pattern = "melon")
+melons[2] <- NA
+melons
+
+str_replace_na(melons, "Não sei")
+```
+
+Agora vamos mudar para outra base de dados. O pacote `gapminder` disponibiliza dados de expectativa de vida, população e renda per capta dos países ao longo dos anos. Utilizaremos para testar os marcadores de `Regex`. 
+
+Em `Regex`, utilizamos os marcadores `^` e `$` para indicar os primeiros ou últimos caractere de uma `string`, respectivamente. Portanto, se quisermos filtrar os países que terminam com a sequencia de caracteres, podemos fazer da seguinte forma.
+
+```{r}
+library(gapminder)
+
+paises <- levels(gapminder$country)
+paises
+```
+
+
+```{r}
+str_subset(paises, pattern = "land$")
+
+str_subset(paises, pattern = "^Ma")
+```
+
+Aumentando um pouco a complexidade da busca, vamos usar o marcador `[` para indicar um grupo de possibilidade. Quais países terminam com as letras: nia, lia, sia?
+
+```{r}
+str_subset(paises, pattern = "[nls]ia$")
+```
+
+O R possui alguns grupos pre formatados para facilitar a correspondência, como: [:blank:], [:upper:], [:lower:], [:alpha:], [:digit:], [:alnum:], [:punct:]
+
+```{r}
+str_subset(paises, "[:punct:]")
+
+str_subset(paises, "[:blank:]")
+```
+
+Agora vamos ver como extrais padrões entre determinados identificadores dentro de uma cadeia de caractere. Em `Regex` o `.` significa 'qualquer coisa', o `*` significa 'um ou mais em diante'. Utilizaremos esses marcadores para extrair países que tenham uma cadeia de caractere que começa com a letra `m`, em seguida possa ter qualquer letra ou ponto, e termine com a letra `a`.
+
+```{r}
+str_subset(paises, "a.*e")
+```
+
+Dando um exemplo mais avançado, vamos filtrar os países que possuem `,` no nome e em seguida retirar todos caracteres após a vírgula.
+
+```{r}
+str_subset(paises, ",")
+
+str_subset(paises, ",") %>% 
+  str_remove(",.*")
+```
+
+
+# Fatores
+
+Já falamos um pouco sobre os fatores anteriormente e agora vamos tentar usar eles como recurso para criação de gráficos. 
+
+```{r}
+class(gapminder$continent)
+
+str(gapminder$continent)
+
+nlevels(gapminder$continent)
+
+levels(gapminder$continent)
+```
+
+A grande dica é: só convertam caracteres em fatores quando necessário e fiquem sempre de olho se uma variável é ou não um fator. De maneira geral, variáveis como fatores podem dar dor de cabeça em alguns passos durante a análise e recomendável que se utilize sempre caracteres em variáveis qualitativas. Aqui vai um primeiro problema. Mesmo se você filtrar um elemento, os níveis do fator ainda fica lá no objeto. 
+
+```{r}
+nlevels(gapminder$country)
+
+aux_sulamerica <- c("Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Paraguay", "Peru", "Uruguay", "Venezuela")
+   
+sulamerica <- gapminder %>%
+  filter(country %in% aux_sulamerica)
+
+nlevels(sulamerica$country)
+```
+
+No momento de plotar um gráfico, o `ggplot2` converte internamente todas as variáveis do tipo caractere como fator. Se já for um fator, ele deixa como está.
+Ele faz isso por conta da ordem que os elementos aparecem no gráfico. Por exemplo um eixo de nomes ou os níveis da legenda. No exemplo abaixo o `ggplot2` seque a ordem dos níveis do fator da variável `country`, que por sua vez é alfabética. Mas se alterarmos a ordem dos níveis do fator utilizando a função `fct_reorder`, podemos ter um eixo ordenado em função da `lifeExp`.
+
+```{r}
+gap_asia_2007 <- gapminder %>% filter(year == 2007, continent == "Asia")
+
+ggplot(gap_asia_2007, aes(x = lifeExp, y = country)) + geom_point()
+
+ggplot(gap_asia_2007, aes(x = lifeExp, y = fct_reorder(country, lifeExp))) +
+  geom_point()
+```
+
+```{r}
+gap_1992 <- gapminder %>% 
+  filter(year == 1992 ) %>% 
+  group_by(continent) %>% 
+  summarise(lifeExp = mean(lifeExp))
+
+gap_1992 %>% 
+  ggplot(aes(continent, lifeExp, fill = continent)) +
+    geom_col()
+
+gap_1992 %>% 
+  mutate(continent = fct_relevel(continent, "Oceania", "Asia")) %>% 
+  ggplot(aes(continent, lifeExp, fill = continent)) +
+    geom_col()
+
+gap_1992 %>% 
+  mutate(continent = fct_recode(continent, "Oceania 2" =  "Oceania")) %>% 
+  ggplot(aes(continent, lifeExp, fill = continent)) +
+    geom_col()
+
+gap_1992 %>% 
+  mutate(continent = fct_reorder(continent, -lifeExp)) %>% 
+  ggplot(aes(continent, lifeExp, fill = continent)) +
+    geom_col()
+```
+
+# Datas
+
+Neste bloco vamos trabalhar com a classe de objeto do tipo data. Dentro do `tidyverse`, o pacote que reúne as funções relacionadas a datas é o `lubridate`. É importante mencionar que no é temos os tipos `date` e `date-time` ou `POSIXct`. A diferença entre esses dois tipos é a resolução, sendo que a classe `date-time` armazena além da data, a informação de hora-minuto-segundo. Começando pelo começo, vamos criar objetos do tipo `date` e `date-time`.
+
+```{r}
+library(tidyverse)
+library(lubridate)
+
+hoje <- today()
+
+hoje
+
+class(hoje)
+
+str(hoje)
+
+agora <- now()
+
+agora
+
+class(agora)
+
+str(agora)
+```
+
+Note que o R utiliza o padrão ISO para mostrar as datas (yyyy-mm-dd). Quando a informação está armazenada nesse padrão, é comum os importadores reconhecerem a variável como data e fazer a conversão adequada. Mas se isso não acontecer, teremos que converter na mão utilizando as funções auxiliares do `lubridate`.
+```{r}
+ymd("20190408")
+
+mdy("01-15-2013")
+
+dmy("07/09/2010")
+```
+
+Existem várias funções interessantes no pacote e elas são extremamente úteis no dia a dia. Podemos arredondar datas para várias unidades de referencia e computar o dia do ano, mês ou semana. Para fazer operações aritméticas com datas temos que entender o conceito importante de `period` e `duration`, onde o primeiro considera sempre um ano com 365 dias e o segundo é sensível a anos bissexto.
+
+```{r}
+inicio <- ymd("20000223")
+fim <- ymd("20161207")
+
+floor_date(inicio, "month")
+ceiling_date(inicio, "week")
+
+yday(fim)
+mday(fim)
+
+inicio + years(3) 
+inicio + dyears(3) 
+inicio - months(36)
+
+```
+
+Para calcular o intervalo entre duas datas e converter isso em diversas unidades, também é fácil.
+
+```{r}
+fim - inicio 
+
+time_length(fim - inicio, "year")
+time_length(fim - inicio, "month")
+time_length(fim - inicio, "week")
+
+```
+

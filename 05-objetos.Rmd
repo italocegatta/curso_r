@@ -267,3 +267,6 @@ mean(x)
 mean(x, na.rm = TRUE)
 na.omit(x)
 ```
+
+## Exercícios
+
