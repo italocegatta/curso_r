@@ -1,0 +1,110 @@
+
+# Tidydata {-}
+
+## Conceito {-}
+
+Se você pegar uma apostila ou livro de 10 anos atrás (e olhe que o R tem 23 anos) vai perceber que as análises tinham muitos mais passos apoiados em vetores (unidimensional) e listas (multidimensional). Com o tempo e principalmente por conta dos pacotes do tidyverse, a análise foi ficando cada vez mais amarrada aos `data.frames`, o que facilita a manipulação e deixa o código mais consistente. Hoje, toda manipulação de dados no R se baseia no conceito tidy data (material para leitura [aqui](https://vita.had.co.nz/papers/tidy-data.pdf) e [aqui](https://garrettgman.github.io/tidying/)) com `data.frames`.
+
+Por tidy data, entendemos que:
+
+*  Variáveis estão dispostas em colunas.
+*  Observações estão dispostas em linhas.
+*  Os valores atribuídos às variáveis em cada observação formam a tabela.
+
+![](https://garrettgman.github.io/images/tidy-1.png)
+
+Para exemplificar o conceito, vamos trabalhar com a base de IDH de municípios do estado de São Paulo.
+
+
+```r
+idh <- read_excel("input/idh_1991_2010.xlsx")
+
+idh
+```
+
+Neste dataset, temos uma variável de tempo chamada `decada` e outras variáveis que indicam o fator de desenvolvimento `longevidade`, `educacao`, `renda` para cada município `cod_municipio`.
+
+Se entendermos que cada um desses fatores de desenvolvimento é uma variável independente, está tudo certo perante o conceito do tidy data. Mas se pensarmos bem, esses fatores também podem ser considerados níveis de uma variável `idh`, cuja média dos fatores retorna o IDH que conhecemos. Então, o formato que vamos dar aos nossos dados pode variar dependendo da pergunta que queremos responder.
+
+Um exemplo prático é tentarmos fazer um gráfico dos fatores de desenvolvimento ao longo do tempo para uma cidade específica. O `ggplot2` assume que, se você for gerar uma legenda, ela tem que estar referenciada a uma variável. Nesse caso, temos 3 variáveis para gerar uma legenda, e isso não é legal para o `ggplot2`.
+
+
+```r
+idh %>% 
+  filter(cod_municipio == 3501608) %>% # Americana-SP
+  ggplot(aes(x = decada)) +
+    geom_line(aes(y = longevidade, color = "longevidade")) +
+    geom_line(aes(y = educacao, color = "educacao")) +
+    geom_line(aes(y = renda, color = "renda"))
+```
+
+Tivemos que fazer uma gambiarra porque para este gráfico, os dados precisam estar formatados de outra maneira. Vamos dar um talento nele e refazer o gráfico.
+
+
+```r
+idh_tidy <- gather(idh, fator, idh, longevidade, educacao, renda)
+
+idh_tidy
+```
+
+
+```r
+idh_tidy %>% 
+  filter(cod_municipio == 3501608) %>% 
+  ggplot(aes(x = decada, y = idh, color = fator)) +
+    geom_line()
+```
+
+De maneira geral, temos que fazer essas manipulações para encaixar os dados no formado que a função foi desenhada para trabalhar. E essa transposição é super fácil com o `gather` e com o `spread`. Um é o oposto do outro. No primeiro caso nós 'tombamos' as colunas para uma única variável. Para retornar ao formato original, é só usar o `spread`.
+
+
+```r
+idh_tidy %>% 
+  spread(fator, idh)
+
+idh_tidy %>% 
+  spread(decada, idh)
+```
+
+
+```r
+idh_tidy %>% 
+  ggplot(aes(x = decada, y = idh)) +
+    geom_line(aes(group = cod_municipio), alpha = 0.1) +
+    facet_wrap(~fator) +
+    theme_bw()
+
+idh_tidy %>% 
+  ggplot(aes(fator, idh, fill = fator)) +
+    geom_violin() +
+    facet_wrap(~decada, scales = "free_x") +
+    theme_bw()
+```
+
+## Exercícios {-}
+
+(@) **Importe o arquivo `base_vespa2.xlsx` e use a função `glimpse()` para ver a estrutura da base.**
+
+
+```r
+library(tidyverse)
+library(readxl)
+
+dados <- read_excel("input/base_vespa2.xlsx")
+
+glimpse(dados)
+```
+<br>
+
+(@) **Reformule a base de dados seguindo os conceitos do tidy data.**
+
+
+
+```r
+dados_tidy <- dados %>% 
+  gather("Local", "Galhas", 3:dim(.)[2]) %>%
+  separate(Local, c("Coleta", "Local"))
+
+dados_tidy
+```
+

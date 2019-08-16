@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Tidydata | R para análise de dados</title>
+  <meta name="description" content="Tidydata | R para análise de dados" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Tidydata | R para análise de dados" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Tidydata | R para análise de dados" />
+  
+  
+  
+
+<meta name="author" content="Ítalo Cegatta" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="joins.html">
+<link rel="next" href="iteracao.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">R para análise de dados</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Apresentação</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivos"><i class="fa fa-check"></i>Objetivos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i>Estrutura</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#requisitos"><i class="fa fa-check"></i>Requisitos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#programa"><i class="fa fa-check"></i>Programa</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-i"><i class="fa fa-check"></i>Módulo I</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-ii"><i class="fa fa-check"></i>Módulo II</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-iii"><i class="fa fa-check"></i>Módulo III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sobre-o-r.html"><a href="sobre-o-r.html"><i class="fa fa-check"></i>Sobre o R</a><ul>
+<li class="chapter" data-level="" data-path="sobre-o-r.html"><a href="sobre-o-r.html#download-do-r-e-rstudio"><i class="fa fa-check"></i>Download do R e RStudio</a></li>
+</ul></li>
+<li class="part"><span><b>Módulo I</b></span></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html"><i class="fa fa-check"></i>Manipulação de dados</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#warm-up"><i class="fa fa-check"></i>Warm-Up</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#conhecendo-os-dados"><i class="fa fa-check"></i>Conhecendo os dados</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#qual-o-lucro-medio-dos-filmes"><i class="fa fa-check"></i>Qual o lucro médio dos filmes?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#sobre-o-tidyverse"><i class="fa fa-check"></i>Sobre o Tidyverse</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#arrange"><i class="fa fa-check"></i>Arrange</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#select"><i class="fa fa-check"></i>Select</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#mutate"><i class="fa fa-check"></i>Mutate</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#summarise"><i class="fa fa-check"></i>Summarise</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#operador"><i class="fa fa-check"></i>Operador %&gt;%</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#graficos-rapidos"><i class="fa fa-check"></i>Gráficos rápidos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html"><i class="fa fa-check"></i>Visualização</a><ul>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#conceitos-basicos"><i class="fa fa-check"></i>Conceitos básicos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#layers"><i class="fa fa-check"></i>Layers</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#os-dados"><i class="fa fa-check"></i>Os dados</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#a-camada-de-geometria"><i class="fa fa-check"></i>A camada de geometria</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#a-camada-de-estatisticas"><i class="fa fa-check"></i>A camada de estatísticas</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#edicoes-de-eixos"><i class="fa fa-check"></i>Edições de eixos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#aesthetics"><i class="fa fa-check"></i>Aesthetics</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#grupos"><i class="fa fa-check"></i>Grupos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#geometrias"><i class="fa fa-check"></i>Geometrias</a><ul>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#histograma-e-densidade"><i class="fa fa-check"></i>Histograma e Densidade</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#densidade"><i class="fa fa-check"></i>Densidade</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#vilolin-e-dotplot"><i class="fa fa-check"></i>Vilolin e dotplot</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#barras"><i class="fa fa-check"></i>Barras</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#texto"><i class="fa fa-check"></i>Texto</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#escalas"><i class="fa fa-check"></i>Escalas</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#scale_xy_continuous"><i class="fa fa-check"></i>scale_x|y_continuous</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#escalas-de-cor"><i class="fa fa-check"></i>Escalas de cor</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#facets"><i class="fa fa-check"></i>Facets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html"><i class="fa fa-check"></i>Regressão e ANOVA</a><ul>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html#regressao-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html#anova-e-tukey"><i class="fa fa-check"></i>ANOVA e Tukey</a></li>
+</ul></li>
+<li class="part"><span><b>Módulo II</b></span></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html"><i class="fa fa-check"></i>Estrutura de objetos e elementos</a><ul>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#vetores"><i class="fa fa-check"></i>Vetores</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#fatores"><i class="fa fa-check"></i>Fatores</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#matrizes-e-arrays"><i class="fa fa-check"></i>Matrizes e arrays</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#lists"><i class="fa fa-check"></i>Lists</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#data-frame"><i class="fa fa-check"></i>Data frame</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#exercicios"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html"><i class="fa fa-check"></i>Indexação</a><ul>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#vetores-1"><i class="fa fa-check"></i>Vetores</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#listas"><i class="fa fa-check"></i>Listas</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#matrizes"><i class="fa fa-check"></i>Matrizes</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#data-frames"><i class="fa fa-check"></i>Data frames</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#exercicios-1"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html"><i class="fa fa-check"></i>Strings, fatores e datas</a><ul>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#strings"><i class="fa fa-check"></i>Strings</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#fatores-1"><i class="fa fa-check"></i>Fatores</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#datas"><i class="fa fa-check"></i>Datas</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#exercicios-2"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="joins.html"><a href="joins.html"><i class="fa fa-check"></i>Joins</a><ul>
+<li class="chapter" data-level="" data-path="joins.html"><a href="joins.html#exercicios-3"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="tidydata.html"><a href="tidydata.html"><i class="fa fa-check"></i>Tidydata</a><ul>
+<li class="chapter" data-level="" data-path="tidydata.html"><a href="tidydata.html#conceito"><i class="fa fa-check"></i>Conceito</a></li>
+<li class="chapter" data-level="" data-path="tidydata.html"><a href="tidydata.html#exercicios-4"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="iteracao.html"><a href="iteracao.html"><i class="fa fa-check"></i>Iteração</a><ul>
+<li class="chapter" data-level="" data-path="iteracao.html"><a href="iteracao.html#for-loop"><i class="fa fa-check"></i>For loop</a></li>
+<li class="chapter" data-level="" data-path="iteracao.html"><a href="iteracao.html#programacao-funcional"><i class="fa fa-check"></i>Programação funcional</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para análise de dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidydata" class="section level1 unnumbered">
+<h1>Tidydata</h1>
+<div id="conceito" class="section level2 unnumbered">
+<h2>Conceito</h2>
+<p>Se você pegar uma apostila ou livro de 10 anos atrás (e olhe que o R tem 23 anos) vai perceber que as análises tinham muitos mais passos apoiados em vetores (unidimensional) e listas (multidimensional). Com o tempo e principalmente por conta dos pacotes do tidyverse, a análise foi ficando cada vez mais amarrada aos <code>data.frames</code>, o que facilita a manipulação e deixa o código mais consistente. Hoje, toda manipulação de dados no R se baseia no conceito tidy data (material para leitura <a href="https://vita.had.co.nz/papers/tidy-data.pdf">aqui</a> e <a href="https://garrettgman.github.io/tidying/">aqui</a>) com <code>data.frames</code>.</p>
+<p>Por tidy data, entendemos que:</p>
+<ul>
+<li>Variáveis estão dispostas em colunas.</li>
+<li>Observações estão dispostas em linhas.</li>
+<li>Os valores atribuídos às variáveis em cada observação formam a tabela.</li>
+</ul>
+<p><img src="https://garrettgman.github.io/images/tidy-1.png" /></p>
+<p>Para exemplificar o conceito, vamos trabalhar com a base de IDH de municípios do estado de São Paulo.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">idh &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/idh_1991_2010.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb176-2" title="2"></a>
+<a class="sourceLine" id="cb176-3" title="3">idh</a></code></pre></div>
+<p>Neste dataset, temos uma variável de tempo chamada <code>decada</code> e outras variáveis que indicam o fator de desenvolvimento <code>longevidade</code>, <code>educacao</code>, <code>renda</code> para cada município <code>cod_municipio</code>.</p>
+<p>Se entendermos que cada um desses fatores de desenvolvimento é uma variável independente, está tudo certo perante o conceito do tidy data. Mas se pensarmos bem, esses fatores também podem ser considerados níveis de uma variável <code>idh</code>, cuja média dos fatores retorna o IDH que conhecemos. Então, o formato que vamos dar aos nossos dados pode variar dependendo da pergunta que queremos responder.</p>
+<p>Um exemplo prático é tentarmos fazer um gráfico dos fatores de desenvolvimento ao longo do tempo para uma cidade específica. O <code>ggplot2</code> assume que, se você for gerar uma legenda, ela tem que estar referenciada a uma variável. Nesse caso, temos 3 variáveis para gerar uma legenda, e isso não é legal para o <code>ggplot2</code>.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1">idh <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb177-2" title="2"><span class="st">  </span><span class="kw">filter</span>(cod_municipio <span class="op">==</span><span class="st"> </span><span class="dv">3501608</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Americana-SP</span></a>
+<a class="sourceLine" id="cb177-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> decada)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-4" title="4"><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> longevidade, <span class="dt">color =</span> <span class="st">&quot;longevidade&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-5" title="5"><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> educacao, <span class="dt">color =</span> <span class="st">&quot;educacao&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb177-6" title="6"><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> renda, <span class="dt">color =</span> <span class="st">&quot;renda&quot;</span>))</a></code></pre></div>
+<p>Tivemos que fazer uma gambiarra porque para este gráfico, os dados precisam estar formatados de outra maneira. Vamos dar um talento nele e refazer o gráfico.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1">idh_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(idh, fator, idh, longevidade, educacao, renda)</a>
+<a class="sourceLine" id="cb178-2" title="2"></a>
+<a class="sourceLine" id="cb178-3" title="3">idh_tidy</a></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1">idh_tidy <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb179-2" title="2"><span class="st">  </span><span class="kw">filter</span>(cod_municipio <span class="op">==</span><span class="st"> </span><span class="dv">3501608</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb179-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> decada, <span class="dt">y =</span> idh, <span class="dt">color =</span> fator)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb179-4" title="4"><span class="st">    </span><span class="kw">geom_line</span>()</a></code></pre></div>
+<p>De maneira geral, temos que fazer essas manipulações para encaixar os dados no formado que a função foi desenhada para trabalhar. E essa transposição é super fácil com o <code>gather</code> e com o <code>spread</code>. Um é o oposto do outro. No primeiro caso nós ‘tombamos’ as colunas para uma única variável. Para retornar ao formato original, é só usar o <code>spread</code>.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1">idh_tidy <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb180-2" title="2"><span class="st">  </span><span class="kw">spread</span>(fator, idh)</a>
+<a class="sourceLine" id="cb180-3" title="3"></a>
+<a class="sourceLine" id="cb180-4" title="4">idh_tidy <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb180-5" title="5"><span class="st">  </span><span class="kw">spread</span>(decada, idh)</a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1">idh_tidy <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb181-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> decada, <span class="dt">y =</span> idh)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb181-3" title="3"><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> cod_municipio), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb181-4" title="4"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>fator) <span class="op">+</span></a>
+<a class="sourceLine" id="cb181-5" title="5"><span class="st">    </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb181-6" title="6"></a>
+<a class="sourceLine" id="cb181-7" title="7">idh_tidy <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb181-8" title="8"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(fator, idh, <span class="dt">fill =</span> fator)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb181-9" title="9"><span class="st">    </span><span class="kw">geom_violin</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb181-10" title="10"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>decada, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb181-11" title="11"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+</div>
+<div id="exercicios-4" class="section level2 unnumbered">
+<h2>Exercícios</h2>
+<ol start="25" class="example" style="list-style-type: decimal">
+<li><strong>Importe o arquivo <code>base_vespa2.xlsx</code> e use a função <code>glimpse()</code> para ver a estrutura da base.</strong></li>
+</ol>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb182-2" title="2"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb182-3" title="3"></a>
+<a class="sourceLine" id="cb182-4" title="4">dados &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa2.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb182-5" title="5"></a>
+<a class="sourceLine" id="cb182-6" title="6"><span class="kw">glimpse</span>(dados)</a></code></pre></div>
+<p><br></p>
+<ol start="26" class="example" style="list-style-type: decimal">
+<li><strong>Reformule a base de dados seguindo os conceitos do tidy data.</strong></li>
+</ol>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1">dados_tidy &lt;-<span class="st"> </span>dados <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb183-2" title="2"><span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;Local&quot;</span>, <span class="st">&quot;Galhas&quot;</span>, <span class="dv">3</span><span class="op">:</span><span class="kw">dim</span>(.)[<span class="dv">2</span>]) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb183-3" title="3"><span class="st">  </span><span class="kw">separate</span>(Local, <span class="kw">c</span>(<span class="st">&quot;Coleta&quot;</span>, <span class="st">&quot;Local&quot;</span>))</a>
+<a class="sourceLine" id="cb183-4" title="4"></a>
+<a class="sourceLine" id="cb183-5" title="5">dados_tidy</a></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="joins.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="iteracao.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

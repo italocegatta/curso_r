@@ -78,12 +78,10 @@ Elementos básicos da linguagem R
 
 #### Dia 2 {-}
 
-Organização de dados, loops e estatística experimental
+Organização de dados, loops
 
-*	Tidydata
+*	Tidy data
 *	Iteração (loops, purrr)
-* Análise exploratória
-* Estatística experimental
 
 
 ### Módulo III {-}

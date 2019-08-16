@@ -22,5 +22,7 @@ rmd_files: [
   "05-objetos.rmd",
   "06-indexacao.rmd",
   "07-string-factor-date.rmd",
-  "08-joins.rmd"
+  "08-joins.rmd",
+  "09-tidy-data.rmd",
+  "10-iteracao.rmd"
 ]

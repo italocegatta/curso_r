@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Iteração | R para análise de dados</title>
+  <meta name="description" content="Iteração | R para análise de dados" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Iteração | R para análise de dados" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Iteração | R para análise de dados" />
+  
+  
+  
+
+<meta name="author" content="Ítalo Cegatta" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tidydata.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">R para análise de dados</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Apresentação</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivos"><i class="fa fa-check"></i>Objetivos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i>Estrutura</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#requisitos"><i class="fa fa-check"></i>Requisitos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#programa"><i class="fa fa-check"></i>Programa</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-i"><i class="fa fa-check"></i>Módulo I</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-ii"><i class="fa fa-check"></i>Módulo II</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-iii"><i class="fa fa-check"></i>Módulo III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sobre-o-r.html"><a href="sobre-o-r.html"><i class="fa fa-check"></i>Sobre o R</a><ul>
+<li class="chapter" data-level="" data-path="sobre-o-r.html"><a href="sobre-o-r.html#download-do-r-e-rstudio"><i class="fa fa-check"></i>Download do R e RStudio</a></li>
+</ul></li>
+<li class="part"><span><b>Módulo I</b></span></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html"><i class="fa fa-check"></i>Manipulação de dados</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#warm-up"><i class="fa fa-check"></i>Warm-Up</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#conhecendo-os-dados"><i class="fa fa-check"></i>Conhecendo os dados</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#qual-o-lucro-medio-dos-filmes"><i class="fa fa-check"></i>Qual o lucro médio dos filmes?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#sobre-o-tidyverse"><i class="fa fa-check"></i>Sobre o Tidyverse</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#arrange"><i class="fa fa-check"></i>Arrange</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#select"><i class="fa fa-check"></i>Select</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#mutate"><i class="fa fa-check"></i>Mutate</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#summarise"><i class="fa fa-check"></i>Summarise</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#operador"><i class="fa fa-check"></i>Operador %&gt;%</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#graficos-rapidos"><i class="fa fa-check"></i>Gráficos rápidos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html"><i class="fa fa-check"></i>Visualização</a><ul>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#conceitos-basicos"><i class="fa fa-check"></i>Conceitos básicos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#layers"><i class="fa fa-check"></i>Layers</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#os-dados"><i class="fa fa-check"></i>Os dados</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#a-camada-de-geometria"><i class="fa fa-check"></i>A camada de geometria</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#a-camada-de-estatisticas"><i class="fa fa-check"></i>A camada de estatísticas</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#edicoes-de-eixos"><i class="fa fa-check"></i>Edições de eixos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#aesthetics"><i class="fa fa-check"></i>Aesthetics</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#grupos"><i class="fa fa-check"></i>Grupos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#geometrias"><i class="fa fa-check"></i>Geometrias</a><ul>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#histograma-e-densidade"><i class="fa fa-check"></i>Histograma e Densidade</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#densidade"><i class="fa fa-check"></i>Densidade</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#vilolin-e-dotplot"><i class="fa fa-check"></i>Vilolin e dotplot</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#barras"><i class="fa fa-check"></i>Barras</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#texto"><i class="fa fa-check"></i>Texto</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#escalas"><i class="fa fa-check"></i>Escalas</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#scale_xy_continuous"><i class="fa fa-check"></i>scale_x|y_continuous</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#escalas-de-cor"><i class="fa fa-check"></i>Escalas de cor</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#facets"><i class="fa fa-check"></i>Facets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html"><i class="fa fa-check"></i>Regressão e ANOVA</a><ul>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html#regressao-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html#anova-e-tukey"><i class="fa fa-check"></i>ANOVA e Tukey</a></li>
+</ul></li>
+<li class="part"><span><b>Módulo II</b></span></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html"><i class="fa fa-check"></i>Estrutura de objetos e elementos</a><ul>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#vetores"><i class="fa fa-check"></i>Vetores</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#fatores"><i class="fa fa-check"></i>Fatores</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#matrizes-e-arrays"><i class="fa fa-check"></i>Matrizes e arrays</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#lists"><i class="fa fa-check"></i>Lists</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#data-frame"><i class="fa fa-check"></i>Data frame</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#exercicios"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html"><i class="fa fa-check"></i>Indexação</a><ul>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#vetores-1"><i class="fa fa-check"></i>Vetores</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#listas"><i class="fa fa-check"></i>Listas</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#matrizes"><i class="fa fa-check"></i>Matrizes</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#data-frames"><i class="fa fa-check"></i>Data frames</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#exercicios-1"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html"><i class="fa fa-check"></i>Strings, fatores e datas</a><ul>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#strings"><i class="fa fa-check"></i>Strings</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#fatores-1"><i class="fa fa-check"></i>Fatores</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#datas"><i class="fa fa-check"></i>Datas</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#exercicios-2"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="joins.html"><a href="joins.html"><i class="fa fa-check"></i>Joins</a><ul>
+<li class="chapter" data-level="" data-path="joins.html"><a href="joins.html#exercicios-3"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="tidydata.html"><a href="tidydata.html"><i class="fa fa-check"></i>Tidydata</a><ul>
+<li class="chapter" data-level="" data-path="tidydata.html"><a href="tidydata.html#conceito"><i class="fa fa-check"></i>Conceito</a></li>
+<li class="chapter" data-level="" data-path="tidydata.html"><a href="tidydata.html#exercicios-4"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="iteracao.html"><a href="iteracao.html"><i class="fa fa-check"></i>Iteração</a><ul>
+<li class="chapter" data-level="" data-path="iteracao.html"><a href="iteracao.html#for-loop"><i class="fa fa-check"></i>For loop</a></li>
+<li class="chapter" data-level="" data-path="iteracao.html"><a href="iteracao.html#programacao-funcional"><i class="fa fa-check"></i>Programação funcional</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para análise de dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="iteracao" class="section level1 unnumbered">
+<h1>Iteração</h1>
+<p>Existe uma máxima muito interessante entre programadores que diz:</p>
+<blockquote>
+<p>Don’t Repeat Yourself (DRY)</p>
+</blockquote>
+<p>Humanos são extremamente distraídos e cometem muitos erros quando fazer operações repetitivas. Quando estamos programando, não é diferente. As vezes parece mais fácil copiar e colar uma estrutura de código para alterar apenas um detalhe e ter o resultado que se espera. Mas quando o numero de repetições começa a aumentar a chance de fazermos algo errado cresce junto.</p>
+<p>No R, esse tipo de problema é resolvido de duas formas: com funções customizadas ou com loops. Nesse modulo vamos falar apenas de loops, mas com certeza ele já vai resolver muitos dos nossos problemas de repetição.</p>
+<p>Como exemplo para esse tema, temos um planilha com os dados separados em abas e temos de juntar todos eles para iniciar a análise. Os dados estão na planilha <code>base_vespa1.xlsx</code> e em seguida vamos fazer essa junção de 3 formas diferentes.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb184-2" title="2"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb184-3" title="3"><span class="kw">library</span>(broom)</a>
+<a class="sourceLine" id="cb184-4" title="4"></a>
+<a class="sourceLine" id="cb184-5" title="5">aba1 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb184-6" title="6">aba2 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb184-7" title="7">aba3 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb184-8" title="8">aba4 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb184-9" title="9">aba5 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb184-10" title="10"></a>
+<a class="sourceLine" id="cb184-11" title="11">base_mobral &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(aba1, aba2, aba3, aba4, aba5)</a>
+<a class="sourceLine" id="cb184-12" title="12"></a>
+<a class="sourceLine" id="cb184-13" title="13">base_mobral</a></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1">base_loop_out &lt;-<span class="st"> </span><span class="kw">list</span>()</a>
+<a class="sourceLine" id="cb185-2" title="2"></a>
+<a class="sourceLine" id="cb185-3" title="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</a>
+<a class="sourceLine" id="cb185-4" title="4">  </a>
+<a class="sourceLine" id="cb185-5" title="5">  base_loop_out[[i]] &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> i)</a>
+<a class="sourceLine" id="cb185-6" title="6">}</a>
+<a class="sourceLine" id="cb185-7" title="7"></a>
+<a class="sourceLine" id="cb185-8" title="8">base_loop &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(base_loop_out)</a>
+<a class="sourceLine" id="cb185-9" title="9"></a>
+<a class="sourceLine" id="cb185-10" title="10">base_loop</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1">base_purrr &lt;-<span class="st"> </span><span class="kw">excel_sheets</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb186-2" title="2"><span class="st">  </span><span class="kw">map_df</span>(read_excel, <span class="dt">path =</span> <span class="st">&quot;input/base_vespa1.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb186-3" title="3"></a>
+<a class="sourceLine" id="cb186-4" title="4">base_purrr</a></code></pre></div>
+<p>Estes 3 métodos exemplificam bastante a relação entre domínio da programação e quantidade de trabalhado apenas pelo computador. No primeiro exemplo tivermos que repetir várias vezes a estrutura do código para poder chegar no resultado esperado. No segundo, já fomos um pouco mais diretos e deixamos o trabalho repetitivo para o computador. Imagina se tivéssemos 30 abas para juntar? E se fossem 500 arquivos? O terceiro exemplo é um passo além de loops e em linguagem de programação chama-se functional programming, onde funções são usadas para realizar as operações que envolvem loops.</p>
+<div id="for-loop" class="section level2 unnumbered">
+<h2>For loop</h2>
+<p>Loops são bem comuns em linguagem de programação e nos ajudam muito nas tarefas repetitivas. Eles são compostos de 3 partes:</p>
+<ul>
+<li>O output, estrutura que será populada em cada iteração. Pode ser um vetor, lista ou data frame.</li>
+<li>Uma sequência, o universo de possibilidades que será executada em cada iteração ou passo. É comum chamarmos de <code>i</code>, mas pode ser qualquer denominação e no código é como se fosse um objeto que a cada iteração muda de conteúdo.</li>
+<li>O corpo, parte que faz o calculo ou operação envolvendo os passos <code>i</code> e guardando no <code>output</code>.</li>
+</ul>
+<p>Retomando o loop que fizemos para ler as abas, temos os 3 componentes bem claros. Vamos rescreve os loop seguindo algumas boas práticas.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1">arquivo &lt;-<span class="st"> &quot;input/base_vespa1.xlsx&quot;</span></a>
+<a class="sourceLine" id="cb187-2" title="2"></a>
+<a class="sourceLine" id="cb187-3" title="3">base_loop_out &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="kw">length</span>(<span class="kw">excel_sheets</span>(arquivo)))</a>
+<a class="sourceLine" id="cb187-4" title="4"></a>
+<a class="sourceLine" id="cb187-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(base_loop_out)) {</a>
+<a class="sourceLine" id="cb187-6" title="6">  </a>
+<a class="sourceLine" id="cb187-7" title="7">  base_loop_out[[i]] &lt;-<span class="st"> </span><span class="kw">read_excel</span>(arquivo, <span class="dt">sheet =</span> i)</a>
+<a class="sourceLine" id="cb187-8" title="8">}</a>
+<a class="sourceLine" id="cb187-9" title="9"></a>
+<a class="sourceLine" id="cb187-10" title="10">base_loop &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(base_loop_out)</a>
+<a class="sourceLine" id="cb187-11" title="11"></a>
+<a class="sourceLine" id="cb187-12" title="12">base_loop</a></code></pre></div>
+</div>
+<div id="programacao-funcional" class="section level2 unnumbered">
+<h2>Programação funcional</h2>
+<p>A outra forma de realizar tarefas repetitivas em R é utilizando funções que foram desenhadas para trabalhar com iteração. O pacote do <code>tidyverse</code> que reúne estas funções chame-se <code>purrr</code>. A ideia das funções do <code>purrr</code> é desenhar as iterações sobre vetores, listas ou linhas de um data frame.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="kw">map</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), rnorm)</a>
+<a class="sourceLine" id="cb188-2" title="2"></a>
+<a class="sourceLine" id="cb188-3" title="3"><span class="kw">map_dbl</span>(mtcars, mean)</a>
+<a class="sourceLine" id="cb188-4" title="4"></a>
+<a class="sourceLine" id="cb188-5" title="5"><span class="kw">map_int</span>(iris, <span class="cf">function</span>(x) <span class="kw">length</span>(<span class="kw">unique</span>(x)))</a>
+<a class="sourceLine" id="cb188-6" title="6"></a>
+<a class="sourceLine" id="cb188-7" title="7"><span class="kw">map_int</span>(iris, <span class="op">~</span><span class="st"> </span><span class="kw">length</span>(<span class="kw">unique</span>(.)))</a></code></pre></div>
+<p>O pacote tem várias funções e você pode ler sobre elas com mais calma depois. Neste bloco, utilizar a programação funcional para ajustar regressões especificas para um determinado grupo e sempre mantendo tudo amarado a data frames. Esse é uma concepção de programação bastante nova no R, onde coloca o data frame como esqueleto principal da análise e aplicando todas as etapas dentro dele.</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">inv &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/TUME_134_2016.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb189-2" title="2"></a>
+<a class="sourceLine" id="cb189-3" title="3">inv</a></code></pre></div>
+<p>Nosso objetivo é ajustar um modelo hipsométrico (diâmetro-altura) para cada espécie e em seguida predizer as alturas das árvores. O gráfico a seguir mostra a relação que teríamos se fosse ajustado apenas um modelo para todas as espécies.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="kw">ggplot</span>(inv, <span class="kw">aes</span>(CAP_cm, H_m)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb190-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span><span class="fl">0.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb190-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb190-4" title="4"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p>Mas na prática, a relação diâmetro-altura é diferente entre as espécies, como pode ser notado logo abaixo. Talvez fique mais evidente a diferença observando os coeficientes dos modelos que serão ajustados a seguir.</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">ggplot</span>(inv, <span class="kw">aes</span>(CAP_cm, H_m)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb191-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb191-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb191-4" title="4"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Esp)</a></code></pre></div>
+<p>Para entendermos o processo, vamos ajustar a regressão para algumas espécies. O comando <code>lm()</code> utiliza a notação em formula para especificar o modelo. Lê-se <code>H_m</code> em função de <code>CAP_cm</code>, sendo o <code>~</code> responsável por determinar as variáveis dependentes e independentes.</p>
+<p>O pacote <code>broom</code> tem algumas funções que facilitam a extração das informações do modelo ajustado. Iremos utilizar a função <code>glance</code> para pegar as estatísticas gerais do modelo e a função <code>tidy</code> para acessar os coeficientes e significâncias.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(H_m <span class="op">~</span><span class="st"> </span>CAP_cm, <span class="dt">data =</span> <span class="kw">filter</span>(inv, Esp <span class="op">==</span><span class="st"> &quot;E_citriodora&quot;</span>))</a>
+<a class="sourceLine" id="cb192-2" title="2"></a>
+<a class="sourceLine" id="cb192-3" title="3"><span class="kw">glance</span>(m1)</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1"><span class="kw">tidy</span>(m1)</a></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1">m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(H_m <span class="op">~</span><span class="st"> </span>CAP_cm, <span class="dt">data =</span> <span class="kw">filter</span>(inv, Esp <span class="op">==</span><span class="st"> &quot;E_maculata&quot;</span>))</a>
+<a class="sourceLine" id="cb194-2" title="2"></a>
+<a class="sourceLine" id="cb194-3" title="3"><span class="kw">glance</span>(m2)</a></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="kw">tidy</span>(m2)</a></code></pre></div>
+<p>A primeira etapa é entender que um data.frame pode conter vários tipos de elementos, como números, caracteres, listas e também outros data.frames. Para isso utilizaremos a função nest() do pacote tidyr e aninharemos os dados em função das espécies.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1">inv_nest &lt;-<span class="st"> </span>inv <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb196-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Esp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb196-3" title="3"><span class="st">  </span><span class="kw">nest</span>() </a>
+<a class="sourceLine" id="cb196-4" title="4"></a>
+<a class="sourceLine" id="cb196-5" title="5">inv_nest</a></code></pre></div>
+<p>Agora podemos ajustar um modelo de regressão para cada espécie utilizando a função map, do pacote purrr.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">dados_modl &lt;-<span class="st"> </span>inv_nest <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb197-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb197-3" title="3">    <span class="dt">ajuste =</span> <span class="kw">map</span>(data, <span class="op">~</span><span class="kw">lm</span>(H_m <span class="op">~</span><span class="st"> </span>CAP_cm, <span class="dt">data =</span> .)),</a>
+<a class="sourceLine" id="cb197-4" title="4">    <span class="dt">resumo =</span> <span class="kw">map</span>(ajuste, glance),</a>
+<a class="sourceLine" id="cb197-5" title="5">    <span class="dt">coef =</span> <span class="kw">map</span>(ajuste, tidy),</a>
+<a class="sourceLine" id="cb197-6" title="6">    <span class="dt">resid =</span> <span class="kw">map</span>(ajuste, augment)</a>
+<a class="sourceLine" id="cb197-7" title="7">  )</a>
+<a class="sourceLine" id="cb197-8" title="8"> </a>
+<a class="sourceLine" id="cb197-9" title="9">dados_modl</a></code></pre></div>
+<p>Da mesma forma que aninhamos os dados por espécie, podemos retorná-los para o formato original, mas agora mostrando apenas as informações que realmente interessam.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1">dados_modl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb198-2" title="2"><span class="st">  </span><span class="kw">select</span>(Esp, resumo) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb198-3" title="3"><span class="st">  </span><span class="kw">unnest</span>(resumo)</a></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">dados_modl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb199-2" title="2"><span class="st">  </span><span class="kw">select</span>(Esp, coef ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb199-3" title="3"><span class="st">  </span><span class="kw">unnest</span>(coef)</a></code></pre></div>
+<p>Após o ajuste do modelo, temos de predizer as alturas. Por fim, temos de volta um <code>data.frame</code> com as alturas preditas.</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1">dados_pred &lt;-<span class="st"> </span>dados_modl <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb200-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb200-3" title="3">    <span class="dt">hpred =</span> <span class="kw">map2</span>(ajuste, data, predict)</a>
+<a class="sourceLine" id="cb200-4" title="4">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb200-5" title="5"><span class="st">  </span><span class="kw">select</span>(Esp, data, hpred) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb200-6" title="6"><span class="st">  </span><span class="kw">unnest</span>(hpred, data)</a>
+<a class="sourceLine" id="cb200-7" title="7"></a>
+<a class="sourceLine" id="cb200-8" title="8">dados_pred</a></code></pre></div>
+<p>Para visualizar o resultado da regressão, podemos colocar no gráfico a comparação entre valores medidos e preditos.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1">dados_pred <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb201-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(CAP_cm)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb201-3" title="3"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> H_m), <span class="dt">color =</span> <span class="st">&quot;cadetblue&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb201-4" title="4"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> hpred), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb201-5" title="5"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Esp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb201-6" title="6"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tidydata.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
