@@ -1,4 +1,4 @@
-# Joins
+# Joins {-}
 
 Estamos juntando dados de tabelas o tempo todo. Por diversos motivos parte das informações estão em uma tabela e parte estão em outra e precisamos parear esses dados para seguir com a análise. No Excel essa movimentação é feita pela função `PROCV()`, só que de maneira mais limitada.
 
@@ -23,15 +23,6 @@ y <- tibble(
   valor2 = sample(1:10, 4),
   valor3 = sample(20:30, 4)
 )
-```
-
-
-```{r}
-x
-```
-
-```{r}
-y
 ```
 
 Com base na tabela `x`, traga os valores da tabela `y` que correspondam com as chaves que existem na tabela `x`. Notem que a tabela 1 é o objeto `x` e eu quero ele como referencia.
@@ -60,5 +51,62 @@ Vimos até agora os 'joins' que movimentam colunas de uma tabela para outra, mas
 semi_join(x, y)
 
 anti_join(x, y)
+```
+
+
+## Exercícios {-}
+
+(@) **Carregue o pacote `gapminder` aplique a função `glimpse` na objeto `gapminder` que pertence ao respectivo pacote.**
+
+```{r eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(gapminder)
+library(readxl)
+
+glimpse(gapminder)
+```
+<br>
+
+(@) **Importe o arquivo `continents.xlsx` e mostre seu conteúdo na tela.**
+
+```{r eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+continents <- read_excel("input/continents.xlsx")
+
+continents
+```
+<br>
+
+(@) **Faça um join entre a tabela `gapminder` e `continents`, onde `gapminder` será a tabela de referência. Salve essa operação em um objeto chamado `gap_cont`.**
+
+```{r eval=TRUE, echo=FALSE}
+gap_cont <- left_join(gapminder, continents) 
+
+gap_cont
+```
+<br>
+
+
+(@) **Com base no objeto `gap_cont`, filtre as informações do continente `Antarctica`.**
+
+```{r eval=TRUE, echo=FALSE}
+gap_cont %>% 
+  filter(continent == "Antarctica")
+```
+<br>
+
+(@) **Faça um gráfico de dispersão com a area do continente e a renda per capta. Para isso, considere `GDP = gdpPercap * pop` como o PIB do país. Em seguida some o PIB em função do continente. A tabela `continents` informa a população do continente, divida o PIB do continente pela população do mesmo e salve e chame essa variável de `per_cap`, faça o gráfico proposto em seguida.**
+
+Dicas: summarize, left_join, geom_text, nudge_y.
+
+```{r eval=TRUE, echo=FALSE}
+gapminder %>%
+  mutate(GDP = gdpPercap * pop) %>%  
+  group_by(continent) %>%  
+  summarize(cont_gdp = sum(GDP)) %>%  
+    left_join(continents) %>%  
+    mutate(per_cap = cont_gdp / population) %>%  
+    ggplot(aes(x = area_km2, y = per_cap)) +
+    geom_point() +  
+    geom_text(aes(label = continent), nudge_y = 5e3)  
 ```
 

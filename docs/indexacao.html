@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="estrutura-de-objetos-e-elementos.html">
-
+<link rel="next" href="strings-fatores-e-datas.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -177,9 +177,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#escalas-de-cor"><i class="fa fa-check"></i>Escalas de cor</a></li>
 <li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#facets"><i class="fa fa-check"></i>Facets</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="estatistica-experimental.html"><a href="estatistica-experimental.html"><i class="fa fa-check"></i>Estatística experimental</a><ul>
-<li class="chapter" data-level="" data-path="estatistica-experimental.html"><a href="estatistica-experimental.html#regressao-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
-<li class="chapter" data-level="" data-path="estatistica-experimental.html"><a href="estatistica-experimental.html#anova-e-tukey"><i class="fa fa-check"></i>ANOVA e Tukey</a></li>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html"><i class="fa fa-check"></i>Regressão e ANOVA</a><ul>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html#regressao-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html#anova-e-tukey"><i class="fa fa-check"></i>ANOVA e Tukey</a></li>
 </ul></li>
 <li class="part"><span><b>Módulo II</b></span></li>
 <li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html"><i class="fa fa-check"></i>Estrutura de objetos e elementos</a><ul>
@@ -189,12 +189,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#lists"><i class="fa fa-check"></i>Lists</a></li>
 <li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#data-frame"><i class="fa fa-check"></i>Data frame</a></li>
 <li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#exercicios"><i class="fa fa-check"></i>Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html"><i class="fa fa-check"></i>Indexação</a><ul>
 <li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#vetores-1"><i class="fa fa-check"></i>Vetores</a></li>
 <li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#listas"><i class="fa fa-check"></i>Listas</a></li>
 <li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#matrizes"><i class="fa fa-check"></i>Matrizes</a></li>
 <li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#data-frames"><i class="fa fa-check"></i>Data frames</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#exercicios-1"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html"><i class="fa fa-check"></i>Strings, fatores e datas</a><ul>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#strings"><i class="fa fa-check"></i>Strings</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#fatores-1"><i class="fa fa-check"></i>Fatores</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#datas"><i class="fa fa-check"></i>Datas</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#exercicios-2"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="joins.html"><a href="joins.html"><i class="fa fa-check"></i>Joins</a><ul>
+<li class="chapter" data-level="" data-path="joins.html"><a href="joins.html#exercicios-3"><i class="fa fa-check"></i>Exercícios</a></li>
 </ul></li>
 </ul>
 
@@ -218,61 +229,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>O R tem muitos operadores de indexação e dominá-los permitirá que você execute facilmente uma operação complexa em qualquer tipo de conjunto de dados. Permite manipular dados de forma muito sucinta.</p>
 <div id="vetores-1" class="section level2 unnumbered">
 <h2>Vetores</h2>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.4</span>, <span class="fl">6.2</span>, <span class="fl">7.1</span>, <span class="fl">4.8</span>)</a></code></pre></div>
 <p>Nós podemos indexar valores de um objeto de 4 maneiras. Usando inteiros positivos.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1">x[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb124-2" title="2">x[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)]</a>
-<a class="sourceLine" id="cb124-3" title="3">x[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)]</a>
-<a class="sourceLine" id="cb124-4" title="4">x[<span class="kw">c</span>(<span class="fl">2.1</span>, <span class="fl">2.9</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1">x[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb130-2" title="2">x[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)]</a>
+<a class="sourceLine" id="cb130-3" title="3">x[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)]</a>
+<a class="sourceLine" id="cb130-4" title="4">x[<span class="kw">c</span>(<span class="fl">2.1</span>, <span class="fl">2.9</span>)]</a></code></pre></div>
 <p>Usando números inteiros negativos.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1">x[<span class="op">-</span><span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb125-2" title="2">x[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1">x[<span class="op">-</span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb131-2" title="2">x[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)]</a></code></pre></div>
 <p>Usando operadores lógicos.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)]</a>
-<a class="sourceLine" id="cb126-2" title="2">x[x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb126-3" title="3">x[<span class="kw">which</span>(x <span class="op">&gt;</span><span class="dv">3</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)]</a>
+<a class="sourceLine" id="cb132-2" title="2">x[x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb132-3" title="3">x[<span class="kw">which</span>(x <span class="op">&gt;</span><span class="dv">3</span>)]</a></code></pre></div>
 <p>Referenciando objetos por seus nomes.</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1">y &lt;-<span class="st"> </span><span class="kw">setNames</span>(x, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</a>
-<a class="sourceLine" id="cb127-2" title="2">y[<span class="kw">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;a&quot;</span>)]</a>
-<a class="sourceLine" id="cb127-3" title="3">y[<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;a&quot;</span>)]</a>
-<a class="sourceLine" id="cb127-4" title="4">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">abc =</span> <span class="dv">1</span>, <span class="dt">def =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb127-5" title="5">z[<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;d&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1">y &lt;-<span class="st"> </span><span class="kw">setNames</span>(x, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</a>
+<a class="sourceLine" id="cb133-2" title="2">y[<span class="kw">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;a&quot;</span>)]</a>
+<a class="sourceLine" id="cb133-3" title="3">y[<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;a&quot;</span>)]</a>
+<a class="sourceLine" id="cb133-4" title="4">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">abc =</span> <span class="dv">1</span>, <span class="dt">def =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb133-5" title="5">z[<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;d&quot;</span>)]</a></code></pre></div>
 </div>
 <div id="listas" class="section level2 unnumbered">
 <h2>Listas</h2>
 <p>Indexar uma lista funciona exatamente da mesma maneira como subconjunto de um vetor atômico. Indexar uma lista com <code>[</code> sempre retornará uma lista: <code>[[</code> e <code>$</code>, conforme descrito abaixo, permitem que você retire os componentes da lista.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1">x &lt;-<span class="st"> </span><span class="kw">as.list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb128-2" title="2">x[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">x &lt;-<span class="st"> </span><span class="kw">as.list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb134-2" title="2">x[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <p>Para extrair elementos individuais dentro de uma lista, use o operador <code>[[</code>.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">x[[<span class="dv">5</span>]]</a>
-<a class="sourceLine" id="cb129-2" title="2"><span class="kw">class</span>(x[[<span class="dv">5</span>]])</a>
-<a class="sourceLine" id="cb129-3" title="3">another_variable &lt;-<span class="st"> </span>x[[<span class="dv">5</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1">x[[<span class="dv">5</span>]]</a>
+<a class="sourceLine" id="cb135-2" title="2"><span class="kw">class</span>(x[[<span class="dv">5</span>]])</a>
+<a class="sourceLine" id="cb135-3" title="3">another_variable &lt;-<span class="st"> </span>x[[<span class="dv">5</span>]]</a></code></pre></div>
 <p>Ou usando seus nomes.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="kw">names</span>(x) &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb130-2" title="2">x<span class="op">$</span>a</a>
-<a class="sourceLine" id="cb130-3" title="3">x[[<span class="st">&quot;a&quot;</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="kw">names</span>(x) &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb136-2" title="2">x<span class="op">$</span>a</a>
+<a class="sourceLine" id="cb136-3" title="3">x[[<span class="st">&quot;a&quot;</span>]]</a></code></pre></div>
 </div>
 <div id="matrizes" class="section level2 unnumbered">
 <h2>Matrizes</h2>
 <p>Uma matriz é um subconjunto com dois argumentos dentro de colchetes simples, <code>[]</code>, e separados por uma vírgula. O primeiro argumento especifica as linhas e o segundo as colunas.</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1">a &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb131-2" title="2"><span class="kw">colnames</span>(a) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)</a>
-<a class="sourceLine" id="cb131-3" title="3">a[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]</a>
-<a class="sourceLine" id="cb131-4" title="4">a[<span class="kw">c</span>(T, F, T), <span class="kw">c</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>)]</a>
-<a class="sourceLine" id="cb131-5" title="5">a[<span class="dv">0</span>, <span class="dv">-2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1">a &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb137-2" title="2"><span class="kw">colnames</span>(a) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)</a>
+<a class="sourceLine" id="cb137-3" title="3">a[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]</a>
+<a class="sourceLine" id="cb137-4" title="4">a[<span class="kw">c</span>(T, F, T), <span class="kw">c</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>)]</a>
+<a class="sourceLine" id="cb137-5" title="5">a[<span class="dv">0</span>, <span class="dv">-2</span>]</a></code></pre></div>
 </div>
 <div id="data-frames" class="section level2 unnumbered">
 <h2>Data frames</h2>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">y =</span> <span class="dv">3</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">z =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</a>
-<a class="sourceLine" id="cb132-2" title="2">df[df<span class="op">$</span>x <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, ]</a>
-<a class="sourceLine" id="cb132-3" title="3">df[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), ]</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">y =</span> <span class="dv">3</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">z =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb138-2" title="2">df[df<span class="op">$</span>x <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, ]</a>
+<a class="sourceLine" id="cb138-3" title="3">df[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), ]</a></code></pre></div>
 <p>Há duas maneiras de selecionar colunas de um data frame, como Como uma lista ou como uma matriz.</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1">df[<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;z&quot;</span>)]</a>
-<a class="sourceLine" id="cb133-2" title="2">df[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</a>
-<a class="sourceLine" id="cb133-3" title="3">df[, <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;z&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1">df[<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;z&quot;</span>)]</a>
+<a class="sourceLine" id="cb139-2" title="2">df[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</a>
+<a class="sourceLine" id="cb139-3" title="3">df[, <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;z&quot;</span>)]</a></code></pre></div>
 <p>Há uma diferença importante se você selecionar uma coluna simples: o subconjunto de matriz simplifica por padrão, o subconjunto de lista não.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">df[, <span class="st">&quot;x&quot;</span>]</a>
-<a class="sourceLine" id="cb134-2" title="2">df[<span class="st">&quot;x&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1">df[, <span class="st">&quot;x&quot;</span>]</a>
+<a class="sourceLine" id="cb140-2" title="2">df[<span class="st">&quot;x&quot;</span>]</a></code></pre></div>
+</div>
+<div id="exercicios-1" class="section level2 unnumbered">
+<h2>Exercícios</h2>
+<ol start="7" class="example" style="list-style-type: decimal">
+<li><strong>Crie um vetor chamado ‘y’ com os 30 numeros aleatórios. Mostre todos os numeros do vetor e em segue mostre apenas o quinto e o ultimo elemento.</strong></li>
+</ol>
+<pre><code>#&gt;  [1] -0.496735894 -0.307230029  1.259041790  1.564497209 -1.537230527
+#&gt;  [6] -1.333390731 -0.176819026 -0.234252829  0.280553296 -0.383512630
+#&gt; [11] -0.236918034  0.209041392  1.594494569 -0.388472845  0.608257271
+#&gt; [16]  0.752073053 -0.741333344  0.207068624 -0.334033498  0.003045311
+#&gt; [21] -0.488323772  2.460348506 -2.937698132 -2.197284502  1.191933021
+#&gt; [26] -0.822931391 -1.363217219 -0.778130555  0.084509709  0.776105123
+#&gt; [1] -1.5372305  0.7761051</code></pre>
+<p><br></p>
+<ol start="8" class="example" style="list-style-type: decimal">
+<li><strong>Armazene este data frame <code>data.frame(a = letters[1:10], b = 10:1)</code> em um objeto de nome ‘x’. Em seguida mostre seu conteúdo.</strong></li>
+</ol>
+<pre><code>#&gt;    a  b
+#&gt; 1  a 10
+#&gt; 2  b  9
+#&gt; 3  c  8
+#&gt; 4  d  7
+#&gt; 5  e  6
+#&gt; 6  f  5
+#&gt; 7  g  4
+#&gt; 8  h  3
+#&gt; 9  i  2
+#&gt; 10 j  1</code></pre>
+<p><br></p>
+<ol start="9" class="example" style="list-style-type: decimal">
+<li><strong>Extraia do data frame ‘x’ apenas a columa a, de forma que o resultado seja um vetor.</strong></li>
+</ol>
+<pre><code>#&gt;  [1] a b c d e f g h i j
+#&gt; Levels: a b c d e f g h i j</code></pre>
+<p><br></p>
+<ol start="10" class="example" style="list-style-type: decimal">
+<li><strong>Extraia do data frame ‘x’ todas as linhas que tenham na coluna b um número menor que 7.</strong></li>
+</ol>
+<pre><code>#&gt;    a b
+#&gt; 5  e 6
+#&gt; 6  f 5
+#&gt; 7  g 4
+#&gt; 8  h 3
+#&gt; 9  i 2
+#&gt; 10 j 1</code></pre>
 
 </div>
 </div>
@@ -281,8 +337,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="estrutura-de-objetos-e-elementos.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="estrutura-de-objetos-e-elementos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="strings-fatores-e-datas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

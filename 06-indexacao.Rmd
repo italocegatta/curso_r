@@ -105,3 +105,50 @@ Há uma diferença importante se você selecionar uma coluna simples: o subconju
 df[, "x"]
 df["x"]
 ```
+
+
+## Exercícios {-}
+
+
+(@) **Crie um vetor chamado 'y' com os 30 numeros aleatórios. Mostre todos os numeros do vetor e em segue mostre apenas o quinto e o ultimo elemento.**
+
+```{r echo=FALSE, eval=TRUE}
+y <- rnorm(30)
+
+y
+cat("\n")
+y[c(5, 30)]
+```
+<br>
+
+(@) **Armazene este data frame `data.frame(a = letters[1:10], b = 10:1)` em um objeto de nome 'x'. Em seguida mostre seu conteúdo.**
+
+```{r echo=FALSE, eval=TRUE}
+x <- data.frame(a = letters[1:10], b = 10:1)
+x
+```
+<br>
+
+(@) **Extraia do data frame 'x' apenas a columa a, de forma que o resultado seja um vetor.**
+
+```{r echo=FALSE, eval=TRUE}
+x$a
+```
+<br>
+
+(@) **Extraia do data frame 'x' todas as linhas que tenham na coluna b um número menor que 7.**
+
+```{r echo=FALSE, eval=TRUE}
+x[x$b < 7, ]
+```
+
+
+
+
+
+
+
+
+
+
+

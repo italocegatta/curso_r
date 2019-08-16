@@ -2,7 +2,7 @@
 
 Neste bloco vamos trabalhar com tipos de elementos que em bancos de dados. Aprender a manipular `strings` (palavras), `factors` e `dates` vai nos dar um poder de análise diversificado e útil.
 
-# Strings
+## Strings {-}
 
 A verdade é que nem sempre nosso banco de dados está bem formatado. Por diversos motivos, os dados chegam com uma formatação muito distante do ideal e não é raro termos de limpar os dados antes de iniciar uma análise. Variável que trazem caracteres são as que mais precisam de atenção e limpeza.
 
@@ -100,7 +100,7 @@ str_subset(paises, ",") %>%
 ```
 
 
-# Fatores
+## Fatores {-}
 
 Já falamos um pouco sobre os fatores anteriormente e agora vamos tentar usar eles como recurso para criação de gráficos. 
 
@@ -165,7 +165,7 @@ gap_1992 %>%
     geom_col()
 ```
 
-# Datas
+## Datas {-}
 
 Neste bloco vamos trabalhar com a classe de objeto do tipo data. Dentro do `tidyverse`, o pacote que reúne as funções relacionadas a datas é o `lubridate`. É importante mencionar que no é temos os tipos `date` e `date-time` ou `POSIXct`. A diferença entre esses dois tipos é a resolução, sendo que a classe `date-time` armazena além da data, a informação de hora-minuto-segundo. Começando pelo começo, vamos criar objetos do tipo `date` e `date-time`.
 
@@ -226,5 +226,127 @@ time_length(fim - inicio, "year")
 time_length(fim - inicio, "month")
 time_length(fim - inicio, "week")
 
+```
+
+
+## Exercícios {-}
+
+(@) **Importe o arquivo `nobel_winners.csv` e use a função `glimpse()` para ver a estrutura da base.**
+
+```{r eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+library(lubridate)
+
+nobel <- read_csv2("input/nobel_winners.csv")
+
+glimpse(nobel)
+```
+<br>
+
+(@) **Crie um novo data frame chamado `nobel_age`. Neste novo data frame filtre apenas os prêmios individuais em `laureate_type` e em seguida crie uma coluna chamada `prize_date` considerando o dia 1 de dezembro do ano em que o premio foi entregue. Em seguida calcule a idade em que o ganhador recebeu o prêmio e armazene em uma variável chamada `age` neste mesmo data frame.**
+
+Dicas: str_glue, ymd, time_length.
+
+```{r echo=FALSE, eval=TRUE}
+nobel_age <- nobel %>%
+  mutate(
+    prize_date = ymd(str_glue("{prize_year}-12-01")),
+    age = time_length(prize_date - birth_date, "year")
+  ) %>% 
+  filter(laureate_type == "Individual")
+
+nobel_age
+```
+<br>
+
+(@) **Filtre quem ganhou o prêmio com menos de 30 anos e mostre apenas as seguintes variáveis: `prize_year`, `category`, `full_name`, `birth_country`, `prize_date` e `age`.**
+
+```{r echo=FALSE, eval=TRUE}
+nobel_age %>% 
+  filter(age <= 30) %>% 
+  select(prize_year, category, full_name, birth_country, prize_date, age)
+```
+<br>
+
+(@) **Faça um histograma com as idades dos ganhadores.**
+
+```{r echo=FALSE, eval=TRUE}
+nobel_age %>% 
+  ggplot(aes(age)) +
+    geom_histogram() +
+    theme_bw()
+```
+<br>
+
+(@) **Faça um gráfico de dispersão com o ano do prêmio e a idade do ganhador e coloque uma linha de tendência.**
+
+Dica: geom_smooth.
+
+```{r echo=FALSE, eval=TRUE}
+ggplot(nobel_age, aes(prize_year, age)) + 
+  geom_point() + 
+  geom_smooth() + 
+  theme_bw()
+```
+<br>
+
+(@) **Com base no gráfico anterior, faça um painel em função da variável `category`, coloque a cor e preenchimento em função da mesma variável.**
+
+Dica: facet_wrap.
+
+```{r echo=FALSE, eval=TRUE}
+ggplot(nobel_age, aes(prize_year, age)) + 
+  geom_point() + 
+  geom_smooth(aes(colour = category, fill = category)) + 
+  facet_wrap(~ category) +
+  theme_bw()
+```
+<br>
+
+(@) **Com base no gráfico anterior, altere a ordem dos fatores das categorias, deixando `Economics`, `Literature`, `Chemistry` nas primeiras posições.**
+
+Dica: fct_relevel.
+
+```{r echo=FALSE, eval=TRUE}
+nobel_age %>% 
+  mutate(category = fct_relevel(category, "Economics", "Literature", "Chemistry")) %>% 
+  ggplot(aes(prize_year, age)) + 
+    geom_point() + 
+    geom_smooth(aes(colour = category, fill = category)) + 
+    facet_wrap(~ category) +
+    theme_bw()
+```
+<br>
+
+(@) **Calcule os 20 países com maior número de ganhadores com base na variável `birth_country` e faça um gráfico de barras.**
+
+Dicas: tally, top_n, coord_flip.
+
+```{r echo=FALSE, eval=TRUE}
+nobel_age %>% 
+  group_by(birth_country) %>% 
+  tally() %>% 
+  top_n(20, n) %>% 
+  ggplot(aes(birth_country, n)) +
+    geom_col() +
+    coord_flip() +
+    theme_bw()
+```
+<br>
+
+(@) **Com base no gráfico anterior, ordene as barras em função do numero de ganhadores.**
+
+Dica: fct_reorder.
+```{r echo=FALSE, eval=TRUE}
+nobel_age %>% 
+  group_by(birth_country) %>% 
+  tally() %>% 
+  top_n(20, n) %>% 
+  mutate(birth_country = fct_reorder(birth_country, n)) %>% 
+  ggplot(aes(birth_country, n)) +
+    geom_col() +
+    coord_flip() +
+    theme_bw()
 ```
 

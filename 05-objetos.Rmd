@@ -268,5 +268,51 @@ mean(x, na.rm = TRUE)
 na.omit(x)
 ```
 
-## Exercícios
+
+## Exercícios {-}
+
+
+(@) **Crie um vetor de caracteres que 20 elementos quaisquer.**
+
+```{r echo=FALSE, eval=TRUE}
+as.character(sample(letters[1:20]))
+```
+<br>
+
+(@) **Crie uma sequência de 50 a 150, somente com numeros pares.**
+
+```{r echo=FALSE, eval=TRUE}
+seq(50, 150, 2)
+```
+<br>
+
+(@) **Crie um vetor lógico com 4 elementos, armazene em um objeto e em seguida trasforme em um vetor numérico.**
+
+```{r echo=FALSE, eval=TRUE}
+a <- c(TRUE, FALSE, TRUE, TRUE)
+a
+as.numeric(a)
+```
+<br>
+
+(@) **Crie uma vector de caracteres quaisquer que possua 2 fatores.**
+
+```{r echo=FALSE, eval=TRUE}
+factor(rep(c("a", "b"), 15))
+```
+<br>
+
+(@) **Crie um data frame com 3 colunas e 10 linhas utilizando números aleatórios para o compor.**
+
+```{r echo=FALSE, eval=TRUE}
+data.frame(x = rnorm(10), y = rnorm(10), z = rnorm(10))
+```
+<br>
+
+(@) **Crie um vetor com 10 numeros aleatorios e armazene-o em um objeto de nome 'x'. Em seguida mostre seu conteúdo.**
+
+```{r echo=FALSE, eval=TRUE}
+x <- rnorm(10)
+x
+```
 

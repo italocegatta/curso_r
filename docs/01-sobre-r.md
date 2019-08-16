@@ -16,4 +16,4 @@ O projeto do R teve início com Ross Ihaka e Robert Gentleman nos anos 90 a part
 
 O download do software R pode ser feito no site do [CRAN](https://cran.r-project.org/). Após a instalação você já está apto para iniciar sua análise.
 
-Para trabalharmos em um ambiente com maiores funcionalidade, podemos optar por utilizar um ambiente de desenvolvimento integrado ao R. O [RStudio](https://www.rstudio.com/) é um dos mais utilizados e possui diversas funcionalidades que facilitam nossa vida durante uma análise. Faça o download do RStudio nesse [link](https://www.rstudio.com/products/rstudio/download/). Note que o Rstudio não irá funcionar se você não tiver instalado o R antes.
+Para trabalharmos em um ambiente com maiores funcionalidade, podemos optar por utilizar um ambiente de desenvolvimento integrado ao R. O [RStudio](https://www.rstudio.com/) é um dos mais utilizados e possui diversas funcionalidades que facilitam nossa vida durante uma análise. Faça o download do RStudio nesse [link](https://www.rstudio.com/products/rstudio/download/). Note que é preciso instlar o R antes, para conseguir instalar o Rstudio normalmente.

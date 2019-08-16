@@ -118,3 +118,72 @@ Há uma diferença importante se você selecionar uma coluna simples: o subconju
 df[, "x"]
 df["x"]
 ```
+
+
+## Exercícios {-}
+
+
+(@) **Crie um vetor chamado 'y' com os 30 numeros aleatórios. Mostre todos os numeros do vetor e em segue mostre apenas o quinto e o ultimo elemento.**
+
+
+```
+#>  [1] -0.496735894 -0.307230029  1.259041790  1.564497209 -1.537230527
+#>  [6] -1.333390731 -0.176819026 -0.234252829  0.280553296 -0.383512630
+#> [11] -0.236918034  0.209041392  1.594494569 -0.388472845  0.608257271
+#> [16]  0.752073053 -0.741333344  0.207068624 -0.334033498  0.003045311
+#> [21] -0.488323772  2.460348506 -2.937698132 -2.197284502  1.191933021
+#> [26] -0.822931391 -1.363217219 -0.778130555  0.084509709  0.776105123
+#> [1] -1.5372305  0.7761051
+```
+<br>
+
+(@) **Armazene este data frame `data.frame(a = letters[1:10], b = 10:1)` em um objeto de nome 'x'. Em seguida mostre seu conteúdo.**
+
+
+```
+#>    a  b
+#> 1  a 10
+#> 2  b  9
+#> 3  c  8
+#> 4  d  7
+#> 5  e  6
+#> 6  f  5
+#> 7  g  4
+#> 8  h  3
+#> 9  i  2
+#> 10 j  1
+```
+<br>
+
+(@) **Extraia do data frame 'x' apenas a columa a, de forma que o resultado seja um vetor.**
+
+
+```
+#>  [1] a b c d e f g h i j
+#> Levels: a b c d e f g h i j
+```
+<br>
+
+(@) **Extraia do data frame 'x' todas as linhas que tenham na coluna b um número menor que 7.**
+
+
+```
+#>    a b
+#> 5  e 6
+#> 6  f 5
+#> 7  g 4
+#> 8  h 3
+#> 9  i 2
+#> 10 j 1
+```
+
+
+
+
+
+
+
+
+
+
+

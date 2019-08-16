@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="estatistica-experimental.html">
+<link rel="prev" href="regressao-e-anova.html">
 <link rel="next" href="indexacao.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -177,9 +177,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#escalas-de-cor"><i class="fa fa-check"></i>Escalas de cor</a></li>
 <li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#facets"><i class="fa fa-check"></i>Facets</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="estatistica-experimental.html"><a href="estatistica-experimental.html"><i class="fa fa-check"></i>Estatística experimental</a><ul>
-<li class="chapter" data-level="" data-path="estatistica-experimental.html"><a href="estatistica-experimental.html#regressao-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
-<li class="chapter" data-level="" data-path="estatistica-experimental.html"><a href="estatistica-experimental.html#anova-e-tukey"><i class="fa fa-check"></i>ANOVA e Tukey</a></li>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html"><i class="fa fa-check"></i>Regressão e ANOVA</a><ul>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html#regressao-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html#anova-e-tukey"><i class="fa fa-check"></i>ANOVA e Tukey</a></li>
 </ul></li>
 <li class="part"><span><b>Módulo II</b></span></li>
 <li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html"><i class="fa fa-check"></i>Estrutura de objetos e elementos</a><ul>
@@ -189,12 +189,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#lists"><i class="fa fa-check"></i>Lists</a></li>
 <li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#data-frame"><i class="fa fa-check"></i>Data frame</a></li>
 <li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#exercicios"><i class="fa fa-check"></i>Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html"><i class="fa fa-check"></i>Indexação</a><ul>
 <li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#vetores-1"><i class="fa fa-check"></i>Vetores</a></li>
 <li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#listas"><i class="fa fa-check"></i>Listas</a></li>
 <li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#matrizes"><i class="fa fa-check"></i>Matrizes</a></li>
 <li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#data-frames"><i class="fa fa-check"></i>Data frames</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#exercicios-1"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html"><i class="fa fa-check"></i>Strings, fatores e datas</a><ul>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#strings"><i class="fa fa-check"></i>Strings</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#fatores-1"><i class="fa fa-check"></i>Fatores</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#datas"><i class="fa fa-check"></i>Datas</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#exercicios-2"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="joins.html"><a href="joins.html"><i class="fa fa-check"></i>Joins</a><ul>
+<li class="chapter" data-level="" data-path="joins.html"><a href="joins.html#exercicios-3"><i class="fa fa-check"></i>Exercícios</a></li>
 </ul></li>
 </ul>
 
@@ -416,6 +427,54 @@ Este é o primeiro fator, mas por padrão o pedido é determinado por ordem alfa
 <a class="sourceLine" id="cb122-2" title="2"><span class="kw">mean</span>(x)</a>
 <a class="sourceLine" id="cb122-3" title="3"><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb122-4" title="4"><span class="kw">na.omit</span>(x)</a></code></pre></div>
+</div>
+<div id="exercicios" class="section level2 unnumbered">
+<h2>Exercícios</h2>
+<ol class="example" style="list-style-type: decimal">
+<li><strong>Crie um vetor de caracteres que 20 elementos quaisquer.</strong></li>
+</ol>
+<pre><code>#&gt;  [1] &quot;g&quot; &quot;e&quot; &quot;t&quot; &quot;b&quot; &quot;o&quot; &quot;k&quot; &quot;n&quot; &quot;p&quot; &quot;a&quot; &quot;l&quot; &quot;m&quot; &quot;c&quot; &quot;d&quot; &quot;i&quot; &quot;r&quot; &quot;q&quot; &quot;f&quot;
+#&gt; [18] &quot;s&quot; &quot;j&quot; &quot;h&quot;</code></pre>
+<p><br></p>
+<ol start="2" class="example" style="list-style-type: decimal">
+<li><strong>Crie uma sequência de 50 a 150, somente com numeros pares.</strong></li>
+</ol>
+<pre><code>#&gt;  [1]  50  52  54  56  58  60  62  64  66  68  70  72  74  76  78  80  82
+#&gt; [18]  84  86  88  90  92  94  96  98 100 102 104 106 108 110 112 114 116
+#&gt; [35] 118 120 122 124 126 128 130 132 134 136 138 140 142 144 146 148 150</code></pre>
+<p><br></p>
+<ol start="3" class="example" style="list-style-type: decimal">
+<li><strong>Crie um vetor lógico com 4 elementos, armazene em um objeto e em seguida trasforme em um vetor numérico.</strong></li>
+</ol>
+<pre><code>#&gt; [1]  TRUE FALSE  TRUE  TRUE
+#&gt; [1] 1 0 1 1</code></pre>
+<p><br></p>
+<ol start="4" class="example" style="list-style-type: decimal">
+<li><strong>Crie uma vector de caracteres quaisquer que possua 2 fatores.</strong></li>
+</ol>
+<pre><code>#&gt;  [1] a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b
+#&gt; Levels: a b</code></pre>
+<p><br></p>
+<ol start="5" class="example" style="list-style-type: decimal">
+<li><strong>Crie um data frame com 3 colunas e 10 linhas utilizando números aleatórios para o compor.</strong></li>
+</ol>
+<pre><code>#&gt;               x           y          z
+#&gt; 1  -0.236918034 -0.48832377  1.5791733
+#&gt; 2   0.209041392  2.46034851 -1.2978575
+#&gt; 3   1.594494569 -2.93769813  0.8046953
+#&gt; 4  -0.388472845 -2.19728450 -0.8040328
+#&gt; 5   0.608257271  1.19193302  0.4315485
+#&gt; 6   0.752073053 -0.82293139  0.7896385
+#&gt; 7  -0.741333344 -1.36321722 -0.9090382
+#&gt; 8   0.207068624 -0.77813055 -0.2827280
+#&gt; 9  -0.334033498  0.08450971 -0.7932897
+#&gt; 10  0.003045311  0.77610512  1.0454384</code></pre>
+<p><br></p>
+<ol start="6" class="example" style="list-style-type: decimal">
+<li><strong>Crie um vetor com 10 numeros aleatorios e armazene-o em um objeto de nome ‘x’. Em seguida mostre seu conteúdo.</strong></li>
+</ol>
+<pre><code>#&gt;  [1]  0.3065743  0.4444781  0.1909876  0.9505543 -2.0747753 -0.9263543
+#&gt;  [7]  1.3569865  1.3645342  0.6529419  1.0725909</code></pre>
 
 </div>
 </div>
@@ -424,7 +483,7 @@ Este é o primeiro fator, mas por padrão o pedido é determinado por ordem alfa
           </div>
         </div>
       </div>
-<a href="estatistica-experimental.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regressao-e-anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="indexacao.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

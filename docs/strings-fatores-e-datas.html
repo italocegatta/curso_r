@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Strings, fatores e datas | R para análise de dados</title>
+  <meta name="description" content="Strings, fatores e datas | R para análise de dados" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Strings, fatores e datas | R para análise de dados" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Strings, fatores e datas | R para análise de dados" />
+  
+  
+  
+
+<meta name="author" content="Ítalo Cegatta" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="indexacao.html">
+<link rel="next" href="joins.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">R para análise de dados</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Apresentação</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivos"><i class="fa fa-check"></i>Objetivos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#estrutura"><i class="fa fa-check"></i>Estrutura</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#requisitos"><i class="fa fa-check"></i>Requisitos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#programa"><i class="fa fa-check"></i>Programa</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-i"><i class="fa fa-check"></i>Módulo I</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-ii"><i class="fa fa-check"></i>Módulo II</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#modulo-iii"><i class="fa fa-check"></i>Módulo III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sobre-o-r.html"><a href="sobre-o-r.html"><i class="fa fa-check"></i>Sobre o R</a><ul>
+<li class="chapter" data-level="" data-path="sobre-o-r.html"><a href="sobre-o-r.html#download-do-r-e-rstudio"><i class="fa fa-check"></i>Download do R e RStudio</a></li>
+</ul></li>
+<li class="part"><span><b>Módulo I</b></span></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html"><i class="fa fa-check"></i>Manipulação de dados</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#warm-up"><i class="fa fa-check"></i>Warm-Up</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#conhecendo-os-dados"><i class="fa fa-check"></i>Conhecendo os dados</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#qual-o-lucro-medio-dos-filmes"><i class="fa fa-check"></i>Qual o lucro médio dos filmes?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#sobre-o-tidyverse"><i class="fa fa-check"></i>Sobre o Tidyverse</a><ul>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#arrange"><i class="fa fa-check"></i>Arrange</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#select"><i class="fa fa-check"></i>Select</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#mutate"><i class="fa fa-check"></i>Mutate</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#summarise"><i class="fa fa-check"></i>Summarise</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#operador"><i class="fa fa-check"></i>Operador %&gt;%</a></li>
+<li class="chapter" data-level="" data-path="manipulacao-de-dados.html"><a href="manipulacao-de-dados.html#graficos-rapidos"><i class="fa fa-check"></i>Gráficos rápidos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html"><i class="fa fa-check"></i>Visualização</a><ul>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#conceitos-basicos"><i class="fa fa-check"></i>Conceitos básicos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#layers"><i class="fa fa-check"></i>Layers</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#os-dados"><i class="fa fa-check"></i>Os dados</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#a-camada-de-geometria"><i class="fa fa-check"></i>A camada de geometria</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#a-camada-de-estatisticas"><i class="fa fa-check"></i>A camada de estatísticas</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#edicoes-de-eixos"><i class="fa fa-check"></i>Edições de eixos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#aesthetics"><i class="fa fa-check"></i>Aesthetics</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#grupos"><i class="fa fa-check"></i>Grupos</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#geometrias"><i class="fa fa-check"></i>Geometrias</a><ul>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#histograma-e-densidade"><i class="fa fa-check"></i>Histograma e Densidade</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#densidade"><i class="fa fa-check"></i>Densidade</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#vilolin-e-dotplot"><i class="fa fa-check"></i>Vilolin e dotplot</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#barras"><i class="fa fa-check"></i>Barras</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#texto"><i class="fa fa-check"></i>Texto</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#escalas"><i class="fa fa-check"></i>Escalas</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#scale_xy_continuous"><i class="fa fa-check"></i>scale_x|y_continuous</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#escalas-de-cor"><i class="fa fa-check"></i>Escalas de cor</a></li>
+<li class="chapter" data-level="" data-path="visualizacao.html"><a href="visualizacao.html#facets"><i class="fa fa-check"></i>Facets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html"><i class="fa fa-check"></i>Regressão e ANOVA</a><ul>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html#regressao-linear"><i class="fa fa-check"></i>Regressão Linear</a></li>
+<li class="chapter" data-level="" data-path="regressao-e-anova.html"><a href="regressao-e-anova.html#anova-e-tukey"><i class="fa fa-check"></i>ANOVA e Tukey</a></li>
+</ul></li>
+<li class="part"><span><b>Módulo II</b></span></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html"><i class="fa fa-check"></i>Estrutura de objetos e elementos</a><ul>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#vetores"><i class="fa fa-check"></i>Vetores</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#fatores"><i class="fa fa-check"></i>Fatores</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#matrizes-e-arrays"><i class="fa fa-check"></i>Matrizes e arrays</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#lists"><i class="fa fa-check"></i>Lists</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#data-frame"><i class="fa fa-check"></i>Data frame</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="estrutura-de-objetos-e-elementos.html"><a href="estrutura-de-objetos-e-elementos.html#exercicios"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html"><i class="fa fa-check"></i>Indexação</a><ul>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#vetores-1"><i class="fa fa-check"></i>Vetores</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#listas"><i class="fa fa-check"></i>Listas</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#matrizes"><i class="fa fa-check"></i>Matrizes</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#data-frames"><i class="fa fa-check"></i>Data frames</a></li>
+<li class="chapter" data-level="" data-path="indexacao.html"><a href="indexacao.html#exercicios-1"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html"><i class="fa fa-check"></i>Strings, fatores e datas</a><ul>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#strings"><i class="fa fa-check"></i>Strings</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#fatores-1"><i class="fa fa-check"></i>Fatores</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#datas"><i class="fa fa-check"></i>Datas</a></li>
+<li class="chapter" data-level="" data-path="strings-fatores-e-datas.html"><a href="strings-fatores-e-datas.html#exercicios-2"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="joins.html"><a href="joins.html"><i class="fa fa-check"></i>Joins</a><ul>
+<li class="chapter" data-level="" data-path="joins.html"><a href="joins.html#exercicios-3"><i class="fa fa-check"></i>Exercícios</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R para análise de dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="strings-fatores-e-datas" class="section level1 unnumbered">
+<h1>Strings, fatores e datas</h1>
+<p>Neste bloco vamos trabalhar com tipos de elementos que em bancos de dados. Aprender a manipular <code>strings</code> (palavras), <code>factors</code> e <code>dates</code> vai nos dar um poder de análise diversificado e útil.</p>
+<div id="strings" class="section level2 unnumbered">
+<h2>Strings</h2>
+<p>A verdade é que nem sempre nosso banco de dados está bem formatado. Por diversos motivos, os dados chegam com uma formatação muito distante do ideal e não é raro termos de limpar os dados antes de iniciar uma análise. Variável que trazem caracteres são as que mais precisam de atenção e limpeza.</p>
+<p>O R tem suporte à <em>regular expression</em> ou <em>regex</em>, uma forma muito utilizada em linguagens de programação para identificar padrões de caracteres através de uma sintaxe própria. Vamos ver alguns exemplos de como utilizá-la.</p>
+<p>As funções que iremos trabalhar estão disponíveis no pacote <code>stringr</code>, que faz parte do <code>tidyverse</code>. Como exemplo vamos utilizar um objeto interno (vetor) com nomes de frutas.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1">fruit</a></code></pre></div>
+<p>O primeiro passo é detectar padrões dentro do vetor de caracteres. Podemos usar esse vetor lógico para filtrar os elementos que queremos.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="kw">str_detect</span>(fruit, <span class="dt">pattern =</span> <span class="st">&quot;fruit&quot;</span>)</a>
+<a class="sourceLine" id="cb146-2" title="2"></a>
+<a class="sourceLine" id="cb146-3" title="3">fruit[<span class="kw">str_detect</span>(fruit, <span class="dt">pattern =</span> <span class="st">&quot;fruit&quot;</span>)]</a>
+<a class="sourceLine" id="cb146-4" title="4"></a>
+<a class="sourceLine" id="cb146-5" title="5"></a>
+<a class="sourceLine" id="cb146-6" title="6">tem_fruit &lt;-<span class="st"> </span><span class="kw">str_subset</span>(fruit, <span class="dt">pattern =</span> <span class="st">&quot;fruit&quot;</span>)</a></code></pre></div>
+<p>Podemos retirar uma parte fixa das palavras através da posição de cada caractere.</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="kw">str_sub</span>(fruit, <span class="dv">1</span>, <span class="dv">5</span>)</a></code></pre></div>
+<p>Também podemos concatenar e colapsar palavras utilizando diferentes padrões.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1">tem_berry &lt;-<span class="st"> </span><span class="kw">str_subset</span>(fruit, <span class="st">&quot;berry&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample</span>(<span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb148-2" title="2"></a>
+<a class="sourceLine" id="cb148-3" title="3"><span class="kw">str_c</span>(tem_fruit, tem_berry, <span class="dt">sep =</span> <span class="st">&quot; &amp; &quot;</span>)</a>
+<a class="sourceLine" id="cb148-4" title="4"></a>
+<a class="sourceLine" id="cb148-5" title="5"><span class="kw">str_c</span>(tem_fruit, tem_berry, <span class="dt">sep =</span> <span class="st">&quot; + &quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;; &quot;</span>)</a></code></pre></div>
+<p>Em muitos casos precisamos substituir determinada cadeia de caractere. Vamos ver alguns exemplos.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="kw">str_replace</span>(tem_berry, <span class="dt">pattern =</span> <span class="st">&quot;berry&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;beRRy&quot;</span>)</a>
+<a class="sourceLine" id="cb149-2" title="2"></a>
+<a class="sourceLine" id="cb149-3" title="3">melons &lt;-<span class="st"> </span><span class="kw">str_subset</span>(fruit, <span class="dt">pattern =</span> <span class="st">&quot;melon&quot;</span>)</a>
+<a class="sourceLine" id="cb149-4" title="4">melons[<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb149-5" title="5">melons</a>
+<a class="sourceLine" id="cb149-6" title="6"></a>
+<a class="sourceLine" id="cb149-7" title="7"><span class="kw">str_replace_na</span>(melons, <span class="st">&quot;Não sei&quot;</span>)</a></code></pre></div>
+<p>Agora vamos mudar para outra base de dados. O pacote <code>gapminder</code> disponibiliza dados de expectativa de vida, população e renda per capta dos países ao longo dos anos. Utilizaremos para testar os marcadores de <code>Regex</code>.</p>
+<p>Em <code>Regex</code>, utilizamos os marcadores <code>^</code> e <code>$</code> para indicar os primeiros ou últimos caractere de uma <code>string</code>, respectivamente. Portanto, se quisermos filtrar os países que terminam com a sequencia de caracteres, podemos fazer da seguinte forma.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"><span class="kw">library</span>(gapminder)</a>
+<a class="sourceLine" id="cb150-2" title="2"></a>
+<a class="sourceLine" id="cb150-3" title="3">paises &lt;-<span class="st"> </span><span class="kw">levels</span>(gapminder<span class="op">$</span>country)</a>
+<a class="sourceLine" id="cb150-4" title="4">paises</a></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1"><span class="kw">str_subset</span>(paises, <span class="dt">pattern =</span> <span class="st">&quot;land$&quot;</span>)</a>
+<a class="sourceLine" id="cb151-2" title="2"></a>
+<a class="sourceLine" id="cb151-3" title="3"><span class="kw">str_subset</span>(paises, <span class="dt">pattern =</span> <span class="st">&quot;^Ma&quot;</span>)</a></code></pre></div>
+<p>Aumentando um pouco a complexidade da busca, vamos usar o marcador <code>[</code> para indicar um grupo de possibilidade. Quais países terminam com as letras: nia, lia, sia?</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1"><span class="kw">str_subset</span>(paises, <span class="dt">pattern =</span> <span class="st">&quot;[nls]ia$&quot;</span>)</a></code></pre></div>
+<p>O R possui alguns grupos pre formatados para facilitar a correspondência, como: [:blank:], [:upper:], [:lower:], [:alpha:], [:digit:], [:alnum:], [:punct:]</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="kw">str_subset</span>(paises, <span class="st">&quot;[:punct:]&quot;</span>)</a>
+<a class="sourceLine" id="cb153-2" title="2"></a>
+<a class="sourceLine" id="cb153-3" title="3"><span class="kw">str_subset</span>(paises, <span class="st">&quot;[:blank:]&quot;</span>)</a></code></pre></div>
+<p>Agora vamos ver como extrais padrões entre determinados identificadores dentro de uma cadeia de caractere. Em <code>Regex</code> o <code>.</code> significa ‘qualquer coisa’, o <code>*</code> significa ‘um ou mais em diante’. Utilizaremos esses marcadores para extrair países que tenham uma cadeia de caractere que começa com a letra <code>m</code>, em seguida possa ter qualquer letra ou ponto, e termine com a letra <code>a</code>.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1"><span class="kw">str_subset</span>(paises, <span class="st">&quot;a.*e&quot;</span>)</a></code></pre></div>
+<p>Dando um exemplo mais avançado, vamos filtrar os países que possuem <code>,</code> no nome e em seguida retirar todos caracteres após a vírgula.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1"><span class="kw">str_subset</span>(paises, <span class="st">&quot;,&quot;</span>)</a>
+<a class="sourceLine" id="cb155-2" title="2"></a>
+<a class="sourceLine" id="cb155-3" title="3"><span class="kw">str_subset</span>(paises, <span class="st">&quot;,&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb155-4" title="4"><span class="st">  </span><span class="kw">str_remove</span>(<span class="st">&quot;,.*&quot;</span>)</a></code></pre></div>
+</div>
+<div id="fatores-1" class="section level2 unnumbered">
+<h2>Fatores</h2>
+<p>Já falamos um pouco sobre os fatores anteriormente e agora vamos tentar usar eles como recurso para criação de gráficos.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1"><span class="kw">class</span>(gapminder<span class="op">$</span>continent)</a>
+<a class="sourceLine" id="cb156-2" title="2"></a>
+<a class="sourceLine" id="cb156-3" title="3"><span class="kw">str</span>(gapminder<span class="op">$</span>continent)</a>
+<a class="sourceLine" id="cb156-4" title="4"></a>
+<a class="sourceLine" id="cb156-5" title="5"><span class="kw">nlevels</span>(gapminder<span class="op">$</span>continent)</a>
+<a class="sourceLine" id="cb156-6" title="6"></a>
+<a class="sourceLine" id="cb156-7" title="7"><span class="kw">levels</span>(gapminder<span class="op">$</span>continent)</a></code></pre></div>
+<p>A grande dica é: só convertam caracteres em fatores quando necessário e fiquem sempre de olho se uma variável é ou não um fator. De maneira geral, variáveis como fatores podem dar dor de cabeça em alguns passos durante a análise e recomendável que se utilize sempre caracteres em variáveis qualitativas. Aqui vai um primeiro problema. Mesmo se você filtrar um elemento, os níveis do fator ainda fica lá no objeto.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1"><span class="kw">nlevels</span>(gapminder<span class="op">$</span>country)</a>
+<a class="sourceLine" id="cb157-2" title="2"></a>
+<a class="sourceLine" id="cb157-3" title="3">aux_sulamerica &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Bolivia&quot;</span>, <span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Chile&quot;</span>, <span class="st">&quot;Colombia&quot;</span>, <span class="st">&quot;Ecuador&quot;</span>, <span class="st">&quot;Paraguay&quot;</span>, <span class="st">&quot;Peru&quot;</span>, <span class="st">&quot;Uruguay&quot;</span>, <span class="st">&quot;Venezuela&quot;</span>)</a>
+<a class="sourceLine" id="cb157-4" title="4">   </a>
+<a class="sourceLine" id="cb157-5" title="5">sulamerica &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb157-6" title="6"><span class="st">  </span><span class="kw">filter</span>(country <span class="op">%in%</span><span class="st"> </span>aux_sulamerica)</a>
+<a class="sourceLine" id="cb157-7" title="7"></a>
+<a class="sourceLine" id="cb157-8" title="8"><span class="kw">nlevels</span>(sulamerica<span class="op">$</span>country)</a></code></pre></div>
+<p>No momento de plotar um gráfico, o <code>ggplot2</code> converte internamente todas as variáveis do tipo caractere como fator. Se já for um fator, ele deixa como está.
+Ele faz isso por conta da ordem que os elementos aparecem no gráfico. Por exemplo um eixo de nomes ou os níveis da legenda. No exemplo abaixo o <code>ggplot2</code> seque a ordem dos níveis do fator da variável <code>country</code>, que por sua vez é alfabética. Mas se alterarmos a ordem dos níveis do fator utilizando a função <code>fct_reorder</code>, podemos ter um eixo ordenado em função da <code>lifeExp</code>.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1">gap_asia_<span class="dv">2007</span> &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2007</span>, continent <span class="op">==</span><span class="st"> &quot;Asia&quot;</span>)</a>
+<a class="sourceLine" id="cb158-2" title="2"></a>
+<a class="sourceLine" id="cb158-3" title="3"><span class="kw">ggplot</span>(gap_asia_<span class="dv">2007</span>, <span class="kw">aes</span>(<span class="dt">x =</span> lifeExp, <span class="dt">y =</span> country)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb158-4" title="4"></a>
+<a class="sourceLine" id="cb158-5" title="5"><span class="kw">ggplot</span>(gap_asia_<span class="dv">2007</span>, <span class="kw">aes</span>(<span class="dt">x =</span> lifeExp, <span class="dt">y =</span> <span class="kw">fct_reorder</span>(country, lifeExp))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb158-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1">gap_<span class="dv">1992</span> &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb159-2" title="2"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">1992</span> ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb159-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb159-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">lifeExp =</span> <span class="kw">mean</span>(lifeExp))</a>
+<a class="sourceLine" id="cb159-5" title="5"></a>
+<a class="sourceLine" id="cb159-6" title="6">gap_<span class="dv">1992</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb159-7" title="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(continent, lifeExp, <span class="dt">fill =</span> continent)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb159-8" title="8"><span class="st">    </span><span class="kw">geom_col</span>()</a>
+<a class="sourceLine" id="cb159-9" title="9"></a>
+<a class="sourceLine" id="cb159-10" title="10">gap_<span class="dv">1992</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb159-11" title="11"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">continent =</span> <span class="kw">fct_relevel</span>(continent, <span class="st">&quot;Oceania&quot;</span>, <span class="st">&quot;Asia&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb159-12" title="12"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(continent, lifeExp, <span class="dt">fill =</span> continent)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb159-13" title="13"><span class="st">    </span><span class="kw">geom_col</span>()</a>
+<a class="sourceLine" id="cb159-14" title="14"></a>
+<a class="sourceLine" id="cb159-15" title="15">gap_<span class="dv">1992</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb159-16" title="16"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">continent =</span> <span class="kw">fct_recode</span>(continent, <span class="st">&quot;Oceania 2&quot;</span> =<span class="st">  &quot;Oceania&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb159-17" title="17"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(continent, lifeExp, <span class="dt">fill =</span> continent)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb159-18" title="18"><span class="st">    </span><span class="kw">geom_col</span>()</a>
+<a class="sourceLine" id="cb159-19" title="19"></a>
+<a class="sourceLine" id="cb159-20" title="20">gap_<span class="dv">1992</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb159-21" title="21"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">continent =</span> <span class="kw">fct_reorder</span>(continent, <span class="op">-</span>lifeExp)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb159-22" title="22"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(continent, lifeExp, <span class="dt">fill =</span> continent)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb159-23" title="23"><span class="st">    </span><span class="kw">geom_col</span>()</a></code></pre></div>
+</div>
+<div id="datas" class="section level2 unnumbered">
+<h2>Datas</h2>
+<p>Neste bloco vamos trabalhar com a classe de objeto do tipo data. Dentro do <code>tidyverse</code>, o pacote que reúne as funções relacionadas a datas é o <code>lubridate</code>. É importante mencionar que no é temos os tipos <code>date</code> e <code>date-time</code> ou <code>POSIXct</code>. A diferença entre esses dois tipos é a resolução, sendo que a classe <code>date-time</code> armazena além da data, a informação de hora-minuto-segundo. Começando pelo começo, vamos criar objetos do tipo <code>date</code> e <code>date-time</code>.</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb160-2" title="2"><span class="kw">library</span>(lubridate)</a>
+<a class="sourceLine" id="cb160-3" title="3"></a>
+<a class="sourceLine" id="cb160-4" title="4">hoje &lt;-<span class="st"> </span><span class="kw">today</span>()</a>
+<a class="sourceLine" id="cb160-5" title="5"></a>
+<a class="sourceLine" id="cb160-6" title="6">hoje</a>
+<a class="sourceLine" id="cb160-7" title="7"></a>
+<a class="sourceLine" id="cb160-8" title="8"><span class="kw">class</span>(hoje)</a>
+<a class="sourceLine" id="cb160-9" title="9"></a>
+<a class="sourceLine" id="cb160-10" title="10"><span class="kw">str</span>(hoje)</a>
+<a class="sourceLine" id="cb160-11" title="11"></a>
+<a class="sourceLine" id="cb160-12" title="12">agora &lt;-<span class="st"> </span><span class="kw">now</span>()</a>
+<a class="sourceLine" id="cb160-13" title="13"></a>
+<a class="sourceLine" id="cb160-14" title="14">agora</a>
+<a class="sourceLine" id="cb160-15" title="15"></a>
+<a class="sourceLine" id="cb160-16" title="16"><span class="kw">class</span>(agora)</a>
+<a class="sourceLine" id="cb160-17" title="17"></a>
+<a class="sourceLine" id="cb160-18" title="18"><span class="kw">str</span>(agora)</a></code></pre></div>
+<p>Note que o R utiliza o padrão ISO para mostrar as datas (yyyy-mm-dd). Quando a informação está armazenada nesse padrão, é comum os importadores reconhecerem a variável como data e fazer a conversão adequada. Mas se isso não acontecer, teremos que converter na mão utilizando as funções auxiliares do <code>lubridate</code>.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1"><span class="kw">ymd</span>(<span class="st">&quot;20190408&quot;</span>)</a>
+<a class="sourceLine" id="cb161-2" title="2"></a>
+<a class="sourceLine" id="cb161-3" title="3"><span class="kw">mdy</span>(<span class="st">&quot;01-15-2013&quot;</span>)</a>
+<a class="sourceLine" id="cb161-4" title="4"></a>
+<a class="sourceLine" id="cb161-5" title="5"><span class="kw">dmy</span>(<span class="st">&quot;07/09/2010&quot;</span>)</a></code></pre></div>
+<p>Existem várias funções interessantes no pacote e elas são extremamente úteis no dia a dia. Podemos arredondar datas para várias unidades de referencia e computar o dia do ano, mês ou semana. Para fazer operações aritméticas com datas temos que entender o conceito importante de <code>period</code> e <code>duration</code>, onde o primeiro considera sempre um ano com 365 dias e o segundo é sensível a anos bissexto.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1">inicio &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;20000223&quot;</span>)</a>
+<a class="sourceLine" id="cb162-2" title="2">fim &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;20161207&quot;</span>)</a>
+<a class="sourceLine" id="cb162-3" title="3"></a>
+<a class="sourceLine" id="cb162-4" title="4"><span class="kw">floor_date</span>(inicio, <span class="st">&quot;month&quot;</span>)</a>
+<a class="sourceLine" id="cb162-5" title="5"><span class="kw">ceiling_date</span>(inicio, <span class="st">&quot;week&quot;</span>)</a>
+<a class="sourceLine" id="cb162-6" title="6"></a>
+<a class="sourceLine" id="cb162-7" title="7"><span class="kw">yday</span>(fim)</a>
+<a class="sourceLine" id="cb162-8" title="8"><span class="kw">mday</span>(fim)</a>
+<a class="sourceLine" id="cb162-9" title="9"></a>
+<a class="sourceLine" id="cb162-10" title="10">inicio <span class="op">+</span><span class="st"> </span><span class="kw">years</span>(<span class="dv">3</span>) </a>
+<a class="sourceLine" id="cb162-11" title="11">inicio <span class="op">+</span><span class="st"> </span><span class="kw">dyears</span>(<span class="dv">3</span>) </a>
+<a class="sourceLine" id="cb162-12" title="12">inicio <span class="op">-</span><span class="st"> </span><span class="kw">months</span>(<span class="dv">36</span>)</a></code></pre></div>
+<p>Para calcular o intervalo entre duas datas e converter isso em diversas unidades, também é fácil.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1">fim <span class="op">-</span><span class="st"> </span>inicio </a>
+<a class="sourceLine" id="cb163-2" title="2"></a>
+<a class="sourceLine" id="cb163-3" title="3"><span class="kw">time_length</span>(fim <span class="op">-</span><span class="st"> </span>inicio, <span class="st">&quot;year&quot;</span>)</a>
+<a class="sourceLine" id="cb163-4" title="4"><span class="kw">time_length</span>(fim <span class="op">-</span><span class="st"> </span>inicio, <span class="st">&quot;month&quot;</span>)</a>
+<a class="sourceLine" id="cb163-5" title="5"><span class="kw">time_length</span>(fim <span class="op">-</span><span class="st"> </span>inicio, <span class="st">&quot;week&quot;</span>)</a></code></pre></div>
+</div>
+<div id="exercicios-2" class="section level2 unnumbered">
+<h2>Exercícios</h2>
+<ol start="11" class="example" style="list-style-type: decimal">
+<li><strong>Importe o arquivo <code>nobel_winners.csv</code> e use a função <code>glimpse()</code> para ver a estrutura da base.</strong></li>
+</ol>
+<pre><code>#&gt; Observations: 969
+#&gt; Variables: 18
+#&gt; $ prize_year           &lt;dbl&gt; 1901, 1901, 1901, 1901, 1901, 1901, 1902,...
+#&gt; $ category             &lt;chr&gt; &quot;Chemistry&quot;, &quot;Literature&quot;, &quot;Medicine&quot;, &quot;P...
+#&gt; $ prize                &lt;chr&gt; &quot;The Nobel Prize in Chemistry 1901&quot;, &quot;The...
+#&gt; $ motivation           &lt;chr&gt; &quot;\&quot;in recognition of the extraordinary se...
+#&gt; $ prize_share          &lt;chr&gt; &quot;1/1&quot;, &quot;1/1&quot;, &quot;1/1&quot;, &quot;1/2&quot;, &quot;1/2&quot;, &quot;1/1&quot;,...
+#&gt; $ laureate_id          &lt;dbl&gt; 160, 569, 293, 462, 463, 1, 161, 571, 294...
+#&gt; $ laureate_type        &lt;chr&gt; &quot;Individual&quot;, &quot;Individual&quot;, &quot;Individual&quot;,...
+#&gt; $ full_name            &lt;chr&gt; &quot;Jacobus Henricus van &#39;t Hoff&quot;, &quot;Sully Pr...
+#&gt; $ birth_date           &lt;date&gt; 1852-08-30, 1839-03-16, 1854-03-15, 1828...
+#&gt; $ birth_city           &lt;chr&gt; &quot;Rotterdam&quot;, &quot;Paris&quot;, &quot;Hansdorf (Lawice)&quot;...
+#&gt; $ birth_country        &lt;chr&gt; &quot;Netherlands&quot;, &quot;France&quot;, &quot;Prussia (Poland...
+#&gt; $ gender               &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;...
+#&gt; $ organization_name    &lt;chr&gt; &quot;Berlin University&quot;, NA, &quot;Marburg Univers...
+#&gt; $ organization_city    &lt;chr&gt; &quot;Berlin&quot;, NA, &quot;Marburg&quot;, NA, NA, &quot;Munich&quot;...
+#&gt; $ organization_country &lt;chr&gt; &quot;Germany&quot;, NA, &quot;Germany&quot;, NA, NA, &quot;German...
+#&gt; $ death_date           &lt;date&gt; 1911-03-01, 1907-09-07, 1917-03-31, 1910...
+#&gt; $ death_city           &lt;chr&gt; &quot;Berlin&quot;, &quot;Châtenay&quot;, &quot;Marburg&quot;, &quot;Heiden&quot;...
+#&gt; $ death_country        &lt;chr&gt; &quot;Germany&quot;, &quot;France&quot;, &quot;Germany&quot;, &quot;Switzerl...</code></pre>
+<p><br></p>
+<ol start="12" class="example" style="list-style-type: decimal">
+<li><strong>Crie um novo data frame chamado <code>nobel_age</code>. Neste novo data frame filtre apenas os prêmios individuais em <code>laureate_type</code> e em seguida crie uma coluna chamada <code>prize_date</code> considerando o dia 1 de dezembro do ano em que o premio foi entregue. Em seguida calcule a idade em que o ganhador recebeu o prêmio e armazene em uma variável chamada <code>age</code> neste mesmo data frame.</strong></li>
+</ol>
+<p>Dicas: str_glue, ymd, time_length.</p>
+<pre><code>#&gt; # A tibble: 939 x 20
+#&gt;    prize_year category prize motivation prize_share laureate_id
+#&gt;         &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;             &lt;dbl&gt;
+#&gt;  1       1901 Chemist~ The ~ &quot;\&quot;in rec~ 1/1                 160
+#&gt;  2       1901 Literat~ The ~ &quot;\&quot;in spe~ 1/1                 569
+#&gt;  3       1901 Medicine The ~ &quot;\&quot;for hi~ 1/1                 293
+#&gt;  4       1901 Peace    The ~ &lt;NA&gt;       1/2                 462
+#&gt;  5       1901 Peace    The ~ &lt;NA&gt;       1/2                 463
+#&gt;  6       1901 Physics  The ~ &quot;\&quot;in rec~ 1/1                   1
+#&gt;  7       1902 Chemist~ The ~ &quot;\&quot;in rec~ 1/1                 161
+#&gt;  8       1902 Literat~ The ~ &quot;\&quot;the gr~ 1/1                 571
+#&gt;  9       1902 Medicine The ~ &quot;\&quot;for hi~ 1/1                 294
+#&gt; 10       1902 Peace    The ~ &lt;NA&gt;       1/2                 464
+#&gt; # ... with 929 more rows, and 14 more variables: laureate_type &lt;chr&gt;,
+#&gt; #   full_name &lt;chr&gt;, birth_date &lt;date&gt;, birth_city &lt;chr&gt;,
+#&gt; #   birth_country &lt;chr&gt;, gender &lt;chr&gt;, organization_name &lt;chr&gt;,
+#&gt; #   organization_city &lt;chr&gt;, organization_country &lt;chr&gt;,
+#&gt; #   death_date &lt;date&gt;, death_city &lt;chr&gt;, death_country &lt;chr&gt;,
+#&gt; #   prize_date &lt;date&gt;, age &lt;dbl&gt;</code></pre>
+<p><br></p>
+<ol start="13" class="example" style="list-style-type: decimal">
+<li><strong>Filtre quem ganhou o prêmio com menos de 30 anos e mostre apenas as seguintes variáveis: <code>prize_year</code>, <code>category</code>, <code>full_name</code>, <code>birth_country</code>, <code>prize_date</code> e <code>age</code>.</strong></li>
+</ol>
+<pre><code>#&gt; # A tibble: 2 x 6
+#&gt;   prize_year category full_name              birth_country prize_date   age
+#&gt;        &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;                  &lt;chr&gt;         &lt;date&gt;     &lt;dbl&gt;
+#&gt; 1       1915 Physics  William Lawrence Bragg Australia     1915-12-01  25.7
+#&gt; 2       2014 Peace    Malala Yousafzai       Pakistan      2014-12-01  17.4</code></pre>
+<p><br></p>
+<ol start="14" class="example" style="list-style-type: decimal">
+<li><strong>Faça um histograma com as idades dos ganhadores.</strong></li>
+</ol>
+<p><img src="07-string-factor-date_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<br></p>
+<ol start="15" class="example" style="list-style-type: decimal">
+<li><strong>Faça um gráfico de dispersão com o ano do prêmio e a idade do ganhador e coloque uma linha de tendência.</strong></li>
+</ol>
+<p>Dica: geom_smooth.</p>
+<p><img src="07-string-factor-date_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<br></p>
+<ol start="16" class="example" style="list-style-type: decimal">
+<li><strong>Com base no gráfico anterior, faça um painel em função da variável <code>category</code>, coloque a cor e preenchimento em função da mesma variável.</strong></li>
+</ol>
+<p>Dica: facet_wrap.</p>
+<p><img src="07-string-factor-date_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<br></p>
+<ol start="17" class="example" style="list-style-type: decimal">
+<li><strong>Com base no gráfico anterior, altere a ordem dos fatores das categorias, deixando <code>Economics</code>, <code>Literature</code>, <code>Chemistry</code> nas primeiras posições.</strong></li>
+</ol>
+<p>Dica: fct_relevel.</p>
+<p><img src="07-string-factor-date_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<br></p>
+<ol start="18" class="example" style="list-style-type: decimal">
+<li><strong>Calcule os 20 países com maior número de ganhadores com base na variável <code>birth_country</code> e faça um gráfico de barras.</strong></li>
+</ol>
+<p>Dicas: tally, top_n, coord_flip.</p>
+<p><img src="07-string-factor-date_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<br></p>
+<ol start="19" class="example" style="list-style-type: decimal">
+<li><strong>Com base no gráfico anterior, ordene as barras em função do numero de ganhadores.</strong></li>
+</ol>
+<p>Dica: fct_reorder.
+<img src="07-string-factor-date_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="indexacao.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="joins.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 
-# Estatística experimental {-}
+# Regressão e ANOVA {-}
 
 
 ## Regressão Linear {-}

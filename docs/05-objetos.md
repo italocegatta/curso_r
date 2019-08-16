@@ -296,3 +296,71 @@ mean(x)
 mean(x, na.rm = TRUE)
 na.omit(x)
 ```
+
+
+## Exercícios {-}
+
+
+(@) **Crie um vetor de caracteres que 20 elementos quaisquer.**
+
+
+```
+#>  [1] "g" "e" "t" "b" "o" "k" "n" "p" "a" "l" "m" "c" "d" "i" "r" "q" "f"
+#> [18] "s" "j" "h"
+```
+<br>
+
+(@) **Crie uma sequência de 50 a 150, somente com numeros pares.**
+
+
+```
+#>  [1]  50  52  54  56  58  60  62  64  66  68  70  72  74  76  78  80  82
+#> [18]  84  86  88  90  92  94  96  98 100 102 104 106 108 110 112 114 116
+#> [35] 118 120 122 124 126 128 130 132 134 136 138 140 142 144 146 148 150
+```
+<br>
+
+(@) **Crie um vetor lógico com 4 elementos, armazene em um objeto e em seguida trasforme em um vetor numérico.**
+
+
+```
+#> [1]  TRUE FALSE  TRUE  TRUE
+#> [1] 1 0 1 1
+```
+<br>
+
+(@) **Crie uma vector de caracteres quaisquer que possua 2 fatores.**
+
+
+```
+#>  [1] a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b
+#> Levels: a b
+```
+<br>
+
+(@) **Crie um data frame com 3 colunas e 10 linhas utilizando números aleatórios para o compor.**
+
+
+```
+#>               x           y          z
+#> 1  -0.236918034 -0.48832377  1.5791733
+#> 2   0.209041392  2.46034851 -1.2978575
+#> 3   1.594494569 -2.93769813  0.8046953
+#> 4  -0.388472845 -2.19728450 -0.8040328
+#> 5   0.608257271  1.19193302  0.4315485
+#> 6   0.752073053 -0.82293139  0.7896385
+#> 7  -0.741333344 -1.36321722 -0.9090382
+#> 8   0.207068624 -0.77813055 -0.2827280
+#> 9  -0.334033498  0.08450971 -0.7932897
+#> 10  0.003045311  0.77610512  1.0454384
+```
+<br>
+
+(@) **Crie um vetor com 10 numeros aleatorios e armazene-o em um objeto de nome 'x'. Em seguida mostre seu conteúdo.**
+
+
+```
+#>  [1]  0.3065743  0.4444781  0.1909876  0.9505543 -2.0747753 -0.9263543
+#>  [7]  1.3569865  1.3645342  0.6529419  1.0725909
+```
+
