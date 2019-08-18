@@ -214,6 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="iteracao.html"><a href="iteracao.html"><i class="fa fa-check"></i>Iteração</a><ul>
 <li class="chapter" data-level="" data-path="iteracao.html"><a href="iteracao.html#for-loop"><i class="fa fa-check"></i>For loop</a></li>
 <li class="chapter" data-level="" data-path="iteracao.html"><a href="iteracao.html#programacao-funcional"><i class="fa fa-check"></i>Programação funcional</a></li>
+<li class="chapter" data-level="" data-path="iteracao.html"><a href="iteracao.html#exercicios-5"><i class="fa fa-check"></i>Exercícios</a></li>
 </ul></li>
 </ul>
 
@@ -241,33 +242,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Humanos são extremamente distraídos e cometem muitos erros quando fazer operações repetitivas. Quando estamos programando, não é diferente. As vezes parece mais fácil copiar e colar uma estrutura de código para alterar apenas um detalhe e ter o resultado que se espera. Mas quando o numero de repetições começa a aumentar a chance de fazermos algo errado cresce junto.</p>
 <p>No R, esse tipo de problema é resolvido de duas formas: com funções customizadas ou com loops. Nesse modulo vamos falar apenas de loops, mas com certeza ele já vai resolver muitos dos nossos problemas de repetição.</p>
 <p>Como exemplo para esse tema, temos um planilha com os dados separados em abas e temos de juntar todos eles para iniciar a análise. Os dados estão na planilha <code>base_vespa1.xlsx</code> e em seguida vamos fazer essa junção de 3 formas diferentes.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb184-2" title="2"><span class="kw">library</span>(readxl)</a>
-<a class="sourceLine" id="cb184-3" title="3"><span class="kw">library</span>(broom)</a>
-<a class="sourceLine" id="cb184-4" title="4"></a>
-<a class="sourceLine" id="cb184-5" title="5">aba1 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb184-6" title="6">aba2 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb184-7" title="7">aba3 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb184-8" title="8">aba4 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb184-9" title="9">aba5 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb184-10" title="10"></a>
-<a class="sourceLine" id="cb184-11" title="11">base_mobral &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(aba1, aba2, aba3, aba4, aba5)</a>
-<a class="sourceLine" id="cb184-12" title="12"></a>
-<a class="sourceLine" id="cb184-13" title="13">base_mobral</a></code></pre></div>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1">base_loop_out &lt;-<span class="st"> </span><span class="kw">list</span>()</a>
-<a class="sourceLine" id="cb185-2" title="2"></a>
-<a class="sourceLine" id="cb185-3" title="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</a>
-<a class="sourceLine" id="cb185-4" title="4">  </a>
-<a class="sourceLine" id="cb185-5" title="5">  base_loop_out[[i]] &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> i)</a>
-<a class="sourceLine" id="cb185-6" title="6">}</a>
-<a class="sourceLine" id="cb185-7" title="7"></a>
-<a class="sourceLine" id="cb185-8" title="8">base_loop &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(base_loop_out)</a>
-<a class="sourceLine" id="cb185-9" title="9"></a>
-<a class="sourceLine" id="cb185-10" title="10">base_loop</a></code></pre></div>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1">base_purrr &lt;-<span class="st"> </span><span class="kw">excel_sheets</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb186-2" title="2"><span class="st">  </span><span class="kw">map_df</span>(read_excel, <span class="dt">path =</span> <span class="st">&quot;input/base_vespa1.xlsx&quot;</span>)</a>
-<a class="sourceLine" id="cb186-3" title="3"></a>
-<a class="sourceLine" id="cb186-4" title="4">base_purrr</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb186-2" title="2"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb186-3" title="3"><span class="kw">library</span>(broom)</a>
+<a class="sourceLine" id="cb186-4" title="4"></a>
+<a class="sourceLine" id="cb186-5" title="5">aba1 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb186-6" title="6">aba2 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb186-7" title="7">aba3 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb186-8" title="8">aba4 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb186-9" title="9">aba5 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb186-10" title="10"></a>
+<a class="sourceLine" id="cb186-11" title="11">base_mobral &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(aba1, aba2, aba3, aba4, aba5)</a>
+<a class="sourceLine" id="cb186-12" title="12"></a>
+<a class="sourceLine" id="cb186-13" title="13">base_mobral</a></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1">base_loop_out &lt;-<span class="st"> </span><span class="kw">list</span>()</a>
+<a class="sourceLine" id="cb187-2" title="2"></a>
+<a class="sourceLine" id="cb187-3" title="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</a>
+<a class="sourceLine" id="cb187-4" title="4">  </a>
+<a class="sourceLine" id="cb187-5" title="5">  base_loop_out[[i]] &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>, <span class="dt">sheet =</span> i)</a>
+<a class="sourceLine" id="cb187-6" title="6">}</a>
+<a class="sourceLine" id="cb187-7" title="7"></a>
+<a class="sourceLine" id="cb187-8" title="8">base_loop &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(base_loop_out)</a>
+<a class="sourceLine" id="cb187-9" title="9"></a>
+<a class="sourceLine" id="cb187-10" title="10">base_loop</a></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1">base_purrr &lt;-<span class="st"> </span><span class="kw">excel_sheets</span>(<span class="st">&quot;input/base_vespa1.xlsx&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb188-2" title="2"><span class="st">  </span><span class="kw">map_df</span>(read_excel, <span class="dt">path =</span> <span class="st">&quot;input/base_vespa1.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb188-3" title="3"></a>
+<a class="sourceLine" id="cb188-4" title="4">base_purrr</a></code></pre></div>
 <p>Estes 3 métodos exemplificam bastante a relação entre domínio da programação e quantidade de trabalhado apenas pelo computador. No primeiro exemplo tivermos que repetir várias vezes a estrutura do código para poder chegar no resultado esperado. No segundo, já fomos um pouco mais diretos e deixamos o trabalho repetitivo para o computador. Imagina se tivéssemos 30 abas para juntar? E se fossem 500 arquivos? O terceiro exemplo é um passo além de loops e em linguagem de programação chama-se functional programming, onde funções são usadas para realizar as operações que envolvem loops.</p>
 <div id="for-loop" class="section level2 unnumbered">
 <h2>For loop</h2>
@@ -278,92 +279,288 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>O corpo, parte que faz o calculo ou operação envolvendo os passos <code>i</code> e guardando no <code>output</code>.</li>
 </ul>
 <p>Retomando o loop que fizemos para ler as abas, temos os 3 componentes bem claros. Vamos rescreve os loop seguindo algumas boas práticas.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1">arquivo &lt;-<span class="st"> &quot;input/base_vespa1.xlsx&quot;</span></a>
-<a class="sourceLine" id="cb187-2" title="2"></a>
-<a class="sourceLine" id="cb187-3" title="3">base_loop_out &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="kw">length</span>(<span class="kw">excel_sheets</span>(arquivo)))</a>
-<a class="sourceLine" id="cb187-4" title="4"></a>
-<a class="sourceLine" id="cb187-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(base_loop_out)) {</a>
-<a class="sourceLine" id="cb187-6" title="6">  </a>
-<a class="sourceLine" id="cb187-7" title="7">  base_loop_out[[i]] &lt;-<span class="st"> </span><span class="kw">read_excel</span>(arquivo, <span class="dt">sheet =</span> i)</a>
-<a class="sourceLine" id="cb187-8" title="8">}</a>
-<a class="sourceLine" id="cb187-9" title="9"></a>
-<a class="sourceLine" id="cb187-10" title="10">base_loop &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(base_loop_out)</a>
-<a class="sourceLine" id="cb187-11" title="11"></a>
-<a class="sourceLine" id="cb187-12" title="12">base_loop</a></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">arquivo &lt;-<span class="st"> &quot;input/base_vespa1.xlsx&quot;</span></a>
+<a class="sourceLine" id="cb189-2" title="2"></a>
+<a class="sourceLine" id="cb189-3" title="3">base_loop_out &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="kw">length</span>(<span class="kw">excel_sheets</span>(arquivo)))</a>
+<a class="sourceLine" id="cb189-4" title="4"></a>
+<a class="sourceLine" id="cb189-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(base_loop_out)) {</a>
+<a class="sourceLine" id="cb189-6" title="6">  </a>
+<a class="sourceLine" id="cb189-7" title="7">  base_loop_out[[i]] &lt;-<span class="st"> </span><span class="kw">read_excel</span>(arquivo, <span class="dt">sheet =</span> i)</a>
+<a class="sourceLine" id="cb189-8" title="8">}</a>
+<a class="sourceLine" id="cb189-9" title="9"></a>
+<a class="sourceLine" id="cb189-10" title="10">base_loop &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(base_loop_out)</a>
+<a class="sourceLine" id="cb189-11" title="11"></a>
+<a class="sourceLine" id="cb189-12" title="12">base_loop</a></code></pre></div>
 </div>
 <div id="programacao-funcional" class="section level2 unnumbered">
 <h2>Programação funcional</h2>
 <p>A outra forma de realizar tarefas repetitivas em R é utilizando funções que foram desenhadas para trabalhar com iteração. O pacote do <code>tidyverse</code> que reúne estas funções chame-se <code>purrr</code>. A ideia das funções do <code>purrr</code> é desenhar as iterações sobre vetores, listas ou linhas de um data frame.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="kw">map</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), rnorm)</a>
-<a class="sourceLine" id="cb188-2" title="2"></a>
-<a class="sourceLine" id="cb188-3" title="3"><span class="kw">map_dbl</span>(mtcars, mean)</a>
-<a class="sourceLine" id="cb188-4" title="4"></a>
-<a class="sourceLine" id="cb188-5" title="5"><span class="kw">map_int</span>(iris, <span class="cf">function</span>(x) <span class="kw">length</span>(<span class="kw">unique</span>(x)))</a>
-<a class="sourceLine" id="cb188-6" title="6"></a>
-<a class="sourceLine" id="cb188-7" title="7"><span class="kw">map_int</span>(iris, <span class="op">~</span><span class="st"> </span><span class="kw">length</span>(<span class="kw">unique</span>(.)))</a></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="kw">map</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), rnorm)</a>
+<a class="sourceLine" id="cb190-2" title="2"></a>
+<a class="sourceLine" id="cb190-3" title="3"><span class="kw">map_dbl</span>(mtcars, mean)</a>
+<a class="sourceLine" id="cb190-4" title="4"></a>
+<a class="sourceLine" id="cb190-5" title="5"><span class="kw">map_int</span>(iris, <span class="cf">function</span>(x) <span class="kw">length</span>(<span class="kw">unique</span>(x)))</a>
+<a class="sourceLine" id="cb190-6" title="6"></a>
+<a class="sourceLine" id="cb190-7" title="7"><span class="kw">map_int</span>(iris, <span class="op">~</span><span class="st"> </span><span class="kw">length</span>(<span class="kw">unique</span>(.)))</a></code></pre></div>
 <p>O pacote tem várias funções e você pode ler sobre elas com mais calma depois. Neste bloco, utilizar a programação funcional para ajustar regressões especificas para um determinado grupo e sempre mantendo tudo amarado a data frames. Esse é uma concepção de programação bastante nova no R, onde coloca o data frame como esqueleto principal da análise e aplicando todas as etapas dentro dele.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">inv &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/TUME_134_2016.xlsx&quot;</span>)</a>
-<a class="sourceLine" id="cb189-2" title="2"></a>
-<a class="sourceLine" id="cb189-3" title="3">inv</a></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1">inv &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;input/TUME_134_2016.xlsx&quot;</span>)</a>
+<a class="sourceLine" id="cb191-2" title="2"></a>
+<a class="sourceLine" id="cb191-3" title="3">inv</a></code></pre></div>
 <p>Nosso objetivo é ajustar um modelo hipsométrico (diâmetro-altura) para cada espécie e em seguida predizer as alturas das árvores. O gráfico a seguir mostra a relação que teríamos se fosse ajustado apenas um modelo para todas as espécies.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="kw">ggplot</span>(inv, <span class="kw">aes</span>(CAP_cm, H_m)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb190-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span><span class="fl">0.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb190-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb190-4" title="4"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1"><span class="kw">ggplot</span>(inv, <span class="kw">aes</span>(CAP_cm, H_m)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb192-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span><span class="fl">0.4</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb192-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb192-4" title="4"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 <p>Mas na prática, a relação diâmetro-altura é diferente entre as espécies, como pode ser notado logo abaixo. Talvez fique mais evidente a diferença observando os coeficientes dos modelos que serão ajustados a seguir.</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">ggplot</span>(inv, <span class="kw">aes</span>(CAP_cm, H_m)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb191-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb191-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb191-4" title="4"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Esp)</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1"><span class="kw">ggplot</span>(inv, <span class="kw">aes</span>(CAP_cm, H_m)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb193-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb193-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb193-4" title="4"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Esp)</a></code></pre></div>
 <p>Para entendermos o processo, vamos ajustar a regressão para algumas espécies. O comando <code>lm()</code> utiliza a notação em formula para especificar o modelo. Lê-se <code>H_m</code> em função de <code>CAP_cm</code>, sendo o <code>~</code> responsável por determinar as variáveis dependentes e independentes.</p>
 <p>O pacote <code>broom</code> tem algumas funções que facilitam a extração das informações do modelo ajustado. Iremos utilizar a função <code>glance</code> para pegar as estatísticas gerais do modelo e a função <code>tidy</code> para acessar os coeficientes e significâncias.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(H_m <span class="op">~</span><span class="st"> </span>CAP_cm, <span class="dt">data =</span> <span class="kw">filter</span>(inv, Esp <span class="op">==</span><span class="st"> &quot;E_citriodora&quot;</span>))</a>
-<a class="sourceLine" id="cb192-2" title="2"></a>
-<a class="sourceLine" id="cb192-3" title="3"><span class="kw">glance</span>(m1)</a></code></pre></div>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1"><span class="kw">tidy</span>(m1)</a></code></pre></div>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1">m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(H_m <span class="op">~</span><span class="st"> </span>CAP_cm, <span class="dt">data =</span> <span class="kw">filter</span>(inv, Esp <span class="op">==</span><span class="st"> &quot;E_maculata&quot;</span>))</a>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(H_m <span class="op">~</span><span class="st"> </span>CAP_cm, <span class="dt">data =</span> <span class="kw">filter</span>(inv, Esp <span class="op">==</span><span class="st"> &quot;E_citriodora&quot;</span>))</a>
 <a class="sourceLine" id="cb194-2" title="2"></a>
-<a class="sourceLine" id="cb194-3" title="3"><span class="kw">glance</span>(m2)</a></code></pre></div>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="kw">tidy</span>(m2)</a></code></pre></div>
+<a class="sourceLine" id="cb194-3" title="3"><span class="kw">glance</span>(m1)</a></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="kw">tidy</span>(m1)</a></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1">m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(H_m <span class="op">~</span><span class="st"> </span>CAP_cm, <span class="dt">data =</span> <span class="kw">filter</span>(inv, Esp <span class="op">==</span><span class="st"> &quot;E_maculata&quot;</span>))</a>
+<a class="sourceLine" id="cb196-2" title="2"></a>
+<a class="sourceLine" id="cb196-3" title="3"><span class="kw">glance</span>(m2)</a></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1"><span class="kw">tidy</span>(m2)</a></code></pre></div>
 <p>A primeira etapa é entender que um data.frame pode conter vários tipos de elementos, como números, caracteres, listas e também outros data.frames. Para isso utilizaremos a função nest() do pacote tidyr e aninharemos os dados em função das espécies.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1">inv_nest &lt;-<span class="st"> </span>inv <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb196-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Esp) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb196-3" title="3"><span class="st">  </span><span class="kw">nest</span>() </a>
-<a class="sourceLine" id="cb196-4" title="4"></a>
-<a class="sourceLine" id="cb196-5" title="5">inv_nest</a></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1">inv_nest &lt;-<span class="st"> </span>inv <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb198-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Esp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb198-3" title="3"><span class="st">  </span><span class="kw">nest</span>() </a>
+<a class="sourceLine" id="cb198-4" title="4"></a>
+<a class="sourceLine" id="cb198-5" title="5">inv_nest</a></code></pre></div>
 <p>Agora podemos ajustar um modelo de regressão para cada espécie utilizando a função map, do pacote purrr.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">dados_modl &lt;-<span class="st"> </span>inv_nest <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb197-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb197-3" title="3">    <span class="dt">ajuste =</span> <span class="kw">map</span>(data, <span class="op">~</span><span class="kw">lm</span>(H_m <span class="op">~</span><span class="st"> </span>CAP_cm, <span class="dt">data =</span> .)),</a>
-<a class="sourceLine" id="cb197-4" title="4">    <span class="dt">resumo =</span> <span class="kw">map</span>(ajuste, glance),</a>
-<a class="sourceLine" id="cb197-5" title="5">    <span class="dt">coef =</span> <span class="kw">map</span>(ajuste, tidy),</a>
-<a class="sourceLine" id="cb197-6" title="6">    <span class="dt">resid =</span> <span class="kw">map</span>(ajuste, augment)</a>
-<a class="sourceLine" id="cb197-7" title="7">  )</a>
-<a class="sourceLine" id="cb197-8" title="8"> </a>
-<a class="sourceLine" id="cb197-9" title="9">dados_modl</a></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">dados_modl &lt;-<span class="st"> </span>inv_nest <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb199-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb199-3" title="3">    <span class="dt">ajuste =</span> <span class="kw">map</span>(data, <span class="op">~</span><span class="kw">lm</span>(H_m <span class="op">~</span><span class="st"> </span>CAP_cm, <span class="dt">data =</span> .)),</a>
+<a class="sourceLine" id="cb199-4" title="4">    <span class="dt">resumo =</span> <span class="kw">map</span>(ajuste, glance),</a>
+<a class="sourceLine" id="cb199-5" title="5">    <span class="dt">coef =</span> <span class="kw">map</span>(ajuste, tidy),</a>
+<a class="sourceLine" id="cb199-6" title="6">    <span class="dt">resid =</span> <span class="kw">map</span>(ajuste, augment)</a>
+<a class="sourceLine" id="cb199-7" title="7">  )</a>
+<a class="sourceLine" id="cb199-8" title="8"> </a>
+<a class="sourceLine" id="cb199-9" title="9">dados_modl</a></code></pre></div>
 <p>Da mesma forma que aninhamos os dados por espécie, podemos retorná-los para o formato original, mas agora mostrando apenas as informações que realmente interessam.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1">dados_modl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb198-2" title="2"><span class="st">  </span><span class="kw">select</span>(Esp, resumo) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb198-3" title="3"><span class="st">  </span><span class="kw">unnest</span>(resumo)</a></code></pre></div>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">dados_modl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb199-2" title="2"><span class="st">  </span><span class="kw">select</span>(Esp, coef ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb199-3" title="3"><span class="st">  </span><span class="kw">unnest</span>(coef)</a></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1">dados_modl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb200-2" title="2"><span class="st">  </span><span class="kw">select</span>(Esp, resumo) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb200-3" title="3"><span class="st">  </span><span class="kw">unnest</span>(resumo)</a></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1">dados_modl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb201-2" title="2"><span class="st">  </span><span class="kw">select</span>(Esp, coef ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb201-3" title="3"><span class="st">  </span><span class="kw">unnest</span>(coef)</a></code></pre></div>
 <p>Após o ajuste do modelo, temos de predizer as alturas. Por fim, temos de volta um <code>data.frame</code> com as alturas preditas.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1">dados_pred &lt;-<span class="st"> </span>dados_modl <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb200-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb200-3" title="3">    <span class="dt">hpred =</span> <span class="kw">map2</span>(ajuste, data, predict)</a>
-<a class="sourceLine" id="cb200-4" title="4">  ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb200-5" title="5"><span class="st">  </span><span class="kw">select</span>(Esp, data, hpred) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb200-6" title="6"><span class="st">  </span><span class="kw">unnest</span>(hpred, data)</a>
-<a class="sourceLine" id="cb200-7" title="7"></a>
-<a class="sourceLine" id="cb200-8" title="8">dados_pred</a></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1">dados_pred &lt;-<span class="st"> </span>dados_modl <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb202-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb202-3" title="3">    <span class="dt">hpred =</span> <span class="kw">map2</span>(ajuste, data, predict)</a>
+<a class="sourceLine" id="cb202-4" title="4">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb202-5" title="5"><span class="st">  </span><span class="kw">select</span>(Esp, data, hpred) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb202-6" title="6"><span class="st">  </span><span class="kw">unnest</span>(hpred, data)</a>
+<a class="sourceLine" id="cb202-7" title="7"></a>
+<a class="sourceLine" id="cb202-8" title="8">dados_pred</a></code></pre></div>
 <p>Para visualizar o resultado da regressão, podemos colocar no gráfico a comparação entre valores medidos e preditos.</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1">dados_pred <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb201-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(CAP_cm)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb201-3" title="3"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> H_m), <span class="dt">color =</span> <span class="st">&quot;cadetblue&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb201-4" title="4"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> hpred), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb201-5" title="5"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Esp) <span class="op">+</span></a>
-<a class="sourceLine" id="cb201-6" title="6"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1">dados_pred <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb203-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(CAP_cm)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb203-3" title="3"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> H_m), <span class="dt">color =</span> <span class="st">&quot;cadetblue&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb203-4" title="4"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> hpred), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb203-5" title="5"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Esp) <span class="op">+</span></a>
+<a class="sourceLine" id="cb203-6" title="6"><span class="st">    </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+</div>
+<div id="exercicios-5" class="section level2 unnumbered">
+<h2>Exercícios</h2>
+<ol start="30" class="example" style="list-style-type: decimal">
+<li><strong>A partir do data frame <code>gapminder</code> crie o objeto <code>gap_nested</code> com os dados aninhados em função de <code>continent</code> e <code>country</code>.</strong></li>
+</ol>
+<p>Dica: nest.</p>
+<pre><code>#&gt; # A tibble: 142 x 3
+#&gt;    continent country     data             
+#&gt;    &lt;fct&gt;     &lt;fct&gt;       &lt;list&gt;           
+#&gt;  1 Asia      Afghanistan &lt;tibble [12 x 4]&gt;
+#&gt;  2 Europe    Albania     &lt;tibble [12 x 4]&gt;
+#&gt;  3 Africa    Algeria     &lt;tibble [12 x 4]&gt;
+#&gt;  4 Africa    Angola      &lt;tibble [12 x 4]&gt;
+#&gt;  5 Americas  Argentina   &lt;tibble [12 x 4]&gt;
+#&gt;  6 Oceania   Australia   &lt;tibble [12 x 4]&gt;
+#&gt;  7 Europe    Austria     &lt;tibble [12 x 4]&gt;
+#&gt;  8 Asia      Bahrain     &lt;tibble [12 x 4]&gt;
+#&gt;  9 Asia      Bangladesh  &lt;tibble [12 x 4]&gt;
+#&gt; 10 Europe    Belgium     &lt;tibble [12 x 4]&gt;
+#&gt; # ... with 132 more rows</code></pre>
+<p><br></p>
+<ol start="31" class="example" style="list-style-type: decimal">
+<li><strong>Com o objeto <code>gap_nested</code> ajuste um modelo linear com a formula <code>lifeExp ~ year</code> e calcule as estatísticas do modelos ajustados</strong></li>
+</ol>
+<p>Dica: map, lm, tidy.</p>
+<pre><code>#&gt; # A tibble: 142 x 5
+#&gt;    continent country     data              fit    tidy            
+#&gt;    &lt;fct&gt;     &lt;fct&gt;       &lt;list&gt;            &lt;list&gt; &lt;list&gt;          
+#&gt;  1 Asia      Afghanistan &lt;tibble [12 x 4]&gt; &lt;lm&gt;   &lt;tibble [2 x 5]&gt;
+#&gt;  2 Europe    Albania     &lt;tibble [12 x 4]&gt; &lt;lm&gt;   &lt;tibble [2 x 5]&gt;
+#&gt;  3 Africa    Algeria     &lt;tibble [12 x 4]&gt; &lt;lm&gt;   &lt;tibble [2 x 5]&gt;
+#&gt;  4 Africa    Angola      &lt;tibble [12 x 4]&gt; &lt;lm&gt;   &lt;tibble [2 x 5]&gt;
+#&gt;  5 Americas  Argentina   &lt;tibble [12 x 4]&gt; &lt;lm&gt;   &lt;tibble [2 x 5]&gt;
+#&gt;  6 Oceania   Australia   &lt;tibble [12 x 4]&gt; &lt;lm&gt;   &lt;tibble [2 x 5]&gt;
+#&gt;  7 Europe    Austria     &lt;tibble [12 x 4]&gt; &lt;lm&gt;   &lt;tibble [2 x 5]&gt;
+#&gt;  8 Asia      Bahrain     &lt;tibble [12 x 4]&gt; &lt;lm&gt;   &lt;tibble [2 x 5]&gt;
+#&gt;  9 Asia      Bangladesh  &lt;tibble [12 x 4]&gt; &lt;lm&gt;   &lt;tibble [2 x 5]&gt;
+#&gt; 10 Europe    Belgium     &lt;tibble [12 x 4]&gt; &lt;lm&gt;   &lt;tibble [2 x 5]&gt;
+#&gt; # ... with 132 more rows</code></pre>
+<p><br></p>
+<ol start="32" class="example" style="list-style-type: decimal">
+<li><strong>Salve no objeto <code>gap_coef</code> o desaninhe os dados.</strong></li>
+</ol>
+<p>Dica: unnest.</p>
+<pre><code>#&gt; # A tibble: 284 x 7
+#&gt;    continent country     term         estimate std.error statistic  p.value
+#&gt;    &lt;fct&gt;     &lt;fct&gt;       &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1 Asia      Afghanistan (Intercept)  -508.     40.5        -12.5  1.93e- 7
+#&gt;  2 Asia      Afghanistan year            0.275   0.0205      13.5  9.84e- 8
+#&gt;  3 Europe    Albania     (Intercept)  -594.     65.7         -9.05 3.94e- 6
+#&gt;  4 Europe    Albania     year            0.335   0.0332      10.1  1.46e- 6
+#&gt;  5 Africa    Algeria     (Intercept) -1068.     43.8        -24.4  3.07e-10
+#&gt;  6 Africa    Algeria     year            0.569   0.0221      25.7  1.81e-10
+#&gt;  7 Africa    Angola      (Intercept)  -377.     46.6         -8.08 1.08e- 5
+#&gt;  8 Africa    Angola      year            0.209   0.0235       8.90 4.59e- 6
+#&gt;  9 Americas  Argentina   (Intercept)  -390.      9.68       -40.3  2.14e-12
+#&gt; 10 Americas  Argentina   year            0.232   0.00489     47.4  4.22e-13
+#&gt; # ... with 274 more rows</code></pre>
+<p><br></p>
+<ol start="33" class="example" style="list-style-type: decimal">
+<li><strong>Faça um gráfico mostrando a variação dos parâmetros ajustados por Continente.</strong></li>
+</ol>
+<p>Dicas: geom_jitter, facet_wrap(…, scales = “free_y”).</p>
+<p><img src="10-iteracao_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<br></p>
+<ol start="34" class="example" style="list-style-type: decimal">
+<li><strong>Importe o arquivo woman.xls e salve num objeto chamado <code>woman</code>.</strong></li>
+</ol>
+<p>Dicas: ?read_excel, skip.</p>
+<pre><code>#&gt; Observations: 264
+#&gt; Variables: 63
+#&gt; $ `Country Name`   &lt;chr&gt; &quot;Aruba&quot;, &quot;Afghanistan&quot;, &quot;Angola&quot;, &quot;Albania&quot;, ...
+#&gt; $ `Country Code`   &lt;chr&gt; &quot;ABW&quot;, &quot;AFG&quot;, &quot;AGO&quot;, &quot;ALB&quot;, &quot;AND&quot;, &quot;ARB&quot;, &quot;AR...
+#&gt; $ `Indicator Name` &lt;chr&gt; &quot;Proportion of seats held by women in nationa...
+#&gt; $ `Indicator Code` &lt;chr&gt; &quot;SG.GEN.PARL.ZS&quot;, &quot;SG.GEN.PARL.ZS&quot;, &quot;SG.GEN.P...
+#&gt; $ `1960`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1961`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1962`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1963`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1964`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1965`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1966`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1967`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1968`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1969`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1970`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1971`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1972`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1973`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1974`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1975`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1976`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1977`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1978`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1979`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1980`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1981`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1982`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1983`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1984`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1985`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1986`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1987`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1988`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1989`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1990`           &lt;dbl&gt; NA, 3.700000, 14.500000, 28.800000, NA, 3.891...
+#&gt; $ `1991`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1992`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1993`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1994`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1995`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1996`           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#&gt; $ `1997`           &lt;dbl&gt; NA, NA, 9.500000, NA, 7.100000, 3.757835, 0.0...
+#&gt; $ `1998`           &lt;dbl&gt; NA, NA, 15.500000, NA, 7.100000, 3.474235, 0....
+#&gt; $ `1999`           &lt;dbl&gt; NA, NA, 15.500000, 5.200000, 7.100000, 3.6234...
+#&gt; $ `2000`           &lt;dbl&gt; NA, NA, 15.500000, 5.200000, 7.100000, 3.7681...
+#&gt; $ `2001`           &lt;dbl&gt; NA, NA, 15.500000, 5.700000, 14.300000, 4.610...
+#&gt; $ `2002`           &lt;dbl&gt; NA, NA, 15.500000, 5.700000, 14.300000, 6.132...
+#&gt; $ `2003`           &lt;dbl&gt; NA, NA, 15.500000, 5.700000, 14.300000, 6.043...
+#&gt; $ `2004`           &lt;dbl&gt; NA, NA, 15.000000, 6.400000, 14.300000, 6.702...
+#&gt; $ `2005`           &lt;dbl&gt; NA, 27.300000, 15.000000, 7.100000, 28.600000...
+#&gt; $ `2006`           &lt;dbl&gt; NA, 27.300000, 15.000000, 7.100000, 28.600000...
+#&gt; $ `2007`           &lt;dbl&gt; NA, 27.700000, 15.000000, 7.100000, 28.600000...
+#&gt; $ `2008`           &lt;dbl&gt; NA, 27.700000, 37.300000, 7.100000, 25.000000...
+#&gt; $ `2009`           &lt;dbl&gt; NA, 27.300000, 38.600000, 16.400000, 35.70000...
+#&gt; $ `2010`           &lt;dbl&gt; NA, 27.70000, 38.60000, 16.40000, 35.70000, 1...
+#&gt; $ `2011`           &lt;dbl&gt; NA, 27.70000, 38.20000, 15.70000, 50.00000, 1...
+#&gt; $ `2012`           &lt;dbl&gt; NA, 27.70000, 34.10000, 15.70000, 50.00000, 1...
+#&gt; $ `2013`           &lt;dbl&gt; NA, 27.70000, 34.10000, 17.90000, 50.00000, 1...
+#&gt; $ `2014`           &lt;dbl&gt; NA, 27.70000, 36.80000, 20.00000, 50.00000, 1...
+#&gt; $ `2015`           &lt;dbl&gt; NA, 27.70000, 36.80000, 20.70000, 39.30000, 1...
+#&gt; $ `2016`           &lt;dbl&gt; NA, 27.70000, 36.80000, 22.90000, 32.10000, 1...
+#&gt; $ `2017`           &lt;dbl&gt; NA, 27.70000, 38.20000, 27.90000, 32.10000, 1...
+#&gt; $ `2018`           &lt;dbl&gt; NA, 27.70000, 30.50000, 27.90000, 32.10000, 1...</code></pre>
+<p><br></p>
+<ol start="35" class="example" style="list-style-type: decimal">
+<li><strong>Reformate a tabela seguindo os conceitos do tidy data.</strong></li>
+</ol>
+<pre><code>#&gt; # A tibble: 15,576 x 6
+#&gt;    `Country Name` `Country Code` `Indicator Name` `Indicator Code` ano  
+#&gt;    &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;
+#&gt;  1 Aruba          ABW            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#&gt;  2 Afghanistan    AFG            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#&gt;  3 Angola         AGO            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#&gt;  4 Albania        ALB            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#&gt;  5 Andorra        AND            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#&gt;  6 Arab World     ARB            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#&gt;  7 United Arab E~ ARE            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#&gt;  8 Argentina      ARG            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#&gt;  9 Armenia        ARM            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#&gt; 10 American Samoa ASM            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#&gt; # ... with 15,566 more rows, and 1 more variable: percentual &lt;dbl&gt;</code></pre>
+<p><br></p>
+<ol start="36" class="example" style="list-style-type: decimal">
+<li><strong>Em que ano começam os registros dessa base de dados? Neste ano, qual o país com maior percentual de mulheres?</strong></li>
+</ol>
+<p>Dica: as.numeric, !, is.na.</p>
+<pre><code>#&gt; # A tibble: 1 x 3
+#&gt;   `Country Name`   ano percentual
+#&gt;   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;
+#&gt; 1 Sweden          1990       38.4</code></pre>
+<p><br></p>
+<ol start="37" class="example" style="list-style-type: decimal">
+<li><strong>Quais os 10 países com maior percentual de mulheres no parlamento em 2018?</strong></li>
+</ol>
+<p>Dica: as.numeric, top_n, arrange.</p>
+<pre><code>#&gt; # A tibble: 10 x 2
+#&gt;    `Country Name` percentual
+#&gt;    &lt;chr&gt;               &lt;dbl&gt;
+#&gt;  1 Rwanda               61.3
+#&gt;  2 Cuba                 53.2
+#&gt;  3 Bolivia              53.1
+#&gt;  4 Mexico               48.2
+#&gt;  5 Grenada              46.7
+#&gt;  6 Namibia              46.2
+#&gt;  7 Sweden               46.1
+#&gt;  8 Nicaragua            45.7
+#&gt;  9 Costa Rica           45.6
+#&gt; 10 South Africa         42.3</code></pre>
+<p><br></p>
+<ol start="38" class="example" style="list-style-type: decimal">
+<li><strong>Faça um gráfico de linha mostrando a evolução do percentual médio de mulheres no mundo desde 1997</strong></li>
+</ol>
+<p><img src="10-iteracao_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<br></p>
+<ol start="39" class="example" style="list-style-type: decimal">
+<li><strong>Faça o gráfico anterior somente com dados do Brasil</strong></li>
+</ol>
+<p><img src="10-iteracao_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<br></p>
+<ol start="40" class="example" style="list-style-type: decimal">
+<li><strong>Consegue juntar estes dois gráficos em um só, com duas linhas?</strong></li>
+</ol>
+<p>Dica: ifelse.</p>
+<p><img src="10-iteracao_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 
 </div>
 </div>

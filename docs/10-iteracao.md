@@ -219,3 +219,227 @@ dados_pred %>%
     facet_wrap(~Esp) +
     theme_bw()
 ```
+
+## Exercícios {-}
+
+(@) **A partir do data frame `gapminder` crie o objeto `gap_nested` com os dados aninhados em função de `continent` e `country`.**
+
+Dica: nest.
+
+
+```
+#> # A tibble: 142 x 3
+#>    continent country     data             
+#>    <fct>     <fct>       <list>           
+#>  1 Asia      Afghanistan <tibble [12 x 4]>
+#>  2 Europe    Albania     <tibble [12 x 4]>
+#>  3 Africa    Algeria     <tibble [12 x 4]>
+#>  4 Africa    Angola      <tibble [12 x 4]>
+#>  5 Americas  Argentina   <tibble [12 x 4]>
+#>  6 Oceania   Australia   <tibble [12 x 4]>
+#>  7 Europe    Austria     <tibble [12 x 4]>
+#>  8 Asia      Bahrain     <tibble [12 x 4]>
+#>  9 Asia      Bangladesh  <tibble [12 x 4]>
+#> 10 Europe    Belgium     <tibble [12 x 4]>
+#> # ... with 132 more rows
+```
+<br>
+
+(@) **Com o objeto `gap_nested` ajuste um modelo linear com a formula `lifeExp ~ year` e calcule as estatísticas do modelos ajustados**
+
+Dica: map, lm, tidy.
+
+
+```
+#> # A tibble: 142 x 5
+#>    continent country     data              fit    tidy            
+#>    <fct>     <fct>       <list>            <list> <list>          
+#>  1 Asia      Afghanistan <tibble [12 x 4]> <lm>   <tibble [2 x 5]>
+#>  2 Europe    Albania     <tibble [12 x 4]> <lm>   <tibble [2 x 5]>
+#>  3 Africa    Algeria     <tibble [12 x 4]> <lm>   <tibble [2 x 5]>
+#>  4 Africa    Angola      <tibble [12 x 4]> <lm>   <tibble [2 x 5]>
+#>  5 Americas  Argentina   <tibble [12 x 4]> <lm>   <tibble [2 x 5]>
+#>  6 Oceania   Australia   <tibble [12 x 4]> <lm>   <tibble [2 x 5]>
+#>  7 Europe    Austria     <tibble [12 x 4]> <lm>   <tibble [2 x 5]>
+#>  8 Asia      Bahrain     <tibble [12 x 4]> <lm>   <tibble [2 x 5]>
+#>  9 Asia      Bangladesh  <tibble [12 x 4]> <lm>   <tibble [2 x 5]>
+#> 10 Europe    Belgium     <tibble [12 x 4]> <lm>   <tibble [2 x 5]>
+#> # ... with 132 more rows
+```
+<br>
+
+(@) **Salve no objeto `gap_coef` o desaninhe os dados.**
+
+Dica: unnest.
+
+
+```
+#> # A tibble: 284 x 7
+#>    continent country     term         estimate std.error statistic  p.value
+#>    <fct>     <fct>       <chr>           <dbl>     <dbl>     <dbl>    <dbl>
+#>  1 Asia      Afghanistan (Intercept)  -508.     40.5        -12.5  1.93e- 7
+#>  2 Asia      Afghanistan year            0.275   0.0205      13.5  9.84e- 8
+#>  3 Europe    Albania     (Intercept)  -594.     65.7         -9.05 3.94e- 6
+#>  4 Europe    Albania     year            0.335   0.0332      10.1  1.46e- 6
+#>  5 Africa    Algeria     (Intercept) -1068.     43.8        -24.4  3.07e-10
+#>  6 Africa    Algeria     year            0.569   0.0221      25.7  1.81e-10
+#>  7 Africa    Angola      (Intercept)  -377.     46.6         -8.08 1.08e- 5
+#>  8 Africa    Angola      year            0.209   0.0235       8.90 4.59e- 6
+#>  9 Americas  Argentina   (Intercept)  -390.      9.68       -40.3  2.14e-12
+#> 10 Americas  Argentina   year            0.232   0.00489     47.4  4.22e-13
+#> # ... with 274 more rows
+```
+<br>
+
+(@) **Faça um gráfico mostrando a variação dos parâmetros ajustados por Continente.**
+
+Dicas: geom_jitter, facet_wrap(...,  scales = "free_y").
+
+<img src="10-iteracao_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<br>
+
+(@) **Importe o arquivo woman.xls e salve num objeto chamado `woman`.**
+
+Dicas: ?read_excel, skip.
+
+
+```
+#> Observations: 264
+#> Variables: 63
+#> $ `Country Name`   <chr> "Aruba", "Afghanistan", "Angola", "Albania", ...
+#> $ `Country Code`   <chr> "ABW", "AFG", "AGO", "ALB", "AND", "ARB", "AR...
+#> $ `Indicator Name` <chr> "Proportion of seats held by women in nationa...
+#> $ `Indicator Code` <chr> "SG.GEN.PARL.ZS", "SG.GEN.PARL.ZS", "SG.GEN.P...
+#> $ `1960`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1961`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1962`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1963`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1964`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1965`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1966`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1967`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1968`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1969`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1970`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1971`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1972`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1973`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1974`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1975`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1976`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1977`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1978`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1979`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1980`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1981`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1982`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1983`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1984`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1985`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1986`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1987`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1988`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1989`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1990`           <dbl> NA, 3.700000, 14.500000, 28.800000, NA, 3.891...
+#> $ `1991`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1992`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1993`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1994`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1995`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1996`           <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+#> $ `1997`           <dbl> NA, NA, 9.500000, NA, 7.100000, 3.757835, 0.0...
+#> $ `1998`           <dbl> NA, NA, 15.500000, NA, 7.100000, 3.474235, 0....
+#> $ `1999`           <dbl> NA, NA, 15.500000, 5.200000, 7.100000, 3.6234...
+#> $ `2000`           <dbl> NA, NA, 15.500000, 5.200000, 7.100000, 3.7681...
+#> $ `2001`           <dbl> NA, NA, 15.500000, 5.700000, 14.300000, 4.610...
+#> $ `2002`           <dbl> NA, NA, 15.500000, 5.700000, 14.300000, 6.132...
+#> $ `2003`           <dbl> NA, NA, 15.500000, 5.700000, 14.300000, 6.043...
+#> $ `2004`           <dbl> NA, NA, 15.000000, 6.400000, 14.300000, 6.702...
+#> $ `2005`           <dbl> NA, 27.300000, 15.000000, 7.100000, 28.600000...
+#> $ `2006`           <dbl> NA, 27.300000, 15.000000, 7.100000, 28.600000...
+#> $ `2007`           <dbl> NA, 27.700000, 15.000000, 7.100000, 28.600000...
+#> $ `2008`           <dbl> NA, 27.700000, 37.300000, 7.100000, 25.000000...
+#> $ `2009`           <dbl> NA, 27.300000, 38.600000, 16.400000, 35.70000...
+#> $ `2010`           <dbl> NA, 27.70000, 38.60000, 16.40000, 35.70000, 1...
+#> $ `2011`           <dbl> NA, 27.70000, 38.20000, 15.70000, 50.00000, 1...
+#> $ `2012`           <dbl> NA, 27.70000, 34.10000, 15.70000, 50.00000, 1...
+#> $ `2013`           <dbl> NA, 27.70000, 34.10000, 17.90000, 50.00000, 1...
+#> $ `2014`           <dbl> NA, 27.70000, 36.80000, 20.00000, 50.00000, 1...
+#> $ `2015`           <dbl> NA, 27.70000, 36.80000, 20.70000, 39.30000, 1...
+#> $ `2016`           <dbl> NA, 27.70000, 36.80000, 22.90000, 32.10000, 1...
+#> $ `2017`           <dbl> NA, 27.70000, 38.20000, 27.90000, 32.10000, 1...
+#> $ `2018`           <dbl> NA, 27.70000, 30.50000, 27.90000, 32.10000, 1...
+```
+<br>
+
+(@) **Reformate a tabela seguindo os conceitos do tidy data.**
+
+
+```
+#> # A tibble: 15,576 x 6
+#>    `Country Name` `Country Code` `Indicator Name` `Indicator Code` ano  
+#>    <chr>          <chr>          <chr>            <chr>            <chr>
+#>  1 Aruba          ABW            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#>  2 Afghanistan    AFG            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#>  3 Angola         AGO            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#>  4 Albania        ALB            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#>  5 Andorra        AND            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#>  6 Arab World     ARB            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#>  7 United Arab E~ ARE            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#>  8 Argentina      ARG            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#>  9 Armenia        ARM            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#> 10 American Samoa ASM            Proportion of s~ SG.GEN.PARL.ZS   1960 
+#> # ... with 15,566 more rows, and 1 more variable: percentual <dbl>
+```
+<br>
+
+(@) **Em que ano começam os registros dessa base de dados? Neste ano, qual o país com maior percentual de mulheres?**
+
+Dica: as.numeric, !, is.na.
+
+
+```
+#> # A tibble: 1 x 3
+#>   `Country Name`   ano percentual
+#>   <chr>          <dbl>      <dbl>
+#> 1 Sweden          1990       38.4
+```
+<br>
+
+(@) **Quais os 10 países com maior percentual de mulheres no parlamento em 2018?**
+
+Dica: as.numeric, top_n, arrange.
+
+
+```
+#> # A tibble: 10 x 2
+#>    `Country Name` percentual
+#>    <chr>               <dbl>
+#>  1 Rwanda               61.3
+#>  2 Cuba                 53.2
+#>  3 Bolivia              53.1
+#>  4 Mexico               48.2
+#>  5 Grenada              46.7
+#>  6 Namibia              46.2
+#>  7 Sweden               46.1
+#>  8 Nicaragua            45.7
+#>  9 Costa Rica           45.6
+#> 10 South Africa         42.3
+```
+<br>
+
+(@) **Faça um gráfico de linha mostrando a evolução do percentual médio de mulheres no mundo desde 1997**
+
+<img src="10-iteracao_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<br>
+
+(@) **Faça o gráfico anterior somente com dados do Brasil**
+
+<img src="10-iteracao_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<br>
+
+(@) **Consegue juntar estes dois gráficos em um só, com duas linhas?**
+
+Dica: ifelse.
+
+<img src="10-iteracao_files/figure-html/unnamed-chunk-30-1.png" width="672" />

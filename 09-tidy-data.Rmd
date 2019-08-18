@@ -78,7 +78,7 @@ idh_tidy %>%
 
 (@) **Importe o arquivo `base_vespa2.xlsx` e use a função `glimpse()` para ver a estrutura da base.**
 
-```{r}
+```{r eval=TRUE, echo=FALSE}
 library(tidyverse)
 library(readxl)
 
@@ -90,12 +90,47 @@ glimpse(dados)
 
 (@) **Reformule a base de dados seguindo os conceitos do tidy data.**
 
-
-```{r}
+```{r eval=TRUE, echo=FALSE}
 dados_tidy <- dados %>% 
   gather("Local", "Galhas", 3:dim(.)[2]) %>%
   separate(Local, c("Coleta", "Local"))
 
 dados_tidy
+```
+<br>
+
+(@) **Importe o arquivo `voto_presidente_2018.csv` e salve em um objeto chamado `voto`. Use a função `glimpse()` para ver a estrutura da base.**
+
+```{r eval=TRUE, echo=FALSE}
+voto <- read_csv2("input/voto_presidente_2018.csv")
+
+glimpse(voto)
+```
+<br>
+
+(@) **Reformule o objeto `voto` seguindo os conceitos do tidy data. Salve a nova base em um objeto chamado `voto_tidy`.**
+
+```{r eval=TRUE, echo=FALSE}
+voto_tidy <- voto %>% 
+  gather(estado, voto, -(1:4))
+
+voto_tidy
+```
+<br>
+
+(@) **Crie uma variável rank para indicar a posição referente ao número de votos apurados de cada candidato dentro de cada estado. Ordene a variável NUMERO_CANDIDATO em função do numero de votos. Faça um heatmap com o resultado do rank.**
+
+Dicas: group_by, row_number, fct_reorder, geom_tile.
+
+```{r eval=TRUE, echo=FALSE}
+voto_tidy %>% 
+  group_by(estado) %>% 
+  mutate(
+    rank = row_number(-voto),
+    NUMERO_CANDIDATO = fct_reorder(factor(NUMERO_CANDIDATO), voto)
+  ) %>% 
+  ggplot(aes(estado, NUMERO_CANDIDATO, fill = rank)) +
+    geom_tile() +
+    scale_fill_viridis_c(direction = -1)
 ```
 

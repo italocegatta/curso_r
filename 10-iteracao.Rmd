@@ -200,3 +200,158 @@ dados_pred %>%
     facet_wrap(~Esp) +
     theme_bw()
 ```
+
+## Exercícios {-}
+
+(@) **A partir do data frame `gapminder` crie o objeto `gap_nested` com os dados aninhados em função de `continent` e `country`.**
+
+Dica: nest.
+
+```{r eval=TRUE, echo=FALSE}
+library(tidyverse)
+library(gapminder)
+library(broom)
+
+gap_nested <- gapminder %>% 
+  group_by(continent, country) %>% 
+  nest()
+
+gap_nested
+```
+<br>
+
+(@) **Com o objeto `gap_nested` ajuste um modelo linear com a formula `lifeExp ~ year` e calcule as estatísticas do modelos ajustados**
+
+Dica: map, lm, tidy.
+
+```{r eval=TRUE, echo=FALSE}
+gap_mod <- gap_nested %>% 
+  mutate(
+    fit = map(data, ~lm(lifeExp ~ year, data = .x)),
+    tidy = map(fit, tidy)
+  ) 
+
+gap_mod
+```
+<br>
+
+(@) **Salve no objeto `gap_coef` o desaninhe os dados.**
+
+Dica: unnest.
+
+```{r eval=TRUE, echo=FALSE}
+gap_coef <- gap_mod %>% 
+  select(continent, country, tidy) %>% 
+  unnest(tidy)
+
+gap_coef
+```
+<br>
+
+(@) **Faça um gráfico mostrando a variação dos parâmetros ajustados por Continente.**
+
+Dicas: geom_jitter, facet_wrap(...,  scales = "free_y").
+
+```{r eval=TRUE, echo=FALSE}
+gap_coef %>% 
+  ggplot(aes(continent, estimate)) +
+    geom_boxplot(outlier.color = NA) +
+    geom_jitter(width = 0.5, alpha = 0.1) +
+    facet_wrap(~term, scales = "free_y")
+```
+<br>
+
+(@) **Importe o arquivo woman.xls e salve num objeto chamado `woman`.**
+
+Dicas: ?read_excel, skip.
+
+```{r eval=TRUE, echo=FALSE}
+library(readxl)
+
+woman <- read_excel("input/woman.xls", skip = 3)
+
+woman %>% glimpse()
+```
+<br>
+
+(@) **Reformate a tabela seguindo os conceitos do tidy data.**
+
+```{r eval=TRUE, echo=FALSE}
+wg <- woman %>%
+  gather(key = ano, value = percentual, `1960`:`2018`)
+
+wg
+```
+<br>
+
+(@) **Em que ano começam os registros dessa base de dados? Neste ano, qual o país com maior percentual de mulheres?**
+
+Dica: as.numeric, !, is.na.
+
+```{r eval=TRUE, echo=FALSE}
+wg %>% 
+  mutate(ano = as.numeric(ano)) %>% 
+  filter(!is.na(percentual)) %>% 
+  filter(ano == min(ano)) %>% 
+  filter(percentual == max(percentual)) %>% 
+  select(`Country Name`, ano, percentual)
+
+```
+<br>
+
+(@) **Quais os 10 países com maior percentual de mulheres no parlamento em 2018?**
+
+Dica: as.numeric, top_n, arrange.
+
+```{r eval=TRUE, echo=FALSE}
+wg %>% 
+  mutate(ano = as.numeric(ano)) %>% 
+  filter(ano == "2018") %>% 
+  top_n(10, percentual) %>% 
+  arrange(-percentual) %>% 
+  select(`Country Name`, percentual)
+```
+<br>
+
+(@) **Faça um gráfico de linha mostrando a evolução do percentual médio de mulheres no mundo desde 1997**
+
+```{r eval=TRUE, echo=FALSE}
+wg %>% 
+  mutate(ano = as.numeric(ano)) %>% 
+  filter(ano >= 1997) %>% 
+  group_by(ano) %>% 
+  summarise(media = mean(percentual, na.rm=T)) %>% 
+  ggplot(aes(x = ano, y = media)) +
+  geom_line()
+```
+<br>
+
+(@) **Faça o gráfico anterior somente com dados do Brasil**
+
+```{r eval=TRUE, echo=FALSE}
+wg %>% 
+  mutate(ano = as.numeric(ano)) %>% 
+  filter(ano >= 1997, `Country Name` == "Brazil") %>% 
+  group_by(ano) %>% 
+  summarise(media = mean(percentual, na.rm=T)) %>% 
+  ggplot(aes(x = ano, y = media)) +
+  geom_line()
+```
+<br>
+
+(@) **Consegue juntar estes dois gráficos em um só, com duas linhas?**
+
+Dica: ifelse.
+
+```{r eval=TRUE, echo=FALSE}
+wg %>% 
+  mutate(ano = as.numeric(ano)) %>% 
+  filter(ano >= 1997) %>% 
+  mutate(brasil = ifelse(`Country Name` == "Brazil", "Brasil", "Mundo")) %>% 
+  group_by(ano, brasil) %>% 
+  summarise(media = mean(percentual, na.rm = TRUE)) %>% 
+  ggplot(aes(x = ano, y = media, color = brasil)) +
+    geom_line() +
+    geom_point() +
+    theme_bw()
+```
