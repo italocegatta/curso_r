@@ -1,0 +1,12 @@
+# Curso de 1 dia — R Express {.unnumbered}
+
+**Carga horária:** 8 horas (2 períodos de 4h)  
+**Público:** Iniciantes absolutos que querem um primeiro contato rápido e prático com R  
+
+## Estrutura {.unnumbered}
+
+| | Manhã (4h) | Tarde (4h) |
+|---|-----------|-----------|
+| **Dia 1** | Introdução ao R + Manipulação (dplyr) | Visualização (ggplot2) + Exercícios |
+
+Ao final do dia, você terá importado dados, feito tabelas e criado gráficos. O essencial para começar!

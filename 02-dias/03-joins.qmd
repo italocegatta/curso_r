@@ -1,0 +1,67 @@
+# Joins e Visualização
+
+**Dia 2 — Manhã | 4 horas**
+
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+filmes <- read_csv2("../data/filmes_imdb.csv")
+elenco <- read_csv("../data/elenco.csv")
+inv_florestal <- read_csv("../data/inv_florestal.csv")
+parcelas <- read_csv("../data/parcelas.csv")
+```
+
+## Joins: cruzando tabelas {.unnumbered}
+
+```{r}
+# left_join: adiciona colunas da tabela direita à esquerda
+filmes_com_elenco <- filmes %>% left_join(elenco, by = c("codigo_filme" = "codigo"))
+
+# Anti_join: o que NÃO tem correspondência
+inv_florestal %>% anti_join(parcelas, by = "parcela")
+```
+
+## Visualização com ggplot2 {.unnumbered}
+
+```{r}
+# Dispersão + tendência
+inv_florestal %>% 
+  ggplot(aes(x = dap, y = altura, color = especie)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_color_brewer(palette = "Set1") +
+  labs(title = "Relação hipsométrica", x = "DAP (cm)", y = "Altura (m)") +
+  theme_minimal()
+
+# Facetas
+inv_florestal %>% 
+  ggplot(aes(x = dap, y = altura)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", formula = y ~ log(x), se = FALSE) +
+  facet_wrap(~especie)
+
+# Boxplot
+inv_florestal %>% 
+  ggplot(aes(x = especie, y = volume, fill = especie)) +
+  geom_boxplot() + theme(legend.position = "none")
+
+# Barras — volume por parcela
+inv_florestal %>% group_by(parcela) %>% summarise(v = sum(volume)) %>% 
+  ggplot(aes(x = reorder(factor(parcela), v), y = v)) +
+  geom_col(fill = "#18BC9C") + coord_flip() + labs(x = "Parcela", y = "Volume (m³)")
+```
+
+## Exercícios {.unnumbered}
+
+### Exercício 1
+Faça `left_join` entre `inv_florestal` e `parcelas`. Calcule volume/ha e encontre a parcela mais produtiva.  
+**Resultado esperado:** Parcela 7 com 420 m³/ha.
+
+### Exercício 2
+Crie boxplot de `dap` por `especie` com cores.  
+**Resultado esperado:** Eucalipto com DAP mediano ~20 cm, Pinus ~17 cm.
+
+### Exercício 3
+Plote `dap` × `volume` com `geom_point()` + `geom_smooth()`, cor por espécie.  
+**Resultado esperado:** Curva exponencial — volume cresce com DAP².

@@ -1,0 +1,75 @@
+# Introdução ao R e primeiros dados
+
+**Manhã — Parte 1 | 2 horas**
+
+## O essencial {.unnumbered}
+
+```{r}
+# R como calculadora
+2 + 3; sqrt(81); 2^3
+
+# Atribuição
+nota <- 8.5
+filmes <- c("Matrix", "Interestelar", "Parasita")
+
+# Vetores
+notas <- c(7.5, 8.0, 9.2, 6.8, 8.7)
+mean(notas)  # média
+sum(notas)   # soma
+length(notas) # quantos
+```
+
+## Estruturas de dados {.unnumbered}
+
+```{r}
+# Data frame
+df <- data.frame(
+  titulo = c("Matrix", "Interestelar", "Parasita"),
+  ano = c(1999, 2014, 2019),
+  nota = c(8.7, 8.6, 8.5)
+)
+df
+
+# Fatores
+genero <- factor(c("Ação", "Drama", "Comédia", "Drama", "Ação"))
+table(genero)
+```
+
+## Carregando dados reais {.unnumbered}
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(tidyr)
+library(stringr)
+library(forcats)
+library(purrr)
+library(tibble)
+filmes <- read_csv2("../data/filmes_imdb.csv")
+glimpse(filmes)
+dim(filmes)
+summary(filmes)
+```
+
+## dplyr: seus primeiros verbos {.unnumbered}
+
+```{r}
+# Filtrar
+filmes %>% filter(nota >= 8.5)
+
+# Selecionar
+filmes %>% select(titulo, ano, nota)
+
+# Criar coluna
+filmes %>% mutate(lucro = faturamento - orcamento)
+
+# Ordenar
+filmes %>% arrange(desc(nota)) %>% select(titulo, nota) %>% head(5)
+```
+
+## Exercícios {.unnumbered}
+
+1. Crie um vetor com 5 notas e calcule a média. **Resultado:** `8.4`  
+2. Carregue `filmes_imdb.csv`. Quantas linhas e colunas? **Resultado:** 4826 × 11  
+3. Filtre filmes com nota ≥ 9.0. Quantos? **Resultado:** 18

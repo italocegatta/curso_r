@@ -1,0 +1,304 @@
+# Manipulação avançada e Joins
+
+**Dia 2 — Manhã | 4 horas**
+
+## Objetivos {.unnumbered}
+
+Ao final deste capítulo, você será capaz de:
+
+- Criar colunas condicionais com `case_when()` e `if_else()`
+- Trabalhar com operações de janela (top N, valores defasados)
+- Cruzar tabelas com os diferentes tipos de join
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+filmes <- read_csv2("../data/filmes_imdb.csv")
+inv_florestal <- read_csv("../data/inv_florestal.csv")
+parcelas <- read_csv("../data/parcelas.csv")
+```
+- Transitar entre dados de filmes e dados florestais com as mesmas técnicas
+
+---
+
+## Manipulação condicional
+
+Muitas vezes você precisa criar colunas cujo valor **depende de uma condição**. Para isso usamos `case_when()` (múltiplas condições) e `if_else()` (condição binária).
+
+### `case_when()` — múltiplas condições
+
+```{r}
+# Classificar filmes por faixa de nota
+filmes %>% 
+  mutate(
+    categoria = case_when(
+      nota >= 8.5 ~ "Excelente",
+      nota >= 7.0 ~ "Bom",
+      nota >= 5.0 ~ "Regular",
+      TRUE ~ "Ruim"
+    )
+  ) %>% 
+  count(categoria)
+```
+
+```{r}
+# Mesma lógica aplicada a dados florestais
+inv_florestal %>% 
+  mutate(
+    classe_dap = case_when(
+      dap >= 35 ~ "Grossa",
+      dap >= 15 ~ "Média",
+      TRUE ~ "Fina"
+    )
+  ) %>% 
+  count(classe_dap)
+```
+
+### `if_else()` — condição binária
+
+```{r}
+# Classificar como "Sucesso" se faturamento > orçamento
+filmes %>% 
+  mutate(
+    sucesso = if_else(faturamento > orcamento, "Sim", "Não")
+  ) %>% 
+  count(sucesso)
+```
+
+---
+
+## Operações com janelas
+
+Operações de janela permitem comparar cada linha com outras do mesmo grupo, sem perder os dados originais.
+
+### Top N por grupo
+
+```{r}
+# Top 3 filmes por gênero (por nota)
+filmes %>% 
+  group_by(genero) %>% 
+  slice_max(nota, n = 3) %>% 
+  select(genero, titulo, nota) %>% 
+  arrange(genero, desc(nota))
+```
+
+```{r}
+# 5 árvores com maior DAP em cada parcela (dado florestal)
+inv_florestal %>% 
+  group_by(parcela) %>% 
+  slice_max(dap, n = 5) %>% 
+  select(parcela, especie, dap, altura)
+```
+
+### Valores defasados: `lag()` e `lead()`
+
+```{r}
+# Comparar faturamento entre filmes consecutivos do mesmo diretor
+filmes %>% 
+  group_by(diretor) %>% 
+  arrange(ano) %>% 
+  mutate(
+    faturamento_anterior = lag(faturamento),
+    variacao = faturamento - faturamento_anterior
+  ) %>% 
+  select(diretor, ano, titulo, faturamento, faturamento_anterior, variacao) %>% 
+  filter(!is.na(variacao))
+```
+
+### Operações cumulativas
+
+```{r}
+# Soma cumulativa de faturamento por ano
+filmes %>% 
+  group_by(ano) %>% 
+  arrange(faturamento) %>% 
+  mutate(
+    faturamento_cumulativo = cumsum(faturamento)
+  ) %>% 
+  select(ano, titulo, faturamento, faturamento_cumulativo)
+```
+
+```{r}
+# Volume acumulado por parcela (dado florestal)
+inv_florestal %>% 
+  group_by(parcela) %>% 
+  mutate(volume_cumulativo = cumsum(volume)) %>% 
+  select(parcela, especie, volume, volume_cumulativo)
+```
+
+---
+
+## Trabalhando com múltiplas tabelas: Joins
+
+Na vida real, os dados raramente estão em uma única tabela. Informações complementares ficam em tabelas separadas que precisam ser **cruzadas**.
+
+### Os tipos de join
+
+```
+left_join()   → Mantém TODAS as linhas da tabela da esquerda
+inner_join()  → Mantém APENAS linhas com correspondência nas duas
+full_join()   → Mantém TODAS as linhas de ambas
+anti_join()   → Mostra o que NÃO tem correspondência (diagnóstico)
+```
+
+### Exemplo prático: filmes + elenco
+
+```{r}
+# Carregar tabelas separadas
+elenco <- read_csv("../data/elenco.csv")
+
+# left_join: adicionar informações do elenco aos filmes
+filmes_com_elenco <- filmes %>% 
+  left_join(elenco, by = c("codigo_filme" = "codigo"))
+
+glimpse(filmes_com_elenco)
+```
+
+### Exemplo florestal: inventário + cadastro
+
+```{r}
+# Dados de árvores (inv_florestal) + informações das parcelas (parcelas)
+parcelas <- read_csv("../data/parcelas.csv")
+
+inv_completo <- inv_florestal %>% 
+  left_join(parcelas, by = "parcela")
+
+glimpse(inv_completo)
+```
+
+```{r}
+# Agora podemos calcular volume por hectare!
+inv_completo %>% 
+  group_by(parcela, idade, sitio) %>% 
+  summarise(
+    volume_total = sum(volume),
+    area_ha = first(area_parcela) / 10000,
+    volume_ha = volume_total / area_ha
+  ) %>% 
+  arrange(desc(volume_ha))
+```
+
+### Diagnóstico com `anti_join()`
+
+```{r}
+# Parcelas que estão no inventário mas NÃO no cadastro
+inv_florestal %>% 
+  anti_join(parcelas, by = "parcela") %>% 
+  distinct(parcela)
+
+# Parcelas no cadastro mas SEM árvores no inventário
+parcelas %>% 
+  anti_join(inv_florestal, by = "parcela")
+```
+
+### `bind_rows()` — Empilhando tabelas
+
+```{r}
+# Simulando inventários de anos diferentes
+inv_2022 <- inv_florestal %>% mutate(ano_medicao = 2022)
+inv_2023 <- inv_florestal %>% mutate(ano_medicao = 2023, dap = dap + rnorm(n(), 2, 1))
+
+inv_historico <- bind_rows(inv_2022, inv_2023)
+
+inv_historico %>% 
+  group_by(ano_medicao) %>% 
+  summarise(dap_medio = mean(dap))
+```
+
+---
+
+## Transição: de filmes para floresta
+
+A beleza do que você aprendeu é que as **mesmas técnicas** se aplicam a qualquer domínio. Compare:
+
+```{r}
+# Análise com filmes
+filmes %>% 
+  group_by(genero) %>% 
+  summarise(media = mean(nota), n = n()) %>% 
+  arrange(desc(media))
+```
+
+```{r}
+# Mesma análise com dados florestais
+inv_florestal %>% 
+  group_by(especie) %>% 
+  summarise(media_dap = mean(dap), n = n()) %>% 
+  arrange(desc(media_dap))
+```
+
+A estrutura é idêntica. Só mudam os nomes das colunas e o contexto!
+
+---
+
+## Exercícios
+
+### Exercício 1
+
+Usando `case_when()`, classifique as árvores do `inv_florestal` em classes de DAP: "Fina" (< 15 cm), "Média" (15-25 cm), "Grossa" (> 25 cm). Conte quantas árvores em cada classe.
+
+**Resultado esperado:**
+```
+# A tibble: 3 × 2
+  classe_dap     n
+  <chr>      <int>
+1 Grossa        96
+2 Média        401
+3 Fina         495
+```
+
+### Exercício 2
+
+Usando `slice_max()`, encontre as 3 maiores árvores (por DAP) de cada espécie.
+
+**Resultado esperado:**
+```
+# A tibble: 9 × 3
+  especie    dap altura
+  <chr>    <dbl>  <dbl>
+1 Eucalipto  42.3   32.1
+2 Eucalipto  41.8   31.5
+3 Eucalipto  40.2   30.8
+4 Pinus      38.7   28.4
+5 Pinus      37.2   27.8
+6 Pinus      36.5   27.1
+# … with 3 more rows
+```
+
+### Exercício 3
+
+Faça um `left_join` entre `inv_florestal` e `parcelas`. Agrupe por `parcela` e calcule: volume total, área em hectares, volume por hectare.
+
+**Resultado esperado (top 3 parcelas):**
+```
+# A tibble: 30 × 5
+   parcela volume_total area_ha volume_ha
+     <dbl>        <dbl>   <dbl>     <dbl>
+ 1       7        25.2    0.06      420. 
+ 2       2        24.3    0.06      405. 
+ 3      30        23.8    0.06      397. 
+```
+
+### Exercício 4
+
+Calcule o IMA (Incremento Médio Anual) = volume_ha / idade para cada parcela. Ordene do maior para o menor.
+
+**Resultado esperado (top 3):**
+```
+# A tibble: 30 × 4
+  parcela volume_ha idade   IMA
+    <dbl>     <dbl> <dbl> <dbl>
+1       7      420.     5  84.1
+2      12      395.     5  79.1
+3      15      389.     7  55.6
+```
+
+### Exercício 5
+
+Use `anti_join()` para verificar se há alguma parcela no `inv_florestal` que não existe no cadastro de `parcelas`.
+
+**Resultado esperado:**
+```
+# A tibble: 0 × 1
+# … with 1 variable: parcela
+```
+*(Zero linhas = tudo certo, todas as parcelas têm cadastro.)*

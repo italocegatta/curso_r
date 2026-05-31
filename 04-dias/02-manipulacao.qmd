@@ -1,0 +1,437 @@
+# Manipulação de dados com dplyr
+
+**Dia 1 — Tarde | 4 horas**
+
+## Objetivos {.unnumbered}
+
+Ao final deste capítulo, você será capaz de:
+
+- Importar dados de arquivos CSV
+- Filtrar, selecionar, transformar e resumir dados com `dplyr`
+- Usar o pipe (`%>%`) para encadear operações
+- Criar seus primeiros gráficos com `ggplot2`
+
+---
+
+## Importando dados
+
+Tudo começa com a importação. O pacote `readr` (parte do `tidyverse`) oferece funções rápidas e consistentes para ler arquivos:
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(tidyr)
+library(stringr)
+library(forcats)
+library(purrr)
+library(tibble)
+
+# CSV com vírgula como separador (padrão americano)
+filmes <- read_csv2("../data/filmes_imdb.csv")
+
+# Se o arquivo usar ponto-e-vírgula (comum no Brasil)
+# filmes <- read_csv2("../data/filmes_imdb.csv")
+```
+
+```{r}
+glimpse(filmes)
+```
+
+Temos 4826 filmes com 11 colunas: título, ano, nota, orçamento, faturamento, gênero, diretor, duração, etc.
+
+---
+
+## O pipe: `%>%`
+
+O pipe (`%>%`) é o encadeamento de operações. Em vez de aninhar funções ou criar objetos intermediários, você conecta os passos com `%>%`:
+
+```{r}
+# Sem pipe (difícil de ler):
+head(arrange(summarise(group_by(filter(filmes, ano > 2000), genero), nota_media = mean(nota)), desc(nota_media)), 5)
+
+# Com pipe (leitura natural, da esquerda para a direita):
+filmes %>% 
+  filter(ano > 2000) %>% 
+  group_by(genero) %>% 
+  summarise(nota_media = mean(nota)) %>% 
+  arrange(desc(nota_media)) %>% 
+  head(5)
+```
+
+::: {.callout-tip}
+## Atalho do pipe
+
+`Ctrl + Shift + M` (Windows/Linux) ou `Cmd + Shift + M` (Mac). Grave esse atalho — você vai usá-lo centenas de vezes por dia!
+:::
+
+---
+
+## Os 6 verbos do dplyr
+
+O `dplyr` é baseado em seis funções principais (verbos) que cobrem a maioria das operações com tabelas:
+
+| Verbo | O que faz | Equivalente mental |
+|-------|-----------|-------------------|
+| `filter()` | Filtra **linhas** | "Quero só esses..." |
+| `select()` | Seleciona **colunas** | "Só me interessa..." |
+| `mutate()` | Cria/modifica **colunas** | "Calcula pra mim..." |
+| `arrange()` | **Ordena** linhas | "Organiza por..." |
+| `summarise()` | **Resume** em um número | "Resume isso..." |
+| `group_by()` | **Agrupa** para operações | "Para cada..." |
+
+---
+
+### `filter()` — Filtrar linhas
+
+Filtra linhas com base em condições lógicas:
+
+```{r}
+# Filmes com nota maior ou igual a 9.0
+filmes %>% 
+  filter(nota >= 9.0)
+
+# Filmes de ação com nota acima de 8.0
+filmes %>% 
+  filter(genero == "Ação", nota > 8.0)
+
+# Filmes de 2010 ou mais recentes, com orçamento acima de 100 milhões
+filmes %>% 
+  filter(ano >= 2010, orcamento > 100000000)
+```
+
+**Operadores úteis no `filter()`:**
+
+```{r}
+# Igual a          ==
+# Diferente de     !=
+# Maior / Menor    >   <   >=   <=
+# Está na lista    %in% c("A", "B")
+# E                &
+# OU               |
+# Negação          !
+```
+
+```{r}
+# Filmes de Drama OU Comédia
+filmes %>% 
+  filter(genero %in% c("Drama", "Comédia")) %>% 
+  count(genero, sort = TRUE)
+
+# Filmes com nota >= 8.0 E ano > 2010
+filmes %>% 
+  filter(nota >= 8.0, ano > 2010)
+```
+
+---
+
+### `select()` — Selecionar colunas
+
+```{r}
+# Selecionar colunas por nome
+filmes %>% 
+  select(titulo, ano, nota)
+
+# Selecionar um intervalo de colunas
+filmes %>% 
+  select(titulo:nota)
+
+# Remover colunas com -
+filmes %>% 
+  select(-codigo_filme, -diretor)
+
+# Selecionar por padrão no nome
+filmes %>% 
+  select(starts_with("cod"))
+
+filmes %>% 
+  select(contains("mento"))
+```
+
+---
+
+### `mutate()` — Criar ou modificar colunas
+
+A função `mutate()` calcula novas colunas a partir das existentes:
+
+```{r}
+filmes %>% 
+  mutate(
+    lucro = faturamento - orcamento,
+    lucro_milhoes = lucro / 1000000,
+    duracao_horas = duracao / 60
+  ) %>% 
+  select(titulo, orcamento, faturamento, lucro_milhoes, duracao_horas)
+```
+
+```{r}
+# Qual o filme mais lucrativo?
+filmes %>% 
+  mutate(lucro = faturamento - orcamento) %>% 
+  arrange(desc(lucro)) %>% 
+  select(titulo, lucro) %>% 
+  head(5)
+```
+
+```{r}
+# Nota padronizada (z-score) por filme
+filmes %>% 
+  mutate(nota_z = (nota - mean(nota)) / sd(nota)) %>% 
+  select(titulo, nota, nota_z) %>% 
+  arrange(desc(nota_z)) %>% 
+  head(5)
+```
+
+---
+
+### `arrange()` — Ordenar
+
+```{r}
+# Ordenar por nota (crescente)
+filmes %>% 
+  arrange(nota) %>% 
+  select(titulo, nota) %>% 
+  head(5)
+
+# Ordenar por nota (decrescente)
+filmes %>% 
+  arrange(desc(nota)) %>% 
+  select(titulo, nota) %>% 
+  head(5)
+```
+
+```{r}
+# Ordenar por gênero e depois por nota (decrescente)
+filmes %>% 
+  arrange(genero, desc(nota)) %>% 
+  select(genero, titulo, nota) %>% 
+  head(10)
+```
+
+---
+
+### `summarise()` e `group_by()` — Resumir e agrupar
+
+Juntos, `group_by()` e `summarise()` são a dupla mais poderosa do dplyr:
+
+```{r}
+# Nota média geral
+filmes %>% 
+  summarise(
+    nota_media = mean(nota),
+    nota_desvio = sd(nota),
+    nota_min = min(nota),
+    nota_max = max(nota),
+    n = n()
+  )
+```
+
+```{r}
+# Nota média por gênero
+filmes %>% 
+  group_by(genero) %>% 
+  summarise(
+    nota_media = mean(nota),
+    n = n()
+  ) %>% 
+  arrange(desc(nota_media))
+```
+
+```{r}
+# Orçamento médio por ano (apenas anos com 5+ filmes)
+filmes %>% 
+  group_by(ano) %>% 
+  summarise(
+    orcamento_medio = mean(orcamento, na.rm = TRUE),
+    n = n()
+  ) %>% 
+  filter(n >= 5) %>% 
+  arrange(desc(orcamento_medio)) %>% 
+  head(10)
+```
+
+---
+
+### `count()` — Atalho para frequência
+
+```{r}
+# Gêneros mais frequentes
+filmes %>% 
+  count(genero, sort = TRUE)
+
+# Diretores mais prolíficos
+filmes %>% 
+  count(diretor, sort = TRUE) %>% 
+  head(10)
+```
+
+---
+
+## 🎬 Seus primeiros gráficos com ggplot2
+
+E se eu te disser que você já pode criar gráficos profissionais **hoje**? Não precisa de teoria complicada — é só seguir uma receita simples.
+
+A estrutura básica de qualquer gráfico no ggplot2 é:
+
+```
+ggplot(dados, aes(x = coluna_x, y = coluna_y)) +
+  geom_tipo()
+```
+
+Vamos criar 4 gráficos essenciais com os dados de filmes:
+
+### Histograma — distribuição das notas
+
+```{r}
+filmes %>% 
+  ggplot(aes(x = nota)) +
+  geom_histogram(bins = 30, fill = "#18BC9C", color = "white")
+```
+
+Cada barra mostra quantos filmes têm nota naquele intervalo. A distribuição é aproximadamente simétrica, centrada em torno de 6.
+
+### Dispersão — orçamento × faturamento
+
+```{r}
+filmes %>% 
+  ggplot(aes(x = orcamento, y = faturamento)) +
+  geom_point(alpha = 0.3, color = "#2C3E50") +
+  geom_smooth(method = "lm", se = FALSE, color = "#E74C3C")
+```
+
+Cada ponto é um filme. A linha vermelha mostra a tendência: quanto maior o orçamento, maior o faturamento — em média.
+
+### Barras — top 10 gêneros
+
+```{r}
+filmes %>% 
+  count(genero, sort = TRUE) %>% 
+  head(10) %>% 
+  ggplot(aes(x = reorder(genero, n), y = n)) +
+  geom_col(fill = "#18BC9C") +
+  coord_flip() +
+  labs(x = NULL, y = "Número de filmes")
+```
+
+### Boxplot — nota por gênero
+
+```{r}
+filmes %>% 
+  filter(genero %in% c("Ação", "Comédia", "Drama", "Ficção científica", "Terror")) %>% 
+  ggplot(aes(x = genero, y = nota, fill = genero)) +
+  geom_boxplot() +
+  labs(x = NULL, y = "Nota IMDB") +
+  theme(legend.position = "none")
+```
+
+::: {.callout-tip}
+## Você acaba de fazer análise exploratória!
+
+Em menos de 10 linhas de código você filtrou, agrupou, resumiu e visualizou dados. Isso é o poder do R + tidyverse. O resto do curso é aprofundamento dessas mesmas ferramentas.
+:::
+
+---
+
+## Exercícios
+
+::: {.callout-note}
+## Importante
+
+Em todos os exercícios, carregue o dataset com:  
+`filmes <- read_csv2("../data/filmes_imdb.csv")`
+:::
+
+### Exercício 1
+
+Filtre os filmes com nota maior ou igual a 8.5. Quantos filmes atendem a esse critério?
+
+**Resultado esperado:**
+```
+# A tibble: 1 × 1
+      n
+  <int>
+1   103
+```
+
+### Exercício 2
+
+Crie uma coluna `lucro = faturamento - orcamento` e encontre os 5 filmes mais lucrativos.
+
+**Resultado esperado:**
+```
+# A tibble: 5 × 2
+  titulo                        lucro
+  <chr>                         <dbl>
+1 The story of cap and trade 48699922
+2 Sholay                     18599922
+3 Ram Teri Ganga Maili       12599881
+4 ET                          8999901
+5 Black Friday                1999989
+```
+
+### Exercício 3
+
+Calcule a nota média e o número de filmes por gênero. Ordene da maior para a menor nota média.
+
+**Resultado esperado:**
+```
+# A tibble: 19 × 3
+   genero          nota_media     n
+   <chr>                <dbl> <int>
+ 1 Documentário          6.84    70
+ 2 Guerra                6.75    19
+ 3 História              6.73    21
+ 4 Drama                 6.56   964
+ 5 Musical               6.56    13
+ 6 Biografia             6.54    90
+ 7 Crime                 6.49   308
+ 8 Mistério              6.43    90
+ 9 Esporte               6.42     5
+10 Aventura              6.42    80
+# … with 9 more rows
+```
+
+### Exercício 4
+
+Crie um histograma da coluna `duracao` (duração dos filmes em minutos). Use 40 bins.
+
+**Resultado esperado:**
+
+*Um histograma com pico em torno de 90-100 minutos, distribuição assimétrica à direita.*
+
+### Exercício 5
+
+Crie um gráfico de dispersão com `orcamento` no eixo x, `nota` no eixo y. Existe relação visível?
+
+**Resultado esperado:**
+
+*Nuvem de pontos sem padrão claro — orçamento não determina a qualidade do filme.*
+
+### Exercício 6
+
+Crie um gráfico de barras com os 10 diretores que mais aparecem no dataset.
+
+**Resultado esperado:**
+
+*Gráfico de barras horizontal com Woody Allen no topo, seguido por Steven Spielberg, Clint Eastwood, etc.*
+
+### Exercício 7 (Desafio)
+
+Combine `filter()`, `mutate()`, `group_by()` e `summarise()` para responder: qual gênero tem o maior orçamento médio entre filmes com nota ≥ 7.0?
+
+**Resultado esperado:**
+```
+# A tibble: 10 × 3
+   genero          orcamento_medio     n
+   <chr>                     <dbl> <int>
+ 1 Aventura              22980338.     9
+ 2 Animação              19091918.     9
+ 3 Fantasia              16110251.     4
+ 4 Ação                  15915052.    37
+ 5 Ficção científica     14880336.    21
+ 6 Guerra                11377778.     2
+ 7 Drama                 11075548.    91
+ 8 Comédia                9832855.    46
+ 9 Romance                9465063.    10
+10 Thriller               9416381.    12
+```

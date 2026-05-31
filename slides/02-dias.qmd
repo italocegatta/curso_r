@@ -1,0 +1,73 @@
+---
+title: "R Fundamentos — 2 dias"
+format: revealjs
+---
+
+## R Fundamentos {background-color="#18BC9C"}
+
+Análise de dados do início ao fim em 16 horas
+
+Ítalo Cegatta
+
+---
+
+## Dia 1 — Manhã
+
+**Introdução ao R e RStudio**
+
+```r
+# Vetores, data frames, fatores
+filmes <- read_csv2("../data/filmes_imdb.csv")
+glimpse(filmes)
+summary(filmes)
+```
+
+---
+
+## Dia 1 — Tarde
+
+**dplyr — os 6 verbos**
+
+```r
+filmes %>% 
+  filter(nota >= 8.0) %>% 
+  group_by(genero) %>% 
+  summarise(nota_media = mean(nota)) %>% 
+  arrange(desc(nota_media))
+```
+
+E seus primeiros gráficos: histograma, dispersão, barras, boxplot.
+
+---
+
+## Dia 2 — Manhã
+
+**Joins + Visualização**
+
+```r
+# Cruzar tabelas
+inv_completo <- inv_florestal %>% left_join(parcelas, by = "parcela")
+
+# Gráficos profissionais
+ggplot(dados, aes(x = dap, y = altura, color = especie)) +
+  geom_point() + geom_smooth(method = "lm") +
+  scale_color_brewer(palette = "Set1") + theme_minimal()
+```
+
+---
+
+## Dia 2 — Tarde
+
+**Exercícios integrados**
+
+- Dashboard florestal com patchwork
+- Volume por hectare
+- Relação hipsométrica por espécie
+- Exportação em alta resolução
+
+---
+
+## Obrigado! {background-color="#2C3E50"}
+
+📖 Livro completo em: `curso_r_v2`  
+🎬 Continue explorando!

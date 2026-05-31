@@ -1,18 +1,33 @@
-set.seed(3005)
-options(digits = 7, scipen = 10000)
+# _util.R — Configuração executada antes de cada capítulo
 
+# User library path
+.libPaths(c("/home/italo/R/library", .libPaths()))
+
+# Pacotes
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(tidyr)
+library(stringr)
+library(forcats)
+library(purrr)
+library(tibble)
+library(readxl)
+library(lubridate)
+library(broom)
+library(patchwork)
+library(scales)
+# gt installed separately if available
+tryCatch(library(gt), error = function(e) NULL)
+
+# Tema padrão para todos os gráficos
+theme_set(theme_minimal(base_size = 12))
+
+# Opções do knitr
 knitr::opts_chunk$set(
-  comment = "#>",
   collapse = TRUE,
-  cache = TRUE,
-  eval = FALSE,
-  message = FALSE, 
-  warning = FALSE
-  # out.width = "70%",
-  # fig.align = 'center',
-  # fig.width = 6,
-  # fig.asp = 0.618,  # 1 / phi
-  # fig.show = "hold"
+  fig.width = 8,
+  fig.height = 5,
+  fig.align = "center",
+  dpi = 150
 )
-
-zip::zipr("input/dataset.zip", list.files("input", "csv|xlsx", full.names = TRUE))

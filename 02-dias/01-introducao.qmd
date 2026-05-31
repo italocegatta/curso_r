@@ -1,0 +1,85 @@
+# Introdução ao R e RStudio
+
+**Dia 1 — Manhã | 4 horas**
+
+Este capítulo condensa o essencial para começar: o que é R, como instalar, estruturas de dados e primeiros passos no console.
+
+## O que é o R? {.unnumbered}
+
+O R é uma linguagem de programação gratuita para computação estatística e gráficos, mantida pelo R-core team. Com mais de 20.000 pacotes, é uma das ferramentas mais usadas no mundo para análise de dados.
+
+**Por que R?** Gratuito, comunidade enorme, scripts reprodutíveis, gráficos profissionais.
+
+## Instalação {.unnumbered}
+
+1. Instale o **R** em [cran.r-project.org](https://cran.r-project.org/)
+2. Instale o **RStudio** em [posit.co/download/rstudio-desktop](https://posit.co/download/rstudio-desktop/)
+
+::: {.callout-warning}
+Instale o R **primeiro**, depois o RStudio.
+:::
+
+## Primeiros passos {.unnumbered}
+
+```{r}
+# Calculadora
+2 + 3
+sqrt(81)
+
+# Atribuição
+nota <- 8.5
+titulo <- "O Poderoso Chefão"
+
+# Vetores
+notas <- c(7.5, 8.0, 9.2, 6.8, 8.7)
+mean(notas)
+sum(notas)
+length(notas)
+```
+
+## Estruturas de dados {.unnumbered}
+
+```{r}
+# Fatores
+genero <- factor(c("Ação", "Drama", "Comédia", "Drama", "Ação"))
+table(genero)
+
+# Data frame
+df <- data.frame(
+  titulo = c("Matrix", "Interestelar", "Parasita"),
+  ano = c(1999, 2014, 2019),
+  nota = c(8.7, 8.6, 8.5)
+)
+df
+```
+
+```{r}
+# Inspecionar dados
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(tidyr)
+library(stringr)
+library(forcats)
+library(purrr)
+library(tibble)
+filmes <- read_csv2("../data/filmes_imdb.csv")
+glimpse(filmes)
+head(filmes, 5)
+summary(filmes)
+dim(filmes)
+```
+
+## Exercícios {.unnumbered}
+
+### Exercício 1
+
+Crie um vetor com notas de 5 filmes e calcule a média.
+
+**Resultado esperado:** `[1] 8.4`
+
+### Exercício 2
+
+Carregue `filmes_imdb.csv`. Quantas linhas e colunas? Qual a nota média?
+
+**Resultado esperado:** `[1] 4826   11` e `[1] 6.37`

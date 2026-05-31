@@ -1,0 +1,38 @@
+/*-- scss:defaults --*/
+$primary: #18BC9C;
+$link-color: #0f7864;
+
+/*-- scss:rules --*/
+h1, h2, h3, h4 {
+  color: #2C3E50;
+}
+
+h1 {
+  border-bottom: 3px solid #18BC9C;
+  padding-bottom: 0.3em;
+}
+
+.callout-tip {
+  border-left-color: #18BC9C;
+}
+
+.callout-warning {
+  border-left-color: #E74C3C;
+}
+
+.callout-important {
+  border-left-color: #8E44AD;
+}
+
+pre.sourceCode {
+  border-radius: 6px;
+}
+
+table {
+  font-size: 0.9em;
+}
+
+.sidebar-title {
+  font-weight: bold;
+  color: #2C3E50;
+}

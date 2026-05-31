@@ -1,0 +1,146 @@
+---
+title: "R Completo — 4 dias"
+format: revealjs
+---
+
+## R Completo {background-color="#18BC9C"}
+
+Do zero ao relatório técnico em 32 horas
+
+Ítalo Cegatta
+
+---
+
+## Dia 1 — Manhã
+
+**Introdução ao R e RStudio**
+
+```r
+# Vetores
+notas <- c(7.5, 8.0, 9.2, 6.8, 8.7)
+mean(notas)
+
+# Data frames
+filmes <- read_csv2("../data/filmes_imdb.csv")
+glimpse(filmes)
+```
+
+---
+
+## Dia 1 — Tarde
+
+**dplyr + primeiros gráficos 🎬**
+
+```r
+filmes %>% 
+  filter(nota >= 8.0) %>% 
+  group_by(genero) %>% 
+  summarise(nota_media = mean(nota), n = n()) %>% 
+  arrange(desc(nota_media))
+
+# Gráficos em 2-3 linhas
+filmes %>% ggplot(aes(nota)) + geom_histogram()
+filmes %>% ggplot(aes(orcamento, faturamento)) + geom_point()
+```
+
+---
+
+## Dia 2 — Manhã
+
+**dplyr avançado + Joins**
+
+```r
+# case_when, slice_max, lag
+filmes %>% 
+  mutate(categoria = case_when(nota >= 8.5 ~ "Excelente", ...))
+
+# Joins
+inv_completo <- inv_florestal %>% left_join(parcelas, by = "parcela")
+```
+
+---
+
+## Dia 2 — Tarde
+
+**Visualização profissional com ggplot2**
+
+```r
+ggplot(dados, aes(x = dap, y = altura, color = especie)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm") +
+  scale_color_brewer(palette = "Set1") +
+  labs(title = "Relação hipsométrica") +
+  theme_minimal()
+```
+
+---
+
+## Dia 3 — Manhã
+
+**Strings, Fatores e Datas**
+
+```r
+# stringr
+str_detect(especie, "Eucalyptus")
+str_replace(especie, "Eucalyptus", "E.")
+
+# lubridate
+dmy("15/03/2023")
+interval(data_plantio, data_medicao) / years(1)
+```
+
+---
+
+## Dia 3 — Tarde
+
+**Tidy Data + Importação múltipla**
+
+```r
+# pivot_longer, pivot_wider
+inv_largo %>% pivot_longer(starts_with("dap_"))
+
+# Múltiplas abas Excel
+abas <- excel_sheets("talhoes.xlsx")
+map_dfr(abas, ~ read_excel("talhoes.xlsx", sheet = .x))
+```
+
+---
+
+## Dia 4 — Manhã
+
+**Iteração e Funções**
+
+```r
+# Função própria
+area_basal <- function(dap) { pi * (dap/200)^2 }
+
+# purrr
+modelos <- inv_florestal %>% 
+  group_by(especie) %>% nest() %>% 
+  mutate(modelo = map(data, ~ lm(altura ~ log(dap), data = .x)))
+```
+
+---
+
+## Dia 4 — Tarde
+
+**Modelagem + Projeto final**
+
+```r
+# Regressão
+lm(altura ~ log(dap), data = inv_florestal)
+
+# ANOVA
+aov(volume ~ especie, data = inv_florestal)
+TukeyHSD(...)
+
+# Projeto: relatório de inventário completo
+```
+
+---
+
+## Obrigado! {background-color="#2C3E50"}
+
+📖 Livro: `curso_r_v2`  
+🎬 Slides: `curso_r_v2/slides`  
+🌲 Continue praticando!

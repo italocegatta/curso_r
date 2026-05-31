@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ítalo Cegatta">
-<meta name="dcterms.date" content="2025-12-31">
 
-<title>Curso R para Análise de Dados</title>
+<title>Exercícios integrados – Curso R para Análise de Dados</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,24 +26,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./04-dias/index.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a22868fb5c0b8f11f607eafe004b7382.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../01-dia/index.html" rel="next">
+<link href="../02-dias/04-visualizacao.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a22868fb5c0b8f11f607eafe004b7382.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -86,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Curso R para Análise de Dados</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02-dias/index.html">Curso de 2 dias — R Fundamentos</a></li><li class="breadcrumb-item"><a href="../02-dias/05-exercicios.html"><span class="chapter-title">Exercícios integrados</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -101,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Curso R para Análise de Dados</a> 
+      <a href="../">Curso R para Análise de Dados</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -113,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Curso R para Análise de Dados</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Curso R para Análise de Dados</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -127,48 +126,48 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-dias/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../04-dias/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Curso de 4 dias — R Completo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-dias/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e RStudio</span></a>
+  <a href="../04-dias/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e RStudio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-dias/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
+  <a href="../04-dias/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-dias/03-manipulacao-avancada.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação avançada e Joins</span></a>
+  <a href="../04-dias/03-manipulacao-avancada.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação avançada e Joins</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-dias/04-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados com ggplot2</span></a>
+  <a href="../04-dias/04-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados com ggplot2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-dias/05-strings-fatores-datas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strings, Fatores e Datas</span></a>
+  <a href="../04-dias/05-strings-fatores-datas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strings, Fatores e Datas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-dias/06-tidy-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Tidy Data e Importação Avançada</span></a>
+  <a href="../04-dias/06-tidy-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Tidy Data e Importação Avançada</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-dias/07-iteracao-funcoes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Iteração e Funções</span></a>
+  <a href="../04-dias/07-iteracao-funcoes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Iteração e Funções</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-dias/08-modelagem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modelagem Estatística e Projeto Final</span></a>
+  <a href="../04-dias/08-modelagem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modelagem Estatística e Projeto Final</span></a>
   </div>
 </li>
       </ul>
@@ -184,33 +183,33 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-dias/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../02-dias/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Curso de 2 dias — R Fundamentos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-dias/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e RStudio</span></a>
+  <a href="../02-dias/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e RStudio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-dias/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
+  <a href="../02-dias/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-dias/03-joins.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Joins e Visualização</span></a>
+  <a href="../02-dias/03-joins.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Joins e Visualização</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-dias/04-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados — aprofundamento</span></a>
+  <a href="../02-dias/04-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados — aprofundamento</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-dias/05-exercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exercícios integrados</span></a>
+  <a href="../02-dias/05-exercicios.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Exercícios integrados</span></a>
   </div>
 </li>
       </ul>
@@ -226,23 +225,23 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-dia/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../01-dia/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Curso de 1 dia — R Express</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-dia/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e primeiros dados</span></a>
+  <a href="../01-dia/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e primeiros dados</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-dia/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
+  <a href="../01-dia/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-dia/03-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados e Exercícios</span></a>
+  <a href="../01-dia/03-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados e Exercícios</span></a>
   </div>
 </li>
       </ul>
@@ -257,45 +256,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bem-vindoa" id="toc-bem-vindoa" class="nav-link active" data-scroll-target="#bem-vindoa">Bem-vindo(a)</a>
-  <ul class="collapse">
-  <li><a href="#para-quem-é-este-livro" id="toc-para-quem-é-este-livro" class="nav-link" data-scroll-target="#para-quem-é-este-livro">Para quem é este livro?</a></li>
-  <li><a href="#como-está-organizado" id="toc-como-está-organizado" class="nav-link" data-scroll-target="#como-está-organizado">Como está organizado?</a></li>
-  <li><a href="#o-que-você-vai-aprender" id="toc-o-que-você-vai-aprender" class="nav-link" data-scroll-target="#o-que-você-vai-aprender">O que você vai aprender?</a></li>
-  <li><a href="#pré-requisitos" id="toc-pré-requisitos" class="nav-link" data-scroll-target="#pré-requisitos">Pré-requisitos</a></li>
-  <li><a href="#como-usar-este-livro" id="toc-como-usar-este-livro" class="nav-link" data-scroll-target="#como-usar-este-livro">Como usar este livro?</a></li>
-  <li><a href="#dados-utilizados" id="toc-dados-utilizados" class="nav-link" data-scroll-target="#dados-utilizados">Dados utilizados</a></li>
-  <li><a href="#licença" id="toc-licença" class="nav-link" data-scroll-target="#licença">Licença</a></li>
-  </ul></li>
+  <li><a href="#instruções" id="toc-instruções" class="nav-link active" data-scroll-target="#instruções">Instruções</a></li>
+  <li><a href="#exercício-1-explorando-o-dataset" id="toc-exercício-1-explorando-o-dataset" class="nav-link" data-scroll-target="#exercício-1-explorando-o-dataset">Exercício 1 — Explorando o dataset</a></li>
+  <li><a href="#exercício-2-visualização" id="toc-exercício-2-visualização" class="nav-link" data-scroll-target="#exercício-2-visualização">Exercício 2 — Visualização</a></li>
+  <li><a href="#exercício-3-análise-por-gênero-filmes" id="toc-exercício-3-análise-por-gênero-filmes" class="nav-link" data-scroll-target="#exercício-3-análise-por-gênero-filmes">Exercício 3 — Análise por gênero (filmes)</a></li>
+  <li><a href="#exercício-4-desafio-final" id="toc-exercício-4-desafio-final" class="nav-link" data-scroll-target="#exercício-4-desafio-final">Exercício 4 — Desafio final</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02-dias/index.html">Curso de 2 dias — R Fundamentos</a></li><li class="breadcrumb-item"><a href="../02-dias/05-exercicios.html"><span class="chapter-title">Exercícios integrados</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Curso R para Análise de Dados</h1>
-<p class="subtitle lead">Do zero ao relatório técnico em 4 dias</p>
+<h1 class="title"><span class="chapter-title">Exercícios integrados</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ítalo Cegatta </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 31, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -305,114 +286,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="bem-vindoa" class="level1 unnumbered">
-<h1 class="unnumbered">Bem-vindo(a)</h1>
-<p>Este livro reúne o material completo de três cursos de introdução ao R para análise de dados. O conteúdo parte do zero — você não precisa saber programar — e avança até a produção de análises completas com modelagem estatística.</p>
-<section id="para-quem-é-este-livro" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="para-quem-é-este-livro">Para quem é este livro?</h2>
-<p>Profissionais que desejam aprender R para processar, visualizar e modelar dados. O conteúdo é voltado para a área florestal, mas as técnicas se aplicam a qualquer domínio.</p>
+<p><strong>Dia 2 — Tarde (parte 2) | 2 horas</strong></p>
+<p>Este capítulo consolida o aprendizado do curso de 2 dias com exercícios práticos que integram todas as técnicas.</p>
+<section id="instruções" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="instruções">Instruções</h2>
+<p>Cada exercício mostra o <strong>resultado esperado</strong>. Escreva o código e confira se sua solução produz o mesmo resultado.</p>
+<hr>
 </section>
-<section id="como-está-organizado" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="como-está-organizado">Como está organizado?</h2>
-<p>O livro contém <strong>três cursos</strong>, do mais curto ao mais completo. Escolha o que melhor se encaixa no seu objetivo:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 37%">
-<col style="width: 27%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Curso</th>
-<th style="text-align: center;">Carga horária</th>
-<th style="text-align: center;">Períodos</th>
-<th>Foco</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>☀️ R Express</strong></td>
-<td style="text-align: center;">1 dia (8h)</td>
-<td style="text-align: center;">3 capítulos</td>
-<td>Essencial para começar a usar R</td>
-</tr>
-<tr class="even">
-<td><strong>🌤️ R Fundamentos</strong></td>
-<td style="text-align: center;">2 dias (16h)</td>
-<td style="text-align: center;">5 capítulos</td>
-<td>Análise de dados do início ao fim</td>
-</tr>
-<tr class="odd">
-<td><strong>🌞 R Completo</strong></td>
-<td style="text-align: center;">4 dias (32h)</td>
-<td style="text-align: center;">8 capítulos</td>
-<td>Domínio completo — da importação à modelagem</td>
-</tr>
-</tbody>
-</table>
-<p>Todos os cursos compartilham a mesma base. O curso de 4 dias é o mais completo. O de 2 dias condensa os tópicos principais. O de 1 dia é uma introdução rápida e prática.</p>
+<section id="exercício-1-explorando-o-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="exercício-1-explorando-o-dataset">Exercício 1 — Explorando o dataset</h2>
+<p>Carregue <code>inv_florestal.csv</code> e <code>parcelas.csv</code>. Faça o join entre eles e responda:</p>
+<p><strong>a)</strong> Quantas árvores no total? E quantas parcelas?<br>
+<strong>Resultado esperado:</strong> 992 árvores, 30 parcelas.</p>
+<p><strong>b)</strong> Qual o DAP médio geral? E por espécie?<br>
+<strong>Resultado esperado:</strong> Eucalipto: 20.6 cm, Pinus: 17.8 cm.</p>
+<p><strong>c)</strong> Qual parcela tem o maior volume por hectare?<br>
+<strong>Resultado esperado:</strong> Parcela 7 com 420 m³/ha.</p>
+<hr>
 </section>
-<section id="o-que-você-vai-aprender" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="o-que-você-vai-aprender">O que você vai aprender?</h2>
-<ul>
-<li>Usar o R e o RStudio</li>
-<li>Importar dados de planilhas, CSVs e outras fontes</li>
-<li>Transformar, filtrar e resumir dados com <code>dplyr</code></li>
-<li>Criar gráficos profissionais com <code>ggplot2</code></li>
-<li>Cruzar tabelas com joins</li>
-<li>Lidar com texto, datas e fatores</li>
-<li>Automatizar tarefas repetitivas com funções e <code>purrr</code></li>
-<li>Ajustar modelos estatísticos (regressão, ANOVA)</li>
-<li>Produzir relatórios técnicos completos</li>
-</ul>
+<section id="exercício-2-visualização" class="level2">
+<h2 class="anchored" data-anchor-id="exercício-2-visualização">Exercício 2 — Visualização</h2>
+<p><strong>a)</strong> Crie um histograma da distribuição diamétrica.<br>
+<strong>Resultado esperado:</strong> Pico em 15-20 cm, assimétrica à direita.</p>
+<p><strong>b)</strong> Crie um gráfico de dispersão <code>dap</code> × <code>altura</code> com cor por espécie e curva de tendência.<br>
+<strong>Resultado esperado:</strong> Duas curvas quase paralelas, Eucalipto ligeiramente acima.</p>
+<p><strong>c)</strong> Crie um dashboard com 4 gráficos: histograma do DAP, relação hipsométrica, boxplot de volume por espécie e barras de volume por parcela.<br>
+<strong>Resultado esperado:</strong> Painel 2×2 com tema consistente.</p>
+<hr>
 </section>
-<section id="pré-requisitos" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="pré-requisitos">Pré-requisitos</h2>
-<ul>
-<li>Um computador com Windows, Mac ou Linux</li>
-<li><a href="https://cran.r-project.org/">R</a> (versão 4.0 ou superior)</li>
-<li><a href="https://posit.co/download/rstudio-desktop/">RStudio</a> (versão mais recente)</li>
-<li>Os pacotes do <code>tidyverse</code>, <code>readxl</code>, <code>lubridate</code>, <code>broom</code>, <code>patchwork</code>, <code>gt</code> e <code>gapminder</code></li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Não sabe instalar?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>O <strong>Capítulo 1</strong> de qualquer um dos cursos ensina como instalar o R e o RStudio passo a passo. Não se preocupe!</p>
-</div>
-</div>
+<section id="exercício-3-análise-por-gênero-filmes" class="level2">
+<h2 class="anchored" data-anchor-id="exercício-3-análise-por-gênero-filmes">Exercício 3 — Análise por gênero (filmes)</h2>
+<p>Usando <code>filmes_imdb.csv</code>:</p>
+<p><strong>a)</strong> Gênero com maior nota média (mínimo 50 filmes)?<br>
+<strong>Resultado esperado:</strong> Documentário com 6.84.</p>
+<p><strong>b)</strong> Gráfico de dispersão <code>orcamento</code> × <code>faturamento</code>, com cor por gênero.<br>
+<strong>Resultado esperado:</strong> Correlação positiva, Ação e Aventura com maiores valores.</p>
+<p><strong>c)</strong> Qual diretor tem mais filmes no dataset?<br>
+<strong>Resultado esperado:</strong> Woody Allen.</p>
+<hr>
 </section>
-<section id="como-usar-este-livro" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="como-usar-este-livro">Como usar este livro?</h2>
+<section id="exercício-4-desafio-final" class="level2">
+<h2 class="anchored" data-anchor-id="exercício-4-desafio-final">Exercício 4 — Desafio final</h2>
+<p>Usando <code>inv_florestal</code>, faça uma análise completa:</p>
 <ol type="1">
-<li><strong>Se você tem 1 dia:</strong> siga o curso <strong>☀️ R Express</strong></li>
-<li><strong>Se você tem 2 dias:</strong> siga o curso <strong>🌤️ R Fundamentos</strong></li>
-<li><strong>Se você tem 4 dias:</strong> siga o curso <strong>🌞 R Completo</strong></li>
+<li>Calcule área basal por árvore: <code>ab = pi * (dap/200)^2</code></li>
+<li>Calcule volume: <code>vol = ab * altura * 0.5</code></li>
+<li>Agrupe por parcela e calcule volume/ha (área da parcela = 600 m²)</li>
+<li>Crie um gráfico de barras do volume/ha por parcela (top 10)</li>
+<li>Ajuste <code>lm(log(volume) ~ log(dap) + log(altura))</code> e reporte o R²</li>
 </ol>
-<p>Cada capítulo alterna entre explicações, exemplos com código e exercícios. Os exercícios mostram o <strong>resultado esperado</strong> — o código é com você! Depois você confere se sua solução produziu o mesmo resultado.</p>
-</section>
-<section id="dados-utilizados" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="dados-utilizados">Dados utilizados</h2>
-<p>Usamos dois conjuntos de dados ao longo do curso:</p>
-<ul>
-<li>🎬 <strong><code>filmes_imdb</code></strong> — informações sobre filmes (nota, orçamento, faturamento, gênero). Ideal para aprender: todo mundo entende o contexto.</li>
-<li>🌲 <strong>Dados florestais</strong> — inventário de parcelas, medições de árvores, dados climáticos e experimentos. Aplicação profissional do dia a dia.</li>
-</ul>
-<p>Os arquivos de dados estão disponíveis na pasta <code>data/</code> do repositório do curso.</p>
-</section>
-<section id="licença" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="licença">Licença</h2>
-<p>Este material está licenciado sob <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons BY-NC 4.0</a>. Você pode usar e adaptar livremente para fins não comerciais, desde que atribua o crédito ao autor.</p>
+<p><strong>Resultado esperado do R²:</strong> 0.96</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -818,10 +743,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../02-dias/04-visualizacao.html" class="pagination-link" aria-label="Visualização de dados — aprofundamento">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Visualização de dados — aprofundamento</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-dias/index.html" class="pagination-link" aria-label="Curso de 4 dias — R Completo">
-        <span class="nav-page-text">Curso de 4 dias — R Completo</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../01-dia/index.html" class="pagination-link" aria-label="Curso de 1 dia — R Express">
+        <span class="nav-page-text">Curso de 1 dia — R Express</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

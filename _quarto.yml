@@ -1,0 +1,88 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Curso R para Análise de Dados"
+  subtitle: "Do zero ao relatório técnico em 4 dias"
+  author: "Ítalo Cegatta"
+  date: "2026"
+  language: pt
+  chapters:
+    - index.qmd
+    - part: "Curso de 4 dias — R Completo"
+      chapters:
+        - 04-dias/index.qmd
+        - 04-dias/01-introducao.qmd
+        - 04-dias/02-manipulacao.qmd
+        - 04-dias/03-manipulacao-avancada.qmd
+        - 04-dias/04-visualizacao.qmd
+        - 04-dias/05-strings-fatores-datas.qmd
+        - 04-dias/06-tidy-data.qmd
+        - 04-dias/07-iteracao-funcoes.qmd
+        - 04-dias/08-modelagem.qmd
+    - part: "Curso de 2 dias — R Fundamentos"
+      chapters:
+        - 02-dias/index.qmd
+        - 02-dias/01-introducao.qmd
+        - 02-dias/02-manipulacao.qmd
+        - 02-dias/03-joins.qmd
+        - 02-dias/04-visualizacao.qmd
+        - 02-dias/05-exercicios.qmd
+    - part: "Curso de 1 dia — R Express"
+      chapters:
+        - 01-dia/index.qmd
+        - 01-dia/01-introducao.qmd
+        - 01-dia/02-manipulacao.qmd
+        - 01-dia/03-visualizacao.qmd
+
+  page-footer:
+    left: |
+      Curso R para Análise de Dados — Ítalo Cegatta
+    right: |
+      Licença CC BY-NC 4.0
+
+  sidebar:
+    style: docked
+    collapse-level: 2
+
+format:
+  html:
+    theme:
+      light: [flatly, custom.scss]
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-copy: true
+    code-line-numbers: true
+    code-block-border-left: "#18BC9C"
+    highlight-style: arrow
+
+  pdf:
+    documentclass: scrbook
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    include-in-header:
+      text: |
+        \usepackage[brazil]{babel}
+        \usepackage{fontspec}
+        \setmainfont{Latin Modern Roman}
+
+execute:
+  warning: false
+  echo: true
+  message: false
+  cache: false
+  before: /home/italo/curso_r_v2/_util.R
+
+language:
+  pt:
+    title-block-published: "Atualizado em"
+    toc-title-document: "Sumário"
+    toc-title-website: "Neste capítulo"
+    callout-tip-title: "💡 Dica"
+    callout-note-title: "📝 Nota"
+    callout-warning-title: "⚠️ Atenção"
+    callout-important-title: "🔑 Importante"
+    callout-caution-title: "🚨 Cuidado"

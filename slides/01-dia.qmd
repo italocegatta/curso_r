@@ -1,0 +1,71 @@
+---
+title: "R Express — 1 dia"
+format: revealjs
+---
+
+## Curso R Express {background-color="#18BC9C"}
+
+Do zero ao gráfico em 8 horas
+
+Ítalo Cegatta
+
+---
+
+## Manhã — Introdução ao R
+
+- O que é o R?
+- Instalação: R + RStudio
+- Primeiros passos no console
+- Estruturas de dados
+
+```r
+notas <- c(7.5, 8.0, 9.2, 6.8, 8.7)
+mean(notas)
+```
+
+---
+
+## Manhã — dplyr
+
+O pipe `%>%` — atalho `Ctrl/Cmd + Shift + M`
+
+```r
+filmes %>% 
+  filter(nota >= 8.5) %>% 
+  group_by(genero) %>% 
+  summarise(nota_media = mean(nota), n = n()) %>% 
+  arrange(desc(nota_media))
+```
+
+---
+
+## Tarde — Seus primeiros gráficos 🎬
+
+```r
+filmes %>% 
+  ggplot(aes(x = nota)) + 
+  geom_histogram(bins = 30, fill = "#18BC9C")
+```
+
+4 gráficos em 4 linhas de código cada:
+
+- Histograma
+- Dispersão
+- Barras
+- Boxplot
+
+---
+
+## Tarde — Exercícios
+
+- Distribuição diamétrica
+- Relação hipsométrica (DAP × altura)
+- Volume por espécie
+- Exportar: `ggsave("grafico.png", dpi = 300)`
+
+---
+
+## Obrigado! {background-color="#2C3E50"}
+
+📖 Volte ao livro para os exercícios completos  
+🌲 Continue praticando!

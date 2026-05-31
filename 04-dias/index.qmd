@@ -1,0 +1,19 @@
+# Curso de 4 dias — R Completo {.unnumbered}
+
+**Carga horária:** 32 horas (8 períodos de 4h)  
+**Público:** Profissionais sem conhecimento prévio de programação  
+**Objetivo:** Dominar R para análise de dados — da importação à modelagem estatística, produzindo relatórios técnicos completos.
+
+## Estrutura do curso {.unnumbered}
+
+| Dia | Manhã (4h) | Tarde (4h) |
+|:---:|------------|------------|
+| **1** | Introdução ao R e RStudio | dplyr + primeiros gráficos |
+| **2** | dplyr avançado + Joins | Visualização de dados (ggplot2) |
+| **3** | Strings, Fatores e Datas | Tidy Data + Importação avançada |
+| **4** | Iteração e Funções | Modelagem + Projeto final |
+
+## Datasets utilizados {.unnumbered}
+
+- 🎬 **Dia 1:** `filmes_imdb.csv` — engajamento com dado universal
+- 🌲 **Dias 2-4:** `inv_florestal.csv`, `parcelas.csv`, `clima.xlsx`, `talhoes.xlsx`, `experimento.xlsx`

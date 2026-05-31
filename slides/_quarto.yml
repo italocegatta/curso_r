@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: ../docs/slides
+
+website:
+  title: "Curso R — Slides"
+  navbar:
+    left:
+      - text: "1 dia"
+        href: 01-dia.qmd
+      - text: "2 dias"
+        href: 02-dias.qmd
+      - text: "4 dias"
+        href: 04-dias.qmd
+      - text: "📖 Livro"
+        href: ../index.html
+
+format:
+  revealjs:
+    theme: [default, ../custom.scss]
+    transition: slide
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    logo: ../data/logo.png
+    css: ../custom.scss

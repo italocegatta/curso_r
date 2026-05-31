@@ -1,0 +1,1116 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Curso R para Análise de Dados",
+    "section": "",
+    "text": "Bem-vindo(a)\nEste livro reúne o material completo de três cursos de introdução ao R para análise de dados. O conteúdo parte do zero — você não precisa saber programar — e avança até a produção de análises completas com modelagem estatística.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Curso R para Análise de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#para-quem-é-este-livro",
+    "href": "index.html#para-quem-é-este-livro",
+    "title": "Curso R para Análise de Dados",
+    "section": "Para quem é este livro?",
+    "text": "Para quem é este livro?\nProfissionais que desejam aprender R para processar, visualizar e modelar dados. O conteúdo é voltado para a área florestal, mas as técnicas se aplicam a qualquer domínio.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Curso R para Análise de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#como-está-organizado",
+    "href": "index.html#como-está-organizado",
+    "title": "Curso R para Análise de Dados",
+    "section": "Como está organizado?",
+    "text": "Como está organizado?\nO livro contém três cursos, do mais curto ao mais completo. Escolha o que melhor se encaixa no seu objetivo:\n\n\n\n\n\n\n\n\n\nCurso\nCarga horária\nPeríodos\nFoco\n\n\n\n\n☀️ R Express\n1 dia (8h)\n3 capítulos\nEssencial para começar a usar R\n\n\n🌤️ R Fundamentos\n2 dias (16h)\n5 capítulos\nAnálise de dados do início ao fim\n\n\n🌞 R Completo\n4 dias (32h)\n8 capítulos\nDomínio completo — da importação à modelagem\n\n\n\nTodos os cursos compartilham a mesma base. O curso de 4 dias é o mais completo. O de 2 dias condensa os tópicos principais. O de 1 dia é uma introdução rápida e prática.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Curso R para Análise de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#o-que-você-vai-aprender",
+    "href": "index.html#o-que-você-vai-aprender",
+    "title": "Curso R para Análise de Dados",
+    "section": "O que você vai aprender?",
+    "text": "O que você vai aprender?\n\nUsar o R e o RStudio\nImportar dados de planilhas, CSVs e outras fontes\nTransformar, filtrar e resumir dados com dplyr\nCriar gráficos profissionais com ggplot2\nCruzar tabelas com joins\nLidar com texto, datas e fatores\nAutomatizar tarefas repetitivas com funções e purrr\nAjustar modelos estatísticos (regressão, ANOVA)\nProduzir relatórios técnicos completos",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Curso R para Análise de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#pré-requisitos",
+    "href": "index.html#pré-requisitos",
+    "title": "Curso R para Análise de Dados",
+    "section": "Pré-requisitos",
+    "text": "Pré-requisitos\n\nUm computador com Windows, Mac ou Linux\nR (versão 4.0 ou superior)\nRStudio (versão mais recente)\nOs pacotes do tidyverse, readxl, lubridate, broom, patchwork, gt e gapminder\n\n\n\n\n\n\n\nTipNão sabe instalar?\n\n\n\nO Capítulo 1 de qualquer um dos cursos ensina como instalar o R e o RStudio passo a passo. Não se preocupe!",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Curso R para Análise de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#como-usar-este-livro",
+    "href": "index.html#como-usar-este-livro",
+    "title": "Curso R para Análise de Dados",
+    "section": "Como usar este livro?",
+    "text": "Como usar este livro?\n\nSe você tem 1 dia: siga o curso ☀️ R Express\nSe você tem 2 dias: siga o curso 🌤️ R Fundamentos\nSe você tem 4 dias: siga o curso 🌞 R Completo\n\nCada capítulo alterna entre explicações, exemplos com código e exercícios. Os exercícios mostram o resultado esperado — o código é com você! Depois você confere se sua solução produziu o mesmo resultado.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Curso R para Análise de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#dados-utilizados",
+    "href": "index.html#dados-utilizados",
+    "title": "Curso R para Análise de Dados",
+    "section": "Dados utilizados",
+    "text": "Dados utilizados\nUsamos dois conjuntos de dados ao longo do curso:\n\n🎬 filmes_imdb — informações sobre filmes (nota, orçamento, faturamento, gênero). Ideal para aprender: todo mundo entende o contexto.\n🌲 Dados florestais — inventário de parcelas, medições de árvores, dados climáticos e experimentos. Aplicação profissional do dia a dia.\n\nOs arquivos de dados estão disponíveis na pasta data/ do repositório do curso.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Curso R para Análise de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#licença",
+    "href": "index.html#licença",
+    "title": "Curso R para Análise de Dados",
+    "section": "Licença",
+    "text": "Licença\nEste material está licenciado sob Creative Commons BY-NC 4.0. Você pode usar e adaptar livremente para fins não comerciais, desde que atribua o crédito ao autor.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Curso R para Análise de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/index.html",
+    "href": "04-dias/index.html",
+    "title": "Curso de 4 dias — R Completo",
+    "section": "",
+    "text": "Estrutura do curso\nCarga horária: 32 horas (8 períodos de 4h)\nPúblico: Profissionais sem conhecimento prévio de programação\nObjetivo: Dominar R para análise de dados — da importação à modelagem estatística, produzindo relatórios técnicos completos.",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "Curso de 4 dias — R Completo"
+    ]
+  },
+  {
+    "objectID": "04-dias/index.html#estrutura-do-curso",
+    "href": "04-dias/index.html#estrutura-do-curso",
+    "title": "Curso de 4 dias — R Completo",
+    "section": "",
+    "text": "Dia\nManhã (4h)\nTarde (4h)\n\n\n\n\n1\nIntrodução ao R e RStudio\ndplyr + primeiros gráficos\n\n\n2\ndplyr avançado + Joins\nVisualização de dados (ggplot2)\n\n\n3\nStrings, Fatores e Datas\nTidy Data + Importação avançada\n\n\n4\nIteração e Funções\nModelagem + Projeto final",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "Curso de 4 dias — R Completo"
+    ]
+  },
+  {
+    "objectID": "04-dias/index.html#datasets-utilizados",
+    "href": "04-dias/index.html#datasets-utilizados",
+    "title": "Curso de 4 dias — R Completo",
+    "section": "Datasets utilizados",
+    "text": "Datasets utilizados\n\n🎬 Dia 1: filmes_imdb.csv — engajamento com dado universal\n🌲 Dias 2-4: inv_florestal.csv, parcelas.csv, clima.xlsx, talhoes.xlsx, experimento.xlsx",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "Curso de 4 dias — R Completo"
+    ]
+  },
+  {
+    "objectID": "04-dias/01-introducao.html",
+    "href": "04-dias/01-introducao.html",
+    "title": "Introdução ao R e RStudio",
+    "section": "",
+    "text": "Objetivos\nDia 1 — Manhã | 4 horas\nAo final deste capítulo, você será capaz de:",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/01-introducao.html#objetivos",
+    "href": "04-dias/01-introducao.html#objetivos",
+    "title": "Introdução ao R e RStudio",
+    "section": "",
+    "text": "Entender o que é o R e por que usá-lo\nInstalar o R e o RStudio\nNavegar pelo ambiente do RStudio\nCriar e manipular objetos (vetores, fatores, data frames)\nExecutar seus primeiros scripts em R",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/01-introducao.html#o-que-é-o-r",
+    "href": "04-dias/01-introducao.html#o-que-é-o-r",
+    "title": "Introdução ao R e RStudio",
+    "section": "O que é o R?",
+    "text": "O que é o R?\nO R é uma linguagem de programação e um ambiente para computação estatística e gráficos. É mantido por um grupo de voluntários de vários países, o R-core team, e distribuído gratuitamente pelo site do CRAN.\nO R nasceu nos anos 90 a partir de uma implementação da linguagem S, criada por John Chambers no Bell Laboratories. Desde então, cresceu em ritmo acelerado e hoje é um dos principais softwares de análise de dados do mundo.\n\n\n\n\n\n\nTipPor que aprender R?\n\n\n\n\nGratuito — sem licenças, sem custos\nComunidade enorme — mais de 20.000 pacotes disponíveis\nReprodutibilidade — scripts documentam toda a análise\nGráficos profissionais — ggplot2 é referência em visualização\nIntegração — RMarkdown/Quarto geram relatórios, sites, dashboards e slides",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/01-introducao.html#instalação",
+    "href": "04-dias/01-introducao.html#instalação",
+    "title": "Introdução ao R e RStudio",
+    "section": "Instalação",
+    "text": "Instalação\n\nR\n\nAcesse cran.r-project.org\nEscolha seu sistema operacional (Windows, Mac ou Linux)\nFaça o download e execute o instalador\nSiga as instruções padrão\n\n\n\nRStudio\nO RStudio é um ambiente de desenvolvimento integrado (IDE) que facilita muito o trabalho com R. Ele oferece editor de código, console, visualizador de gráficos, gerenciador de arquivos e muito mais.\n\nAcesse posit.co/download/rstudio-desktop\nFaça o download da versão gratuita (RStudio Desktop)\nInstale normalmente\n\n\n\n\n\n\n\nWarningAtenção!\n\n\n\nInstale o R primeiro, depois o RStudio. O RStudio precisa encontrar o R instalado no sistema para funcionar.",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/01-introducao.html#conhecendo-o-rstudio",
+    "href": "04-dias/01-introducao.html#conhecendo-o-rstudio",
+    "title": "Introdução ao R e RStudio",
+    "section": "Conhecendo o RStudio",
+    "text": "Conhecendo o RStudio\nAo abrir o RStudio, você verá 4 painéis principais:\n\n\n\nPainel\nLocalização\nFunção\n\n\n\n\nEditor\nSuperior esquerdo\nEscrever scripts .R\n\n\nConsole\nInferior esquerdo\nExecutar comandos e ver resultados\n\n\nEnvironment\nSuperior direito\nVer objetos criados\n\n\nFiles/Plots/Help\nInferior direito\nArquivos, gráficos e ajuda\n\n\n\n\n\n\n\n\n\nTipAtalho essencial\n\n\n\nCtrl + Enter (ou Cmd + Enter no Mac) executa a linha atual do editor no console. É o atalho que você mais vai usar!",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/01-introducao.html#primeiros-passos-no-console",
+    "href": "04-dias/01-introducao.html#primeiros-passos-no-console",
+    "title": "Introdução ao R e RStudio",
+    "section": "Primeiros passos no console",
+    "text": "Primeiros passos no console\nO console é onde o R recebe comandos e mostra resultados. Vamos começar usando o R como uma calculadora:\n\n# Soma\n2 + 3\n\n[1] 5\n\n# Multiplicação\n4 * 5\n\n[1] 20\n\n# Potência\n2^3\n\n[1] 8\n\n# Raiz quadrada\nsqrt(81)\n\n[1] 9\n\n# Expressão completa\n(10 + 5) * 3 / 2\n\n[1] 22.5\n\n\n\nAtribuição: guardando valores em objetos\nPara guardar resultados e reutilizá-los depois, usamos o operador de atribuição &lt;-:\n\n# Guardando um número\nnota_filme &lt;- 8.5\nnota_filme\n\n[1] 8.5\n\n# Guardando texto\ntitulo &lt;- \"O Poderoso Chefão\"\ntitulo\n\n[1] \"O Poderoso Chefão\"\n\n# Usando o objeto em operações\nnota_filme * 2\n\n[1] 17\n\nnota_filme + 1.5\n\n[1] 10\n\n\n\n\n\n\n\n\nImportant&lt;- ou =?\n\n\n\nEm R, o operador tradicional de atribuição é &lt;- (atalho: Alt + -). Você também pode usar =, mas &lt;- é o padrão da comunidade R. Use o que preferir, mas seja consistente.\n\n\n\n\nComentários\nTudo que vem depois de # é ignorado pelo R. Use comentários para explicar seu código:\n\n# Isto é um comentário — o R ignora esta linha\nx &lt;- 10  # comentário ao lado do código também funciona\n\n\n\nPedindo ajuda\n\n# Ajuda de uma função específica\n# ?mean\n# ?ggplot\n\n# Busca por termo\n# ??histograma",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/01-introducao.html#estruturas-de-dados-no-r",
+    "href": "04-dias/01-introducao.html#estruturas-de-dados-no-r",
+    "title": "Introdução ao R e RStudio",
+    "section": "Estruturas de dados no R",
+    "text": "Estruturas de dados no R\nNo R, tudo é um objeto. Os objetos podem ser de diferentes tipos e estruturas. Entender essas estruturas é fundamental — é com elas que você vai trabalhar todos os dias.\n\nVetores atômicos\nO vetor é a estrutura mais básica: uma sequência de valores do mesmo tipo.\n\n# Vetor numérico\nnotas &lt;- c(7.5, 8.0, 9.2, 6.8, 8.7)\nnotas\n\n[1] 7.5 8.0 9.2 6.8 8.7\n\n# Vetor de texto (character)\nfilmes &lt;- c(\"Matrix\", \"Interestelar\", \"Parasita\")\nfilmes\n\n[1] \"Matrix\"       \"Interestelar\" \"Parasita\"    \n\n# Vetor lógico (TRUE/FALSE)\nfilmes_brasileiros &lt;- c(TRUE, FALSE, FALSE)\nfilmes_brasileiros\n\n[1]  TRUE FALSE FALSE\n\n# Operações com vetores\nmean(notas)       # média\n\n[1] 8.04\n\nsum(notas)        # soma\n\n[1] 40.2\n\nlength(notas)     # comprimento\n\n[1] 5\n\nmax(notas)        # máximo\n\n[1] 9.2\n\nmin(notas)        # mínimo\n\n[1] 6.8\n\n\n\n\n\n\n\n\nTipUse c() para criar vetores\n\n\n\nA função c() significa combine (combinar). Use-a sempre que quiser juntar valores em um vetor.\n\n\n\n\nValores especiais\n\n# NA = Not Available (dado ausente)\ndados &lt;- c(23, 45, NA, 32, NA)\ndados\n\n[1] 23 45 NA 32 NA\n\nmean(dados)             # NA — precisa lidar com os ausentes\n\n[1] NA\n\nmean(dados, na.rm = TRUE)  # remove os NA antes de calcular\n\n[1] 33.33333\n\n\n\n# NaN = Not a Number\n0 / 0\n\n[1] NaN\n\n\n\n# NULL = ausência de valor (objeto vazio)\nNULL\n\nNULL\n\n# Inf = infinito\n1 / 0\n\n[1] Inf\n\n\n\n\nConversão entre tipos (coerção)\nÀs vezes você precisa converter um tipo de dado em outro:\n\n# Texto para número\nas.numeric(\"42\")\n\n[1] 42\n\n# Número para texto\nas.character(42)\n\n[1] \"42\"\n\n# Número para lógico\nas.logical(c(1, 0, 1, 0))\n\n[1]  TRUE FALSE  TRUE FALSE\n\n# Cuidado: conversão impossível gera NA\nas.numeric(\"quarenta e dois\")\n\n[1] NA\n\n\n\n\nFatores\nFatores são usados para representar variáveis categóricas — como gênero de filme, espécie de árvore ou tipo de tratamento.\n\n# Criando um fator\ngenero &lt;- factor(c(\"Ação\", \"Drama\", \"Comédia\", \"Drama\", \"Ação\"))\ngenero\n\n[1] Ação    Drama   Comédia Drama   Ação   \nLevels: Ação Comédia Drama\n\n# Níveis do fator\nlevels(genero)\n\n[1] \"Ação\"    \"Comédia\" \"Drama\"  \n\n# Contagem por nível\ntable(genero)\n\ngenero\n   Ação Comédia   Drama \n      2       1       2 \n\n\n\n\nListas\nListas podem conter elementos de tipos diferentes — diferente dos vetores, onde tudo precisa ser do mesmo tipo.\n\n# Uma lista com número, texto e vetor\nfilme_info &lt;- list(\n  titulo = \"Matrix\",\n  ano = 1999,\n  generos = c(\"Ação\", \"Ficção científica\"),\n  nota = 8.7\n)\nfilme_info\n\n$titulo\n[1] \"Matrix\"\n\n$ano\n[1] 1999\n\n$generos\n[1] \"Ação\"              \"Ficção científica\"\n\n$nota\n[1] 8.7\n\n# Acessando elementos da lista\nfilme_info$titulo\n\n[1] \"Matrix\"\n\nfilme_info$ano\n\n[1] 1999\n\n\n\n\nData frames e tibbles\nO data frame é a estrutura mais importante para análise de dados: uma tabela com linhas (observações) e colunas (variáveis).\n\n# Criando um data frame manualmente\ndf &lt;- data.frame(\n  titulo = c(\"Matrix\", \"Interestelar\", \"Parasita\"),\n  ano = c(1999, 2014, 2019),\n  nota = c(8.7, 8.6, 8.5)\n)\ndf\n\n        titulo  ano nota\n1       Matrix 1999  8.7\n2 Interestelar 2014  8.6\n3     Parasita 2019  8.5\n\n\nNo tidyverse, usamos uma versão moderna do data frame chamada tibble:\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(readr)\nlibrary(tidyr)\nlibrary(stringr)\nlibrary(forcats)\nlibrary(purrr)\nlibrary(tibble)\n\ntibble(\n  titulo = c(\"Matrix\", \"Interestelar\", \"Parasita\"),\n  ano = c(1999, 2014, 2019),\n  nota = c(8.7, 8.6, 8.5)\n)\n\n# A tibble: 3 × 3\n  titulo         ano  nota\n  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;\n1 Matrix        1999   8.7\n2 Interestelar  2014   8.6\n3 Parasita      2019   8.5\n\n\n\n\nConhecendo seus dados\nTrês funções essenciais para inspecionar qualquer dataset:\n\n# Carregando o dataset de filmes\nlibrary(readr)\nfilmes &lt;- read_csv2(\"../data/filmes_imdb.csv\")\n\n# Estrutura do dataset\nglimpse(filmes)\n\nRows: 3,875\nColumns: 10\n$ codigo_filme     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…\n$ titulo           &lt;chr&gt; \"Avatar \", \"Pirates of the Caribbean: At World's End …\n$ diretor          &lt;chr&gt; \"James Cameron\", \"Gore Verbinski\", \"Sam Mendes\", \"Chr…\n$ ano              &lt;dbl&gt; 2009, 2007, 2015, 2012, 2012, 2007, 2010, 2015, 2009,…\n$ genero           &lt;chr&gt; \"Ação\", \"Aventura\", \"Comédia\", \"Mistério\", \"Fantasia\"…\n$ duracao          &lt;dbl&gt; 81, 126, 88, 99, 92, 95, 39, 111, 82, 89, 77, 102, 98…\n$ orcamento        &lt;dbl&gt; 237000000, 300000000, 245000000, 250000000, 263700000…\n$ faturamento      &lt;dbl&gt; 760505847, 309404152, 200074175, 448130642, 73058679,…\n$ nota             &lt;dbl&gt; 7.9, 7.1, 6.8, 8.5, 6.6, 6.2, 7.8, 7.5, 7.5, 6.9, 6.1…\n$ elenco_principal &lt;chr&gt; \"Viola Davis\", \"Cate Blanchett\", \"Natalie Portman\", \"…\n\n# Primeiras linhas\nhead(filmes, 5)\n\n# A tibble: 5 × 10\n  codigo_filme titulo   diretor   ano genero duracao orcamento faturamento  nota\n         &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1            1 Avatar   James …  2009 Ação        81 237000000   760505847   7.9\n2            2 Pirates… Gore V…  2007 Avent…     126 300000000   309404152   7.1\n3            3 Spectre  Sam Me…  2015 Coméd…      88 245000000   200074175   6.8\n4            4 The Dar… Christ…  2012 Misté…      99 250000000   448130642   8.5\n5            5 John Ca… Andrew…  2012 Fanta…      92 263700000    73058679   6.6\n# ℹ 1 more variable: elenco_principal &lt;chr&gt;\n\n# Resumo estatístico das colunas\nsummary(filmes)\n\n  codigo_filme       titulo            diretor               ano      \n Min.   :   1.0   Length:3875        Length:3875        Min.   :1920  \n 1st Qu.: 971.5   Class :character   Class :character   1st Qu.:1999  \n Median :1942.0   Mode  :character   Mode  :character   Median :2005  \n Mean   :1941.6                                         Mean   :2003  \n 3rd Qu.:2911.5                                         3rd Qu.:2010  \n Max.   :3881.0                                         Max.   :2016  \n    genero             duracao        orcamento          faturamento       \n Length:3875        Min.   : 31.0   Min.   :      218   Min.   :      162  \n Class :character   1st Qu.: 89.0   1st Qu.: 10000000   1st Qu.:  6856116  \n Mode  :character   Median :105.0   Median : 24000000   Median : 28064226  \n                    Mean   :104.9   Mean   : 38165464   Mean   : 51085555  \n                    3rd Qu.:121.0   3rd Qu.: 50000000   3rd Qu.: 65517534  \n                    Max.   :201.0   Max.   :553632000   Max.   :760505847  \n      nota       elenco_principal  \n Min.   :1.600   Length:3875       \n 1st Qu.:5.900   Class :character  \n Median :6.600   Mode  :character  \n Mean   :6.462                     \n 3rd Qu.:7.200                     \n Max.   :9.300                     \n\n\n\n# Dimensões\ndim(filmes)     # linhas × colunas\n\n[1] 3875   10\n\nnrow(filmes)    # número de linhas\n\n[1] 3875\n\nncol(filmes)    # número de colunas\n\n[1] 10\n\nnames(filmes)   # nomes das colunas\n\n [1] \"codigo_filme\"     \"titulo\"           \"diretor\"          \"ano\"             \n [5] \"genero\"           \"duracao\"          \"orcamento\"        \"faturamento\"     \n [9] \"nota\"             \"elenco_principal\"",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/01-introducao.html#exercícios",
+    "href": "04-dias/01-introducao.html#exercícios",
+    "title": "Introdução ao R e RStudio",
+    "section": "Exercícios",
+    "text": "Exercícios\n\n\n\n\n\n\nNoteComo fazer os exercícios\n\n\n\nCada exercício mostra o enunciado e o resultado esperado. O código é com você! Escreva sua solução, execute e confira se o resultado bate com o que está no livro.\n\n\n\nExercício 1\nCrie um vetor com as notas de 5 filmes e calcule a média.\nResultado esperado:\n[1] 8.4\n\n\nExercício 2\nCrie um vetor c(8.5, 9.0, NA, 7.5, NA) e calcule a média sem os valores ausentes.\nResultado esperado:\n[1] 8.333333\n\n\nExercício 3\nCrie um fator com os gêneros \"Ação\", \"Drama\", \"Comédia\", \"Drama\", \"Ação\". Mostre a tabela de frequência.\nResultado esperado:\nAção   Comédia   Drama \n   2         1       2 \n\n\nExercício 4\nCarregue o dataset filmes_imdb.csv e responda:\na) Quantas linhas e quantas colunas o dataset possui?\nResultado esperado:\n[1] 4826   11\nb) Qual é a nota média dos filmes?\nResultado esperado:\n[1] 6.37\nc) Qual é o filme mais recente e qual o mais antigo?\nResultado esperado:\n# A tibble: 1 × 2\n   ano    n\n  &lt;dbl&gt; &lt;int&gt;\n1  2016  4826",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/02-manipulacao.html",
+    "href": "04-dias/02-manipulacao.html",
+    "title": "Manipulação de dados com dplyr",
+    "section": "",
+    "text": "Objetivos\nDia 1 — Tarde | 4 horas\nAo final deste capítulo, você será capaz de:",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/02-manipulacao.html#objetivos",
+    "href": "04-dias/02-manipulacao.html#objetivos",
+    "title": "Manipulação de dados com dplyr",
+    "section": "",
+    "text": "Importar dados de arquivos CSV\nFiltrar, selecionar, transformar e resumir dados com dplyr\nUsar o pipe (%&gt;%) para encadear operações\nCriar seus primeiros gráficos com ggplot2",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/02-manipulacao.html#importando-dados",
+    "href": "04-dias/02-manipulacao.html#importando-dados",
+    "title": "Manipulação de dados com dplyr",
+    "section": "Importando dados",
+    "text": "Importando dados\nTudo começa com a importação. O pacote readr (parte do tidyverse) oferece funções rápidas e consistentes para ler arquivos:\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(readr)\nlibrary(tidyr)\nlibrary(stringr)\nlibrary(forcats)\nlibrary(purrr)\nlibrary(tibble)\n\n# CSV com vírgula como separador (padrão americano)\nfilmes &lt;- read_csv2(\"../data/filmes_imdb.csv\")\n\n# Se o arquivo usar ponto-e-vírgula (comum no Brasil)\n# filmes &lt;- read_csv2(\"../data/filmes_imdb.csv\")\n\n\nglimpse(filmes)\n\nRows: 3,875\nColumns: 10\n$ codigo_filme     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…\n$ titulo           &lt;chr&gt; \"Avatar \", \"Pirates of the Caribbean: At World's End …\n$ diretor          &lt;chr&gt; \"James Cameron\", \"Gore Verbinski\", \"Sam Mendes\", \"Chr…\n$ ano              &lt;dbl&gt; 2009, 2007, 2015, 2012, 2012, 2007, 2010, 2015, 2009,…\n$ genero           &lt;chr&gt; \"Ação\", \"Aventura\", \"Comédia\", \"Mistério\", \"Fantasia\"…\n$ duracao          &lt;dbl&gt; 81, 126, 88, 99, 92, 95, 39, 111, 82, 89, 77, 102, 98…\n$ orcamento        &lt;dbl&gt; 237000000, 300000000, 245000000, 250000000, 263700000…\n$ faturamento      &lt;dbl&gt; 760505847, 309404152, 200074175, 448130642, 73058679,…\n$ nota             &lt;dbl&gt; 7.9, 7.1, 6.8, 8.5, 6.6, 6.2, 7.8, 7.5, 7.5, 6.9, 6.1…\n$ elenco_principal &lt;chr&gt; \"Viola Davis\", \"Cate Blanchett\", \"Natalie Portman\", \"…\n\n\nTemos 4826 filmes com 11 colunas: título, ano, nota, orçamento, faturamento, gênero, diretor, duração, etc.",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/02-manipulacao.html#o-pipe",
+    "href": "04-dias/02-manipulacao.html#o-pipe",
+    "title": "Manipulação de dados com dplyr",
+    "section": "O pipe: %>%",
+    "text": "O pipe: %&gt;%\nO pipe (%&gt;%) é o encadeamento de operações. Em vez de aninhar funções ou criar objetos intermediários, você conecta os passos com %&gt;%:\n\n# Sem pipe (difícil de ler):\nhead(arrange(summarise(group_by(filter(filmes, ano &gt; 2000), genero), nota_media = mean(nota)), desc(nota_media)), 5)\n\n# A tibble: 5 × 2\n  genero    nota_media\n  &lt;chr&gt;          &lt;dbl&gt;\n1 Musical         6.70\n2 Esporte         6.59\n3 Aventura        6.55\n4 Guerra          6.52\n5 Biografia       6.51\n\n# Com pipe (leitura natural, da esquerda para a direita):\nfilmes %&gt;% \n  filter(ano &gt; 2000) %&gt;% \n  group_by(genero) %&gt;% \n  summarise(nota_media = mean(nota)) %&gt;% \n  arrange(desc(nota_media)) %&gt;% \n  head(5)\n\n# A tibble: 5 × 2\n  genero    nota_media\n  &lt;chr&gt;          &lt;dbl&gt;\n1 Musical         6.70\n2 Esporte         6.59\n3 Aventura        6.55\n4 Guerra          6.52\n5 Biografia       6.51\n\n\n\n\n\n\n\n\nTipAtalho do pipe\n\n\n\nCtrl + Shift + M (Windows/Linux) ou Cmd + Shift + M (Mac). Grave esse atalho — você vai usá-lo centenas de vezes por dia!",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/02-manipulacao.html#os-6-verbos-do-dplyr",
+    "href": "04-dias/02-manipulacao.html#os-6-verbos-do-dplyr",
+    "title": "Manipulação de dados com dplyr",
+    "section": "Os 6 verbos do dplyr",
+    "text": "Os 6 verbos do dplyr\nO dplyr é baseado em seis funções principais (verbos) que cobrem a maioria das operações com tabelas:\n\n\n\nVerbo\nO que faz\nEquivalente mental\n\n\n\n\nfilter()\nFiltra linhas\n“Quero só esses…”\n\n\nselect()\nSeleciona colunas\n“Só me interessa…”\n\n\nmutate()\nCria/modifica colunas\n“Calcula pra mim…”\n\n\narrange()\nOrdena linhas\n“Organiza por…”\n\n\nsummarise()\nResume em um número\n“Resume isso…”\n\n\ngroup_by()\nAgrupa para operações\n“Para cada…”\n\n\n\n\n\nfilter() — Filtrar linhas\nFiltra linhas com base em condições lógicas:\n\n# Filmes com nota maior ou igual a 9.0\nfilmes %&gt;% \n  filter(nota &gt;= 9.0)\n\n# A tibble: 4 × 10\n  codigo_filme titulo   diretor   ano genero duracao orcamento faturamento  nota\n         &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1           65 The Dar… Christ…  2008 Avent…     151 185000000   533316061   9  \n2         1807 The Sha… Frank …  1994 Fanta…     104  25000000    28341469   9.3\n3         2563 The God… Franci…  1974 Coméd…      45  13000000    57300000   9  \n4         3035 The God… Franci…  1972 Crime      131   6000000   134821952   9.2\n# ℹ 1 more variable: elenco_principal &lt;chr&gt;\n\n# Filmes de ação com nota acima de 8.0\nfilmes %&gt;% \n  filter(genero == \"Ação\", nota &gt; 8.0)\n\n# A tibble: 21 × 10\n   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota\n          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n 1           17 The Av… Joss W…  2012 Ação        53 220000000   623279547   8.1\n 2           95 Incept… Christ…  2010 Ação       103 160000000   292568851   8.8\n 3          564 Inglou… Quenti…  2009 Ação       108  75000000   120523073   8.3\n 4          776 Deadpo… Tim Mi…  2016 Ação       123  58000000   363024263   8.1\n 5         1026 Prison… Denis …  2013 Ação       101  46000000    60962878   8.1\n 6         1232 Amélie  Jean-P…  2001 Ação        55  77000000    33201661   8.4\n 7         1341 L.A. C… Curtis…  1997 Ação        89  35000000    64604977   8.3\n 8         1775 Goodfe… Martin…  1990 Ação       118  25000000    46836394   8.7\n 9         1778 Scarfa… Brian …  1983 Ação        96  25000000    44700000   8.3\n10         2034 Spotli… Tom Mc…  2015 Ação        96  20000000    44988180   8.1\n# ℹ 11 more rows\n# ℹ 1 more variable: elenco_principal &lt;chr&gt;\n\n# Filmes de 2010 ou mais recentes, com orçamento acima de 100 milhões\nfilmes %&gt;% \n  filter(ano &gt;= 2010, orcamento &gt; 100000000)\n\n# A tibble: 162 × 10\n   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota\n          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n 1            3 Spectr… Sam Me…  2015 Coméd…      88 245000000   200074175   6.8\n 2            4 The Da… Christ…  2012 Misté…      99 250000000   448130642   8.5\n 3            5 John C… Andrew…  2012 Fanta…      92 263700000    73058679   6.6\n 4            7 Tangle… Nathan…  2010 Terror      39 260000000   200807262   7.8\n 5            8 Avenge… Joss W…  2015 Misté…     111 250000000   458991599   7.5\n 6           10 Batman… Zack S…  2016 Terror      89 250000000   330249062   6.9\n 7           14 The Lo… Gore V…  2013 Ficçã…     129 215000000    89289910   6.5\n 8           15 Man of… Zack S…  2013 Drama      123 225000000   291021565   7.2\n 9           17 The Av… Joss W…  2012 Ação        53 220000000   623279547   8.1\n10           18 Pirate… Rob Ma…  2011 Drama      113 250000000   241063875   6.7\n# ℹ 152 more rows\n# ℹ 1 more variable: elenco_principal &lt;chr&gt;\n\n\nOperadores úteis no filter():\n\n# Igual a          ==\n# Diferente de     !=\n# Maior / Menor    &gt;   &lt;   &gt;=   &lt;=\n# Está na lista    %in% c(\"A\", \"B\")\n# E                &\n# OU               |\n# Negação          !\n\n\n# Filmes de Drama OU Comédia\nfilmes %&gt;% \n  filter(genero %in% c(\"Drama\", \"Comédia\")) %&gt;% \n  count(genero, sort = TRUE)\n\n# A tibble: 2 × 2\n  genero      n\n  &lt;chr&gt;   &lt;int&gt;\n1 Drama     719\n2 Comédia   452\n\n# Filmes com nota &gt;= 8.0 E ano &gt; 2010\nfilmes %&gt;% \n  filter(nota &gt;= 8.0, ano &gt; 2010)\n\n# A tibble: 36 × 10\n   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota\n          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n 1            4 The Da… Christ…  2012 Misté…      99 250000000   448130642   8.5\n 2           17 The Av… Joss W…  2012 Ação        53 220000000   623279547   8.1\n 3           47 X-Men:… Bryan …  2014 Ação       126 200000000   233914986   8  \n 4           77 Inside… Pete D…  2015 Coméd…     113 175000000   356454367   8.3\n 5           93 Guardi… James …  2014 Coméd…     118 170000000   333130696   8.1\n 6           94 Inters… Christ…  2014 Roman…      90 165000000   187991439   8.6\n 7          125 Mad Ma… George…  2015 Coméd…      61 150000000   153629485   8.1\n 8          175 The Re… Alejan…  2015 Roman…      91 135000000   183635922   8.1\n 9          216 Life o… Ang Lee  2012 Thril…     123 120000000   124976634   8  \n10          269 The Ma… Ridley…  2015 Drama       78 108000000   228430993   8.1\n# ℹ 26 more rows\n# ℹ 1 more variable: elenco_principal &lt;chr&gt;\n\n\n\n\n\nselect() — Selecionar colunas\n\n# Selecionar colunas por nome\nfilmes %&gt;% \n  select(titulo, ano, nota)\n\n# A tibble: 3,875 × 3\n   titulo                                      ano  nota\n   &lt;chr&gt;                                     &lt;dbl&gt; &lt;dbl&gt;\n 1 Avatar                                     2009   7.9\n 2 Pirates of the Caribbean: At World's End   2007   7.1\n 3 Spectre                                    2015   6.8\n 4 The Dark Knight Rises                      2012   8.5\n 5 John Carter                                2012   6.6\n 6 Spider-Man 3                               2007   6.2\n 7 Tangled                                    2010   7.8\n 8 Avengers: Age of Ultron                    2015   7.5\n 9 Harry Potter and the Half-Blood Prince     2009   7.5\n10 Batman v Superman: Dawn of Justice         2016   6.9\n# ℹ 3,865 more rows\n\n# Selecionar um intervalo de colunas\nfilmes %&gt;% \n  select(titulo:nota)\n\n# A tibble: 3,875 × 8\n   titulo               diretor   ano genero duracao orcamento faturamento  nota\n   &lt;chr&gt;                &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n 1 Avatar               James …  2009 Ação        81 237000000   760505847   7.9\n 2 Pirates of the Cari… Gore V…  2007 Avent…     126 300000000   309404152   7.1\n 3 Spectre              Sam Me…  2015 Coméd…      88 245000000   200074175   6.8\n 4 The Dark Knight Ris… Christ…  2012 Misté…      99 250000000   448130642   8.5\n 5 John Carter          Andrew…  2012 Fanta…      92 263700000    73058679   6.6\n 6 Spider-Man 3         Sam Ra…  2007 Drama       95 258000000   336530303   6.2\n 7 Tangled              Nathan…  2010 Terror      39 260000000   200807262   7.8\n 8 Avengers: Age of Ul… Joss W…  2015 Misté…     111 250000000   458991599   7.5\n 9 Harry Potter and th… David …  2009 Ficçã…      82 250000000   301956980   7.5\n10 Batman v Superman: … Zack S…  2016 Terror      89 250000000   330249062   6.9\n# ℹ 3,865 more rows\n\n# Remover colunas com -\nfilmes %&gt;% \n  select(-codigo_filme, -diretor)\n\n# A tibble: 3,875 × 8\n   titulo        ano genero duracao orcamento faturamento  nota elenco_principal\n   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           \n 1 Avatar       2009 Ação        81 237000000   760505847   7.9 Viola Davis     \n 2 Pirates of…  2007 Avent…     126 300000000   309404152   7.1 Cate Blanchett  \n 3 Spectre      2015 Coméd…      88 245000000   200074175   6.8 Natalie Portman \n 4 The Dark K…  2012 Misté…      99 250000000   448130642   8.5 Cate Blanchett  \n 5 John Carte…  2012 Fanta…      92 263700000    73058679   6.6 Tom Hanks       \n 6 Spider-Man…  2007 Drama       95 258000000   336530303   6.2 Viola Davis     \n 7 Tangled      2010 Terror      39 260000000   200807262   7.8 Viola Davis     \n 8 Avengers: …  2015 Misté…     111 250000000   458991599   7.5 Robert De Niro  \n 9 Harry Pott…  2009 Ficçã…      82 250000000   301956980   7.5 Natalie Portman \n10 Batman v S…  2016 Terror      89 250000000   330249062   6.9 Tom Hanks       \n# ℹ 3,865 more rows\n\n# Selecionar por padrão no nome\nfilmes %&gt;% \n  select(starts_with(\"cod\"))\n\n# A tibble: 3,875 × 1\n   codigo_filme\n          &lt;dbl&gt;\n 1            1\n 2            2\n 3            3\n 4            4\n 5            5\n 6            6\n 7            7\n 8            8\n 9            9\n10           10\n# ℹ 3,865 more rows\n\nfilmes %&gt;% \n  select(contains(\"mento\"))\n\n# A tibble: 3,875 × 2\n   orcamento faturamento\n       &lt;dbl&gt;       &lt;dbl&gt;\n 1 237000000   760505847\n 2 300000000   309404152\n 3 245000000   200074175\n 4 250000000   448130642\n 5 263700000    73058679\n 6 258000000   336530303\n 7 260000000   200807262\n 8 250000000   458991599\n 9 250000000   301956980\n10 250000000   330249062\n# ℹ 3,865 more rows\n\n\n\n\n\nmutate() — Criar ou modificar colunas\nA função mutate() calcula novas colunas a partir das existentes:\n\nfilmes %&gt;% \n  mutate(\n    lucro = faturamento - orcamento,\n    lucro_milhoes = lucro / 1000000,\n    duracao_horas = duracao / 60\n  ) %&gt;% \n  select(titulo, orcamento, faturamento, lucro_milhoes, duracao_horas)\n\n# A tibble: 3,875 × 5\n   titulo                      orcamento faturamento lucro_milhoes duracao_horas\n   &lt;chr&gt;                           &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;\n 1 Avatar                      237000000   760505847        524.            1.35\n 2 Pirates of the Caribbean: … 300000000   309404152          9.40          2.1 \n 3 Spectre                     245000000   200074175        -44.9           1.47\n 4 The Dark Knight Rises       250000000   448130642        198.            1.65\n 5 John Carter                 263700000    73058679       -191.            1.53\n 6 Spider-Man 3                258000000   336530303         78.5           1.58\n 7 Tangled                     260000000   200807262        -59.2           0.65\n 8 Avengers: Age of Ultron     250000000   458991599        209.            1.85\n 9 Harry Potter and the Half-… 250000000   301956980         52.0           1.37\n10 Batman v Superman: Dawn of… 250000000   330249062         80.2           1.48\n# ℹ 3,865 more rows\n\n\n\n# Qual o filme mais lucrativo?\nfilmes %&gt;% \n  mutate(lucro = faturamento - orcamento) %&gt;% \n  arrange(desc(lucro)) %&gt;% \n  select(titulo, lucro) %&gt;% \n  head(5)\n\n# A tibble: 5 × 2\n  titulo                                  lucro\n  &lt;chr&gt;                                   &lt;dbl&gt;\n1 Avatar                              523505847\n2 Jurassic World                      502177271\n3 Titanic                             458672302\n4 Star Wars: Episode IV - A New Hope  449935665\n5 E.T. the Extra-Terrestrial          424449459\n\n\n\n# Nota padronizada (z-score) por filme\nfilmes %&gt;% \n  mutate(nota_z = (nota - mean(nota)) / sd(nota)) %&gt;% \n  select(titulo, nota, nota_z) %&gt;% \n  arrange(desc(nota_z)) %&gt;% \n  head(5)\n\n# A tibble: 5 × 3\n  titulo                                          nota nota_z\n  &lt;chr&gt;                                          &lt;dbl&gt;  &lt;dbl&gt;\n1 The Shawshank Redemption                         9.3   2.69\n2 The Godfather                                    9.2   2.60\n3 The Dark Knight                                  9     2.41\n4 The Godfather: Part II                           9     2.41\n5 The Lord of the Rings: The Return of the King    8.9   2.31\n\n\n\n\n\narrange() — Ordenar\n\n# Ordenar por nota (crescente)\nfilmes %&gt;% \n  arrange(nota) %&gt;% \n  select(titulo, nota) %&gt;% \n  head(5)\n\n# A tibble: 5 × 2\n  titulo                           nota\n  &lt;chr&gt;                           &lt;dbl&gt;\n1 Justin Bieber: Never Say Never    1.6\n2 Disaster Movie                    1.9\n3 Superbabies: Baby Geniuses 2      1.9\n4 Who's Your Caddy?                 2  \n5 From Justin to Kelly              2.1\n\n# Ordenar por nota (decrescente)\nfilmes %&gt;% \n  arrange(desc(nota)) %&gt;% \n  select(titulo, nota) %&gt;% \n  head(5)\n\n# A tibble: 5 × 2\n  titulo                                          nota\n  &lt;chr&gt;                                          &lt;dbl&gt;\n1 The Shawshank Redemption                         9.3\n2 The Godfather                                    9.2\n3 The Dark Knight                                  9  \n4 The Godfather: Part II                           9  \n5 The Lord of the Rings: The Return of the King    8.9\n\n\n\n# Ordenar por gênero e depois por nota (decrescente)\nfilmes %&gt;% \n  arrange(genero, desc(nota)) %&gt;% \n  select(genero, titulo, nota) %&gt;% \n  head(10)\n\n# A tibble: 10 × 3\n   genero   titulo                                              nota\n   &lt;chr&gt;    &lt;chr&gt;                                              &lt;dbl&gt;\n 1 Animação Schindler's List                                     8.9\n 2 Animação The Lord of the Rings: The Fellowship of the Ring    8.8\n 3 Animação The Lord of the Rings: The Two Towers                8.7\n 4 Animação One Flew Over the Cuckoo's Nest                      8.7\n 5 Animação Jurassic Park                                        8.1\n 6 Animação The Sixth Sense                                      8.1\n 7 Animação Platoon                                              8.1\n 8 Animação JFK                                                  8  \n 9 Animação Winged Migration                                     8  \n10 Animação The Hangover                                         7.8\n\n\n\n\n\nsummarise() e group_by() — Resumir e agrupar\nJuntos, group_by() e summarise() são a dupla mais poderosa do dplyr:\n\n# Nota média geral\nfilmes %&gt;% \n  summarise(\n    nota_media = mean(nota),\n    nota_desvio = sd(nota),\n    nota_min = min(nota),\n    nota_max = max(nota),\n    n = n()\n  )\n\n# A tibble: 1 × 5\n  nota_media nota_desvio nota_min nota_max     n\n       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;\n1       6.46        1.05      1.6      9.3  3875\n\n\n\n# Nota média por gênero\nfilmes %&gt;% \n  group_by(genero) %&gt;% \n  summarise(\n    nota_media = mean(nota),\n    n = n()\n  ) %&gt;% \n  arrange(desc(nota_media))\n\n# A tibble: 19 × 3\n   genero            nota_media     n\n   &lt;chr&gt;                  &lt;dbl&gt; &lt;int&gt;\n 1 Musical                 6.75    39\n 2 Esporte                 6.73    16\n 3 História                6.56    31\n 4 Guerra                  6.55    33\n 5 Biografia               6.50   121\n 6 Comédia                 6.50   452\n 7 Ação                    6.49   566\n 8 Drama                   6.48   719\n 9 Romance                 6.48   245\n10 Documentário            6.47   117\n11 Ficção científica       6.47   306\n12 Fantasia                6.47    82\n13 Mistério                6.46   113\n14 Aventura                6.45   204\n15 Thriller                6.41   185\n16 Terror                  6.40   311\n17 Crime                   6.39   193\n18 Animação                6.29   114\n19 Família                 6.1     28\n\n\n\n# Orçamento médio por ano (apenas anos com 5+ filmes)\nfilmes %&gt;% \n  group_by(ano) %&gt;% \n  summarise(\n    orcamento_medio = mean(orcamento, na.rm = TRUE),\n    n = n()\n  ) %&gt;% \n  filter(n &gt;= 5) %&gt;% \n  arrange(desc(orcamento_medio)) %&gt;% \n  head(10)\n\n# A tibble: 10 × 3\n     ano orcamento_medio     n\n   &lt;dbl&gt;           &lt;dbl&gt; &lt;int&gt;\n 1  2016       66007647.    68\n 2  2015       53006627.   139\n 3  2013       49385475.   171\n 4  2014       48291950.   159\n 5  2012       47744328.   166\n 6  2010       47258132.   174\n 7  2008       44004546.   183\n 8  2011       42996023.   175\n 9  2009       41423690.   187\n10  2005       40487560.   186\n\n\n\n\n\ncount() — Atalho para frequência\n\n# Gêneros mais frequentes\nfilmes %&gt;% \n  count(genero, sort = TRUE)\n\n# A tibble: 19 × 2\n   genero                n\n   &lt;chr&gt;             &lt;int&gt;\n 1 Drama               719\n 2 Ação                566\n 3 Comédia             452\n 4 Terror              311\n 5 Ficção científica   306\n 6 Romance             245\n 7 Aventura            204\n 8 Crime               193\n 9 Thriller            185\n10 Biografia           121\n11 Documentário        117\n12 Animação            114\n13 Mistério            113\n14 Fantasia             82\n15 Musical              39\n16 Guerra               33\n17 História             31\n18 Família              28\n19 Esporte              16\n\n# Diretores mais prolíficos\nfilmes %&gt;% \n  count(diretor, sort = TRUE) %&gt;% \n  head(10)\n\n# A tibble: 10 × 2\n   diretor               n\n   &lt;chr&gt;             &lt;int&gt;\n 1 Steven Spielberg     25\n 2 Clint Eastwood       19\n 3 Woody Allen          19\n 4 Ridley Scott         17\n 5 Martin Scorsese      16\n 6 Steven Soderbergh    16\n 7 Tim Burton           16\n 8 Renny Harlin         15\n 9 Spike Lee            15\n10 Barry Levinson       13",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/02-manipulacao.html#seus-primeiros-gráficos-com-ggplot2",
+    "href": "04-dias/02-manipulacao.html#seus-primeiros-gráficos-com-ggplot2",
+    "title": "Manipulação de dados com dplyr",
+    "section": "🎬 Seus primeiros gráficos com ggplot2",
+    "text": "🎬 Seus primeiros gráficos com ggplot2\nE se eu te disser que você já pode criar gráficos profissionais hoje? Não precisa de teoria complicada — é só seguir uma receita simples.\nA estrutura básica de qualquer gráfico no ggplot2 é:\nggplot(dados, aes(x = coluna_x, y = coluna_y)) +\n  geom_tipo()\nVamos criar 4 gráficos essenciais com os dados de filmes:\n\nHistograma — distribuição das notas\n\nfilmes %&gt;% \n  ggplot(aes(x = nota)) +\n  geom_histogram(bins = 30, fill = \"#18BC9C\", color = \"white\")\n\n\n\n\n\n\n\n\nCada barra mostra quantos filmes têm nota naquele intervalo. A distribuição é aproximadamente simétrica, centrada em torno de 6.\n\n\nDispersão — orçamento × faturamento\n\nfilmes %&gt;% \n  ggplot(aes(x = orcamento, y = faturamento)) +\n  geom_point(alpha = 0.3, color = \"#2C3E50\") +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"#E74C3C\")\n\n\n\n\n\n\n\n\nCada ponto é um filme. A linha vermelha mostra a tendência: quanto maior o orçamento, maior o faturamento — em média.\n\n\nBarras — top 10 gêneros\n\nfilmes %&gt;% \n  count(genero, sort = TRUE) %&gt;% \n  head(10) %&gt;% \n  ggplot(aes(x = reorder(genero, n), y = n)) +\n  geom_col(fill = \"#18BC9C\") +\n  coord_flip() +\n  labs(x = NULL, y = \"Número de filmes\")\n\n\n\n\n\n\n\n\n\n\nBoxplot — nota por gênero\n\nfilmes %&gt;% \n  filter(genero %in% c(\"Ação\", \"Comédia\", \"Drama\", \"Ficção científica\", \"Terror\")) %&gt;% \n  ggplot(aes(x = genero, y = nota, fill = genero)) +\n  geom_boxplot() +\n  labs(x = NULL, y = \"Nota IMDB\") +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipVocê acaba de fazer análise exploratória!\n\n\n\nEm menos de 10 linhas de código você filtrou, agrupou, resumiu e visualizou dados. Isso é o poder do R + tidyverse. O resto do curso é aprofundamento dessas mesmas ferramentas.",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/02-manipulacao.html#exercícios",
+    "href": "04-dias/02-manipulacao.html#exercícios",
+    "title": "Manipulação de dados com dplyr",
+    "section": "Exercícios",
+    "text": "Exercícios\n\n\n\n\n\n\nNoteImportante\n\n\n\nEm todos os exercícios, carregue o dataset com:\nfilmes &lt;- read_csv2(\"../data/filmes_imdb.csv\")\n\n\n\nExercício 1\nFiltre os filmes com nota maior ou igual a 8.5. Quantos filmes atendem a esse critério?\nResultado esperado:\n# A tibble: 1 × 1\n      n\n  &lt;int&gt;\n1   103\n\n\nExercício 2\nCrie uma coluna lucro = faturamento - orcamento e encontre os 5 filmes mais lucrativos.\nResultado esperado:\n# A tibble: 5 × 2\n  titulo                        lucro\n  &lt;chr&gt;                         &lt;dbl&gt;\n1 The story of cap and trade 48699922\n2 Sholay                     18599922\n3 Ram Teri Ganga Maili       12599881\n4 ET                          8999901\n5 Black Friday                1999989\n\n\nExercício 3\nCalcule a nota média e o número de filmes por gênero. Ordene da maior para a menor nota média.\nResultado esperado:\n# A tibble: 19 × 3\n   genero          nota_media     n\n   &lt;chr&gt;                &lt;dbl&gt; &lt;int&gt;\n 1 Documentário          6.84    70\n 2 Guerra                6.75    19\n 3 História              6.73    21\n 4 Drama                 6.56   964\n 5 Musical               6.56    13\n 6 Biografia             6.54    90\n 7 Crime                 6.49   308\n 8 Mistério              6.43    90\n 9 Esporte               6.42     5\n10 Aventura              6.42    80\n# … with 9 more rows\n\n\nExercício 4\nCrie um histograma da coluna duracao (duração dos filmes em minutos). Use 40 bins.\nResultado esperado:\nUm histograma com pico em torno de 90-100 minutos, distribuição assimétrica à direita.\n\n\nExercício 5\nCrie um gráfico de dispersão com orcamento no eixo x, nota no eixo y. Existe relação visível?\nResultado esperado:\nNuvem de pontos sem padrão claro — orçamento não determina a qualidade do filme.\n\n\nExercício 6\nCrie um gráfico de barras com os 10 diretores que mais aparecem no dataset.\nResultado esperado:\nGráfico de barras horizontal com Woody Allen no topo, seguido por Steven Spielberg, Clint Eastwood, etc.\n\n\nExercício 7 (Desafio)\nCombine filter(), mutate(), group_by() e summarise() para responder: qual gênero tem o maior orçamento médio entre filmes com nota ≥ 7.0?\nResultado esperado:\n# A tibble: 10 × 3\n   genero          orcamento_medio     n\n   &lt;chr&gt;                     &lt;dbl&gt; &lt;int&gt;\n 1 Aventura              22980338.     9\n 2 Animação              19091918.     9\n 3 Fantasia              16110251.     4\n 4 Ação                  15915052.    37\n 5 Ficção científica     14880336.    21\n 6 Guerra                11377778.     2\n 7 Drama                 11075548.    91\n 8 Comédia                9832855.    46\n 9 Romance                9465063.    10\n10 Thriller               9416381.    12",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/03-manipulacao-avancada.html",
+    "href": "04-dias/03-manipulacao-avancada.html",
+    "title": "Manipulação avançada e Joins",
+    "section": "",
+    "text": "Objetivos\nDia 2 — Manhã | 4 horas\nAo final deste capítulo, você será capaz de:",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Manipulação avançada e Joins</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/03-manipulacao-avancada.html#objetivos",
+    "href": "04-dias/03-manipulacao-avancada.html#objetivos",
+    "title": "Manipulação avançada e Joins",
+    "section": "",
+    "text": "Criar colunas condicionais com case_when() e if_else()\nTrabalhar com operações de janela (top N, valores defasados)\nCruzar tabelas com os diferentes tipos de join\nTransitar entre dados de filmes e dados florestais com as mesmas técnicas",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Manipulação avançada e Joins</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/03-manipulacao-avancada.html#manipulação-condicional",
+    "href": "04-dias/03-manipulacao-avancada.html#manipulação-condicional",
+    "title": "Manipulação avançada e Joins",
+    "section": "Manipulação condicional",
+    "text": "Manipulação condicional\nMuitas vezes você precisa criar colunas cujo valor depende de uma condição. Para isso usamos case_when() (múltiplas condições) e if_else() (condição binária).\n\ncase_when() — múltiplas condições\n\n# Classificar filmes por faixa de nota\nfilmes %&gt;% \n  mutate(\n    categoria = case_when(\n      nota &gt;= 8.5 ~ \"Excelente\",\n      nota &gt;= 7.0 ~ \"Bom\",\n      nota &gt;= 5.0 ~ \"Regular\",\n      TRUE ~ \"Ruim\"\n    )\n  ) %&gt;% \n  count(categoria)\n\n# A tibble: 4 × 2\n  categoria     n\n  &lt;chr&gt;     &lt;int&gt;\n1 Bom        1277\n2 Excelente    47\n3 Regular    2242\n4 Ruim        309\n\n\n\n# Mesma lógica aplicada a dados florestais\ninv_florestal %&gt;% \n  mutate(\n    classe_dap = case_when(\n      dap &gt;= 35 ~ \"Grossa\",\n      dap &gt;= 15 ~ \"Média\",\n      TRUE ~ \"Fina\"\n    )\n  ) %&gt;% \n  count(classe_dap)\n\n# A tibble: 3 × 2\n  classe_dap     n\n  &lt;chr&gt;      &lt;int&gt;\n1 Fina         232\n2 Grossa        35\n3 Média        864\n\n\n\n\nif_else() — condição binária\n\n# Classificar como \"Sucesso\" se faturamento &gt; orçamento\nfilmes %&gt;% \n  mutate(\n    sucesso = if_else(faturamento &gt; orcamento, \"Sim\", \"Não\")\n  ) %&gt;% \n  count(sucesso)\n\n# A tibble: 2 × 2\n  sucesso     n\n  &lt;chr&gt;   &lt;int&gt;\n1 Não      1830\n2 Sim      2045",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Manipulação avançada e Joins</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/03-manipulacao-avancada.html#operações-com-janelas",
+    "href": "04-dias/03-manipulacao-avancada.html#operações-com-janelas",
+    "title": "Manipulação avançada e Joins",
+    "section": "Operações com janelas",
+    "text": "Operações com janelas\nOperações de janela permitem comparar cada linha com outras do mesmo grupo, sem perder os dados originais.\n\nTop N por grupo\n\n# Top 3 filmes por gênero (por nota)\nfilmes %&gt;% \n  group_by(genero) %&gt;% \n  slice_max(nota, n = 3) %&gt;% \n  select(genero, titulo, nota) %&gt;% \n  arrange(genero, desc(nota))\n\n# A tibble: 64 × 3\n# Groups:   genero [19]\n   genero   titulo                                              nota\n   &lt;chr&gt;    &lt;chr&gt;                                              &lt;dbl&gt;\n 1 Animação Schindler's List                                     8.9\n 2 Animação The Lord of the Rings: The Fellowship of the Ring    8.8\n 3 Animação The Lord of the Rings: The Two Towers                8.7\n 4 Animação One Flew Over the Cuckoo's Nest                      8.7\n 5 Aventura The Dark Knight                                      9  \n 6 Aventura Braveheart                                           8.4\n 7 Aventura A Separation                                         8.4\n 8 Ação     Inception                                            8.8\n 9 Ação     Goodfellas                                           8.7\n10 Ação     The Usual Suspects                                   8.6\n# ℹ 54 more rows\n\n\n\n# 5 árvores com maior DAP em cada parcela (dado florestal)\ninv_florestal %&gt;% \n  group_by(parcela) %&gt;% \n  slice_max(dap, n = 5) %&gt;% \n  select(parcela, especie, dap, altura)\n\n# A tibble: 150 × 4\n# Groups:   parcela [30]\n   parcela especie                dap altura\n     &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt;\n 1       1 Eucalyptus Grandis    37.2   54.2\n 2       1 Pinus Taeda           33.8   54.4\n 3       1 Eucalyptus Urophylla  32.6   52.1\n 4       1 Eucalyptus Grandis    31     52.4\n 5       1 Eucalyptus Grandis    30.9   50.7\n 6       2 Eucalyptus Grandis    36.9   56.5\n 7       2 Eucalyptus Grandis    34.9   56.5\n 8       2 Eucalyptus Grandis    34     54.3\n 9       2 Eucalyptus Grandis    32.7   51.2\n10       2 Eucalyptus Grandis    30.4   51.5\n# ℹ 140 more rows\n\n\n\n\nValores defasados: lag() e lead()\n\n# Comparar faturamento entre filmes consecutivos do mesmo diretor\nfilmes %&gt;% \n  group_by(diretor) %&gt;% \n  arrange(ano) %&gt;% \n  mutate(\n    faturamento_anterior = lag(faturamento),\n    variacao = faturamento - faturamento_anterior\n  ) %&gt;% \n  select(diretor, ano, titulo, faturamento, faturamento_anterior, variacao) %&gt;% \n  filter(!is.na(variacao))\n\n# A tibble: 2,130 × 6\n# Groups:   diretor [735]\n   diretor                ano titulo   faturamento faturamento_anterior variacao\n   &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;                &lt;dbl&gt;    &lt;dbl&gt;\n 1 Victor Fleming        1939 The Wiz…    22202612            198655278  -1.76e8\n 2 David Lean            1962 Lawrenc…     6000000             27200000  -2.12e7\n 3 Terence Young         1963 From Ru…    24800000             16067035   8.73e6\n 4 David Lean            1965 Doctor …   111722000              6000000   1.06e8\n 5 Terence Young         1965 Thunder…    63600000             24800000   3.88e7\n 6 Sergio Leone          1966 The Goo…     6100000              3500000   2.6 e6\n 7 Guy Hamilton          1971 Diamond…    43800000             51100000  -7.3 e6\n 8 Guy Hamilton          1973 Live an…    35400000             43800000  -8.40e6\n 9 George Roy Hill       1973 The Sti…   159600000            102308900   5.73e7\n10 Francis Ford Coppola  1974 The God…    57300000            134821952  -7.75e7\n# ℹ 2,120 more rows\n\n\n\n\nOperações cumulativas\n\n# Soma cumulativa de faturamento por ano\nfilmes %&gt;% \n  group_by(ano) %&gt;% \n  arrange(faturamento) %&gt;% \n  mutate(\n    faturamento_cumulativo = cumsum(faturamento)\n  ) %&gt;% \n  select(ano, titulo, faturamento, faturamento_cumulativo)\n\n# A tibble: 3,875 × 4\n# Groups:   ano [75]\n     ano titulo                            faturamento faturamento_cumulativo\n   &lt;dbl&gt; &lt;chr&gt;                                   &lt;dbl&gt;                  &lt;dbl&gt;\n 1  2014 Skin Trade                                162                    162\n 2  2001 The Jimmy Show                            703                    703\n 3  2006 In Her Line of Fire                       721                    721\n 4  2006 The Trials of Darryl Hunt                1111                   1832\n 5  2012 Detention of the Dead                    1332                   1332\n 6  2012 Eddie: The Sleepwalking Cannibal         1521                   2853\n 7  2011 The Harvest/La Cosecha                   2245                   2245\n 8  2012 The Ghastly Love of Johnny X             2436                   5289\n 9  2014 Locker 13                                2468                   2630\n10  2003 I Love Your Work                         2580                   2580\n# ℹ 3,865 more rows\n\n\n\n# Volume acumulado por parcela (dado florestal)\ninv_florestal %&gt;% \n  group_by(parcela) %&gt;% \n  mutate(volume_cumulativo = cumsum(volume)) %&gt;% \n  select(parcela, especie, volume, volume_cumulativo)\n\n# A tibble: 1,131 × 4\n# Groups:   parcela [30]\n   parcela especie            volume volume_cumulativo\n     &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt;             &lt;dbl&gt;\n 1       1 Eucalyptus Grandis  0.876             0.876\n 2       1 Pinus Taeda         0.699             1.57 \n 3       1 Eucalyptus Grandis  1.24              2.81 \n 4       1 Pinus Taeda         0.217             3.03 \n 5       1 Eucalyptus Grandis  0.746             3.77 \n 6       1 Eucalyptus Grandis  0.596             4.37 \n 7       1 Pinus Taeda         1.02              5.39 \n 8       1 Eucalyptus Grandis  1.56              6.95 \n 9       1 Eucalyptus Grandis  1.11              8.06 \n10       1 Pinus Taeda         1.57              9.62 \n# ℹ 1,121 more rows",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Manipulação avançada e Joins</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/03-manipulacao-avancada.html#trabalhando-com-múltiplas-tabelas-joins",
+    "href": "04-dias/03-manipulacao-avancada.html#trabalhando-com-múltiplas-tabelas-joins",
+    "title": "Manipulação avançada e Joins",
+    "section": "Trabalhando com múltiplas tabelas: Joins",
+    "text": "Trabalhando com múltiplas tabelas: Joins\nNa vida real, os dados raramente estão em uma única tabela. Informações complementares ficam em tabelas separadas que precisam ser cruzadas.\n\nOs tipos de join\nleft_join()   → Mantém TODAS as linhas da tabela da esquerda\ninner_join()  → Mantém APENAS linhas com correspondência nas duas\nfull_join()   → Mantém TODAS as linhas de ambas\nanti_join()   → Mostra o que NÃO tem correspondência (diagnóstico)\n\n\nExemplo prático: filmes + elenco\n\n# Carregar tabelas separadas\nelenco &lt;- read_csv(\"../data/elenco.csv\")\n\n# left_join: adicionar informações do elenco aos filmes\nfilmes_com_elenco &lt;- filmes %&gt;% \n  left_join(elenco, by = c(\"codigo_filme\" = \"codigo\"))\n\nglimpse(filmes_com_elenco)\n\nRows: 3,875\nColumns: 12\n$ codigo_filme     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…\n$ titulo           &lt;chr&gt; \"Avatar \", \"Pirates of the Caribbean: At World's End …\n$ diretor          &lt;chr&gt; \"James Cameron\", \"Gore Verbinski\", \"Sam Mendes\", \"Chr…\n$ ano              &lt;dbl&gt; 2009, 2007, 2015, 2012, 2012, 2007, 2010, 2015, 2009,…\n$ genero           &lt;chr&gt; \"Ação\", \"Aventura\", \"Comédia\", \"Mistério\", \"Fantasia\"…\n$ duracao          &lt;dbl&gt; 81, 126, 88, 99, 92, 95, 39, 111, 82, 89, 77, 102, 98…\n$ orcamento        &lt;dbl&gt; 237000000, 300000000, 245000000, 250000000, 263700000…\n$ faturamento      &lt;dbl&gt; 760505847, 309404152, 200074175, 448130642, 73058679,…\n$ nota             &lt;dbl&gt; 7.9, 7.1, 6.8, 8.5, 6.6, 6.2, 7.8, 7.5, 7.5, 6.9, 6.1…\n$ elenco_principal &lt;chr&gt; \"Viola Davis\", \"Cate Blanchett\", \"Natalie Portman\", \"…\n$ ator_principal   &lt;chr&gt; \"Viola Davis\", \"Viola Davis\", \"Tom Hanks\", \"Leonardo …\n$ orcamento_elenco &lt;dbl&gt; 11783666, 30312077, 47499828, 27114606, 38641928, 143…\n\n\n\n\nExemplo florestal: inventário + cadastro\n\n# Dados de árvores (inv_florestal) + informações das parcelas (parcelas)\nparcelas &lt;- read_csv(\"../data/parcelas.csv\")\n\ninv_completo &lt;- inv_florestal %&gt;% \n  left_join(parcelas, by = \"parcela\")\n\nglimpse(inv_completo)\n\nRows: 1,131\nColumns: 10\n$ parcela      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ arvore       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…\n$ especie      &lt;chr&gt; \"Eucalyptus Grandis\", \"Pinus Taeda\", \"Eucalyptus Grandis\"…\n$ dap          &lt;dbl&gt; 21.7, 20.5, 26.2, 12.6, 19.5, 17.9, 23.5, 27.0, 24.5, 27.…\n$ altura       &lt;dbl&gt; 46.0, 44.0, 51.1, 38.7, 49.8, 44.3, 49.8, 52.9, 48.9, 50.…\n$ volume       &lt;dbl&gt; 0.8759, 0.6989, 1.2358, 0.2173, 0.7461, 0.5956, 1.0173, 1…\n$ talhao       &lt;dbl&gt; 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, …\n$ area_parcela &lt;dbl&gt; 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 60…\n$ idade        &lt;dbl&gt; 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 1…\n$ sitio        &lt;chr&gt; \"Médio\", \"Médio\", \"Médio\", \"Médio\", \"Médio\", \"Médio\", \"Mé…\n\n\n\n# Agora podemos calcular volume por hectare!\ninv_completo %&gt;% \n  group_by(parcela, idade, sitio) %&gt;% \n  summarise(\n    volume_total = sum(volume),\n    area_ha = first(area_parcela) / 10000,\n    volume_ha = volume_total / area_ha\n  ) %&gt;% \n  arrange(desc(volume_ha))\n\n# A tibble: 30 × 6\n# Groups:   parcela, idade [30]\n   parcela idade sitio volume_total area_ha volume_ha\n     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n 1      22     5 Ruim          50.4    0.06      839.\n 2      18     5 Médio         49.7    0.06      828.\n 3      13    11 Médio         44.4    0.06      740.\n 4       5    11 Médio         43.0    0.06      717.\n 5       6     8 Médio         42.2    0.06      704.\n 6      11    12 Médio         41.9    0.06      698.\n 7      17     5 Médio         41.7    0.06      695.\n 8       2     9 Bom           40.1    0.06      668.\n 9      25     9 Médio         39.5    0.06      658.\n10       4     6 Bom           39.1    0.06      652.\n# ℹ 20 more rows\n\n\n\n\nDiagnóstico com anti_join()\n\n# Parcelas que estão no inventário mas NÃO no cadastro\ninv_florestal %&gt;% \n  anti_join(parcelas, by = \"parcela\") %&gt;% \n  distinct(parcela)\n\n# A tibble: 0 × 1\n# ℹ 1 variable: parcela &lt;dbl&gt;\n\n# Parcelas no cadastro mas SEM árvores no inventário\nparcelas %&gt;% \n  anti_join(inv_florestal, by = \"parcela\")\n\n# A tibble: 0 × 5\n# ℹ 5 variables: parcela &lt;dbl&gt;, talhao &lt;dbl&gt;, area_parcela &lt;dbl&gt;, idade &lt;dbl&gt;,\n#   sitio &lt;chr&gt;\n\n\n\n\nbind_rows() — Empilhando tabelas\n\n# Simulando inventários de anos diferentes\ninv_2022 &lt;- inv_florestal %&gt;% mutate(ano_medicao = 2022)\ninv_2023 &lt;- inv_florestal %&gt;% mutate(ano_medicao = 2023, dap = dap + rnorm(n(), 2, 1))\n\ninv_historico &lt;- bind_rows(inv_2022, inv_2023)\n\ninv_historico %&gt;% \n  group_by(ano_medicao) %&gt;% \n  summarise(dap_medio = mean(dap))\n\n# A tibble: 2 × 2\n  ano_medicao dap_medio\n        &lt;dbl&gt;     &lt;dbl&gt;\n1        2022      20.7\n2        2023      22.7",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Manipulação avançada e Joins</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/03-manipulacao-avancada.html#transição-de-filmes-para-floresta",
+    "href": "04-dias/03-manipulacao-avancada.html#transição-de-filmes-para-floresta",
+    "title": "Manipulação avançada e Joins",
+    "section": "Transição: de filmes para floresta",
+    "text": "Transição: de filmes para floresta\nA beleza do que você aprendeu é que as mesmas técnicas se aplicam a qualquer domínio. Compare:\n\n# Análise com filmes\nfilmes %&gt;% \n  group_by(genero) %&gt;% \n  summarise(media = mean(nota), n = n()) %&gt;% \n  arrange(desc(media))\n\n# A tibble: 19 × 3\n   genero            media     n\n   &lt;chr&gt;             &lt;dbl&gt; &lt;int&gt;\n 1 Musical            6.75    39\n 2 Esporte            6.73    16\n 3 História           6.56    31\n 4 Guerra             6.55    33\n 5 Biografia          6.50   121\n 6 Comédia            6.50   452\n 7 Ação               6.49   566\n 8 Drama              6.48   719\n 9 Romance            6.48   245\n10 Documentário       6.47   117\n11 Ficção científica  6.47   306\n12 Fantasia           6.47    82\n13 Mistério           6.46   113\n14 Aventura           6.45   204\n15 Thriller           6.41   185\n16 Terror             6.40   311\n17 Crime              6.39   193\n18 Animação           6.29   114\n19 Família            6.1     28\n\n\n\n# Mesma análise com dados florestais\ninv_florestal %&gt;% \n  group_by(especie) %&gt;% \n  summarise(media_dap = mean(dap), n = n()) %&gt;% \n  arrange(desc(media_dap))\n\n# A tibble: 3 × 3\n  especie              media_dap     n\n  &lt;chr&gt;                    &lt;dbl&gt; &lt;int&gt;\n1 Eucalyptus Grandis        22.1   682\n2 Eucalyptus Urophylla      21.7    99\n3 Pinus Taeda               17.6   350\n\n\nA estrutura é idêntica. Só mudam os nomes das colunas e o contexto!",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Manipulação avançada e Joins</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/03-manipulacao-avancada.html#exercícios",
+    "href": "04-dias/03-manipulacao-avancada.html#exercícios",
+    "title": "Manipulação avançada e Joins",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nExercício 1\nUsando case_when(), classifique as árvores do inv_florestal em classes de DAP: “Fina” (&lt; 15 cm), “Média” (15-25 cm), “Grossa” (&gt; 25 cm). Conte quantas árvores em cada classe.\nResultado esperado:\n# A tibble: 3 × 2\n  classe_dap     n\n  &lt;chr&gt;      &lt;int&gt;\n1 Grossa        96\n2 Média        401\n3 Fina         495\n\n\nExercício 2\nUsando slice_max(), encontre as 3 maiores árvores (por DAP) de cada espécie.\nResultado esperado:\n# A tibble: 9 × 3\n  especie    dap altura\n  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;\n1 Eucalipto  42.3   32.1\n2 Eucalipto  41.8   31.5\n3 Eucalipto  40.2   30.8\n4 Pinus      38.7   28.4\n5 Pinus      37.2   27.8\n6 Pinus      36.5   27.1\n# … with 3 more rows\n\n\nExercício 3\nFaça um left_join entre inv_florestal e parcelas. Agrupe por parcela e calcule: volume total, área em hectares, volume por hectare.\nResultado esperado (top 3 parcelas):\n# A tibble: 30 × 5\n   parcela volume_total area_ha volume_ha\n     &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n 1       7        25.2    0.06      420. \n 2       2        24.3    0.06      405. \n 3      30        23.8    0.06      397. \n\n\nExercício 4\nCalcule o IMA (Incremento Médio Anual) = volume_ha / idade para cada parcela. Ordene do maior para o menor.\nResultado esperado (top 3):\n# A tibble: 30 × 4\n  parcela volume_ha idade   IMA\n    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1       7      420.     5  84.1\n2      12      395.     5  79.1\n3      15      389.     7  55.6\n\n\nExercício 5\nUse anti_join() para verificar se há alguma parcela no inv_florestal que não existe no cadastro de parcelas.\nResultado esperado:\n# A tibble: 0 × 1\n# … with 1 variable: parcela\n(Zero linhas = tudo certo, todas as parcelas têm cadastro.)",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Manipulação avançada e Joins</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/04-visualizacao.html",
+    "href": "04-dias/04-visualizacao.html",
+    "title": "Visualização de dados com ggplot2",
+    "section": "",
+    "text": "Objetivos\nDia 2 — Tarde | 4 horas\nAo final deste capítulo, você será capaz de:",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Visualização de dados com ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/04-visualizacao.html#objetivos",
+    "href": "04-dias/04-visualizacao.html#objetivos",
+    "title": "Visualização de dados com ggplot2",
+    "section": "",
+    "text": "Entender a gramática de gráficos do ggplot2\nCriar visualizações profissionais com customização completa\nUsar facetas para comparar grupos\nExportar gráficos em alta resolução",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Visualização de dados com ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/04-visualizacao.html#a-gramática-de-gráficos",
+    "href": "04-dias/04-visualizacao.html#a-gramática-de-gráficos",
+    "title": "Visualização de dados com ggplot2",
+    "section": "A gramática de gráficos",
+    "text": "A gramática de gráficos\nO ggplot2 é baseado na Gramática de Gráficos (Grammar of Graphics). Todo gráfico é construído por camadas:\nggplot(dados, aes(x, y)) +   # dados + mapeamento estético\n  geom_tipo() +               # geometria (o que desenhar)\n  scale_tipo() +              # escalas (cores, eixos)\n  theme_tipo() +              # tema (aparência)\n  labs(...)                   # rótulos (títulos)\nVamos construir um gráfico passo a passo, adicionando camadas:\n\n# Passo 1: dados + eixos (tela vazia)\ninv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura))\n\n\n\n\n\n\n\n\n\n# Passo 2: geometria de pontos\ninv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n# Passo 3: cor por espécie\ninv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura, color = especie)) +\n  geom_point(alpha = 0.5)\n\n\n\n\n\n\n\n\n\n# Passo 4: linha de tendência + tema + rótulos\ninv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura, color = especie)) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  labs(\n    title = \"Relação hipsométrica\",\n    subtitle = \"DAP × Altura por espécie\",\n    x = \"DAP (cm)\",\n    y = \"Altura (m)\",\n    color = \"Espécie\"\n  ) +\n  theme_minimal()",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Visualização de dados com ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/04-visualizacao.html#geometrias-essenciais",
+    "href": "04-dias/04-visualizacao.html#geometrias-essenciais",
+    "title": "Visualização de dados com ggplot2",
+    "section": "Geometrias essenciais",
+    "text": "Geometrias essenciais\n\nUma variável contínua: histograma e densidade\n\n# Distribuição diamétrica — histograma\ninv_florestal %&gt;%\n  ggplot(aes(x = dap)) +\n  geom_histogram(bins = 30, fill = \"#18BC9C\", color = \"white\") +\n  labs(title = \"Distribuição diamétrica\", x = \"DAP (cm)\", y = \"Frequência\")\n\n\n\n\n\n\n\n\n\n# Densidade — mais suave que histograma, bom para comparar grupos\ninv_florestal %&gt;%\n  ggplot(aes(x = dap, fill = especie)) +\n  geom_density(alpha = 0.5) +\n  labs(title = \"Distribuição diamétrica por espécie\", x = \"DAP (cm)\", y = \"Densidade\")\n\n\n\n\n\n\n\n\n\n\nDuas variáveis: dispersão, linha, boxplot\n\n# Dispersão com tendência\ninv_florestal %&gt;%\n  ggplot(aes(x = dap, y = volume)) +\n  geom_point(alpha = 0.3, color = \"#2C3E50\") +\n  geom_smooth(method = \"lm\", color = \"#E74C3C\") +\n  labs(title = \"Relação DAP × Volume\", x = \"DAP (cm)\", y = expression(Volume~(m^3)))\n\n\n\n\n\n\n\n\n\n# Boxplot — comparar distribuições\ninv_florestal %&gt;%\n  ggplot(aes(x = especie, y = volume, fill = especie)) +\n  geom_boxplot() +\n  labs(title = \"Volume por espécie\", x = NULL, y = expression(Volume~(m^3))) +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n# Volume total por parcela (barras)\ninv_florestal %&gt;%\n  group_by(parcela) %&gt;%\n  summarise(volume_total = sum(volume)) %&gt;%\n  ggplot(aes(x = reorder(factor(parcela), volume_total), y = volume_total)) +\n  geom_col(fill = \"#18BC9C\") +\n  coord_flip() +\n  labs(title = \"Volume total por parcela\", x = \"Parcela\", y = expression(Volume~(m^3)))",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Visualização de dados com ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/04-visualizacao.html#customização-de-cores",
+    "href": "04-dias/04-visualizacao.html#customização-de-cores",
+    "title": "Visualização de dados com ggplot2",
+    "section": "Customização de cores",
+    "text": "Customização de cores\n\n# Cores pré-definidas (ColorBrewer)\ninv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura, color = especie)) +\n  geom_point(alpha = 0.5) +\n  scale_color_brewer(palette = \"Set1\") +\n  labs(color = \"Espécie\")\n\n\n\n\n\n\n\n# Escala viridis (acessível para daltônicos)\ninv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura, color = volume)) +\n  geom_point(alpha = 0.7) +\n  scale_color_viridis_c(option = \"plasma\") +\n  labs(color = expression(Volume~(m^3)))",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Visualização de dados com ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/04-visualizacao.html#facetas-subgráficos-por-grupo",
+    "href": "04-dias/04-visualizacao.html#facetas-subgráficos-por-grupo",
+    "title": "Visualização de dados com ggplot2",
+    "section": "Facetas: subgráficos por grupo",
+    "text": "Facetas: subgráficos por grupo\n\n# Um gráfico por espécie\ninv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura)) +\n  geom_point(alpha = 0.5, color = \"#2C3E50\") +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"#E74C3C\") +\n  facet_wrap(~especie) +\n  labs(title = \"Relação hipsométrica por espécie\", x = \"DAP (cm)\", y = \"Altura (m)\")\n\n\n\n\n\n\n\n\n\n# Grade por espécie × parcela (selecionando 6 parcelas)\ninv_florestal %&gt;%\n  filter(parcela %in% c(1, 2, 3, 7, 12, 15)) %&gt;%\n  ggplot(aes(x = dap, fill = especie)) +\n  geom_histogram(bins = 20, alpha = 0.7, position = \"identity\") +\n  facet_grid(parcela ~ especie) +\n  labs(title = \"Distribuição diamétrica — parcelas selecionadas\")",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Visualização de dados com ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/04-visualizacao.html#temas-e-aparência-final",
+    "href": "04-dias/04-visualizacao.html#temas-e-aparência-final",
+    "title": "Visualização de dados com ggplot2",
+    "section": "Temas e aparência final",
+    "text": "Temas e aparência final\n\n# Comparação de temas\np &lt;- inv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura, color = especie)) +\n  geom_point(alpha = 0.5)\n\n# Cinco temas diferentes\np + theme_minimal() + labs(title = \"theme_minimal()\")\n\n\n\n\n\n\n\np + theme_bw() + labs(title = \"theme_bw()\")\n\n\n\n\n\n\n\np + theme_light() + labs(title = \"theme_light()\")\n\n\n\n\n\n\n\np + theme_classic() + labs(title = \"theme_classic()\")\n\n\n\n\n\n\n\np + theme_dark() + labs(title = \"theme_dark()\")\n\n\n\n\n\n\n\n\n\n# Gráfico pronto para relatório\ninv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura, color = especie)) +\n  geom_point(alpha = 0.5, size = 2) +\n  geom_smooth(method = \"lm\", se = TRUE, alpha = 0.2) +\n  scale_color_brewer(palette = \"Set1\") +\n  labs(\n    title = \"Relação hipsométrica — Inventário Florestal\",\n    subtitle = \"Curvas ajustadas por espécie com intervalo de confiança de 95%\",\n    x = \"DAP (cm)\",\n    y = \"Altura total (m)\",\n    color = \"Espécie\",\n    caption = \"Fonte: Dados do inventário florestal\"\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    plot.title = element_text(face = \"bold\"),\n    legend.position = \"bottom\"\n  )",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Visualização de dados com ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/04-visualizacao.html#exportando-gráficos",
+    "href": "04-dias/04-visualizacao.html#exportando-gráficos",
+    "title": "Visualização de dados com ggplot2",
+    "section": "Exportando gráficos",
+    "text": "Exportando gráficos\n\n# Salvar o último gráfico exibido\n# ggsave(\"relacao_hipsometrica.png\", width = 8, height = 5, dpi = 300)\n\n# Ou guardar o gráfico em um objeto e salvar\ngrafico_final &lt;- inv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura, color = especie)) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  scale_color_brewer(palette = \"Set1\") +\n  labs(title = \"Relação hipsométrica\", x = \"DAP (cm)\", y = \"Altura (m)\") +\n  theme_minimal()\n\n# ggsave(\"hipsometrica.png\", grafico_final, width = 8, height = 5, dpi = 300)\n\n\n\n\n\n\n\nTipFormatos e resolução\n\n\n\n\nPNG — melhor para web e apresentações\nPDF — melhor para publicações e impressão\nSVG — gráficos vetoriais redimensionáveis\nDPI — 150 para web, 300 para impressão, 600 para publicação\n\n\n\n\nDashboard: combinando gráficos com patchwork\n\n# Quatro gráficos em um painel\np1 &lt;- inv_florestal %&gt;%\n  ggplot(aes(x = dap)) + geom_histogram(bins = 30, fill = \"#18BC9C\") + labs(title = \"Distribuição diamétrica\")\n\np2 &lt;- inv_florestal %&gt;%\n  ggplot(aes(x = dap, y = altura, color = especie)) + geom_point(alpha = 0.5) + labs(title = \"Relação hipsométrica\")\n\np3 &lt;- inv_florestal %&gt;%\n  ggplot(aes(x = especie, y = volume, fill = especie)) + geom_boxplot() + labs(title = \"Volume por espécie\") + theme(legend.position = \"none\")\n\np4 &lt;- inv_florestal %&gt;%\n  group_by(parcela) %&gt;% summarise(v = sum(volume)) %&gt;%\n  ggplot(aes(x = factor(parcela), y = v)) + geom_col(fill = \"#2C3E50\") + labs(title = \"Volume por parcela\", x = \"Parcela\")\n\n(p1 + p2) / (p3 + p4) +\n  plot_annotation(title = \"Dashboard — Inventário Florestal\", theme = theme(plot.title = element_text(face = \"bold\", size = 16)))",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Visualização de dados com ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/04-visualizacao.html#exercícios",
+    "href": "04-dias/04-visualizacao.html#exercícios",
+    "title": "Visualização de dados com ggplot2",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nExercício 1\nCrie um histograma da distribuição diamétrica (dap) com 30 bins, colorido em verde (#18BC9C). Adicione título e rótulos aos eixos.\nResultado esperado:\nHistograma com pico em torno de 15-20 cm, distribuição assimétrica à direita.\n\n\nExercício 2\nCrie um boxplot de volume por especie. Qual espécie tem maior variabilidade?\nResultado esperado:\nEucalipto com caixa mais larga e mediana mais alta que Pinus.\n\n\nExercício 3\nPlote dap × volume com pontos (alpha = 0.3) e uma curva de tendência suave (geom_smooth). Colora os pontos por espécie.\nResultado esperado:\nNuvem de pontos com duas curvas não-lineares — volume cresce exponencialmente com DAP.\n\n\nExercício 4\nUsando facet_wrap(~especie), crie um gráfico de dispersão dap × altura com um painel para cada espécie.\nResultado esperado:\nDois painéis lado a lado, cada um com a relação hipsométrica de uma espécie.\n\n\nExercício 5\nCrie um gráfico de barras do volume total por parcela (top 10), ordenado do maior para o menor. Use coord_flip() para facilitar a leitura.\nResultado esperado:\nGráfico horizontal com 10 barras verdes, parcela 7 com maior volume.\n\n\nExercício 6\nExporte seu melhor gráfico como PNG com 8 polegadas de largura, 5 de altura e 300 DPI.",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Visualização de dados com ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/05-strings-fatores-datas.html",
+    "href": "04-dias/05-strings-fatores-datas.html",
+    "title": "Strings, Fatores e Datas",
+    "section": "",
+    "text": "Objetivos\nDia 3 — Manhã | 4 horas\nAo final deste capítulo, você será capaz de:",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Strings, Fatores e Datas</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/05-strings-fatores-datas.html#objetivos",
+    "href": "04-dias/05-strings-fatores-datas.html#objetivos",
+    "title": "Strings, Fatores e Datas",
+    "section": "",
+    "text": "Manipular texto com stringr (buscar, extrair, substituir)\nTrabalhar com fatores usando forcats (reordenar, agrupar)\nLidar com datas usando lubridate (parse, extrair, calcular intervalos)",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Strings, Fatores e Datas</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/05-strings-fatores-datas.html#manipulação-de-texto-com-stringr",
+    "href": "04-dias/05-strings-fatores-datas.html#manipulação-de-texto-com-stringr",
+    "title": "Strings, Fatores e Datas",
+    "section": "Manipulação de texto com stringr",
+    "text": "Manipulação de texto com stringr\nDados reais vêm sujos: espaços extras, maiúsculas inconsistentes, padrões que precisam ser extraídos. O pacote stringr resolve isso.\n\nDetectar e contar padrões\n\nlibrary(stringr)\n\n# Quantos filmes têm \"The\" no título?\nfilmes %&gt;%\n  mutate(tem_the = str_detect(titulo, \"^The \")) %&gt;%\n  count(tem_the)\n\n# A tibble: 2 × 2\n  tem_the     n\n  &lt;lgl&gt;   &lt;int&gt;\n1 FALSE    3082\n2 TRUE      793\n\n\n\n# Quantas espécies contêm \"Eucalyptus\"?\ninv_florestal %&gt;%\n  mutate(euca = str_detect(especie, \"Eucalyptus\")) %&gt;%\n  count(euca)\n\n# A tibble: 2 × 2\n  euca      n\n  &lt;lgl&gt; &lt;int&gt;\n1 FALSE   350\n2 TRUE    781\n\n\n\n\nExtrair e substituir\n\n# Extrair o ano de uma data em formato texto\nstr_extract(\"15/03/2023\", \"\\\\d{4}$\")\n\n[1] \"2023\"\n\n# Substituir abreviações\nstr_replace(\"Eucalyptus grandis\", \"Eucalyptus\", \"E.\")\n\n[1] \"E. grandis\"\n\n\n\n# Padronizar nomes de espécies\ninv_florestal %&gt;%\n  mutate(especie_curto = str_replace(especie, \"Eucalyptus\", \"E.\")) %&gt;%\n  distinct(especie_curto)\n\n# A tibble: 3 × 1\n  especie_curto\n  &lt;chr&gt;        \n1 E. Grandis   \n2 Pinus Taeda  \n3 E. Urophylla \n\n\n\n\nLimpeza de texto\n\n# Texto sujo (simulando dado real de campo)\nnomes_sujos &lt;- c(\"  EUCALYPTUS GRANDIS  \", \"Pinus taeda\", \"Eucalyptus  urophylla\")\n\n# Faxina completa\nnomes_sujos %&gt;%\n  str_squish() %&gt;%        # remove espaços extras\n  str_to_lower() %&gt;%      # tudo minúsculo\n  str_to_title()          # primeira letra maiúscula\n\n[1] \"Eucalyptus Grandis\"   \"Pinus Taeda\"          \"Eucalyptus Urophylla\"\n\n\n\n# Aplicando limpeza ao dataset\ninv_florestal %&gt;%\n  mutate(especie_limpa = str_squish(especie) %&gt;% str_to_title()) %&gt;%\n  count(especie_limpa)\n\n# A tibble: 3 × 2\n  especie_limpa            n\n  &lt;chr&gt;                &lt;int&gt;\n1 Eucalyptus Grandis     682\n2 Eucalyptus Urophylla    99\n3 Pinus Taeda            350",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Strings, Fatores e Datas</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/05-strings-fatores-datas.html#fatores-com-forcats",
+    "href": "04-dias/05-strings-fatores-datas.html#fatores-com-forcats",
+    "title": "Strings, Fatores e Datas",
+    "section": "Fatores com forcats",
+    "text": "Fatores com forcats\nFatores são variáveis categóricas. O pacote forcats ajuda a reordená-los e agrupá-los — essencial para gráficos e modelos.\n\nReordenar por outra variável\n\n# Ordenar espécies por DAP médio (útil para gráficos)\ninv_florestal %&gt;%\n  mutate(especie = fct_reorder(especie, dap, .fun = median)) %&gt;%\n  ggplot(aes(x = especie, y = dap, fill = especie)) +\n  geom_boxplot() +\n  labs(x = NULL, y = \"DAP (cm)\", title = \"DAP por espécie (ordenado pela mediana)\") +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\nAgrupar categorias raras\n\n# Agrupar gêneros com poucos filmes como \"Outros\"\nfilmes %&gt;%\n  mutate(genero_agrupado = fct_lump(genero, n = 5)) %&gt;%\n  count(genero_agrupado, sort = TRUE)\n\n# A tibble: 6 × 2\n  genero_agrupado       n\n  &lt;fct&gt;             &lt;int&gt;\n1 Other              1521\n2 Drama               719\n3 Ação                566\n4 Comédia             452\n5 Terror              311\n6 Ficção científica   306\n\n\n\n# Agrupar espécies raras no inventário\ninv_florestal %&gt;%\n  mutate(especie_agrupada = fct_lump(especie, n = 3)) %&gt;%\n  count(especie_agrupada, sort = TRUE)\n\n# A tibble: 3 × 2\n  especie_agrupada         n\n  &lt;fct&gt;                &lt;int&gt;\n1 Eucalyptus Grandis     682\n2 Pinus Taeda            350\n3 Eucalyptus Urophylla    99\n\n\n\n\nOrdenar por frequência\n\n# Gênero mais comum primeiro\nfilmes %&gt;%\n  mutate(genero = fct_infreq(genero)) %&gt;%\n  ggplot(aes(y = genero)) +\n  geom_bar(fill = \"#18BC9C\") +\n  labs(title = \"Frequência de gêneros\", x = \"Nº de filmes\", y = NULL)",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Strings, Fatores e Datas</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/05-strings-fatores-datas.html#datas-com-lubridate",
+    "href": "04-dias/05-strings-fatores-datas.html#datas-com-lubridate",
+    "title": "Strings, Fatores e Datas",
+    "section": "Datas com lubridate",
+    "text": "Datas com lubridate\nLidar com datas no R sempre foi doloroso — até o lubridate. Ele transforma texto em data com funções intuitivas.\n\nParse de datas\n\nlibrary(lubridate)\n\n# Formatos comuns no Brasil\ndmy(\"15/03/2023\")       # dia/mês/ano\n\n[1] \"2023-03-15\"\n\ndmy(\"15 de março de 2023\")\n\n[1] \"2023-03-15\"\n\nymd(\"2023-03-15\")       # ano-mês-dia (ISO)\n\n[1] \"2023-03-15\"\n\nmdy(\"March 15, 2023\")   # mês/dia/ano (inglês)\n\n[1] \"2023-03-15\"\n\n\n\n# Com hora\nymd_hms(\"2023-03-15 14:30:00\")\n\n[1] \"2023-03-15 14:30:00 UTC\"\n\ndmy_hm(\"15/03/2023 14:30\")\n\n[1] \"2023-03-15 14:30:00 UTC\"\n\n\n\n\nExtrair componentes\n\ndata_medicao &lt;- dmy(\"15/03/2023\")\n\nyear(data_medicao)     # ano\n\n[1] 2023\n\nmonth(data_medicao)    # mês (número)\n\n[1] 3\n\nmonth(data_medicao, label = TRUE)  # mês (nome)\n\n[1] Mar\n12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec\n\nwday(data_medicao, label = TRUE)   # dia da semana\n\n[1] Wed\nLevels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat\n\nquarter(data_medicao)  # trimestre\n\n[1] 1\n\nsemester(data_medicao) # semestre\n\n[1] 1\n\n\n\n\nAritmética com datas\n\n# Adicionar dias\ndata_medicao + days(30)\n\n[1] \"2023-04-14\"\n\n# Adicionar meses\ndata_medicao + months(6)\n\n[1] \"2023-09-15\"\n\n# Adicionar anos\ndata_medicao + years(1)\n\n[1] \"2024-03-15\"\n\n# Calcular idade do povoamento\ndata_plantio &lt;- dmy(\"15/05/2017\")\nintervalo &lt;- interval(data_plantio, data_medicao)\nintervalo / years(1)    # idade em anos decimais\n\n[1] 5.832877\n\n\n\n\nExemplo prático: dados climáticos\n\nclima &lt;- read_csv(\"../data/clima.csv\")\n\nclima %&gt;%\n  mutate(\n    data = dmy(data),\n    mes = month(data, label = TRUE, abbr = FALSE),\n    ano = year(data)\n  ) %&gt;%\n  group_by(mes) %&gt;%\n  summarise(\n    temp_media = mean(temperatura, na.rm = TRUE),\n    precip_total = sum(precipitacao, na.rm = TRUE)\n  )\n\n# A tibble: 12 × 3\n   mes       temp_media precip_total\n   &lt;ord&gt;          &lt;dbl&gt;        &lt;dbl&gt;\n 1 January         21.7         681.\n 2 February        23.2         860.\n 3 March           24.7         886.\n 4 April           25.1         942.\n 5 May             23.7         977.\n 6 June            21.5         662.\n 7 July            18.5         556.\n 8 August          16.0         359.\n 9 September       15.5         346.\n10 October         15.2         305.\n11 November        16.3         390.\n12 December        18.7         593.\n\n\n\n# Série temporal de temperatura\nclima %&gt;%\n  mutate(data = dmy(data)) %&gt;%\n  ggplot(aes(x = data, y = temperatura)) +\n  geom_line(color = \"#E74C3C\") +\n  geom_smooth(se = FALSE, color = \"#2C3E50\") +\n  labs(title = \"Temperatura ao longo do tempo\", x = NULL, y = \"Temperatura (°C)\")",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Strings, Fatores e Datas</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/05-strings-fatores-datas.html#exercícios",
+    "href": "04-dias/05-strings-fatores-datas.html#exercícios",
+    "title": "Strings, Fatores e Datas",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nExercício 1\nNa coluna especie do inv_florestal, quantos registros contêm “Eucalyptus” no nome?\nResultado esperado:\n[1] 664\n\n\nExercício 2\nPadronize os nomes das espécies removendo espaços extras e convertendo para maiúsculas (título).\nResultado esperado:\n[1] \"Eucalyptus Grandis\" \"Pinus Taeda\"\n\n\nExercício 3\nAgrupe as espécies com menos de 100 árvores como “Outras”. Conte a frequência.\nResultado esperado:\n# A tibble: 3 × 2\n  especie_agrupada     n\n  &lt;fct&gt;            &lt;int&gt;\n1 Eucalyptus Grandis  664\n2 Pinus Taeda         282\n3 Outras               46\n\n\nExercício 4\nNo dataset clima.xlsx, parse a coluna de data e calcule a temperatura média por mês (ordenada de janeiro a dezembro).\nResultado esperado:\n# A tibble: 12 × 2\n   mes       temp_media\n   &lt;ord&gt;          &lt;dbl&gt;\n 1 janeiro         24.5\n 2 fevereiro       24.2\n 3 março           23.1\n...\n12 dezembro        24.8\n\n\nExercício 5\nUsando os dados de clima, crie um gráfico de barras da precipitação total por mês.\nResultado esperado:\nGráfico com 12 barras azuis, maior precipitação no verão (dez-jan).\n\n\nExercício 6\nParse a data \"15/05/2017\" e calcule quantos anos se passaram até hoje.\nResultado esperado:\n[1] 9.04\n(O valor exato depende da data atual.)",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Strings, Fatores e Datas</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/06-tidy-data.html",
+    "href": "04-dias/06-tidy-data.html",
+    "title": "Tidy Data e Importação Avançada",
+    "section": "",
+    "text": "Objetivos\nDia 3 — Tarde | 4 horas",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidy Data e Importação Avançada</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/06-tidy-data.html#objetivos",
+    "href": "04-dias/06-tidy-data.html#objetivos",
+    "title": "Tidy Data e Importação Avançada",
+    "section": "",
+    "text": "Entender o conceito de dados organizados (tidy data)\nTransformar dados entre formato largo e longo com pivot_longer() e pivot_wider()\nImportar dados de múltiplas fontes (múltiplas abas Excel, múltiplos CSVs)",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidy Data e Importação Avançada</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/06-tidy-data.html#tidy-data",
+    "href": "04-dias/06-tidy-data.html#tidy-data",
+    "title": "Tidy Data e Importação Avançada",
+    "section": "Tidy Data",
+    "text": "Tidy Data\nDados organizados (tidy data) seguem três regras:\n\nCada coluna é uma variável\nCada linha é uma observação\nCada célula é um valor\n\nEste conceito, proposto por Hadley Wickham, é a base para todo o tidyverse. Quando seus dados estão organizados, todas as funções funcionam perfeitamente juntas.\n\nFormato largo vs formato longo\nFormato largo (comum em planilhas Excel, visualização humana):\n\n\n\nparcela\ndap_2021\ndap_2022\ndap_2023\n\n\n\n\n1\n15.2\n17.8\n20.1\n\n\n2\n14.8\n16.9\n19.5\n\n\n\nFormato longo (ideal para análise e ggplot2):\n\n\n\nparcela\nano\ndap\n\n\n\n\n1\n2021\n15.2\n\n\n1\n2022\n17.8\n\n\n1\n2023\n20.1\n\n\n2\n2021\n14.8\n\n\n2\n2022\n16.9\n\n\n2\n2023\n19.5\n\n\n\n\n\npivot_longer() — largo → longo\n\n# Simulando inventário contínuo (formato largo)\ninv_largo &lt;- tibble(\n  parcela = 1:3,\n  dap_2021 = c(15.2, 14.8, 13.5),\n  dap_2022 = c(17.8, 16.9, 15.2),\n  dap_2023 = c(20.1, 19.5, 17.8)\n)\ninv_largo\n\n# A tibble: 3 × 4\n  parcela dap_2021 dap_2022 dap_2023\n    &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1       1     15.2     17.8     20.1\n2       2     14.8     16.9     19.5\n3       3     13.5     15.2     17.8\n\n\n\n# Converter para formato longo\ninv_largo %&gt;% \n  pivot_longer(\n    cols = starts_with(\"dap_\"),\n    names_to = \"ano\",\n    values_to = \"dap\",\n    names_prefix = \"dap_\"\n  ) %&gt;% \n  mutate(ano = as.numeric(ano))\n\n# A tibble: 9 × 3\n  parcela   ano   dap\n    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n1       1  2021  15.2\n2       1  2022  17.8\n3       1  2023  20.1\n4       2  2021  14.8\n5       2  2022  16.9\n6       2  2023  19.5\n7       3  2021  13.5\n8       3  2022  15.2\n9       3  2023  17.8\n\n\n\n# Agora podemos analisar e plotar\ninv_longo &lt;- inv_largo %&gt;% \n  pivot_longer(starts_with(\"dap_\"), names_to = \"ano\", values_to = \"dap\", names_prefix = \"dap_\") %&gt;% \n  mutate(ano = as.numeric(ano))\n\ninv_longo %&gt;% \n  ggplot(aes(x = ano, y = dap, color = factor(parcela))) +\n  geom_line(size = 1) +\n  geom_point(size = 2) +\n  labs(title = \"Evolução do DAP por parcela\", x = \"Ano\", y = \"DAP (cm)\", color = \"Parcela\")\n\n\n\n\n\n\n\n\n\n\npivot_wider() — longo → largo\n\n# Tabela-resumo: volume por parcela × espécie\ninv_florestal %&gt;% \n  group_by(parcela, especie) %&gt;% \n  summarise(volume_total = sum(volume), .groups = \"drop\") %&gt;% \n  pivot_wider(\n    names_from = especie,\n    values_from = volume_total,\n    values_fill = 0\n  )\n\n# A tibble: 30 × 4\n   parcela `Eucalyptus Grandis` `Eucalyptus Urophylla` `Pinus Taeda`\n     &lt;dbl&gt;                &lt;dbl&gt;                  &lt;dbl&gt;         &lt;dbl&gt;\n 1       1                 19.8                  4.33          12.6 \n 2       2                 26.9                  8.17           5.08\n 3       3                 26.3                  1.24           9.81\n 4       4                 26.8                  2.00          10.3 \n 5       5                 28.9                  3.24          10.9 \n 6       6                 27.2                  2.73          12.2 \n 7       7                 31.1                  2.22           5.00\n 8       8                 13.3                  0.548          2.44\n 9       9                 26.5                  1.98           3.95\n10      10                 16.5                  2.28           5.01\n# ℹ 20 more rows\n\n\n\n\nSeparar e unir colunas\n\n# Código da parcela: \"T1-P2\" → talhão + parcela\ntibble(codigo = c(\"T1-P1\", \"T1-P2\", \"T2-P1\")) %&gt;% \n  separate(codigo, into = c(\"talhao\", \"parcela\"), sep = \"-\")\n\n# A tibble: 3 × 2\n  talhao parcela\n  &lt;chr&gt;  &lt;chr&gt;  \n1 T1     P1     \n2 T1     P2     \n3 T2     P1     \n\n\n\n# Unir colunas\ntibble(talhao = \"T1\", parcela = \"P1\") %&gt;% \n  unite(\"codigo\", talhao, parcela, sep = \"-\")\n\n# A tibble: 1 × 1\n  codigo\n  &lt;chr&gt; \n1 T1-P1 \n\n\n\n\nPreencher combinações e valores ausentes\n\n# complete() — garante todas as combinações\ninv_florestal %&gt;% \n  count(parcela, especie) %&gt;% \n  complete(parcela, especie, fill = list(n = 0))\n\n# A tibble: 90 × 3\n   parcela especie                  n\n     &lt;dbl&gt; &lt;chr&gt;                &lt;int&gt;\n 1       1 Eucalyptus Grandis      21\n 2       1 Eucalyptus Urophylla     4\n 3       1 Pinus Taeda             15\n 4       2 Eucalyptus Grandis      23\n 5       2 Eucalyptus Urophylla     9\n 6       2 Pinus Taeda             10\n 7       3 Eucalyptus Grandis      26\n 8       3 Eucalyptus Urophylla     2\n 9       3 Pinus Taeda             19\n10       4 Eucalyptus Grandis      26\n# ℹ 80 more rows",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidy Data e Importação Avançada</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/06-tidy-data.html#importação-de-múltiplos-arquivos",
+    "href": "04-dias/06-tidy-data.html#importação-de-múltiplos-arquivos",
+    "title": "Tidy Data e Importação Avançada",
+    "section": "Importação de múltiplos arquivos",
+    "text": "Importação de múltiplos arquivos\n\nMúltiplas abas de um Excel\n\n# Listar abas\nread_csv(\"../data/talhoes.csv\")\n\n# A tibble: 150 × 4\n   talhao   parcela volume_m3 area_ha\n   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 Talhão_1      23      143.    2.04\n 2 Talhão_1      29      121.    3.01\n 3 Talhão_1      18      155.    1.81\n 4 Talhão_1       9      209.    2.24\n 5 Talhão_1      24      280     3.3 \n 6 Talhão_1       5      226.    1.87\n 7 Talhão_1      14      218.    3.22\n 8 Talhão_1      20      222.    2.96\n 9 Talhão_1      10      254.    2.8 \n10 Talhão_1      11      230.    1.86\n# ℹ 140 more rows\n\n# Importar todas as abas e combinar\ntalhoes &lt;- read_csv(\"../data/talhoes.csv\")\ntalhoes\n\n# A tibble: 150 × 4\n   talhao   parcela volume_m3 area_ha\n   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 Talhão_1      23      143.    2.04\n 2 Talhão_1      29      121.    3.01\n 3 Talhão_1      18      155.    1.81\n 4 Talhão_1       9      209.    2.24\n 5 Talhão_1      24      280     3.3 \n 6 Talhão_1       5      226.    1.87\n 7 Talhão_1      14      218.    3.22\n 8 Talhão_1      20      222.    2.96\n 9 Talhão_1      10      254.    2.8 \n10 Talhão_1      11      230.    1.86\n# ℹ 140 more rows\n\n\n\n\nMúltiplos CSVs de uma pasta\n\n# Listar arquivos e importar todos\narquivos &lt;- list.files(\"../data/parcelas_ano/\", pattern = \"*.csv\", full.names = TRUE)\narquivos\n\ncharacter(0)\n\ntodos_dados &lt;- map_dfr(arquivos, read_csv2)\nglimpse(todos_dados)\n\nRows: 0\nColumns: 0",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidy Data e Importação Avançada</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/06-tidy-data.html#lidando-com-dados-ausentes-na",
+    "href": "04-dias/06-tidy-data.html#lidando-com-dados-ausentes-na",
+    "title": "Tidy Data e Importação Avançada",
+    "section": "Lidando com dados ausentes (NA)",
+    "text": "Lidando com dados ausentes (NA)\n\n# Identificar NAs\ninv_florestal %&gt;% \n  summarise(across(everything(), ~ sum(is.na(.)))) %&gt;% \n  pivot_longer(everything(), names_to = \"coluna\", values_to = \"n_na\")\n\n# A tibble: 6 × 2\n  coluna   n_na\n  &lt;chr&gt;   &lt;int&gt;\n1 parcela     0\n2 arvore      0\n3 especie     0\n4 dap         0\n5 altura      0\n6 volume      0\n\n\n\n# Remover linhas com NA\ninv_florestal %&gt;% drop_na(dap, altura)\n\n# A tibble: 1,131 × 6\n   parcela arvore especie              dap altura volume\n     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1       1      1 Eucalyptus Grandis  21.7   46    0.876\n 2       1      2 Pinus Taeda         20.5   44    0.699\n 3       1      3 Eucalyptus Grandis  26.2   51.1  1.24 \n 4       1      4 Pinus Taeda         12.6   38.7  0.217\n 5       1      5 Eucalyptus Grandis  19.5   49.8  0.746\n 6       1      6 Eucalyptus Grandis  17.9   44.3  0.596\n 7       1      7 Pinus Taeda         23.5   49.8  1.02 \n 8       1      8 Eucalyptus Grandis  27     52.9  1.56 \n 9       1      9 Eucalyptus Grandis  24.5   48.9  1.11 \n10       1     10 Pinus Taeda         27.5   50.2  1.57 \n# ℹ 1,121 more rows\n\n# Substituir NA por valor\ninv_florestal %&gt;% replace_na(list(altura = 0))\n\n# A tibble: 1,131 × 6\n   parcela arvore especie              dap altura volume\n     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1       1      1 Eucalyptus Grandis  21.7   46    0.876\n 2       1      2 Pinus Taeda         20.5   44    0.699\n 3       1      3 Eucalyptus Grandis  26.2   51.1  1.24 \n 4       1      4 Pinus Taeda         12.6   38.7  0.217\n 5       1      5 Eucalyptus Grandis  19.5   49.8  0.746\n 6       1      6 Eucalyptus Grandis  17.9   44.3  0.596\n 7       1      7 Pinus Taeda         23.5   49.8  1.02 \n 8       1      8 Eucalyptus Grandis  27     52.9  1.56 \n 9       1      9 Eucalyptus Grandis  24.5   48.9  1.11 \n10       1     10 Pinus Taeda         27.5   50.2  1.57 \n# ℹ 1,121 more rows",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidy Data e Importação Avançada</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/06-tidy-data.html#exercícios",
+    "href": "04-dias/06-tidy-data.html#exercícios",
+    "title": "Tidy Data e Importação Avançada",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nExercício 1\nDada a tabela no formato largo:\n# A tibble: 3 × 4\n  parcela dap_2021 dap_2022 dap_2023\n    &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1       1     15.2     17.8     20.1\n2       2     14.8     16.9     19.5\n3       3     13.5     15.2     17.8\nConverta para formato longo com pivot_longer().\nResultado esperado:\n# A tibble: 9 × 3\n  parcela   ano   dap\n    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n1       1  2021  15.2\n2       1  2022  17.8\n3       1  2023  20.1\n4       2  2021  14.8\n5       2  2022  16.9\n6       2  2023  19.5\n7       3  2021  13.5\n8       3  2022  15.2\n9       3  2023  17.8\n\n\nExercício 2\nCalcule o volume total por parcela × especie no inv_florestal. Use pivot_wider() para criar uma tabela com espécies nas colunas.\nResultado esperado:\n# A tibble: 30 × 3\n   parcela `Eucalyptus Grandis` `Pinus Taeda`\n     &lt;dbl&gt;                &lt;dbl&gt;         &lt;dbl&gt;\n 1       1                10.3          6.8\n 2       2                11.2          7.1\n 3       3                 8.9          5.4\n\n\nExercício 3\nImporte todas as abas do arquivo talhoes.xlsx e combine em um único data frame. Quantas linhas no total?\nResultado esperado:\n[1] 150\n\n\nExercício 4\nVerifique com complete() se toda parcela tem registro para toda espécie. Preencha combinações ausentes com volume 0.",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidy Data e Importação Avançada</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/07-iteracao-funcoes.html",
+    "href": "04-dias/07-iteracao-funcoes.html",
+    "title": "Iteração e Funções",
+    "section": "",
+    "text": "Objetivos\nDia 4 — Manhã | 4 horas",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Iteração e Funções</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/07-iteracao-funcoes.html#objetivos",
+    "href": "04-dias/07-iteracao-funcoes.html#objetivos",
+    "title": "Iteração e Funções",
+    "section": "",
+    "text": "Escrever funções próprias para automatizar tarefas repetitivas\nUsar purrr::map() para aplicar funções a múltiplos elementos\nAninhar dados e ajustar modelos por grupo",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Iteração e Funções</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/07-iteracao-funcoes.html#por-que-criar-funções",
+    "href": "04-dias/07-iteracao-funcoes.html#por-que-criar-funções",
+    "title": "Iteração e Funções",
+    "section": "Por que criar funções?",
+    "text": "Por que criar funções?\nSe você copiou e colou um código mais de 3 vezes, transforme em função. O princípio DRY (Don’t Repeat Yourself) evita erros e torna seu código reutilizável.\n\n# SEM função: copiar e colar para cada parcela (ruim!)\n# volume_p1 &lt;- sum(inv_florestal$volume[inv_florestal$parcela == 1])\n# volume_p2 &lt;- sum(inv_florestal$volume[inv_florestal$parcela == 2])\n# ... repetir 30 vezes\n\n# COM função: escreva uma vez, reutilize sempre\nvolume_parcela &lt;- function(dados, num_parcela) {\n  dados %&gt;% \n    filter(parcela == num_parcela) %&gt;% \n    summarise(volume_total = sum(volume))\n}",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Iteração e Funções</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/07-iteracao-funcoes.html#anatomia-de-uma-função",
+    "href": "04-dias/07-iteracao-funcoes.html#anatomia-de-uma-função",
+    "title": "Iteração e Funções",
+    "section": "Anatomia de uma função",
+    "text": "Anatomia de uma função\n\nnome_da_funcao &lt;- function(argumento1, argumento2 = valor_default) {\n  # corpo da função\n  resultado &lt;- argumento1 + argumento2\n  return(resultado)\n}\n\n\nExemplos aplicados\n\n# Função para área basal (m²)\narea_basal &lt;- function(dap) {\n  pi * (dap / 200)^2\n}\n\narea_basal(dap = 25)\n\n[1] 0.04908739\n\narea_basal(c(15, 20, 25, 30))\n\n[1] 0.01767146 0.03141593 0.04908739 0.07068583\n\n\n\n# Função para volume cilíndrico\nvolume &lt;- function(dap, altura, ff = 0.5) {\n  area_basal(dap) * altura * ff\n}\n\nvolume(25, 30)\n\n[1] 0.7363108\n\nvolume(25, 30, ff = 0.45)\n\n[1] 0.6626797\n\n\n\n# Função para classificar sítio\nclassificar_sitio &lt;- function(altura_dominante, idade) {\n  if (altura_dominante &gt; 30) return(\"Bom\")\n  if (altura_dominante &gt; 22) return(\"Médio\")\n  return(\"Ruim\")\n}\n\nclassificar_sitio(33, 7)\n\n[1] \"Bom\"\n\nclassificar_sitio(25, 7)\n\n[1] \"Médio\"\n\nclassificar_sitio(18, 7)\n\n[1] \"Ruim\"",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Iteração e Funções</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/07-iteracao-funcoes.html#iteração-com-purrr",
+    "href": "04-dias/07-iteracao-funcoes.html#iteração-com-purrr",
+    "title": "Iteração e Funções",
+    "section": "Iteração com purrr",
+    "text": "Iteração com purrr\nO pacote purrr oferece uma família de funções map() para aplicar uma função a cada elemento de um vetor ou lista — sem loops explícitos.\n\nmap() — a base de tudo\n\n# Calcular volume para várias árvores\ndaps &lt;- c(15, 20, 25, 30, 35)\nalturas &lt;- c(18, 22, 28, 32, 34)\n\nmap2_dbl(daps, alturas, volume)\n\n[1] 0.1590431 0.3455752 0.6872234 1.1309734 1.6355917\n\n\n\n\nTipos de saída\n\n# map_dbl() → vetor numérico\n# map_chr() → vetor de texto\n# map_dfr() → data frame (empilhado)\n# map_lgl() → vetor lógico\n\n# Exemplo: aplicar área_basal a uma coluna\ninv_florestal %&gt;% \n  mutate(ab = map_dbl(dap, area_basal)) %&gt;% \n  select(dap, ab) %&gt;% \n  head(5)\n\n# A tibble: 5 × 2\n    dap     ab\n  &lt;dbl&gt;  &lt;dbl&gt;\n1  21.7 0.0370\n2  20.5 0.0330\n3  26.2 0.0539\n4  12.6 0.0125\n5  19.5 0.0299\n\n\n\n\nmap_dfr() — empilhar resultados\n\n# Calcular estatísticas por parcela e empilhar\nparcelas &lt;- unique(inv_florestal$parcela)\n\nresultados &lt;- map_dfr(parcelas, function(p) {\n  inv_florestal %&gt;% \n    filter(parcela == p) %&gt;% \n    summarise(\n      parcela = p,\n      dap_medio = mean(dap),\n      altura_media = mean(altura),\n      volume_total = sum(volume)\n    )\n})\n\nhead(resultados, 5)\n\n# A tibble: 5 × 4\n  parcela dap_medio altura_media volume_total\n    &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;\n1       1      20.7         46.1         36.7\n2       2      20.6         45.7         40.1\n3       3      19.5         44.7         37.3\n4       4      20.5         45.7         39.1\n5       5      22.0         46.8         43.0",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Iteração e Funções</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/07-iteracao-funcoes.html#aninhamento-modelos-por-grupo",
+    "href": "04-dias/07-iteracao-funcoes.html#aninhamento-modelos-por-grupo",
+    "title": "Iteração e Funções",
+    "section": "Aninhamento: modelos por grupo",
+    "text": "Aninhamento: modelos por grupo\nUma das técnicas mais poderosas do purrr: aninhar dados por grupo e aplicar modelos a cada grupo.\n\n# Modelo hipsométrico por espécie\nmodelos_especie &lt;- inv_florestal %&gt;% \n  group_by(especie) %&gt;% \n  nest() %&gt;% \n  mutate(\n    modelo = map(data, ~ lm(altura ~ log(dap), data = .x)),\n    r2 = map_dbl(modelo, ~ summary(.x)$r.squared),\n    coef = map(modelo, broom::tidy)\n  )\n\nmodelos_especie %&gt;% select(especie, r2)\n\n# A tibble: 3 × 2\n# Groups:   especie [3]\n  especie                 r2\n  &lt;chr&gt;                &lt;dbl&gt;\n1 Eucalyptus Grandis   0.889\n2 Pinus Taeda          0.928\n3 Eucalyptus Urophylla 0.906\n\n\n\n# Extrair coeficientes\nmodelos_especie %&gt;% \n  select(especie, coef) %&gt;% \n  unnest(coef)\n\n# A tibble: 6 × 6\n# Groups:   especie [3]\n  especie              term        estimate std.error statistic   p.value\n  &lt;chr&gt;                &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 Eucalyptus Grandis   (Intercept)    0.654     0.632     1.04  3.01e-  1\n2 Eucalyptus Grandis   log(dap)      15.2       0.206    73.6   0        \n3 Pinus Taeda          (Intercept)    0.484     0.641     0.754 4.51e-  1\n4 Pinus Taeda          log(dap)      15.3       0.228    67.0   4.91e-201\n5 Eucalyptus Urophylla (Intercept)    2.99      1.44      2.08  4.01e-  2\n6 Eucalyptus Urophylla log(dap)      14.4       0.473    30.5   1.58e- 51\n\n\n\n# Plotar curvas ajustadas\ninv_florestal %&gt;% \n  ggplot(aes(x = dap, y = altura, color = especie)) +\n  geom_point(alpha = 0.3) +\n  geom_smooth(method = \"lm\", formula = y ~ log(x), se = FALSE, linewidth = 1.5) +\n  labs(title = \"Curvas hipsométricas ajustadas por espécie\", x = \"DAP (cm)\", y = \"Altura (m)\")\n\n\n\n\n\n\n\n\n\nwalk() — Efeitos colaterais\nwalk() é como map(), mas não retorna resultado — ideal para salvar arquivos:\n\n# Gerar e salvar um gráfico por parcela\ninv_florestal %&gt;% \n  group_by(parcela) %&gt;% \n  group_walk(~ {\n    p &lt;- ggplot(.x, aes(x = dap, y = altura)) +\n      geom_point() + geom_smooth(method = \"lm\", formula = y ~ log(x), se = FALSE) +\n      labs(title = paste(\"Parcela\", .y$parcela))\n    ggsave(paste0(\"parcela_\", .y$parcela, \".png\"), p, width = 6, height = 4)\n  })",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Iteração e Funções</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/07-iteracao-funcoes.html#exercícios",
+    "href": "04-dias/07-iteracao-funcoes.html#exercícios",
+    "title": "Iteração e Funções",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nExercício 1\nEscreva uma função cv(x) que calcula o coeficiente de variação (sd(x) / mean(x) * 100). Teste com c(15, 20, 25, 30, 35).\nResultado esperado:\n[1] 31.62278\n\n\nExercício 2\nEscreva uma função resumo_parcela(dados, num_parcela) que retorna n° de árvores, DAP médio e volume total da parcela. Teste com a parcela 1.\nResultado esperado:\n# A tibble: 1 × 3\n      n dap_medio volume_total\n  &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;\n1    33      20.3         17.2\n\n\nExercício 3\nUse map_dbl() para aplicar a função volume() a um vetor de DAPs c(10, 15, 20, 25, 30) com altura fixa de 25 m.\nResultado esperado:\n[1] 0.098 0.221 0.393 0.614 0.884\n\n\nExercício 4\nAninhe os dados por parcela e ajuste lm(altura ~ log(dap)) para cada parcela. Qual parcela tem o maior R²?\nResultado esperado:\n# A tibble: 30 × 2\n   parcela    r2\n     &lt;int&gt; &lt;dbl&gt;\n 1       7 0.892\n 2      12 0.881\n 3      15 0.876\n...\n\n\nExercício 5\nGere e salve um histograma do DAP para cada espécie usando group_walk().",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Iteração e Funções</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/08-modelagem.html",
+    "href": "04-dias/08-modelagem.html",
+    "title": "Modelagem Estatística e Projeto Final",
+    "section": "",
+    "text": "Objetivos\nDia 4 — Tarde | 4 horas",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Modelagem Estatística e Projeto Final</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/08-modelagem.html#objetivos",
+    "href": "04-dias/08-modelagem.html#objetivos",
+    "title": "Modelagem Estatística e Projeto Final",
+    "section": "",
+    "text": "Ajustar modelos de regressão linear com lm()\nInterpretar resultados com summary() e broom\nRealizar ANOVA e comparações múltiplas (Tukey)\nProduzir um relatório técnico completo de inventário florestal",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Modelagem Estatística e Projeto Final</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/08-modelagem.html#regressão-linear",
+    "href": "04-dias/08-modelagem.html#regressão-linear",
+    "title": "Modelagem Estatística e Projeto Final",
+    "section": "Regressão linear",
+    "text": "Regressão linear\nA função lm() (linear model) ajusta modelos de regressão. Vamos aplicá-la a dois contextos florestais clássicos.\n\nRelação hipsométrica (altura ~ DAP)\n\n# Ajuste do modelo\nmod_hips &lt;- lm(altura ~ log(dap), data = inv_florestal)\nsummary(mod_hips)\n\n\nCall:\nlm(formula = altura ~ log(dap), data = inv_florestal)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.9870 -1.3747  0.0588  1.3301  6.2382 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   0.7887     0.4150     1.9   0.0577 .  \nlog(dap)     15.1632     0.1391   109.0   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.946 on 1129 degrees of freedom\nMultiple R-squared:  0.9133,    Adjusted R-squared:  0.9132 \nF-statistic: 1.189e+04 on 1 and 1129 DF,  p-value: &lt; 2.2e-16\n\n\nInterpretação do summary():\n\nEstimate: coeficientes da equação. Para cada aumento de 1 unidade em log(dap), a altura aumenta b1 metros.\nR²: proporção da variabilidade da altura explicada pelo DAP. 0.78 = o DAP explica 78% da variação da altura.\np-valor: probabilidade do coeficiente ser zero. p &lt; 0.05 = significativo.\n\n\n# Extrair resultados com broom\ntidy(mod_hips)     # tabela de coeficientes\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)    0.789     0.415      1.90  0.0577\n2 log(dap)      15.2       0.139    109.    0     \n\nglance(mod_hips)   # estatísticas do modelo (R², AIC, etc.)\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0.913         0.913  1.95    11886.       0     1 -2357. 4719. 4734.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n\n# Adicionar valores preditos ao dataset\ninv_com_previsao &lt;- augment(mod_hips, data = inv_florestal)\n\nggplot(inv_com_previsao, aes(x = dap, y = altura)) +\n  geom_point(alpha = 0.3) +\n  geom_line(aes(y = .fitted), color = \"#E74C3C\", linewidth = 1) +\n  labs(title = \"Modelo hipsométrico ajustado\", x = \"DAP (cm)\", y = \"Altura (m)\")\n\n\n\n\n\n\n\n\n\n\nModelo de volume\n\n# Modelo de Schumacher-Hall (log-log)\nmod_vol &lt;- lm(log(volume) ~ log(dap) + log(altura), data = inv_florestal)\nsummary(mod_vol)\n\n\nCall:\nlm(formula = log(volume) ~ log(dap) + log(altura), data = inv_florestal)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-0.37211 -0.07042  0.00353  0.07241  0.32412 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -10.24013    0.16998  -60.24   &lt;2e-16 ***\nlog(dap)      1.97437    0.02449   80.62   &lt;2e-16 ***\nlog(altura)   1.04262    0.06238   16.71   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.1034 on 1128 degrees of freedom\nMultiple R-squared:  0.9891,    Adjusted R-squared:  0.9891 \nF-statistic: 5.131e+04 on 2 and 1128 DF,  p-value: &lt; 2.2e-16\n\n# R² de 0.96 — excelente ajuste!\n\n\n# Diagnóstico de resíduos\npar(mfrow = c(2, 2))\nplot(mod_vol)\n\n\n\n\n\n\n\npar(mfrow = c(1, 1))\n\n\n\n\n\n\n\nTipDica de modelagem florestal\n\n\n\nSempre transforme volume com log() antes de modelar. O volume tem relação exponencial com DAP e altura — o log lineariza essa relação, melhorando o ajuste. Para obter o volume na escala original, use exp() na predição.",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Modelagem Estatística e Projeto Final</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/08-modelagem.html#anova-comparando-grupos",
+    "href": "04-dias/08-modelagem.html#anova-comparando-grupos",
+    "title": "Modelagem Estatística e Projeto Final",
+    "section": "ANOVA — comparando grupos",
+    "text": "ANOVA — comparando grupos\nA ANOVA (Analysis of Variance) testa se há diferença significativa entre as médias de três ou mais grupos.\n\n# Volume difere entre espécies?\nmod_aov &lt;- aov(volume ~ especie, data = inv_florestal)\nsummary(mod_aov)\n\n              Df Sum Sq Mean Sq F value Pr(&gt;F)    \nespecie        2   35.9  17.965   39.69 &lt;2e-16 ***\nResiduals   1128  510.5   0.453                   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n# Quais espécies diferem entre si?\nTukeyHSD(mod_aov)\n\n  Tukey multiple comparisons of means\n    95% family-wise confidence level\n\nFit: aov(formula = volume ~ especie, data = inv_florestal)\n\n$especie\n                                                 diff        lwr        upr\nEucalyptus Urophylla-Eucalyptus Grandis  0.0002599707 -0.1695454  0.1700654\nPinus Taeda-Eucalyptus Grandis          -0.3855308345 -0.4893433 -0.2817184\nPinus Taeda-Eucalyptus Urophylla        -0.3857908052 -0.5655153 -0.2060663\n                                            p adj\nEucalyptus Urophylla-Eucalyptus Grandis 0.9999929\nPinus Taeda-Eucalyptus Grandis          0.0000000\nPinus Taeda-Eucalyptus Urophylla        0.0000016\n\n\n\n# Visualização: boxplot + letras de Tukey\ninv_florestal %&gt;% \n  ggplot(aes(x = especie, y = volume, fill = especie)) +\n  geom_boxplot() +\n  labs(title = \"Volume por espécie\", x = NULL, y = expression(Volume~(m^3)),\n       subtitle = \"Letras diferentes = diferença significativa (Tukey, p &lt; 0.05)\") +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\nDelineamento experimental\n\nexperimento &lt;- read_csv(\"../data/experimento.csv\")\nglimpse(experimento)\n\nRows: 16\nColumns: 3\n$ bloco      &lt;dbl&gt; 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4\n$ tratamento &lt;chr&gt; \"Controle\", \"Adubação\", \"Irrigação\", \"Adub+Irrig\", \"Control…\n$ resposta   &lt;dbl&gt; 24.1, 27.9, 33.4, 36.6, 19.1, 25.6, 31.3, 37.7, 30.6, 35.4,…\n\n\n\n# ANOVA para delineamento experimental\nmod_exp &lt;- aov(resposta ~ tratamento, data = experimento)\nsummary(mod_exp)\n\n            Df Sum Sq Mean Sq F value  Pr(&gt;F)   \ntratamento   3  245.2   81.74   6.476 0.00745 **\nResiduals   12  151.5   12.62                   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n# Comparações múltiplas\nTukeyHSD(mod_exp) %&gt;% \n  broom::tidy() %&gt;% \n  filter(adj.p.value &lt; 0.05)\n\n# A tibble: 2 × 7\n  term       contrast         null.value estimate conf.low conf.high adj.p.value\n  &lt;chr&gt;      &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;\n1 tratamento Controle-Adub+I…          0    -10.4  -17.9       -2.94     0.00648\n2 tratamento Irrigação-Contr…          0      7.9    0.442     15.4      0.0369",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Modelagem Estatística e Projeto Final</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/08-modelagem.html#comunicando-resultados",
+    "href": "04-dias/08-modelagem.html#comunicando-resultados",
+    "title": "Modelagem Estatística e Projeto Final",
+    "section": "Comunicando resultados",
+    "text": "Comunicando resultados\n\nTabela formatada com knitr::kable()\n\ninv_florestal %&gt;% \n  group_by(especie) %&gt;% \n  summarise(\n    `N° árvores` = n(),\n    `DAP médio (cm)` = round(mean(dap), 1),\n    `Altura média (m)` = round(mean(altura), 1),\n    `Volume total (m³)` = round(sum(volume), 2)\n  ) %&gt;% \n  knitr::kable(\n    caption = \"Resumo do inventário florestal por espécie\",\n    align = \"c\"\n  )\n\n\nResumo do inventário florestal por espécie\n\n\n\n\n\n\n\n\n\nespecie\nN° árvores\nDAP médio (cm)\nAltura média (m)\nVolume total (m³)\n\n\n\n\nEucalyptus Grandis\n682\n22.1\n46.9\n710.81\n\n\nEucalyptus Urophylla\n99\n21.7\n46.4\n103.21\n\n\nPinus Taeda\n350\n17.6\n42.9\n229.85",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Modelagem Estatística e Projeto Final</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/08-modelagem.html#projeto-final",
+    "href": "04-dias/08-modelagem.html#projeto-final",
+    "title": "Modelagem Estatística e Projeto Final",
+    "section": "Projeto Final",
+    "text": "Projeto Final\n\n\n\n\n\n\nImportantSeu desafio final\n\n\n\nVocê recebeu um dataset de inventário florestal. Sua missão é produzir um mini-relatório técnico que responda às perguntas abaixo. Use tudo que aprendeu nos 4 dias.\n\n\n\nRoteiro\n\nImportar o dataset inv_florestal.csv\nCalcular área basal e volume por árvore\nExplorar graficamente: distribuição diamétrica, relação hipsométrica, volume por espécie\nModelar a relação altura ~ DAP e volume ~ DAP + altura\nComparar volume entre espécies via ANOVA + Tukey\nProduzir uma tabela-resumo formatada com gt\n\n\n\nEntregáveis\n\nUm gráfico de distribuição diamétrica\nUm gráfico de relação hipsométrica com curva ajustada\nUm boxplot de volume por espécie com letras de Tukey\nUma tabela-resumo com estatísticas por espécie\nA equação do modelo de volume com R²",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Modelagem Estatística e Projeto Final</span>"
+    ]
+  },
+  {
+    "objectID": "04-dias/08-modelagem.html#exercícios",
+    "href": "04-dias/08-modelagem.html#exercícios",
+    "title": "Modelagem Estatística e Projeto Final",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nExercício 1\nAjuste lm(altura ~ log(dap), data = inv_florestal). Qual o R² do modelo?\nResultado esperado:\n[1] 0.78\n\n\nExercício 2\nAjuste lm(log(volume) ~ log(dap) + log(altura), data = inv_florestal). Qual variável tem maior influência (maior coeficiente padronizado)?\nResultado esperado:\n# A tibble: 3 × 2\n  term         estimate\n  &lt;chr&gt;           &lt;dbl&gt;\n1 (Intercept)    -9.59 \n2 log(dap)        1.89 \n3 log(altura)     0.90\nlog(dap) tem o maior coeficiente (1.89).\n\n\nExercício 3\nFaça uma ANOVA: aov(volume ~ especie, data = inv_florestal). As espécies diferem significativamente em volume?\nResultado esperado:\n             Df Sum Sq Mean Sq F value Pr(&gt;F)    \nespecie       1   5.93   5.929   40.52 &lt;2e-16 ***\nResiduals   990 144.84   0.146\nSim, p &lt; 0.001 — há diferença significativa entre as espécies.\n\n\nExercício 4\nUse TukeyHSD() para verificar qual espécie tem maior volume. Qual a diferença média?\nResultado esperado:\n                                      diff      lwr      upr p adj\nPinus Taeda-Eucalyptus Grandis -0.1664149 -0.21786 -0.11497     0\nEucalyptus Grandis tem em média 0.17 m³ a mais que Pinus Taeda.\n\n\nExercício 5 (Projeto final)\nProduza uma tabela-resumo com gt() contendo: n° de árvores, DAP médio, altura média, volume total e volume médio por espécie.\nResultado esperado:\nTabela formatada com 2 linhas (uma por espécie) e 5 colunas.",
+    "crumbs": [
+      "Curso de 4 dias — R Completo",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Modelagem Estatística e Projeto Final</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/index.html",
+    "href": "02-dias/index.html",
+    "title": "Curso de 2 dias — R Fundamentos",
+    "section": "",
+    "text": "Estrutura\nCarga horária: 16 horas (4 períodos de 4h)\nPúblico: Profissionais que querem dominar o básico do R para análise de dados\nOs capítulos a seguir condensam o conteúdo essencial do curso de 4 dias, mantendo todos os exemplos e exercícios mais importantes.",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "Curso de 2 dias — R Fundamentos"
+    ]
+  },
+  {
+    "objectID": "02-dias/index.html#estrutura",
+    "href": "02-dias/index.html#estrutura",
+    "title": "Curso de 2 dias — R Fundamentos",
+    "section": "",
+    "text": "Manhã (4h)\nTarde (4h)\n\n\n\n\nDia 1\nIntrodução ao R e RStudio\nManipulação de dados (dplyr)\n\n\nDia 2\nJoins + Visualização (ggplot2)\nExercícios integrados",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "Curso de 2 dias — R Fundamentos"
+    ]
+  },
+  {
+    "objectID": "02-dias/01-introducao.html",
+    "href": "02-dias/01-introducao.html",
+    "title": "Introdução ao R e RStudio",
+    "section": "",
+    "text": "O que é o R?\nDia 1 — Manhã | 4 horas\nEste capítulo condensa o essencial para começar: o que é R, como instalar, estruturas de dados e primeiros passos no console.\nO R é uma linguagem de programação gratuita para computação estatística e gráficos, mantida pelo R-core team. Com mais de 20.000 pacotes, é uma das ferramentas mais usadas no mundo para análise de dados.\nPor que R? Gratuito, comunidade enorme, scripts reprodutíveis, gráficos profissionais.",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/01-introducao.html#instalação",
+    "href": "02-dias/01-introducao.html#instalação",
+    "title": "Introdução ao R e RStudio",
+    "section": "Instalação",
+    "text": "Instalação\n\nInstale o R em cran.r-project.org\nInstale o RStudio em posit.co/download/rstudio-desktop\n\n\n\n\n\n\n\nWarning\n\n\n\nInstale o R primeiro, depois o RStudio.",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/01-introducao.html#primeiros-passos",
+    "href": "02-dias/01-introducao.html#primeiros-passos",
+    "title": "Introdução ao R e RStudio",
+    "section": "Primeiros passos",
+    "text": "Primeiros passos\n\n# Calculadora\n2 + 3\n\n[1] 5\n\nsqrt(81)\n\n[1] 9\n\n# Atribuição\nnota &lt;- 8.5\ntitulo &lt;- \"O Poderoso Chefão\"\n\n# Vetores\nnotas &lt;- c(7.5, 8.0, 9.2, 6.8, 8.7)\nmean(notas)\n\n[1] 8.04\n\nsum(notas)\n\n[1] 40.2\n\nlength(notas)\n\n[1] 5",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/01-introducao.html#estruturas-de-dados",
+    "href": "02-dias/01-introducao.html#estruturas-de-dados",
+    "title": "Introdução ao R e RStudio",
+    "section": "Estruturas de dados",
+    "text": "Estruturas de dados\n\n# Fatores\ngenero &lt;- factor(c(\"Ação\", \"Drama\", \"Comédia\", \"Drama\", \"Ação\"))\ntable(genero)\n\ngenero\n   Ação Comédia   Drama \n      2       1       2 \n\n# Data frame\ndf &lt;- data.frame(\n  titulo = c(\"Matrix\", \"Interestelar\", \"Parasita\"),\n  ano = c(1999, 2014, 2019),\n  nota = c(8.7, 8.6, 8.5)\n)\ndf\n\n        titulo  ano nota\n1       Matrix 1999  8.7\n2 Interestelar 2014  8.6\n3     Parasita 2019  8.5\n\n\n\n# Inspecionar dados\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(readr)\nlibrary(tidyr)\nlibrary(stringr)\nlibrary(forcats)\nlibrary(purrr)\nlibrary(tibble)\nfilmes &lt;- read_csv2(\"../data/filmes_imdb.csv\")\nglimpse(filmes)\n\nRows: 3,875\nColumns: 10\n$ codigo_filme     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…\n$ titulo           &lt;chr&gt; \"Avatar \", \"Pirates of the Caribbean: At World's End …\n$ diretor          &lt;chr&gt; \"James Cameron\", \"Gore Verbinski\", \"Sam Mendes\", \"Chr…\n$ ano              &lt;dbl&gt; 2009, 2007, 2015, 2012, 2012, 2007, 2010, 2015, 2009,…\n$ genero           &lt;chr&gt; \"Ação\", \"Aventura\", \"Comédia\", \"Mistério\", \"Fantasia\"…\n$ duracao          &lt;dbl&gt; 81, 126, 88, 99, 92, 95, 39, 111, 82, 89, 77, 102, 98…\n$ orcamento        &lt;dbl&gt; 237000000, 300000000, 245000000, 250000000, 263700000…\n$ faturamento      &lt;dbl&gt; 760505847, 309404152, 200074175, 448130642, 73058679,…\n$ nota             &lt;dbl&gt; 7.9, 7.1, 6.8, 8.5, 6.6, 6.2, 7.8, 7.5, 7.5, 6.9, 6.1…\n$ elenco_principal &lt;chr&gt; \"Viola Davis\", \"Cate Blanchett\", \"Natalie Portman\", \"…\n\nhead(filmes, 5)\n\n# A tibble: 5 × 10\n  codigo_filme titulo   diretor   ano genero duracao orcamento faturamento  nota\n         &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1            1 Avatar   James …  2009 Ação        81 237000000   760505847   7.9\n2            2 Pirates… Gore V…  2007 Avent…     126 300000000   309404152   7.1\n3            3 Spectre  Sam Me…  2015 Coméd…      88 245000000   200074175   6.8\n4            4 The Dar… Christ…  2012 Misté…      99 250000000   448130642   8.5\n5            5 John Ca… Andrew…  2012 Fanta…      92 263700000    73058679   6.6\n# ℹ 1 more variable: elenco_principal &lt;chr&gt;\n\nsummary(filmes)\n\n  codigo_filme       titulo            diretor               ano      \n Min.   :   1.0   Length:3875        Length:3875        Min.   :1920  \n 1st Qu.: 971.5   Class :character   Class :character   1st Qu.:1999  \n Median :1942.0   Mode  :character   Mode  :character   Median :2005  \n Mean   :1941.6                                         Mean   :2003  \n 3rd Qu.:2911.5                                         3rd Qu.:2010  \n Max.   :3881.0                                         Max.   :2016  \n    genero             duracao        orcamento          faturamento       \n Length:3875        Min.   : 31.0   Min.   :      218   Min.   :      162  \n Class :character   1st Qu.: 89.0   1st Qu.: 10000000   1st Qu.:  6856116  \n Mode  :character   Median :105.0   Median : 24000000   Median : 28064226  \n                    Mean   :104.9   Mean   : 38165464   Mean   : 51085555  \n                    3rd Qu.:121.0   3rd Qu.: 50000000   3rd Qu.: 65517534  \n                    Max.   :201.0   Max.   :553632000   Max.   :760505847  \n      nota       elenco_principal  \n Min.   :1.600   Length:3875       \n 1st Qu.:5.900   Class :character  \n Median :6.600   Mode  :character  \n Mean   :6.462                     \n 3rd Qu.:7.200                     \n Max.   :9.300                     \n\ndim(filmes)\n\n[1] 3875   10",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/01-introducao.html#exercícios",
+    "href": "02-dias/01-introducao.html#exercícios",
+    "title": "Introdução ao R e RStudio",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nExercício 1\nCrie um vetor com notas de 5 filmes e calcule a média.\nResultado esperado: [1] 8.4\n\n\nExercício 2\nCarregue filmes_imdb.csv. Quantas linhas e colunas? Qual a nota média?\nResultado esperado: [1] 4826   11 e [1] 6.37",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Introdução ao R e RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/02-manipulacao.html",
+    "href": "02-dias/02-manipulacao.html",
+    "title": "Manipulação de dados com dplyr",
+    "section": "",
+    "text": "O pipe: %&gt;%\nDia 1 — Tarde | 4 horas\nAtalho: Ctrl/Cmd + Shift + M. Encadeia operações da esquerda para a direita:\n# Demonstração: o pipe encadeia operações\nfilmes %&gt;% \n  filter(ano &gt; 2000) %&gt;% \n  arrange(desc(nota))\n\n# A tibble: 2,667 × 10\n   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota\n          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n 1           65 The Da… Christ…  2008 Avent…     151 185000000   533316061   9  \n 2          329 The Lo… Peter …  2003 Coméd…      80  94000000   377019252   8.9\n 3           95 Incept… Christ…  2010 Ação       103 160000000   292568851   8.8\n 4          261 The Lo… Peter …  2001 Anima…     170  93000000   313837577   8.8\n 5          330 The Lo… Peter …  2002 Anima…     121  94000000   340478898   8.7\n 6         3398 City o… Fernan…  2002 Ficçã…      56   3300000     7563397   8.7\n 7           94 Inters… Christ…  2014 Roman…      90 165000000   187991439   8.6\n 8         2182 Spirit… Hayao …  2001 Roman…      93  19000000    10049886   8.6\n 9            4 The Da… Christ…  2012 Misté…      99 250000000   448130642   8.5\n10          286 Django… Quenti…  2012 Coméd…      91 100000000   162804648   8.5\n# ℹ 2,657 more rows\n# ℹ 1 more variable: elenco_principal &lt;chr&gt;",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/02-manipulacao.html#os-6-verbos-do-dplyr",
+    "href": "02-dias/02-manipulacao.html#os-6-verbos-do-dplyr",
+    "title": "Manipulação de dados com dplyr",
+    "section": "Os 6 verbos do dplyr",
+    "text": "Os 6 verbos do dplyr\n\n\n\nVerbo\nO que faz\n\n\n\n\nfilter()\nFiltra linhas\n\n\nselect()\nSeleciona colunas\n\n\nmutate()\nCria/modifica colunas\n\n\narrange()\nOrdena\n\n\nsummarise()\nResume\n\n\ngroup_by()\nAgrupa\n\n\n\n\nfilter()\n\n# Filmes com nota ≥ 8.5\nfilmes %&gt;% filter(nota &gt;= 8.5)\n\n# A tibble: 47 × 10\n   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota\n          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n 1            4 The Da… Christ…  2012 Misté…      99 250000000   448130642   8.5\n 2           65 The Da… Christ…  2008 Avent…     151 185000000   533316061   9  \n 3           94 Inters… Christ…  2014 Roman…      90 165000000   187991439   8.6\n 4           95 Incept… Christ…  2010 Ação       103 160000000   292568851   8.8\n 5          261 The Lo… Peter …  2001 Anima…     170  93000000   313837577   8.8\n 6          273 Gladia… Ridley…  2000 Drama      159 103000000   187670866   8.5\n 7          278 Termin… James …  1991 Terror     119 102000000   204843350   8.5\n 8          286 Django… Quenti…  2012 Coméd…      91 100000000   162804648   8.5\n 9          329 The Lo… Peter …  2003 Coméd…      80  94000000   377019252   8.9\n10          330 The Lo… Peter …  2002 Anima…     121  94000000   340478898   8.7\n# ℹ 37 more rows\n# ℹ 1 more variable: elenco_principal &lt;chr&gt;\n\n# Ação OU Comédia\nfilmes %&gt;% filter(genero %in% c(\"Ação\", \"Comédia\"))\n\n# A tibble: 1,018 × 10\n   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota\n          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n 1            1 Avatar  James …  2009 Ação        81 237000000   760505847   7.9\n 2            3 Spectr… Sam Me…  2015 Coméd…      88 245000000   200074175   6.8\n 3           17 The Av… Joss W…  2012 Ação        53 220000000   623279547   8.1\n 4           19 Men in… Barry …  2012 Ação        57 225000000   179020854   6.8\n 5           29 Jurass… Colin …  2015 Ação        58 150000000   652177271   7  \n 6           38 Oz the… Sam Ra…  2013 Ação        95 215000000   234903076   6.4\n 7           39 The Am… Marc W…  2014 Ação        88 200000000   202853933   6.7\n 8           40 TRON: … Joseph…  2010 Ação        82 170000000   172051787   6.8\n 9           42 Green … Martin…  2011 Coméd…     117 200000000   116593191   5.6\n10           43 Toy St… Lee Un…  2010 Coméd…      48 200000000   414984497   8.3\n# ℹ 1,008 more rows\n# ℹ 1 more variable: elenco_principal &lt;chr&gt;\n\n\n\n\nselect() e mutate()\n\nfilmes %&gt;% select(titulo, ano, nota)\n\n# A tibble: 3,875 × 3\n   titulo                                      ano  nota\n   &lt;chr&gt;                                     &lt;dbl&gt; &lt;dbl&gt;\n 1 Avatar                                     2009   7.9\n 2 Pirates of the Caribbean: At World's End   2007   7.1\n 3 Spectre                                    2015   6.8\n 4 The Dark Knight Rises                      2012   8.5\n 5 John Carter                                2012   6.6\n 6 Spider-Man 3                               2007   6.2\n 7 Tangled                                    2010   7.8\n 8 Avengers: Age of Ultron                    2015   7.5\n 9 Harry Potter and the Half-Blood Prince     2009   7.5\n10 Batman v Superman: Dawn of Justice         2016   6.9\n# ℹ 3,865 more rows\n\nfilmes %&gt;% \n  mutate(\n    lucro = faturamento - orcamento,\n    lucro_milhoes = lucro / 1000000\n  ) %&gt;% \n  arrange(desc(lucro)) %&gt;% \n  select(titulo, lucro_milhoes) %&gt;% \n  head(5)\n\n# A tibble: 5 × 2\n  titulo                              lucro_milhoes\n  &lt;chr&gt;                                       &lt;dbl&gt;\n1 Avatar                                       524.\n2 Jurassic World                               502.\n3 Titanic                                      459.\n4 Star Wars: Episode IV - A New Hope           450.\n5 E.T. the Extra-Terrestrial                   424.\n\n\n\n\ngroup_by() + summarise()\n\n# Nota média por gênero\nfilmes %&gt;% \n  group_by(genero) %&gt;% \n  summarise(nota_media = mean(nota), n = n()) %&gt;% \n  arrange(desc(nota_media))\n\n# A tibble: 19 × 3\n   genero            nota_media     n\n   &lt;chr&gt;                  &lt;dbl&gt; &lt;int&gt;\n 1 Musical                 6.75    39\n 2 Esporte                 6.73    16\n 3 História                6.56    31\n 4 Guerra                  6.55    33\n 5 Biografia               6.50   121\n 6 Comédia                 6.50   452\n 7 Ação                    6.49   566\n 8 Drama                   6.48   719\n 9 Romance                 6.48   245\n10 Documentário            6.47   117\n11 Ficção científica       6.47   306\n12 Fantasia                6.47    82\n13 Mistério                6.46   113\n14 Aventura                6.45   204\n15 Thriller                6.41   185\n16 Terror                  6.40   311\n17 Crime                   6.39   193\n18 Animação                6.29   114\n19 Família                 6.1     28\n\n\n\n\ncount()\n\nfilmes %&gt;% count(genero, sort = TRUE)\n\n# A tibble: 19 × 2\n   genero                n\n   &lt;chr&gt;             &lt;int&gt;\n 1 Drama               719\n 2 Ação                566\n 3 Comédia             452\n 4 Terror              311\n 5 Ficção científica   306\n 6 Romance             245\n 7 Aventura            204\n 8 Crime               193\n 9 Thriller            185\n10 Biografia           121\n11 Documentário        117\n12 Animação            114\n13 Mistério            113\n14 Fantasia             82\n15 Musical              39\n16 Guerra               33\n17 História             31\n18 Família              28\n19 Esporte              16",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/02-manipulacao.html#primeiros-gráficos",
+    "href": "02-dias/02-manipulacao.html#primeiros-gráficos",
+    "title": "Manipulação de dados com dplyr",
+    "section": "🎬 Primeiros gráficos",
+    "text": "🎬 Primeiros gráficos\n\n# Histograma\nfilmes %&gt;% ggplot(aes(x = nota)) + geom_histogram(bins = 30, fill = \"#18BC9C\")\n\n\n\n\n\n\n\n# Dispersão\nfilmes %&gt;% ggplot(aes(x = orcamento, y = faturamento)) + geom_point(alpha = 0.3)\n\n\n\n\n\n\n\n# Barras — top 10 gêneros\nfilmes %&gt;% count(genero, sort = TRUE) %&gt;% head(10) %&gt;% \n  ggplot(aes(x = reorder(genero, n), y = n)) + geom_col(fill = \"#18BC9C\") + coord_flip()\n\n\n\n\n\n\n\n# Boxplot\nfilmes %&gt;% filter(genero %in% c(\"Ação\", \"Drama\", \"Comédia\")) %&gt;% \n  ggplot(aes(x = genero, y = nota, fill = genero)) + geom_boxplot()",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/02-manipulacao.html#exercícios",
+    "href": "02-dias/02-manipulacao.html#exercícios",
+    "title": "Manipulação de dados com dplyr",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nExercício 1\nFiltre filmes com nota ≥ 8.5. Quantos são?\nResultado esperado: 103 filmes.\n\n\nExercício 2\nCrie lucro = faturamento - orcamento. Qual o filme mais lucrativo?\nResultado esperado: \"The story of cap and trade\" com lucro de 48.7 milhões.\n\n\nExercício 3\nNota média por gênero, ordenada da maior para a menor.\nResultado esperado: Documentário (6.84), Guerra (6.75), História (6.73)…\n\n\nExercício 4\nCrie um histograma de duracao com 40 bins.\nResultado esperado: Pico em 90-100 min, assimétrica à direita.",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/03-joins.html",
+    "href": "02-dias/03-joins.html",
+    "title": "Joins e Visualização",
+    "section": "",
+    "text": "Joins: cruzando tabelas\nDia 2 — Manhã | 4 horas\n# left_join: adiciona colunas da tabela direita à esquerda\nfilmes_com_elenco &lt;- filmes %&gt;% left_join(elenco, by = c(\"codigo_filme\" = \"codigo\"))\n\n# Anti_join: o que NÃO tem correspondência\ninv_florestal %&gt;% anti_join(parcelas, by = \"parcela\")\n\n# A tibble: 0 × 6\n# ℹ 6 variables: parcela &lt;dbl&gt;, arvore &lt;dbl&gt;, especie &lt;chr&gt;, dap &lt;dbl&gt;,\n#   altura &lt;dbl&gt;, volume &lt;dbl&gt;",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Joins e Visualização</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/03-joins.html#visualização-com-ggplot2",
+    "href": "02-dias/03-joins.html#visualização-com-ggplot2",
+    "title": "Joins e Visualização",
+    "section": "Visualização com ggplot2",
+    "text": "Visualização com ggplot2\n\n# Dispersão + tendência\ninv_florestal %&gt;% \n  ggplot(aes(x = dap, y = altura, color = especie)) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  scale_color_brewer(palette = \"Set1\") +\n  labs(title = \"Relação hipsométrica\", x = \"DAP (cm)\", y = \"Altura (m)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n# Facetas\ninv_florestal %&gt;% \n  ggplot(aes(x = dap, y = altura)) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", formula = y ~ log(x), se = FALSE) +\n  facet_wrap(~especie)\n\n\n\n\n\n\n\n# Boxplot\ninv_florestal %&gt;% \n  ggplot(aes(x = especie, y = volume, fill = especie)) +\n  geom_boxplot() + theme(legend.position = \"none\")\n\n\n\n\n\n\n\n# Barras — volume por parcela\ninv_florestal %&gt;% group_by(parcela) %&gt;% summarise(v = sum(volume)) %&gt;% \n  ggplot(aes(x = reorder(factor(parcela), v), y = v)) +\n  geom_col(fill = \"#18BC9C\") + coord_flip() + labs(x = \"Parcela\", y = \"Volume (m³)\")",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Joins e Visualização</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/03-joins.html#exercícios",
+    "href": "02-dias/03-joins.html#exercícios",
+    "title": "Joins e Visualização",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nExercício 1\nFaça left_join entre inv_florestal e parcelas. Calcule volume/ha e encontre a parcela mais produtiva.\nResultado esperado: Parcela 7 com 420 m³/ha.\n\n\nExercício 2\nCrie boxplot de dap por especie com cores.\nResultado esperado: Eucalipto com DAP mediano ~20 cm, Pinus ~17 cm.\n\n\nExercício 3\nPlote dap × volume com geom_point() + geom_smooth(), cor por espécie.\nResultado esperado: Curva exponencial — volume cresce com DAP².",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Joins e Visualização</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/04-visualizacao.html",
+    "href": "02-dias/04-visualizacao.html",
+    "title": "Visualização de dados — aprofundamento",
+    "section": "",
+    "text": "Customização e exportação\nDia 2 — Tarde (parte 1) | 2 horas\n# Gráfico completo para relatório\ninv_florestal %&gt;% \n  ggplot(aes(x = dap, y = altura, color = especie)) +\n  geom_point(alpha = 0.5, size = 2) +\n  geom_smooth(method = \"lm\", formula = y ~ log(x), se = TRUE, alpha = 0.2) +\n  scale_color_brewer(palette = \"Set1\") +\n  labs(title = \"Relação hipsométrica — Inventário Florestal\",\n       subtitle = \"Curvas ajustadas por espécie (IC 95%)\",\n       x = \"DAP (cm)\", y = \"Altura total (m)\", color = \"Espécie\",\n       caption = \"Fonte: Inventário florestal\") +\n  theme_minimal(base_size = 13) +\n  theme(plot.title = element_text(face = \"bold\"), legend.position = \"bottom\")\n# Dashboard com patchwork\np1 &lt;- inv_florestal %&gt;% ggplot(aes(x = dap)) + geom_histogram(bins = 30, fill = \"#18BC9C\") + labs(title = \"Dist. diamétrica\")\np2 &lt;- inv_florestal %&gt;% ggplot(aes(x = dap, y = altura, color = especie)) + geom_point(alpha = 0.5) + labs(title = \"Hipsométrica\")\np3 &lt;- inv_florestal %&gt;% ggplot(aes(x = especie, y = volume, fill = especie)) + geom_boxplot() + theme(legend.position = \"none\")\np4 &lt;- inv_florestal %&gt;% group_by(parcela) %&gt;% summarise(v = sum(volume)) %&gt;% \n  ggplot(aes(x = factor(parcela), y = v)) + geom_col(fill = \"#2C3E50\") + labs(title = \"Volume/parcela\", x = \"Parcela\")\n\n(p1 + p2) / (p3 + p4)\n# Exportar\n# ggsave(\"dashboard.png\", width = 10, height = 7, dpi = 300)",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Visualização de dados — aprofundamento</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/04-visualizacao.html#exercícios",
+    "href": "02-dias/04-visualizacao.html#exercícios",
+    "title": "Visualização de dados — aprofundamento",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nCrie histograma do DAP com 30 bins, título e rótulos.\nBoxplot de volume por espécie. Qual tem maior variabilidade?\nGráfico de barras do volume total por parcela (top 10), com coord_flip().\nExporte seu melhor gráfico como PNG (8×5 pol, 300 DPI).",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Visualização de dados — aprofundamento</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/05-exercicios.html",
+    "href": "02-dias/05-exercicios.html",
+    "title": "Exercícios integrados",
+    "section": "",
+    "text": "Instruções\nDia 2 — Tarde (parte 2) | 2 horas\nEste capítulo consolida o aprendizado do curso de 2 dias com exercícios práticos que integram todas as técnicas.\nCada exercício mostra o resultado esperado. Escreva o código e confira se sua solução produz o mesmo resultado.",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Exercícios integrados</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/05-exercicios.html#exercício-1-explorando-o-dataset",
+    "href": "02-dias/05-exercicios.html#exercício-1-explorando-o-dataset",
+    "title": "Exercícios integrados",
+    "section": "Exercício 1 — Explorando o dataset",
+    "text": "Exercício 1 — Explorando o dataset\nCarregue inv_florestal.csv e parcelas.csv. Faça o join entre eles e responda:\na) Quantas árvores no total? E quantas parcelas?\nResultado esperado: 992 árvores, 30 parcelas.\nb) Qual o DAP médio geral? E por espécie?\nResultado esperado: Eucalipto: 20.6 cm, Pinus: 17.8 cm.\nc) Qual parcela tem o maior volume por hectare?\nResultado esperado: Parcela 7 com 420 m³/ha.",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Exercícios integrados</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/05-exercicios.html#exercício-2-visualização",
+    "href": "02-dias/05-exercicios.html#exercício-2-visualização",
+    "title": "Exercícios integrados",
+    "section": "Exercício 2 — Visualização",
+    "text": "Exercício 2 — Visualização\na) Crie um histograma da distribuição diamétrica.\nResultado esperado: Pico em 15-20 cm, assimétrica à direita.\nb) Crie um gráfico de dispersão dap × altura com cor por espécie e curva de tendência.\nResultado esperado: Duas curvas quase paralelas, Eucalipto ligeiramente acima.\nc) Crie um dashboard com 4 gráficos: histograma do DAP, relação hipsométrica, boxplot de volume por espécie e barras de volume por parcela.\nResultado esperado: Painel 2×2 com tema consistente.",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Exercícios integrados</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/05-exercicios.html#exercício-3-análise-por-gênero-filmes",
+    "href": "02-dias/05-exercicios.html#exercício-3-análise-por-gênero-filmes",
+    "title": "Exercícios integrados",
+    "section": "Exercício 3 — Análise por gênero (filmes)",
+    "text": "Exercício 3 — Análise por gênero (filmes)\nUsando filmes_imdb.csv:\na) Gênero com maior nota média (mínimo 50 filmes)?\nResultado esperado: Documentário com 6.84.\nb) Gráfico de dispersão orcamento × faturamento, com cor por gênero.\nResultado esperado: Correlação positiva, Ação e Aventura com maiores valores.\nc) Qual diretor tem mais filmes no dataset?\nResultado esperado: Woody Allen.",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Exercícios integrados</span>"
+    ]
+  },
+  {
+    "objectID": "02-dias/05-exercicios.html#exercício-4-desafio-final",
+    "href": "02-dias/05-exercicios.html#exercício-4-desafio-final",
+    "title": "Exercícios integrados",
+    "section": "Exercício 4 — Desafio final",
+    "text": "Exercício 4 — Desafio final\nUsando inv_florestal, faça uma análise completa:\n\nCalcule área basal por árvore: ab = pi * (dap/200)^2\nCalcule volume: vol = ab * altura * 0.5\nAgrupe por parcela e calcule volume/ha (área da parcela = 600 m²)\nCrie um gráfico de barras do volume/ha por parcela (top 10)\nAjuste lm(log(volume) ~ log(dap) + log(altura)) e reporte o R²\n\nResultado esperado do R²: 0.96",
+    "crumbs": [
+      "Curso de 2 dias — R Fundamentos",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Exercícios integrados</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/index.html",
+    "href": "01-dia/index.html",
+    "title": "Curso de 1 dia — R Express",
+    "section": "",
+    "text": "Estrutura\nCarga horária: 8 horas (2 períodos de 4h)\nPúblico: Iniciantes absolutos que querem um primeiro contato rápido e prático com R\nAo final do dia, você terá importado dados, feito tabelas e criado gráficos. O essencial para começar!",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "Curso de 1 dia — R Express"
+    ]
+  },
+  {
+    "objectID": "01-dia/index.html#estrutura",
+    "href": "01-dia/index.html#estrutura",
+    "title": "Curso de 1 dia — R Express",
+    "section": "",
+    "text": "Manhã (4h)\nTarde (4h)\n\n\n\n\nDia 1\nIntrodução ao R + Manipulação (dplyr)\nVisualização (ggplot2) + Exercícios",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "Curso de 1 dia — R Express"
+    ]
+  },
+  {
+    "objectID": "01-dia/01-introducao.html",
+    "href": "01-dia/01-introducao.html",
+    "title": "Introdução ao R e primeiros dados",
+    "section": "",
+    "text": "O essencial\nManhã — Parte 1 | 2 horas\n# R como calculadora\n2 + 3; sqrt(81); 2^3\n\n[1] 5\n\n\n[1] 9\n\n\n[1] 8\n\n# Atribuição\nnota &lt;- 8.5\nfilmes &lt;- c(\"Matrix\", \"Interestelar\", \"Parasita\")\n\n# Vetores\nnotas &lt;- c(7.5, 8.0, 9.2, 6.8, 8.7)\nmean(notas)  # média\n\n[1] 8.04\n\nsum(notas)   # soma\n\n[1] 40.2\n\nlength(notas) # quantos\n\n[1] 5",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Introdução ao R e primeiros dados</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/01-introducao.html#estruturas-de-dados",
+    "href": "01-dia/01-introducao.html#estruturas-de-dados",
+    "title": "Introdução ao R e primeiros dados",
+    "section": "Estruturas de dados",
+    "text": "Estruturas de dados\n\n# Data frame\ndf &lt;- data.frame(\n  titulo = c(\"Matrix\", \"Interestelar\", \"Parasita\"),\n  ano = c(1999, 2014, 2019),\n  nota = c(8.7, 8.6, 8.5)\n)\ndf\n\n        titulo  ano nota\n1       Matrix 1999  8.7\n2 Interestelar 2014  8.6\n3     Parasita 2019  8.5\n\n# Fatores\ngenero &lt;- factor(c(\"Ação\", \"Drama\", \"Comédia\", \"Drama\", \"Ação\"))\ntable(genero)\n\ngenero\n   Ação Comédia   Drama \n      2       1       2",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Introdução ao R e primeiros dados</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/01-introducao.html#carregando-dados-reais",
+    "href": "01-dia/01-introducao.html#carregando-dados-reais",
+    "title": "Introdução ao R e primeiros dados",
+    "section": "Carregando dados reais",
+    "text": "Carregando dados reais\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(readr)\nlibrary(tidyr)\nlibrary(stringr)\nlibrary(forcats)\nlibrary(purrr)\nlibrary(tibble)\nfilmes &lt;- read_csv2(\"../data/filmes_imdb.csv\")\nglimpse(filmes)\n\nRows: 3,875\nColumns: 10\n$ codigo_filme     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…\n$ titulo           &lt;chr&gt; \"Avatar \", \"Pirates of the Caribbean: At World's End …\n$ diretor          &lt;chr&gt; \"James Cameron\", \"Gore Verbinski\", \"Sam Mendes\", \"Chr…\n$ ano              &lt;dbl&gt; 2009, 2007, 2015, 2012, 2012, 2007, 2010, 2015, 2009,…\n$ genero           &lt;chr&gt; \"Ação\", \"Aventura\", \"Comédia\", \"Mistério\", \"Fantasia\"…\n$ duracao          &lt;dbl&gt; 81, 126, 88, 99, 92, 95, 39, 111, 82, 89, 77, 102, 98…\n$ orcamento        &lt;dbl&gt; 237000000, 300000000, 245000000, 250000000, 263700000…\n$ faturamento      &lt;dbl&gt; 760505847, 309404152, 200074175, 448130642, 73058679,…\n$ nota             &lt;dbl&gt; 7.9, 7.1, 6.8, 8.5, 6.6, 6.2, 7.8, 7.5, 7.5, 6.9, 6.1…\n$ elenco_principal &lt;chr&gt; \"Viola Davis\", \"Cate Blanchett\", \"Natalie Portman\", \"…\n\ndim(filmes)\n\n[1] 3875   10\n\nsummary(filmes)\n\n  codigo_filme       titulo            diretor               ano      \n Min.   :   1.0   Length:3875        Length:3875        Min.   :1920  \n 1st Qu.: 971.5   Class :character   Class :character   1st Qu.:1999  \n Median :1942.0   Mode  :character   Mode  :character   Median :2005  \n Mean   :1941.6                                         Mean   :2003  \n 3rd Qu.:2911.5                                         3rd Qu.:2010  \n Max.   :3881.0                                         Max.   :2016  \n    genero             duracao        orcamento          faturamento       \n Length:3875        Min.   : 31.0   Min.   :      218   Min.   :      162  \n Class :character   1st Qu.: 89.0   1st Qu.: 10000000   1st Qu.:  6856116  \n Mode  :character   Median :105.0   Median : 24000000   Median : 28064226  \n                    Mean   :104.9   Mean   : 38165464   Mean   : 51085555  \n                    3rd Qu.:121.0   3rd Qu.: 50000000   3rd Qu.: 65517534  \n                    Max.   :201.0   Max.   :553632000   Max.   :760505847  \n      nota       elenco_principal  \n Min.   :1.600   Length:3875       \n 1st Qu.:5.900   Class :character  \n Median :6.600   Mode  :character  \n Mean   :6.462                     \n 3rd Qu.:7.200                     \n Max.   :9.300",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Introdução ao R e primeiros dados</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/01-introducao.html#dplyr-seus-primeiros-verbos",
+    "href": "01-dia/01-introducao.html#dplyr-seus-primeiros-verbos",
+    "title": "Introdução ao R e primeiros dados",
+    "section": "dplyr: seus primeiros verbos",
+    "text": "dplyr: seus primeiros verbos\n\n# Filtrar\nfilmes %&gt;% filter(nota &gt;= 8.5)\n\n# A tibble: 47 × 10\n   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota\n          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n 1            4 The Da… Christ…  2012 Misté…      99 250000000   448130642   8.5\n 2           65 The Da… Christ…  2008 Avent…     151 185000000   533316061   9  \n 3           94 Inters… Christ…  2014 Roman…      90 165000000   187991439   8.6\n 4           95 Incept… Christ…  2010 Ação       103 160000000   292568851   8.8\n 5          261 The Lo… Peter …  2001 Anima…     170  93000000   313837577   8.8\n 6          273 Gladia… Ridley…  2000 Drama      159 103000000   187670866   8.5\n 7          278 Termin… James …  1991 Terror     119 102000000   204843350   8.5\n 8          286 Django… Quenti…  2012 Coméd…      91 100000000   162804648   8.5\n 9          329 The Lo… Peter …  2003 Coméd…      80  94000000   377019252   8.9\n10          330 The Lo… Peter …  2002 Anima…     121  94000000   340478898   8.7\n# ℹ 37 more rows\n# ℹ 1 more variable: elenco_principal &lt;chr&gt;\n\n# Selecionar\nfilmes %&gt;% select(titulo, ano, nota)\n\n# A tibble: 3,875 × 3\n   titulo                                      ano  nota\n   &lt;chr&gt;                                     &lt;dbl&gt; &lt;dbl&gt;\n 1 Avatar                                     2009   7.9\n 2 Pirates of the Caribbean: At World's End   2007   7.1\n 3 Spectre                                    2015   6.8\n 4 The Dark Knight Rises                      2012   8.5\n 5 John Carter                                2012   6.6\n 6 Spider-Man 3                               2007   6.2\n 7 Tangled                                    2010   7.8\n 8 Avengers: Age of Ultron                    2015   7.5\n 9 Harry Potter and the Half-Blood Prince     2009   7.5\n10 Batman v Superman: Dawn of Justice         2016   6.9\n# ℹ 3,865 more rows\n\n# Criar coluna\nfilmes %&gt;% mutate(lucro = faturamento - orcamento)\n\n# A tibble: 3,875 × 11\n   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota\n          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n 1            1 Avatar  James …  2009 Ação        81 237000000   760505847   7.9\n 2            2 Pirate… Gore V…  2007 Avent…     126 300000000   309404152   7.1\n 3            3 Spectr… Sam Me…  2015 Coméd…      88 245000000   200074175   6.8\n 4            4 The Da… Christ…  2012 Misté…      99 250000000   448130642   8.5\n 5            5 John C… Andrew…  2012 Fanta…      92 263700000    73058679   6.6\n 6            6 Spider… Sam Ra…  2007 Drama       95 258000000   336530303   6.2\n 7            7 Tangle… Nathan…  2010 Terror      39 260000000   200807262   7.8\n 8            8 Avenge… Joss W…  2015 Misté…     111 250000000   458991599   7.5\n 9            9 Harry … David …  2009 Ficçã…      82 250000000   301956980   7.5\n10           10 Batman… Zack S…  2016 Terror      89 250000000   330249062   6.9\n# ℹ 3,865 more rows\n# ℹ 2 more variables: elenco_principal &lt;chr&gt;, lucro &lt;dbl&gt;\n\n# Ordenar\nfilmes %&gt;% arrange(desc(nota)) %&gt;% select(titulo, nota) %&gt;% head(5)\n\n# A tibble: 5 × 2\n  titulo                                          nota\n  &lt;chr&gt;                                          &lt;dbl&gt;\n1 The Shawshank Redemption                         9.3\n2 The Godfather                                    9.2\n3 The Dark Knight                                  9  \n4 The Godfather: Part II                           9  \n5 The Lord of the Rings: The Return of the King    8.9",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Introdução ao R e primeiros dados</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/01-introducao.html#exercícios",
+    "href": "01-dia/01-introducao.html#exercícios",
+    "title": "Introdução ao R e primeiros dados",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nCrie um vetor com 5 notas e calcule a média. Resultado: 8.4\n\nCarregue filmes_imdb.csv. Quantas linhas e colunas? Resultado: 4826 × 11\n\nFiltre filmes com nota ≥ 9.0. Quantos? Resultado: 18",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Introdução ao R e primeiros dados</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/02-manipulacao.html",
+    "href": "01-dia/02-manipulacao.html",
+    "title": "Manipulação de dados com dplyr",
+    "section": "",
+    "text": "group_by() + summarise() — o coração da análise\nManhã — Parte 2 | 2 horas\n# Nota média por gênero\nfilmes %&gt;% \n  group_by(genero) %&gt;% \n  summarise(nota_media = mean(nota), n = n()) %&gt;% \n  arrange(desc(nota_media))\n\n# A tibble: 19 × 3\n   genero            nota_media     n\n   &lt;chr&gt;                  &lt;dbl&gt; &lt;int&gt;\n 1 Musical                 6.75    39\n 2 Esporte                 6.73    16\n 3 História                6.56    31\n 4 Guerra                  6.55    33\n 5 Biografia               6.50   121\n 6 Comédia                 6.50   452\n 7 Ação                    6.49   566\n 8 Drama                   6.48   719\n 9 Romance                 6.48   245\n10 Documentário            6.47   117\n11 Ficção científica       6.47   306\n12 Fantasia                6.47    82\n13 Mistério                6.46   113\n14 Aventura                6.45   204\n15 Thriller                6.41   185\n16 Terror                  6.40   311\n17 Crime                   6.39   193\n18 Animação                6.29   114\n19 Família                 6.1     28\n\n# Contagem rápida\nfilmes %&gt;% count(genero, sort = TRUE)\n\n# A tibble: 19 × 2\n   genero                n\n   &lt;chr&gt;             &lt;int&gt;\n 1 Drama               719\n 2 Ação                566\n 3 Comédia             452\n 4 Terror              311\n 5 Ficção científica   306\n 6 Romance             245\n 7 Aventura            204\n 8 Crime               193\n 9 Thriller            185\n10 Biografia           121\n11 Documentário        117\n12 Animação            114\n13 Mistério            113\n14 Fantasia             82\n15 Musical              39\n16 Guerra               33\n17 História             31\n18 Família              28\n19 Esporte              16\n\n# Diretores mais prolíficos\nfilmes %&gt;% count(diretor, sort = TRUE) %&gt;% head(10)\n\n# A tibble: 10 × 2\n   diretor               n\n   &lt;chr&gt;             &lt;int&gt;\n 1 Steven Spielberg     25\n 2 Clint Eastwood       19\n 3 Woody Allen          19\n 4 Ridley Scott         17\n 5 Martin Scorsese      16\n 6 Steven Soderbergh    16\n 7 Tim Burton           16\n 8 Renny Harlin         15\n 9 Spike Lee            15\n10 Barry Levinson       13",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/02-manipulacao.html#pipeline-completo",
+    "href": "01-dia/02-manipulacao.html#pipeline-completo",
+    "title": "Manipulação de dados com dplyr",
+    "section": "Pipeline completo",
+    "text": "Pipeline completo\n\n# Análise completa em um fluxo\nfilmes %&gt;% \n  filter(ano &gt;= 2000) %&gt;% \n  group_by(genero) %&gt;% \n  summarise(\n    nota_media = mean(nota),\n    orcamento_medio = mean(orcamento, na.rm = TRUE),\n    n = n()\n  ) %&gt;% \n  filter(n &gt;= 10) %&gt;% \n  arrange(desc(nota_media))\n\n# A tibble: 19 × 4\n   genero            nota_media orcamento_medio     n\n   &lt;chr&gt;                  &lt;dbl&gt;           &lt;dbl&gt; &lt;int&gt;\n 1 Musical                 6.70       41836667.    30\n 2 Esporte                 6.59       28130769.    13\n 3 Biografia               6.53       33198931.    84\n 4 História                6.53       41181091.    22\n 5 Aventura                6.48       44667589.   141\n 6 Drama                   6.47       40643946.   519\n 7 Ficção científica       6.44       38671878.   230\n 8 Guerra                  6.44       49979167.    24\n 9 Comédia                 6.44       45237743.   328\n10 Romance                 6.41       42549107.   182\n11 Fantasia                6.40       40976230.    61\n12 Documentário            6.40       40269591.    88\n13 Ação                    6.37       45278978.   406\n14 Mistério                6.35       53388389.    85\n15 Terror                  6.28       42478816.   228\n16 Thriller                6.27       39948227.   142\n17 Crime                   6.24       40600126.   141\n18 Animação                6.14       42774907.    86\n19 Família                 5.93       42855263.    19",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/02-manipulacao.html#exercícios",
+    "href": "01-dia/02-manipulacao.html#exercícios",
+    "title": "Manipulação de dados com dplyr",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nNota média por gênero. Qual a maior? Resultado: Documentário (6.84)\n\nCrie lucro = faturamento - orcamento. Qual o mais lucrativo? Resultado: “The story of cap and trade”\n\nTop 10 diretores com mais filmes. Resultado: Woody Allen lidera.",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Manipulação de dados com dplyr</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/03-visualizacao.html",
+    "href": "01-dia/03-visualizacao.html",
+    "title": "Visualização de dados e Exercícios",
+    "section": "",
+    "text": "Seus primeiros gráficos 🎬\nTarde | 4 horas\nA receita é simples: ggplot(dados, aes(x, y)) + geom_tipo()\n# Histograma — distribuição das notas\nfilmes %&gt;% ggplot(aes(x = nota)) + geom_histogram(bins = 30, fill = \"#18BC9C\", color = \"white\")\n\n\n\n\n\n\n\n# Dispersão — orçamento × faturamento\nfilmes %&gt;% ggplot(aes(x = orcamento, y = faturamento)) + geom_point(alpha = 0.3)\n\n\n\n\n\n\n\n# Barras — top 10 gêneros\nfilmes %&gt;% count(genero, sort = TRUE) %&gt;% head(10) %&gt;% \n  ggplot(aes(x = reorder(genero, n), y = n)) + geom_col(fill = \"#18BC9C\") + coord_flip()\n\n\n\n\n\n\n\n# Boxplot — nota por gênero\nfilmes %&gt;% filter(genero %in% c(\"Ação\", \"Drama\", \"Comédia\")) %&gt;% \n  ggplot(aes(x = genero, y = nota, fill = genero)) + geom_boxplot() + theme(legend.position = \"none\")",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Visualização de dados e Exercícios</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/03-visualizacao.html#com-dados-florestais",
+    "href": "01-dia/03-visualizacao.html#com-dados-florestais",
+    "title": "Visualização de dados e Exercícios",
+    "section": "Com dados florestais 🌲",
+    "text": "Com dados florestais 🌲\n\n# Distribuição diamétrica\ninv_florestal %&gt;% ggplot(aes(x = dap)) + geom_histogram(bins = 30, fill = \"#18BC9C\")\n\n\n\n\n\n\n\n# Relação hipsométrica\ninv_florestal %&gt;% ggplot(aes(x = dap, y = altura, color = especie)) + geom_point(alpha = 0.5)\n\n\n\n\n\n\n\n# Volume por espécie\ninv_florestal %&gt;% ggplot(aes(x = especie, y = volume, fill = especie)) + geom_boxplot()",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Visualização de dados e Exercícios</span>"
+    ]
+  },
+  {
+    "objectID": "01-dia/03-visualizacao.html#exercícios",
+    "href": "01-dia/03-visualizacao.html#exercícios",
+    "title": "Visualização de dados e Exercícios",
+    "section": "Exercícios",
+    "text": "Exercícios\n\nHistograma de duracao com 40 bins. Resultado: Pico em 90-100 min.\n\nGráfico de dispersão dap × altura, cor por espécie.\n\nBoxplot de volume por especie. Qual a mediana de cada? Resultado: Eucalipto ~0.35 m³, Pinus ~0.20 m³.\n\nGráfico de barras: volume total por espécie.\n\nExporte seu melhor gráfico: ggsave(\"meu_grafico.png\", width = 8, height = 5, dpi = 300)",
+    "crumbs": [
+      "Curso de 1 dia — R Express",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Visualização de dados e Exercícios</span>"
+    ]
+  }
+]

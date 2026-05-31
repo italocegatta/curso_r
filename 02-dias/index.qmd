@@ -1,0 +1,13 @@
+# Curso de 2 dias — R Fundamentos {.unnumbered}
+
+**Carga horária:** 16 horas (4 períodos de 4h)  
+**Público:** Profissionais que querem dominar o básico do R para análise de dados  
+
+## Estrutura {.unnumbered}
+
+| | Manhã (4h) | Tarde (4h) |
+|---|-----------|-----------|
+| **Dia 1** | Introdução ao R e RStudio | Manipulação de dados (dplyr) |
+| **Dia 2** | Joins + Visualização (ggplot2) | Exercícios integrados |
+
+Os capítulos a seguir condensam o conteúdo essencial do curso de 4 dias, mantendo todos os exemplos e exercícios mais importantes.

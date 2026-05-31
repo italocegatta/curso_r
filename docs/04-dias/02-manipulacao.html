@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Manipulação de dados com dplyr – Curso R para Análise de Dados</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../04-dias/03-manipulacao-avancada.html" rel="next">
+<link href="../04-dias/01-introducao.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a22868fb5c0b8f11f607eafe004b7382.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-dias/index.html">Curso de 4 dias — R Completo</a></li><li class="breadcrumb-item"><a href="../04-dias/02-manipulacao.html"><span class="chapter-title">Manipulação de dados com dplyr</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Curso R para Análise de Dados</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Curso R para Análise de Dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Curso de 4 dias — R Completo</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curso de 4 dias — R Completo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/02-manipulacao.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/03-manipulacao-avancada.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação avançada e Joins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/04-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados com ggplot2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/05-strings-fatores-datas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strings, Fatores e Datas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/06-tidy-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Tidy Data e Importação Avançada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/07-iteracao-funcoes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Iteração e Funções</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/08-modelagem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modelagem Estatística e Projeto Final</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Curso de 2 dias — R Fundamentos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curso de 2 dias — R Fundamentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/03-joins.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Joins e Visualização</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/04-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados — aprofundamento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/05-exercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exercícios integrados</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Curso de 1 dia — R Express</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-dia/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curso de 1 dia — R Express</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-dia/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e primeiros dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-dia/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-dia/03-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados e Exercícios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#objetivos" id="toc-objetivos" class="nav-link active" data-scroll-target="#objetivos">Objetivos</a></li>
+  <li><a href="#importando-dados" id="toc-importando-dados" class="nav-link" data-scroll-target="#importando-dados">Importando dados</a></li>
+  <li><a href="#o-pipe" id="toc-o-pipe" class="nav-link" data-scroll-target="#o-pipe">O pipe: <code>%&gt;%</code></a></li>
+  <li><a href="#os-6-verbos-do-dplyr" id="toc-os-6-verbos-do-dplyr" class="nav-link" data-scroll-target="#os-6-verbos-do-dplyr">Os 6 verbos do dplyr</a>
+  <ul class="collapse">
+  <li><a href="#filter-filtrar-linhas" id="toc-filter-filtrar-linhas" class="nav-link" data-scroll-target="#filter-filtrar-linhas"><code>filter()</code> — Filtrar linhas</a></li>
+  <li><a href="#select-selecionar-colunas" id="toc-select-selecionar-colunas" class="nav-link" data-scroll-target="#select-selecionar-colunas"><code>select()</code> — Selecionar colunas</a></li>
+  <li><a href="#mutate-criar-ou-modificar-colunas" id="toc-mutate-criar-ou-modificar-colunas" class="nav-link" data-scroll-target="#mutate-criar-ou-modificar-colunas"><code>mutate()</code> — Criar ou modificar colunas</a></li>
+  <li><a href="#arrange-ordenar" id="toc-arrange-ordenar" class="nav-link" data-scroll-target="#arrange-ordenar"><code>arrange()</code> — Ordenar</a></li>
+  <li><a href="#summarise-e-group_by-resumir-e-agrupar" id="toc-summarise-e-group_by-resumir-e-agrupar" class="nav-link" data-scroll-target="#summarise-e-group_by-resumir-e-agrupar"><code>summarise()</code> e <code>group_by()</code> — Resumir e agrupar</a></li>
+  <li><a href="#count-atalho-para-frequência" id="toc-count-atalho-para-frequência" class="nav-link" data-scroll-target="#count-atalho-para-frequência"><code>count()</code> — Atalho para frequência</a></li>
+  </ul></li>
+  <li><a href="#seus-primeiros-gráficos-com-ggplot2" id="toc-seus-primeiros-gráficos-com-ggplot2" class="nav-link" data-scroll-target="#seus-primeiros-gráficos-com-ggplot2">🎬 Seus primeiros gráficos com ggplot2</a>
+  <ul class="collapse">
+  <li><a href="#histograma-distribuição-das-notas" id="toc-histograma-distribuição-das-notas" class="nav-link" data-scroll-target="#histograma-distribuição-das-notas">Histograma — distribuição das notas</a></li>
+  <li><a href="#dispersão-orçamento-faturamento" id="toc-dispersão-orçamento-faturamento" class="nav-link" data-scroll-target="#dispersão-orçamento-faturamento">Dispersão — orçamento × faturamento</a></li>
+  <li><a href="#barras-top-10-gêneros" id="toc-barras-top-10-gêneros" class="nav-link" data-scroll-target="#barras-top-10-gêneros">Barras — top 10 gêneros</a></li>
+  <li><a href="#boxplot-nota-por-gênero" id="toc-boxplot-nota-por-gênero" class="nav-link" data-scroll-target="#boxplot-nota-por-gênero">Boxplot — nota por gênero</a></li>
+  </ul></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  <li><a href="#exercício-4" id="toc-exercício-4" class="nav-link" data-scroll-target="#exercício-4">Exercício 4</a></li>
+  <li><a href="#exercício-5" id="toc-exercício-5" class="nav-link" data-scroll-target="#exercício-5">Exercício 5</a></li>
+  <li><a href="#exercício-6" id="toc-exercício-6" class="nav-link" data-scroll-target="#exercício-6">Exercício 6</a></li>
+  <li><a href="#exercício-7-desafio" id="toc-exercício-7-desafio" class="nav-link" data-scroll-target="#exercício-7-desafio">Exercício 7 (Desafio)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-dias/index.html">Curso de 4 dias — R Completo</a></li><li class="breadcrumb-item"><a href="../04-dias/02-manipulacao.html"><span class="chapter-title">Manipulação de dados com dplyr</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Manipulação de dados com dplyr</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Dia 1 — Tarde | 4 horas</strong></p>
+<section id="objetivos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="objetivos">Objetivos</h2>
+<p>Ao final deste capítulo, você será capaz de:</p>
+<ul>
+<li>Importar dados de arquivos CSV</li>
+<li>Filtrar, selecionar, transformar e resumir dados com <code>dplyr</code></li>
+<li>Usar o pipe (<code>%&gt;%</code>) para encadear operações</li>
+<li>Criar seus primeiros gráficos com <code>ggplot2</code></li>
+</ul>
+<hr>
+</section>
+<section id="importando-dados" class="level2">
+<h2 class="anchored" data-anchor-id="importando-dados">Importando dados</h2>
+<p>Tudo começa com a importação. O pacote <code>readr</code> (parte do <code>tidyverse</code>) oferece funções rápidas e consistentes para ler arquivos:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># CSV com vírgula como separador (padrão americano)</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>filmes <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"../data/filmes_imdb.csv"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># Se o arquivo usar ponto-e-vírgula (comum no Brasil)</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co"># filmes &lt;- read_csv2("../data/filmes_imdb.csv")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">glimpse</span>(filmes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3,875
+Columns: 10
+$ codigo_filme     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…
+$ titulo           &lt;chr&gt; "Avatar&nbsp;", "Pirates of the Caribbean: At World's End&nbsp;…
+$ diretor          &lt;chr&gt; "James Cameron", "Gore Verbinski", "Sam Mendes", "Chr…
+$ ano              &lt;dbl&gt; 2009, 2007, 2015, 2012, 2012, 2007, 2010, 2015, 2009,…
+$ genero           &lt;chr&gt; "Ação", "Aventura", "Comédia", "Mistério", "Fantasia"…
+$ duracao          &lt;dbl&gt; 81, 126, 88, 99, 92, 95, 39, 111, 82, 89, 77, 102, 98…
+$ orcamento        &lt;dbl&gt; 237000000, 300000000, 245000000, 250000000, 263700000…
+$ faturamento      &lt;dbl&gt; 760505847, 309404152, 200074175, 448130642, 73058679,…
+$ nota             &lt;dbl&gt; 7.9, 7.1, 6.8, 8.5, 6.6, 6.2, 7.8, 7.5, 7.5, 6.9, 6.1…
+$ elenco_principal &lt;chr&gt; "Viola Davis", "Cate Blanchett", "Natalie Portman", "…</code></pre>
+</div>
+</div>
+<p>Temos 4826 filmes com 11 colunas: título, ano, nota, orçamento, faturamento, gênero, diretor, duração, etc.</p>
+<hr>
+</section>
+<section id="o-pipe" class="level2">
+<h2 class="anchored" data-anchor-id="o-pipe">O pipe: <code>%&gt;%</code></h2>
+<p>O pipe (<code>%&gt;%</code>) é o encadeamento de operações. Em vez de aninhar funções ou criar objetos intermediários, você conecta os passos com <code>%&gt;%</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Sem pipe (difícil de ler):</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">head</span>(<span class="fu">arrange</span>(<span class="fu">summarise</span>(<span class="fu">group_by</span>(<span class="fu">filter</span>(filmes, ano <span class="sc">&gt;</span> <span class="dv">2000</span>), genero), <span class="at">nota_media =</span> <span class="fu">mean</span>(nota)), <span class="fu">desc</span>(nota_media)), <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  genero    nota_media
+  &lt;chr&gt;          &lt;dbl&gt;
+1 Musical         6.70
+2 Esporte         6.59
+3 Aventura        6.55
+4 Guerra          6.52
+5 Biografia       6.51</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Com pipe (leitura natural, da esquerda para a direita):</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">filter</span>(ano <span class="sc">&gt;</span> <span class="dv">2000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">summarise</span>(<span class="at">nota_media =</span> <span class="fu">mean</span>(nota)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_media)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  genero    nota_media
+  &lt;chr&gt;          &lt;dbl&gt;
+1 Musical         6.70
+2 Esporte         6.59
+3 Aventura        6.55
+4 Guerra          6.52
+5 Biografia       6.51</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Atalho do pipe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>Ctrl + Shift + M</code> (Windows/Linux) ou <code>Cmd + Shift + M</code> (Mac). Grave esse atalho — você vai usá-lo centenas de vezes por dia!</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="os-6-verbos-do-dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="os-6-verbos-do-dplyr">Os 6 verbos do dplyr</h2>
+<p>O <code>dplyr</code> é baseado em seis funções principais (verbos) que cobrem a maioria das operações com tabelas:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Verbo</th>
+<th>O que faz</th>
+<th>Equivalente mental</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>filter()</code></td>
+<td>Filtra <strong>linhas</strong></td>
+<td>“Quero só esses…”</td>
+</tr>
+<tr class="even">
+<td><code>select()</code></td>
+<td>Seleciona <strong>colunas</strong></td>
+<td>“Só me interessa…”</td>
+</tr>
+<tr class="odd">
+<td><code>mutate()</code></td>
+<td>Cria/modifica <strong>colunas</strong></td>
+<td>“Calcula pra mim…”</td>
+</tr>
+<tr class="even">
+<td><code>arrange()</code></td>
+<td><strong>Ordena</strong> linhas</td>
+<td>“Organiza por…”</td>
+</tr>
+<tr class="odd">
+<td><code>summarise()</code></td>
+<td><strong>Resume</strong> em um número</td>
+<td>“Resume isso…”</td>
+</tr>
+<tr class="even">
+<td><code>group_by()</code></td>
+<td><strong>Agrupa</strong> para operações</td>
+<td>“Para cada…”</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<section id="filter-filtrar-linhas" class="level3">
+<h3 class="anchored" data-anchor-id="filter-filtrar-linhas"><code>filter()</code> — Filtrar linhas</h3>
+<p>Filtra linhas com base em condições lógicas:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Filmes com nota maior ou igual a 9.0</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">filter</span>(nota <span class="sc">&gt;=</span> <span class="fl">9.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 10
+  codigo_filme titulo   diretor   ano genero duracao orcamento faturamento  nota
+         &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+1           65 The Dar… Christ…  2008 Avent…     151 185000000   533316061   9  
+2         1807 The Sha… Frank …  1994 Fanta…     104  25000000    28341469   9.3
+3         2563 The God… Franci…  1974 Coméd…      45  13000000    57300000   9  
+4         3035 The God… Franci…  1972 Crime      131   6000000   134821952   9.2
+# ℹ 1 more variable: elenco_principal &lt;chr&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Filmes de ação com nota acima de 8.0</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">filter</span>(genero <span class="sc">==</span> <span class="st">"Ação"</span>, nota <span class="sc">&gt;</span> <span class="fl">8.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21 × 10
+   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota
+          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+ 1           17 The Av… Joss W…  2012 Ação        53 220000000   623279547   8.1
+ 2           95 Incept… Christ…  2010 Ação       103 160000000   292568851   8.8
+ 3          564 Inglou… Quenti…  2009 Ação       108  75000000   120523073   8.3
+ 4          776 Deadpo… Tim Mi…  2016 Ação       123  58000000   363024263   8.1
+ 5         1026 Prison… Denis …  2013 Ação       101  46000000    60962878   8.1
+ 6         1232 Amélie&nbsp; Jean-P…  2001 Ação        55  77000000    33201661   8.4
+ 7         1341 L.A. C… Curtis…  1997 Ação        89  35000000    64604977   8.3
+ 8         1775 Goodfe… Martin…  1990 Ação       118  25000000    46836394   8.7
+ 9         1778 Scarfa… Brian …  1983 Ação        96  25000000    44700000   8.3
+10         2034 Spotli… Tom Mc…  2015 Ação        96  20000000    44988180   8.1
+# ℹ 11 more rows
+# ℹ 1 more variable: elenco_principal &lt;chr&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Filmes de 2010 ou mais recentes, com orçamento acima de 100 milhões</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">filter</span>(ano <span class="sc">&gt;=</span> <span class="dv">2010</span>, orcamento <span class="sc">&gt;</span> <span class="dv">100000000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 162 × 10
+   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota
+          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+ 1            3 Spectr… Sam Me…  2015 Coméd…      88 245000000   200074175   6.8
+ 2            4 The Da… Christ…  2012 Misté…      99 250000000   448130642   8.5
+ 3            5 John C… Andrew…  2012 Fanta…      92 263700000    73058679   6.6
+ 4            7 Tangle… Nathan…  2010 Terror      39 260000000   200807262   7.8
+ 5            8 Avenge… Joss W…  2015 Misté…     111 250000000   458991599   7.5
+ 6           10 Batman… Zack S…  2016 Terror      89 250000000   330249062   6.9
+ 7           14 The Lo… Gore V…  2013 Ficçã…     129 215000000    89289910   6.5
+ 8           15 Man of… Zack S…  2013 Drama      123 225000000   291021565   7.2
+ 9           17 The Av… Joss W…  2012 Ação        53 220000000   623279547   8.1
+10           18 Pirate… Rob Ma…  2011 Drama      113 250000000   241063875   6.7
+# ℹ 152 more rows
+# ℹ 1 more variable: elenco_principal &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p><strong>Operadores úteis no <code>filter()</code>:</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Igual a          ==</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co"># Diferente de     !=</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># Maior / Menor    &gt;   &lt;   &gt;=   &lt;=</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># Está na lista    %in% c("A", "B")</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># E                &amp;</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="co"># OU               |</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="co"># Negação          !</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Filmes de Drama OU Comédia</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">filter</span>(genero <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Drama"</span>, <span class="st">"Comédia"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">count</span>(genero, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  genero      n
+  &lt;chr&gt;   &lt;int&gt;
+1 Drama     719
+2 Comédia   452</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Filmes com nota &gt;= 8.0 E ano &gt; 2010</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">filter</span>(nota <span class="sc">&gt;=</span> <span class="fl">8.0</span>, ano <span class="sc">&gt;</span> <span class="dv">2010</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 36 × 10
+   codigo_filme titulo  diretor   ano genero duracao orcamento faturamento  nota
+          &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+ 1            4 The Da… Christ…  2012 Misté…      99 250000000   448130642   8.5
+ 2           17 The Av… Joss W…  2012 Ação        53 220000000   623279547   8.1
+ 3           47 X-Men:… Bryan …  2014 Ação       126 200000000   233914986   8  
+ 4           77 Inside… Pete D…  2015 Coméd…     113 175000000   356454367   8.3
+ 5           93 Guardi… James …  2014 Coméd…     118 170000000   333130696   8.1
+ 6           94 Inters… Christ…  2014 Roman…      90 165000000   187991439   8.6
+ 7          125 Mad Ma… George…  2015 Coméd…      61 150000000   153629485   8.1
+ 8          175 The Re… Alejan…  2015 Roman…      91 135000000   183635922   8.1
+ 9          216 Life o… Ang Lee  2012 Thril…     123 120000000   124976634   8  
+10          269 The Ma… Ridley…  2015 Drama       78 108000000   228430993   8.1
+# ℹ 26 more rows
+# ℹ 1 more variable: elenco_principal &lt;chr&gt;</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="select-selecionar-colunas" class="level3">
+<h3 class="anchored" data-anchor-id="select-selecionar-colunas"><code>select()</code> — Selecionar colunas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Selecionar colunas por nome</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">select</span>(titulo, ano, nota)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,875 × 3
+   titulo                                      ano  nota
+   &lt;chr&gt;                                     &lt;dbl&gt; &lt;dbl&gt;
+ 1 Avatar&nbsp;                                    2009   7.9
+ 2 Pirates of the Caribbean: At World's End&nbsp;  2007   7.1
+ 3 Spectre&nbsp;                                   2015   6.8
+ 4 The Dark Knight Rises&nbsp;                     2012   8.5
+ 5 John Carter&nbsp;                               2012   6.6
+ 6 Spider-Man 3&nbsp;                              2007   6.2
+ 7 Tangled&nbsp;                                   2010   7.8
+ 8 Avengers: Age of Ultron&nbsp;                   2015   7.5
+ 9 Harry Potter and the Half-Blood Prince&nbsp;    2009   7.5
+10 Batman v Superman: Dawn of Justice&nbsp;        2016   6.9
+# ℹ 3,865 more rows</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Selecionar um intervalo de colunas</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">select</span>(titulo<span class="sc">:</span>nota)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,875 × 8
+   titulo               diretor   ano genero duracao orcamento faturamento  nota
+   &lt;chr&gt;                &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+ 1 Avatar&nbsp;              James …  2009 Ação        81 237000000   760505847   7.9
+ 2 Pirates of the Cari… Gore V…  2007 Avent…     126 300000000   309404152   7.1
+ 3 Spectre&nbsp;             Sam Me…  2015 Coméd…      88 245000000   200074175   6.8
+ 4 The Dark Knight Ris… Christ…  2012 Misté…      99 250000000   448130642   8.5
+ 5 John Carter&nbsp;         Andrew…  2012 Fanta…      92 263700000    73058679   6.6
+ 6 Spider-Man 3&nbsp;        Sam Ra…  2007 Drama       95 258000000   336530303   6.2
+ 7 Tangled&nbsp;             Nathan…  2010 Terror      39 260000000   200807262   7.8
+ 8 Avengers: Age of Ul… Joss W…  2015 Misté…     111 250000000   458991599   7.5
+ 9 Harry Potter and th… David …  2009 Ficçã…      82 250000000   301956980   7.5
+10 Batman v Superman: … Zack S…  2016 Terror      89 250000000   330249062   6.9
+# ℹ 3,865 more rows</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Remover colunas com -</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">select</span>(<span class="sc">-</span>codigo_filme, <span class="sc">-</span>diretor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,875 × 8
+   titulo        ano genero duracao orcamento faturamento  nota elenco_principal
+   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           
+ 1 Avatar&nbsp;      2009 Ação        81 237000000   760505847   7.9 Viola Davis     
+ 2 Pirates of…  2007 Avent…     126 300000000   309404152   7.1 Cate Blanchett  
+ 3 Spectre&nbsp;     2015 Coméd…      88 245000000   200074175   6.8 Natalie Portman 
+ 4 The Dark K…  2012 Misté…      99 250000000   448130642   8.5 Cate Blanchett  
+ 5 John Carte…  2012 Fanta…      92 263700000    73058679   6.6 Tom Hanks       
+ 6 Spider-Man…  2007 Drama       95 258000000   336530303   6.2 Viola Davis     
+ 7 Tangled&nbsp;     2010 Terror      39 260000000   200807262   7.8 Viola Davis     
+ 8 Avengers: …  2015 Misté…     111 250000000   458991599   7.5 Robert De Niro  
+ 9 Harry Pott…  2009 Ficçã…      82 250000000   301956980   7.5 Natalie Portman 
+10 Batman v S…  2016 Terror      89 250000000   330249062   6.9 Tom Hanks       
+# ℹ 3,865 more rows</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Selecionar por padrão no nome</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"cod"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,875 × 1
+   codigo_filme
+          &lt;dbl&gt;
+ 1            1
+ 2            2
+ 3            3
+ 4            4
+ 5            5
+ 6            6
+ 7            7
+ 8            8
+ 9            9
+10           10
+# ℹ 3,865 more rows</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"mento"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,875 × 2
+   orcamento faturamento
+       &lt;dbl&gt;       &lt;dbl&gt;
+ 1 237000000   760505847
+ 2 300000000   309404152
+ 3 245000000   200074175
+ 4 250000000   448130642
+ 5 263700000    73058679
+ 6 258000000   336530303
+ 7 260000000   200807262
+ 8 250000000   458991599
+ 9 250000000   301956980
+10 250000000   330249062
+# ℹ 3,865 more rows</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="mutate-criar-ou-modificar-colunas" class="level3">
+<h3 class="anchored" data-anchor-id="mutate-criar-ou-modificar-colunas"><code>mutate()</code> — Criar ou modificar colunas</h3>
+<p>A função <code>mutate()</code> calcula novas colunas a partir das existentes:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb29-3"><a href="#cb29-3"></a>    <span class="at">lucro =</span> faturamento <span class="sc">-</span> orcamento,</span>
+<span id="cb29-4"><a href="#cb29-4"></a>    <span class="at">lucro_milhoes =</span> lucro <span class="sc">/</span> <span class="dv">1000000</span>,</span>
+<span id="cb29-5"><a href="#cb29-5"></a>    <span class="at">duracao_horas =</span> duracao <span class="sc">/</span> <span class="dv">60</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-7"><a href="#cb29-7"></a>  <span class="fu">select</span>(titulo, orcamento, faturamento, lucro_milhoes, duracao_horas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,875 × 5
+   titulo                      orcamento faturamento lucro_milhoes duracao_horas
+   &lt;chr&gt;                           &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Avatar&nbsp;                     237000000   760505847        524.            1.35
+ 2 Pirates of the Caribbean: … 300000000   309404152          9.40          2.1 
+ 3 Spectre&nbsp;                    245000000   200074175        -44.9           1.47
+ 4 The Dark Knight Rises&nbsp;      250000000   448130642        198.            1.65
+ 5 John Carter&nbsp;                263700000    73058679       -191.            1.53
+ 6 Spider-Man 3&nbsp;               258000000   336530303         78.5           1.58
+ 7 Tangled&nbsp;                    260000000   200807262        -59.2           0.65
+ 8 Avengers: Age of Ultron&nbsp;    250000000   458991599        209.            1.85
+ 9 Harry Potter and the Half-… 250000000   301956980         52.0           1.37
+10 Batman v Superman: Dawn of… 250000000   330249062         80.2           1.48
+# ℹ 3,865 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Qual o filme mais lucrativo?</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">mutate</span>(<span class="at">lucro =</span> faturamento <span class="sc">-</span> orcamento) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(lucro)) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-5"><a href="#cb31-5"></a>  <span class="fu">select</span>(titulo, lucro) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-6"><a href="#cb31-6"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  titulo                                  lucro
+  &lt;chr&gt;                                   &lt;dbl&gt;
+1 Avatar&nbsp;                             523505847
+2 Jurassic World&nbsp;                     502177271
+3 Titanic&nbsp;                            458672302
+4 Star Wars: Episode IV - A New Hope&nbsp; 449935665
+5 E.T. the Extra-Terrestrial&nbsp;         424449459</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Nota padronizada (z-score) por filme</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">mutate</span>(<span class="at">nota_z =</span> (nota <span class="sc">-</span> <span class="fu">mean</span>(nota)) <span class="sc">/</span> <span class="fu">sd</span>(nota)) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">select</span>(titulo, nota, nota_z) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-5"><a href="#cb33-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_z)) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-6"><a href="#cb33-6"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  titulo                                          nota nota_z
+  &lt;chr&gt;                                          &lt;dbl&gt;  &lt;dbl&gt;
+1 The Shawshank Redemption&nbsp;                        9.3   2.69
+2 The Godfather&nbsp;                                   9.2   2.60
+3 The Dark Knight&nbsp;                                 9     2.41
+4 The Godfather: Part II&nbsp;                          9     2.41
+5 The Lord of the Rings: The Return of the King&nbsp;   8.9   2.31</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="arrange-ordenar" class="level3">
+<h3 class="anchored" data-anchor-id="arrange-ordenar"><code>arrange()</code> — Ordenar</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Ordenar por nota (crescente)</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">arrange</span>(nota) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-4"><a href="#cb35-4"></a>  <span class="fu">select</span>(titulo, nota) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-5"><a href="#cb35-5"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  titulo                           nota
+  &lt;chr&gt;                           &lt;dbl&gt;
+1 Justin Bieber: Never Say Never&nbsp;   1.6
+2 Disaster Movie&nbsp;                   1.9
+3 Superbabies: Baby Geniuses 2&nbsp;     1.9
+4 Who's Your Caddy?&nbsp;                2  
+5 From Justin to Kelly&nbsp;             2.1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Ordenar por nota (decrescente)</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota)) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-4"><a href="#cb37-4"></a>  <span class="fu">select</span>(titulo, nota) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-5"><a href="#cb37-5"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  titulo                                          nota
+  &lt;chr&gt;                                          &lt;dbl&gt;
+1 The Shawshank Redemption&nbsp;                        9.3
+2 The Godfather&nbsp;                                   9.2
+3 The Dark Knight&nbsp;                                 9  
+4 The Godfather: Part II&nbsp;                          9  
+5 The Lord of the Rings: The Return of the King&nbsp;   8.9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Ordenar por gênero e depois por nota (decrescente)</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb39-3"><a href="#cb39-3"></a>  <span class="fu">arrange</span>(genero, <span class="fu">desc</span>(nota)) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-4"><a href="#cb39-4"></a>  <span class="fu">select</span>(genero, titulo, nota) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-5"><a href="#cb39-5"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   genero   titulo                                              nota
+   &lt;chr&gt;    &lt;chr&gt;                                              &lt;dbl&gt;
+ 1 Animação Schindler's List&nbsp;                                    8.9
+ 2 Animação The Lord of the Rings: The Fellowship of the Ring&nbsp;   8.8
+ 3 Animação The Lord of the Rings: The Two Towers&nbsp;               8.7
+ 4 Animação One Flew Over the Cuckoo's Nest&nbsp;                     8.7
+ 5 Animação Jurassic Park&nbsp;                                       8.1
+ 6 Animação The Sixth Sense&nbsp;                                     8.1
+ 7 Animação Platoon&nbsp;                                             8.1
+ 8 Animação JFK&nbsp;                                                 8  
+ 9 Animação Winged Migration&nbsp;                                    8  
+10 Animação The Hangover&nbsp;                                        7.8</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="summarise-e-group_by-resumir-e-agrupar" class="level3">
+<h3 class="anchored" data-anchor-id="summarise-e-group_by-resumir-e-agrupar"><code>summarise()</code> e <code>group_by()</code> — Resumir e agrupar</h3>
+<p>Juntos, <code>group_by()</code> e <code>summarise()</code> são a dupla mais poderosa do dplyr:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Nota média geral</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb41-4"><a href="#cb41-4"></a>    <span class="at">nota_media =</span> <span class="fu">mean</span>(nota),</span>
+<span id="cb41-5"><a href="#cb41-5"></a>    <span class="at">nota_desvio =</span> <span class="fu">sd</span>(nota),</span>
+<span id="cb41-6"><a href="#cb41-6"></a>    <span class="at">nota_min =</span> <span class="fu">min</span>(nota),</span>
+<span id="cb41-7"><a href="#cb41-7"></a>    <span class="at">nota_max =</span> <span class="fu">max</span>(nota),</span>
+<span id="cb41-8"><a href="#cb41-8"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb41-9"><a href="#cb41-9"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  nota_media nota_desvio nota_min nota_max     n
+       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
+1       6.46        1.05      1.6      9.3  3875</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Nota média por gênero</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb43-3"><a href="#cb43-3"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-4"><a href="#cb43-4"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb43-5"><a href="#cb43-5"></a>    <span class="at">nota_media =</span> <span class="fu">mean</span>(nota),</span>
+<span id="cb43-6"><a href="#cb43-6"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb43-7"><a href="#cb43-7"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-8"><a href="#cb43-8"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_media))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19 × 3
+   genero            nota_media     n
+   &lt;chr&gt;                  &lt;dbl&gt; &lt;int&gt;
+ 1 Musical                 6.75    39
+ 2 Esporte                 6.73    16
+ 3 História                6.56    31
+ 4 Guerra                  6.55    33
+ 5 Biografia               6.50   121
+ 6 Comédia                 6.50   452
+ 7 Ação                    6.49   566
+ 8 Drama                   6.48   719
+ 9 Romance                 6.48   245
+10 Documentário            6.47   117
+11 Ficção científica       6.47   306
+12 Fantasia                6.47    82
+13 Mistério                6.46   113
+14 Aventura                6.45   204
+15 Thriller                6.41   185
+16 Terror                  6.40   311
+17 Crime                   6.39   193
+18 Animação                6.29   114
+19 Família                 6.1     28</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Orçamento médio por ano (apenas anos com 5+ filmes)</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb45-3"><a href="#cb45-3"></a>  <span class="fu">group_by</span>(ano) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-4"><a href="#cb45-4"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb45-5"><a href="#cb45-5"></a>    <span class="at">orcamento_medio =</span> <span class="fu">mean</span>(orcamento, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb45-6"><a href="#cb45-6"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb45-7"><a href="#cb45-7"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-8"><a href="#cb45-8"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-9"><a href="#cb45-9"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(orcamento_medio)) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-10"><a href="#cb45-10"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+     ano orcamento_medio     n
+   &lt;dbl&gt;           &lt;dbl&gt; &lt;int&gt;
+ 1  2016       66007647.    68
+ 2  2015       53006627.   139
+ 3  2013       49385475.   171
+ 4  2014       48291950.   159
+ 5  2012       47744328.   166
+ 6  2010       47258132.   174
+ 7  2008       44004546.   183
+ 8  2011       42996023.   175
+ 9  2009       41423690.   187
+10  2005       40487560.   186</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="count-atalho-para-frequência" class="level3">
+<h3 class="anchored" data-anchor-id="count-atalho-para-frequência"><code>count()</code> — Atalho para frequência</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Gêneros mais frequentes</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb47-3"><a href="#cb47-3"></a>  <span class="fu">count</span>(genero, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19 × 2
+   genero                n
+   &lt;chr&gt;             &lt;int&gt;
+ 1 Drama               719
+ 2 Ação                566
+ 3 Comédia             452
+ 4 Terror              311
+ 5 Ficção científica   306
+ 6 Romance             245
+ 7 Aventura            204
+ 8 Crime               193
+ 9 Thriller            185
+10 Biografia           121
+11 Documentário        117
+12 Animação            114
+13 Mistério            113
+14 Fantasia             82
+15 Musical              39
+16 Guerra               33
+17 História             31
+18 Família              28
+19 Esporte              16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># Diretores mais prolíficos</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">count</span>(diretor, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-4"><a href="#cb49-4"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   diretor               n
+   &lt;chr&gt;             &lt;int&gt;
+ 1 Steven Spielberg     25
+ 2 Clint Eastwood       19
+ 3 Woody Allen          19
+ 4 Ridley Scott         17
+ 5 Martin Scorsese      16
+ 6 Steven Soderbergh    16
+ 7 Tim Burton           16
+ 8 Renny Harlin         15
+ 9 Spike Lee            15
+10 Barry Levinson       13</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="seus-primeiros-gráficos-com-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="seus-primeiros-gráficos-com-ggplot2">🎬 Seus primeiros gráficos com ggplot2</h2>
+<p>E se eu te disser que você já pode criar gráficos profissionais <strong>hoje</strong>? Não precisa de teoria complicada — é só seguir uma receita simples.</p>
+<p>A estrutura básica de qualquer gráfico no ggplot2 é:</p>
+<pre><code>ggplot(dados, aes(x = coluna_x, y = coluna_y)) +
+  geom_tipo()</code></pre>
+<p>Vamos criar 4 gráficos essenciais com os dados de filmes:</p>
+<section id="histograma-distribuição-das-notas" class="level3">
+<h3 class="anchored" data-anchor-id="histograma-distribuição-das-notas">Histograma — distribuição das notas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="#cb52-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> nota)) <span class="sc">+</span></span>
+<span id="cb52-3"><a href="#cb52-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"#18BC9C"</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-manipulacao_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cada barra mostra quantos filmes têm nota naquele intervalo. A distribuição é aproximadamente simétrica, centrada em torno de 6.</p>
+</section>
+<section id="dispersão-orçamento-faturamento" class="level3">
+<h3 class="anchored" data-anchor-id="dispersão-orçamento-faturamento">Dispersão — orçamento × faturamento</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="#cb53-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> orcamento, <span class="at">y =</span> faturamento)) <span class="sc">+</span></span>
+<span id="cb53-3"><a href="#cb53-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">"#2C3E50"</span>) <span class="sc">+</span></span>
+<span id="cb53-4"><a href="#cb53-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"#E74C3C"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-manipulacao_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cada ponto é um filme. A linha vermelha mostra a tendência: quanto maior o orçamento, maior o faturamento — em média.</p>
+</section>
+<section id="barras-top-10-gêneros" class="level3">
+<h3 class="anchored" data-anchor-id="barras-top-10-gêneros">Barras — top 10 gêneros</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb54-2"><a href="#cb54-2"></a>  <span class="fu">count</span>(genero, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-3"><a href="#cb54-3"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-4"><a href="#cb54-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(genero, n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb54-5"><a href="#cb54-5"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#18BC9C"</span>) <span class="sc">+</span></span>
+<span id="cb54-6"><a href="#cb54-6"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb54-7"><a href="#cb54-7"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Número de filmes"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-manipulacao_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="boxplot-nota-por-gênero" class="level3">
+<h3 class="anchored" data-anchor-id="boxplot-nota-por-gênero">Boxplot — nota por gênero</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb55-2"><a href="#cb55-2"></a>  <span class="fu">filter</span>(genero <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ação"</span>, <span class="st">"Comédia"</span>, <span class="st">"Drama"</span>, <span class="st">"Ficção científica"</span>, <span class="st">"Terror"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-3"><a href="#cb55-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> genero, <span class="at">y =</span> nota, <span class="at">fill =</span> genero)) <span class="sc">+</span></span>
+<span id="cb55-4"><a href="#cb55-4"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb55-5"><a href="#cb55-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Nota IMDB"</span>) <span class="sc">+</span></span>
+<span id="cb55-6"><a href="#cb55-6"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-manipulacao_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Você acaba de fazer análise exploratória!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Em menos de 10 linhas de código você filtrou, agrupou, resumiu e visualizou dados. Isso é o poder do R + tidyverse. O resto do curso é aprofundamento dessas mesmas ferramentas.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Em todos os exercícios, carregue o dataset com:<br>
+<code>filmes &lt;- read_csv2("../data/filmes_imdb.csv")</code></p>
+</div>
+</div>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Filtre os filmes com nota maior ou igual a 8.5. Quantos filmes atendem a esse critério?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 1 × 1
+      n
+  &lt;int&gt;
+1   103</code></pre>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Crie uma coluna <code>lucro = faturamento - orcamento</code> e encontre os 5 filmes mais lucrativos.</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 5 × 2
+  titulo                        lucro
+  &lt;chr&gt;                         &lt;dbl&gt;
+1 The story of cap and trade 48699922
+2 Sholay                     18599922
+3 Ram Teri Ganga Maili       12599881
+4 ET                          8999901
+5 Black Friday                1999989</code></pre>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Calcule a nota média e o número de filmes por gênero. Ordene da maior para a menor nota média.</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 19 × 3
+   genero          nota_media     n
+   &lt;chr&gt;                &lt;dbl&gt; &lt;int&gt;
+ 1 Documentário          6.84    70
+ 2 Guerra                6.75    19
+ 3 História              6.73    21
+ 4 Drama                 6.56   964
+ 5 Musical               6.56    13
+ 6 Biografia             6.54    90
+ 7 Crime                 6.49   308
+ 8 Mistério              6.43    90
+ 9 Esporte               6.42     5
+10 Aventura              6.42    80
+# … with 9 more rows</code></pre>
+</section>
+<section id="exercício-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-4">Exercício 4</h3>
+<p>Crie um histograma da coluna <code>duracao</code> (duração dos filmes em minutos). Use 40 bins.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Um histograma com pico em torno de 90-100 minutos, distribuição assimétrica à direita.</em></p>
+</section>
+<section id="exercício-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-5">Exercício 5</h3>
+<p>Crie um gráfico de dispersão com <code>orcamento</code> no eixo x, <code>nota</code> no eixo y. Existe relação visível?</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Nuvem de pontos sem padrão claro — orçamento não determina a qualidade do filme.</em></p>
+</section>
+<section id="exercício-6" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-6">Exercício 6</h3>
+<p>Crie um gráfico de barras com os 10 diretores que mais aparecem no dataset.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Gráfico de barras horizontal com Woody Allen no topo, seguido por Steven Spielberg, Clint Eastwood, etc.</em></p>
+</section>
+<section id="exercício-7-desafio" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-7-desafio">Exercício 7 (Desafio)</h3>
+<p>Combine <code>filter()</code>, <code>mutate()</code>, <code>group_by()</code> e <code>summarise()</code> para responder: qual gênero tem o maior orçamento médio entre filmes com nota ≥ 7.0?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 10 × 3
+   genero          orcamento_medio     n
+   &lt;chr&gt;                     &lt;dbl&gt; &lt;int&gt;
+ 1 Aventura              22980338.     9
+ 2 Animação              19091918.     9
+ 3 Fantasia              16110251.     4
+ 4 Ação                  15915052.    37
+ 5 Ficção científica     14880336.    21
+ 6 Guerra                11377778.     2
+ 7 Drama                 11075548.    91
+ 8 Comédia                9832855.    46
+ 9 Romance                9465063.    10
+10 Thriller               9416381.    12</code></pre>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../04-dias/01-introducao.html" class="pagination-link" aria-label="Introdução ao R e RStudio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Introdução ao R e RStudio</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../04-dias/03-manipulacao-avancada.html" class="pagination-link" aria-label="Manipulação avançada e Joins">
+        <span class="nav-page-text"><span class="chapter-title">Manipulação avançada e Joins</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Curso R para Análise de Dados — Ítalo Cegatta</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Licença CC BY-NC 4.0</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

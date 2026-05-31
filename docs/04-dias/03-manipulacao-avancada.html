@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Manipulação avançada e Joins – Curso R para Análise de Dados</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../04-dias/04-visualizacao.html" rel="next">
+<link href="../04-dias/02-manipulacao.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a22868fb5c0b8f11f607eafe004b7382.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-dias/index.html">Curso de 4 dias — R Completo</a></li><li class="breadcrumb-item"><a href="../04-dias/03-manipulacao-avancada.html"><span class="chapter-title">Manipulação avançada e Joins</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Curso R para Análise de Dados</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Curso R para Análise de Dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Curso de 4 dias — R Completo</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curso de 4 dias — R Completo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/03-manipulacao-avancada.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Manipulação avançada e Joins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/04-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados com ggplot2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/05-strings-fatores-datas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strings, Fatores e Datas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/06-tidy-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Tidy Data e Importação Avançada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/07-iteracao-funcoes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Iteração e Funções</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04-dias/08-modelagem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Modelagem Estatística e Projeto Final</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Curso de 2 dias — R Fundamentos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curso de 2 dias — R Fundamentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/03-joins.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Joins e Visualização</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/04-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados — aprofundamento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02-dias/05-exercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exercícios integrados</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Curso de 1 dia — R Express</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-dia/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curso de 1 dia — R Express</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-dia/01-introducao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introdução ao R e primeiros dados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-dia/02-manipulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manipulação de dados com dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01-dia/03-visualizacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualização de dados e Exercícios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#objetivos" id="toc-objetivos" class="nav-link active" data-scroll-target="#objetivos">Objetivos</a></li>
+  <li><a href="#manipulação-condicional" id="toc-manipulação-condicional" class="nav-link" data-scroll-target="#manipulação-condicional">Manipulação condicional</a>
+  <ul class="collapse">
+  <li><a href="#case_when-múltiplas-condições" id="toc-case_when-múltiplas-condições" class="nav-link" data-scroll-target="#case_when-múltiplas-condições"><code>case_when()</code> — múltiplas condições</a></li>
+  <li><a href="#if_else-condição-binária" id="toc-if_else-condição-binária" class="nav-link" data-scroll-target="#if_else-condição-binária"><code>if_else()</code> — condição binária</a></li>
+  </ul></li>
+  <li><a href="#operações-com-janelas" id="toc-operações-com-janelas" class="nav-link" data-scroll-target="#operações-com-janelas">Operações com janelas</a>
+  <ul class="collapse">
+  <li><a href="#top-n-por-grupo" id="toc-top-n-por-grupo" class="nav-link" data-scroll-target="#top-n-por-grupo">Top N por grupo</a></li>
+  <li><a href="#valores-defasados-lag-e-lead" id="toc-valores-defasados-lag-e-lead" class="nav-link" data-scroll-target="#valores-defasados-lag-e-lead">Valores defasados: <code>lag()</code> e <code>lead()</code></a></li>
+  <li><a href="#operações-cumulativas" id="toc-operações-cumulativas" class="nav-link" data-scroll-target="#operações-cumulativas">Operações cumulativas</a></li>
+  </ul></li>
+  <li><a href="#trabalhando-com-múltiplas-tabelas-joins" id="toc-trabalhando-com-múltiplas-tabelas-joins" class="nav-link" data-scroll-target="#trabalhando-com-múltiplas-tabelas-joins">Trabalhando com múltiplas tabelas: Joins</a>
+  <ul class="collapse">
+  <li><a href="#os-tipos-de-join" id="toc-os-tipos-de-join" class="nav-link" data-scroll-target="#os-tipos-de-join">Os tipos de join</a></li>
+  <li><a href="#exemplo-prático-filmes-elenco" id="toc-exemplo-prático-filmes-elenco" class="nav-link" data-scroll-target="#exemplo-prático-filmes-elenco">Exemplo prático: filmes + elenco</a></li>
+  <li><a href="#exemplo-florestal-inventário-cadastro" id="toc-exemplo-florestal-inventário-cadastro" class="nav-link" data-scroll-target="#exemplo-florestal-inventário-cadastro">Exemplo florestal: inventário + cadastro</a></li>
+  <li><a href="#diagnóstico-com-anti_join" id="toc-diagnóstico-com-anti_join" class="nav-link" data-scroll-target="#diagnóstico-com-anti_join">Diagnóstico com <code>anti_join()</code></a></li>
+  <li><a href="#bind_rows-empilhando-tabelas" id="toc-bind_rows-empilhando-tabelas" class="nav-link" data-scroll-target="#bind_rows-empilhando-tabelas"><code>bind_rows()</code> — Empilhando tabelas</a></li>
+  </ul></li>
+  <li><a href="#transição-de-filmes-para-floresta" id="toc-transição-de-filmes-para-floresta" class="nav-link" data-scroll-target="#transição-de-filmes-para-floresta">Transição: de filmes para floresta</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  <li><a href="#exercício-4" id="toc-exercício-4" class="nav-link" data-scroll-target="#exercício-4">Exercício 4</a></li>
+  <li><a href="#exercício-5" id="toc-exercício-5" class="nav-link" data-scroll-target="#exercício-5">Exercício 5</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04-dias/index.html">Curso de 4 dias — R Completo</a></li><li class="breadcrumb-item"><a href="../04-dias/03-manipulacao-avancada.html"><span class="chapter-title">Manipulação avançada e Joins</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Manipulação avançada e Joins</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Dia 2 — Manhã | 4 horas</strong></p>
+<section id="objetivos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="objetivos">Objetivos</h2>
+<p>Ao final deste capítulo, você será capaz de:</p>
+<ul>
+<li><p>Criar colunas condicionais com <code>case_when()</code> e <code>if_else()</code></p></li>
+<li><p>Trabalhar com operações de janela (top N, valores defasados)</p></li>
+<li><p>Cruzar tabelas com os diferentes tipos de join</p></li>
+<li><p>Transitar entre dados de filmes e dados florestais com as mesmas técnicas</p></li>
+</ul>
+<hr>
+</section>
+<section id="manipulação-condicional" class="level2">
+<h2 class="anchored" data-anchor-id="manipulação-condicional">Manipulação condicional</h2>
+<p>Muitas vezes você precisa criar colunas cujo valor <strong>depende de uma condição</strong>. Para isso usamos <code>case_when()</code> (múltiplas condições) e <code>if_else()</code> (condição binária).</p>
+<section id="case_when-múltiplas-condições" class="level3">
+<h3 class="anchored" data-anchor-id="case_when-múltiplas-condições"><code>case_when()</code> — múltiplas condições</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Classificar filmes por faixa de nota</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="at">categoria =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-5"><a href="#cb1-5"></a>      nota <span class="sc">&gt;=</span> <span class="fl">8.5</span> <span class="sc">~</span> <span class="st">"Excelente"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>      nota <span class="sc">&gt;=</span> <span class="fl">7.0</span> <span class="sc">~</span> <span class="st">"Bom"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>      nota <span class="sc">&gt;=</span> <span class="fl">5.0</span> <span class="sc">~</span> <span class="st">"Regular"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Ruim"</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>    )</span>
+<span id="cb1-10"><a href="#cb1-10"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">count</span>(categoria)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  categoria     n
+  &lt;chr&gt;     &lt;int&gt;
+1 Bom        1277
+2 Excelente    47
+3 Regular    2242
+4 Ruim        309</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Mesma lógica aplicada a dados florestais</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>inv_florestal <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="at">classe_dap =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-5"><a href="#cb3-5"></a>      dap <span class="sc">&gt;=</span> <span class="dv">35</span> <span class="sc">~</span> <span class="st">"Grossa"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>      dap <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">~</span> <span class="st">"Média"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Fina"</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    )</span>
+<span id="cb3-9"><a href="#cb3-9"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="fu">count</span>(classe_dap)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  classe_dap     n
+  &lt;chr&gt;      &lt;int&gt;
+1 Fina         232
+2 Grossa        35
+3 Média        864</code></pre>
+</div>
+</div>
+</section>
+<section id="if_else-condição-binária" class="level3">
+<h3 class="anchored" data-anchor-id="if_else-condição-binária"><code>if_else()</code> — condição binária</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Classificar como "Sucesso" se faturamento &gt; orçamento</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="at">sucesso =</span> <span class="fu">if_else</span>(faturamento <span class="sc">&gt;</span> orcamento, <span class="st">"Sim"</span>, <span class="st">"Não"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">count</span>(sucesso)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  sucesso     n
+  &lt;chr&gt;   &lt;int&gt;
+1 Não      1830
+2 Sim      2045</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="operações-com-janelas" class="level2">
+<h2 class="anchored" data-anchor-id="operações-com-janelas">Operações com janelas</h2>
+<p>Operações de janela permitem comparar cada linha com outras do mesmo grupo, sem perder os dados originais.</p>
+<section id="top-n-por-grupo" class="level3">
+<h3 class="anchored" data-anchor-id="top-n-por-grupo">Top N por grupo</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Top 3 filmes por gênero (por nota)</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">slice_max</span>(nota, <span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">select</span>(genero, titulo, nota) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">arrange</span>(genero, <span class="fu">desc</span>(nota))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 64 × 3
+# Groups:   genero [19]
+   genero   titulo                                              nota
+   &lt;chr&gt;    &lt;chr&gt;                                              &lt;dbl&gt;
+ 1 Animação Schindler's List&nbsp;                                    8.9
+ 2 Animação The Lord of the Rings: The Fellowship of the Ring&nbsp;   8.8
+ 3 Animação The Lord of the Rings: The Two Towers&nbsp;               8.7
+ 4 Animação One Flew Over the Cuckoo's Nest&nbsp;                     8.7
+ 5 Aventura The Dark Knight&nbsp;                                     9  
+ 6 Aventura Braveheart&nbsp;                                          8.4
+ 7 Aventura A Separation&nbsp;                                        8.4
+ 8 Ação     Inception&nbsp;                                           8.8
+ 9 Ação     Goodfellas&nbsp;                                          8.7
+10 Ação     The Usual Suspects&nbsp;                                  8.6
+# ℹ 54 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 5 árvores com maior DAP em cada parcela (dado florestal)</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>inv_florestal <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">group_by</span>(parcela) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">slice_max</span>(dap, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">select</span>(parcela, especie, dap, altura)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 150 × 4
+# Groups:   parcela [30]
+   parcela especie                dap altura
+     &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt;
+ 1       1 Eucalyptus Grandis    37.2   54.2
+ 2       1 Pinus Taeda           33.8   54.4
+ 3       1 Eucalyptus Urophylla  32.6   52.1
+ 4       1 Eucalyptus Grandis    31     52.4
+ 5       1 Eucalyptus Grandis    30.9   50.7
+ 6       2 Eucalyptus Grandis    36.9   56.5
+ 7       2 Eucalyptus Grandis    34.9   56.5
+ 8       2 Eucalyptus Grandis    34     54.3
+ 9       2 Eucalyptus Grandis    32.7   51.2
+10       2 Eucalyptus Grandis    30.4   51.5
+# ℹ 140 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="valores-defasados-lag-e-lead" class="level3">
+<h3 class="anchored" data-anchor-id="valores-defasados-lag-e-lead">Valores defasados: <code>lag()</code> e <code>lead()</code></h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Comparar faturamento entre filmes consecutivos do mesmo diretor</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">group_by</span>(diretor) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">arrange</span>(ano) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-6"><a href="#cb11-6"></a>    <span class="at">faturamento_anterior =</span> <span class="fu">lag</span>(faturamento),</span>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="at">variacao =</span> faturamento <span class="sc">-</span> faturamento_anterior</span>
+<span id="cb11-8"><a href="#cb11-8"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-9"><a href="#cb11-9"></a>  <span class="fu">select</span>(diretor, ano, titulo, faturamento, faturamento_anterior, variacao) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-10"><a href="#cb11-10"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(variacao))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,130 × 6
+# Groups:   diretor [735]
+   diretor                ano titulo   faturamento faturamento_anterior variacao
+   &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;                &lt;dbl&gt;    &lt;dbl&gt;
+ 1 Victor Fleming        1939 The Wiz…    22202612            198655278  -1.76e8
+ 2 David Lean            1962 Lawrenc…     6000000             27200000  -2.12e7
+ 3 Terence Young         1963 From Ru…    24800000             16067035   8.73e6
+ 4 David Lean            1965 Doctor …   111722000              6000000   1.06e8
+ 5 Terence Young         1965 Thunder…    63600000             24800000   3.88e7
+ 6 Sergio Leone          1966 The Goo…     6100000              3500000   2.6 e6
+ 7 Guy Hamilton          1971 Diamond…    43800000             51100000  -7.3 e6
+ 8 Guy Hamilton          1973 Live an…    35400000             43800000  -8.40e6
+ 9 George Roy Hill       1973 The Sti…   159600000            102308900   5.73e7
+10 Francis Ford Coppola  1974 The God…    57300000            134821952  -7.75e7
+# ℹ 2,120 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="operações-cumulativas" class="level3">
+<h3 class="anchored" data-anchor-id="operações-cumulativas">Operações cumulativas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Soma cumulativa de faturamento por ano</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">group_by</span>(ano) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">arrange</span>(faturamento) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-6"><a href="#cb13-6"></a>    <span class="at">faturamento_cumulativo =</span> <span class="fu">cumsum</span>(faturamento)</span>
+<span id="cb13-7"><a href="#cb13-7"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="fu">select</span>(ano, titulo, faturamento, faturamento_cumulativo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,875 × 4
+# Groups:   ano [75]
+     ano titulo                            faturamento faturamento_cumulativo
+   &lt;dbl&gt; &lt;chr&gt;                                   &lt;dbl&gt;                  &lt;dbl&gt;
+ 1  2014 Skin Trade&nbsp;                               162                    162
+ 2  2001 The Jimmy Show&nbsp;                           703                    703
+ 3  2006 In Her Line of Fire&nbsp;                      721                    721
+ 4  2006 The Trials of Darryl Hunt&nbsp;               1111                   1832
+ 5  2012 Detention of the Dead&nbsp;                   1332                   1332
+ 6  2012 Eddie: The Sleepwalking Cannibal&nbsp;        1521                   2853
+ 7  2011 The Harvest/La Cosecha&nbsp;                  2245                   2245
+ 8  2012 The Ghastly Love of Johnny X&nbsp;            2436                   5289
+ 9  2014 Locker 13&nbsp;                               2468                   2630
+10  2003 I Love Your Work&nbsp;                        2580                   2580
+# ℹ 3,865 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Volume acumulado por parcela (dado florestal)</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>inv_florestal <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">group_by</span>(parcela) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">mutate</span>(<span class="at">volume_cumulativo =</span> <span class="fu">cumsum</span>(volume)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">select</span>(parcela, especie, volume, volume_cumulativo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,131 × 4
+# Groups:   parcela [30]
+   parcela especie            volume volume_cumulativo
+     &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt;             &lt;dbl&gt;
+ 1       1 Eucalyptus Grandis  0.876             0.876
+ 2       1 Pinus Taeda         0.699             1.57 
+ 3       1 Eucalyptus Grandis  1.24              2.81 
+ 4       1 Pinus Taeda         0.217             3.03 
+ 5       1 Eucalyptus Grandis  0.746             3.77 
+ 6       1 Eucalyptus Grandis  0.596             4.37 
+ 7       1 Pinus Taeda         1.02              5.39 
+ 8       1 Eucalyptus Grandis  1.56              6.95 
+ 9       1 Eucalyptus Grandis  1.11              8.06 
+10       1 Pinus Taeda         1.57              9.62 
+# ℹ 1,121 more rows</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="trabalhando-com-múltiplas-tabelas-joins" class="level2">
+<h2 class="anchored" data-anchor-id="trabalhando-com-múltiplas-tabelas-joins">Trabalhando com múltiplas tabelas: Joins</h2>
+<p>Na vida real, os dados raramente estão em uma única tabela. Informações complementares ficam em tabelas separadas que precisam ser <strong>cruzadas</strong>.</p>
+<section id="os-tipos-de-join" class="level3">
+<h3 class="anchored" data-anchor-id="os-tipos-de-join">Os tipos de join</h3>
+<pre><code>left_join()   → Mantém TODAS as linhas da tabela da esquerda
+inner_join()  → Mantém APENAS linhas com correspondência nas duas
+full_join()   → Mantém TODAS as linhas de ambas
+anti_join()   → Mostra o que NÃO tem correspondência (diagnóstico)</code></pre>
+</section>
+<section id="exemplo-prático-filmes-elenco" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-prático-filmes-elenco">Exemplo prático: filmes + elenco</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Carregar tabelas separadas</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>elenco <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/elenco.csv"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co"># left_join: adicionar informações do elenco aos filmes</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>filmes_com_elenco <span class="ot">&lt;-</span> filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="fu">left_join</span>(elenco, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"codigo_filme"</span> <span class="ot">=</span> <span class="st">"codigo"</span>))</span>
+<span id="cb18-7"><a href="#cb18-7"></a></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="fu">glimpse</span>(filmes_com_elenco)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 3,875
+Columns: 12
+$ codigo_filme     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…
+$ titulo           &lt;chr&gt; "Avatar&nbsp;", "Pirates of the Caribbean: At World's End&nbsp;…
+$ diretor          &lt;chr&gt; "James Cameron", "Gore Verbinski", "Sam Mendes", "Chr…
+$ ano              &lt;dbl&gt; 2009, 2007, 2015, 2012, 2012, 2007, 2010, 2015, 2009,…
+$ genero           &lt;chr&gt; "Ação", "Aventura", "Comédia", "Mistério", "Fantasia"…
+$ duracao          &lt;dbl&gt; 81, 126, 88, 99, 92, 95, 39, 111, 82, 89, 77, 102, 98…
+$ orcamento        &lt;dbl&gt; 237000000, 300000000, 245000000, 250000000, 263700000…
+$ faturamento      &lt;dbl&gt; 760505847, 309404152, 200074175, 448130642, 73058679,…
+$ nota             &lt;dbl&gt; 7.9, 7.1, 6.8, 8.5, 6.6, 6.2, 7.8, 7.5, 7.5, 6.9, 6.1…
+$ elenco_principal &lt;chr&gt; "Viola Davis", "Cate Blanchett", "Natalie Portman", "…
+$ ator_principal   &lt;chr&gt; "Viola Davis", "Viola Davis", "Tom Hanks", "Leonardo …
+$ orcamento_elenco &lt;dbl&gt; 11783666, 30312077, 47499828, 27114606, 38641928, 143…</code></pre>
+</div>
+</div>
+</section>
+<section id="exemplo-florestal-inventário-cadastro" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-florestal-inventário-cadastro">Exemplo florestal: inventário + cadastro</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Dados de árvores (inv_florestal) + informações das parcelas (parcelas)</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>parcelas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/parcelas.csv"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a>inv_completo <span class="ot">&lt;-</span> inv_florestal <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">left_join</span>(parcelas, <span class="at">by =</span> <span class="st">"parcela"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="fu">glimpse</span>(inv_completo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,131
+Columns: 10
+$ parcela      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ arvore       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
+$ especie      &lt;chr&gt; "Eucalyptus Grandis", "Pinus Taeda", "Eucalyptus Grandis"…
+$ dap          &lt;dbl&gt; 21.7, 20.5, 26.2, 12.6, 19.5, 17.9, 23.5, 27.0, 24.5, 27.…
+$ altura       &lt;dbl&gt; 46.0, 44.0, 51.1, 38.7, 49.8, 44.3, 49.8, 52.9, 48.9, 50.…
+$ volume       &lt;dbl&gt; 0.8759, 0.6989, 1.2358, 0.2173, 0.7461, 0.5956, 1.0173, 1…
+$ talhao       &lt;dbl&gt; 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, …
+$ area_parcela &lt;dbl&gt; 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 60…
+$ idade        &lt;dbl&gt; 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 1…
+$ sitio        &lt;chr&gt; "Médio", "Médio", "Médio", "Médio", "Médio", "Médio", "Mé…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Agora podemos calcular volume por hectare!</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>inv_completo <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">group_by</span>(parcela, idade, sitio) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb22-5"><a href="#cb22-5"></a>    <span class="at">volume_total =</span> <span class="fu">sum</span>(volume),</span>
+<span id="cb22-6"><a href="#cb22-6"></a>    <span class="at">area_ha =</span> <span class="fu">first</span>(area_parcela) <span class="sc">/</span> <span class="dv">10000</span>,</span>
+<span id="cb22-7"><a href="#cb22-7"></a>    <span class="at">volume_ha =</span> volume_total <span class="sc">/</span> area_ha</span>
+<span id="cb22-8"><a href="#cb22-8"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-9"><a href="#cb22-9"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(volume_ha))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 6
+# Groups:   parcela, idade [30]
+   parcela idade sitio volume_total area_ha volume_ha
+     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
+ 1      22     5 Ruim          50.4    0.06      839.
+ 2      18     5 Médio         49.7    0.06      828.
+ 3      13    11 Médio         44.4    0.06      740.
+ 4       5    11 Médio         43.0    0.06      717.
+ 5       6     8 Médio         42.2    0.06      704.
+ 6      11    12 Médio         41.9    0.06      698.
+ 7      17     5 Médio         41.7    0.06      695.
+ 8       2     9 Bom           40.1    0.06      668.
+ 9      25     9 Médio         39.5    0.06      658.
+10       4     6 Bom           39.1    0.06      652.
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="diagnóstico-com-anti_join" class="level3">
+<h3 class="anchored" data-anchor-id="diagnóstico-com-anti_join">Diagnóstico com <code>anti_join()</code></h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Parcelas que estão no inventário mas NÃO no cadastro</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>inv_florestal <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">anti_join</span>(parcelas, <span class="at">by =</span> <span class="st">"parcela"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">distinct</span>(parcela)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 1
+# ℹ 1 variable: parcela &lt;dbl&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Parcelas no cadastro mas SEM árvores no inventário</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>parcelas <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">anti_join</span>(inv_florestal, <span class="at">by =</span> <span class="st">"parcela"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 5
+# ℹ 5 variables: parcela &lt;dbl&gt;, talhao &lt;dbl&gt;, area_parcela &lt;dbl&gt;, idade &lt;dbl&gt;,
+#   sitio &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="bind_rows-empilhando-tabelas" class="level3">
+<h3 class="anchored" data-anchor-id="bind_rows-empilhando-tabelas"><code>bind_rows()</code> — Empilhando tabelas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Simulando inventários de anos diferentes</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>inv_2022 <span class="ot">&lt;-</span> inv_florestal <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ano_medicao =</span> <span class="dv">2022</span>)</span>
+<span id="cb28-3"><a href="#cb28-3"></a>inv_2023 <span class="ot">&lt;-</span> inv_florestal <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ano_medicao =</span> <span class="dv">2023</span>, <span class="at">dap =</span> dap <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">n</span>(), <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb28-4"><a href="#cb28-4"></a></span>
+<span id="cb28-5"><a href="#cb28-5"></a>inv_historico <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(inv_2022, inv_2023)</span>
+<span id="cb28-6"><a href="#cb28-6"></a></span>
+<span id="cb28-7"><a href="#cb28-7"></a>inv_historico <span class="sc">%&gt;%</span> </span>
+<span id="cb28-8"><a href="#cb28-8"></a>  <span class="fu">group_by</span>(ano_medicao) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-9"><a href="#cb28-9"></a>  <span class="fu">summarise</span>(<span class="at">dap_medio =</span> <span class="fu">mean</span>(dap))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  ano_medicao dap_medio
+        &lt;dbl&gt;     &lt;dbl&gt;
+1        2022      20.7
+2        2023      22.7</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="transição-de-filmes-para-floresta" class="level2">
+<h2 class="anchored" data-anchor-id="transição-de-filmes-para-floresta">Transição: de filmes para floresta</h2>
+<p>A beleza do que você aprendeu é que as <strong>mesmas técnicas</strong> se aplicam a qualquer domínio. Compare:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Análise com filmes</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(nota), <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(media))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19 × 3
+   genero            media     n
+   &lt;chr&gt;             &lt;dbl&gt; &lt;int&gt;
+ 1 Musical            6.75    39
+ 2 Esporte            6.73    16
+ 3 História           6.56    31
+ 4 Guerra             6.55    33
+ 5 Biografia          6.50   121
+ 6 Comédia            6.50   452
+ 7 Ação               6.49   566
+ 8 Drama              6.48   719
+ 9 Romance            6.48   245
+10 Documentário       6.47   117
+11 Ficção científica  6.47   306
+12 Fantasia           6.47    82
+13 Mistério           6.46   113
+14 Aventura           6.45   204
+15 Thriller           6.41   185
+16 Terror             6.40   311
+17 Crime              6.39   193
+18 Animação           6.29   114
+19 Família            6.1     28</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Mesma análise com dados florestais</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>inv_florestal <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">group_by</span>(especie) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">summarise</span>(<span class="at">media_dap =</span> <span class="fu">mean</span>(dap), <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(media_dap))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  especie              media_dap     n
+  &lt;chr&gt;                    &lt;dbl&gt; &lt;int&gt;
+1 Eucalyptus Grandis        22.1   682
+2 Eucalyptus Urophylla      21.7    99
+3 Pinus Taeda               17.6   350</code></pre>
+</div>
+</div>
+<p>A estrutura é idêntica. Só mudam os nomes das colunas e o contexto!</p>
+<hr>
+</section>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Usando <code>case_when()</code>, classifique as árvores do <code>inv_florestal</code> em classes de DAP: “Fina” (&lt; 15 cm), “Média” (15-25 cm), “Grossa” (&gt; 25 cm). Conte quantas árvores em cada classe.</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 3 × 2
+  classe_dap     n
+  &lt;chr&gt;      &lt;int&gt;
+1 Grossa        96
+2 Média        401
+3 Fina         495</code></pre>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Usando <code>slice_max()</code>, encontre as 3 maiores árvores (por DAP) de cada espécie.</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 9 × 3
+  especie    dap altura
+  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1 Eucalipto  42.3   32.1
+2 Eucalipto  41.8   31.5
+3 Eucalipto  40.2   30.8
+4 Pinus      38.7   28.4
+5 Pinus      37.2   27.8
+6 Pinus      36.5   27.1
+# … with 3 more rows</code></pre>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Faça um <code>left_join</code> entre <code>inv_florestal</code> e <code>parcelas</code>. Agrupe por <code>parcela</code> e calcule: volume total, área em hectares, volume por hectare.</p>
+<p><strong>Resultado esperado (top 3 parcelas):</strong></p>
+<pre><code># A tibble: 30 × 5
+   parcela volume_total area_ha volume_ha
+     &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
+ 1       7        25.2    0.06      420. 
+ 2       2        24.3    0.06      405. 
+ 3      30        23.8    0.06      397. </code></pre>
+</section>
+<section id="exercício-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-4">Exercício 4</h3>
+<p>Calcule o IMA (Incremento Médio Anual) = volume_ha / idade para cada parcela. Ordene do maior para o menor.</p>
+<p><strong>Resultado esperado (top 3):</strong></p>
+<pre><code># A tibble: 30 × 4
+  parcela volume_ha idade   IMA
+    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1       7      420.     5  84.1
+2      12      395.     5  79.1
+3      15      389.     7  55.6</code></pre>
+</section>
+<section id="exercício-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-5">Exercício 5</h3>
+<p>Use <code>anti_join()</code> para verificar se há alguma parcela no <code>inv_florestal</code> que não existe no cadastro de <code>parcelas</code>.</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 0 × 1
+# … with 1 variable: parcela</code></pre>
+<p><em>(Zero linhas = tudo certo, todas as parcelas têm cadastro.)</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../04-dias/02-manipulacao.html" class="pagination-link" aria-label="Manipulação de dados com dplyr">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Manipulação de dados com dplyr</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../04-dias/04-visualizacao.html" class="pagination-link" aria-label="Visualização de dados com ggplot2">
+        <span class="nav-page-text"><span class="chapter-title">Visualização de dados com ggplot2</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Curso R para Análise de Dados — Ítalo Cegatta</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Licença CC BY-NC 4.0</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
