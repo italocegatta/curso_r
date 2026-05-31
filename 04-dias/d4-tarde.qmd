@@ -1,0 +1,229 @@
+# Dia 4 — Tarde
+
+**Dia 4 — Tarde | 4 horas**
+
+## Objetivos {.unnumbered}
+
+- Ajustar modelos de regressão linear com `lm()`
+- Interpretar resultados com `summary()` e `broom`
+- Realizar ANOVA e comparações múltiplas (Tukey)
+- Produzir um relatório técnico completo de inventário florestal
+
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+inv_florestal <- read_csv("../data/inv_florestal.csv")
+experimento <- read_csv("../data/experimento.csv")
+```
+---
+
+## Regressão linear
+
+A função `lm()` (linear model) ajusta modelos de regressão. Vamos aplicá-la a dois contextos florestais clássicos.
+
+### Relação hipsométrica (altura ~ DAP)
+
+```{r}
+# Ajuste do modelo
+mod_hips <- lm(altura ~ log(dap), data = inv_florestal)
+summary(mod_hips)
+```
+
+**Interpretação do `summary()`:**
+
+- **Estimate:** coeficientes da equação. Para cada aumento de 1 unidade em `log(dap)`, a altura aumenta `b1` metros.
+- **R²:** proporção da variabilidade da altura explicada pelo DAP. 0.78 = o DAP explica 78% da variação da altura.
+- **p-valor:** probabilidade do coeficiente ser zero. p < 0.05 = significativo.
+
+```{r}
+# Extrair resultados com broom
+tidy(mod_hips)     # tabela de coeficientes
+glance(mod_hips)   # estatísticas do modelo (R², AIC, etc.)
+```
+
+```{r}
+# Adicionar valores preditos ao dataset
+inv_com_previsao <- augment(mod_hips, data = inv_florestal)
+
+ggplot(inv_com_previsao, aes(x = dap, y = altura)) +
+  geom_point(alpha = 0.3) +
+  geom_line(aes(y = .fitted), color = "#E74C3C", linewidth = 1) +
+  labs(title = "Modelo hipsométrico ajustado", x = "DAP (cm)", y = "Altura (m)")
+```
+
+### Modelo de volume
+
+```{r}
+# Modelo de Schumacher-Hall (log-log)
+mod_vol <- lm(log(volume) ~ log(dap) + log(altura), data = inv_florestal)
+summary(mod_vol)
+
+# R² de 0.96 — excelente ajuste!
+```
+
+```{r}
+# Diagnóstico de resíduos
+par(mfrow = c(2, 2))
+plot(mod_vol)
+par(mfrow = c(1, 1))
+```
+
+::: {.callout-tip}
+## Dica de modelagem florestal
+
+Sempre transforme `volume` com `log()` antes de modelar. O volume tem relação exponencial com DAP e altura — o log lineariza essa relação, melhorando o ajuste. Para obter o volume na escala original, use `exp()` na predição.
+:::
+
+---
+
+## ANOVA — comparando grupos
+
+A ANOVA (*Analysis of Variance*) testa se há diferença significativa entre as médias de três ou mais grupos.
+
+```{r}
+# Volume difere entre espécies?
+mod_aov <- aov(volume ~ especie, data = inv_florestal)
+summary(mod_aov)
+```
+
+```{r}
+# Quais espécies diferem entre si?
+TukeyHSD(mod_aov)
+```
+
+```{r}
+# Visualização: boxplot + letras de Tukey
+inv_florestal %>% 
+  ggplot(aes(x = especie, y = volume, fill = especie)) +
+  geom_boxplot() +
+  labs(title = "Volume por espécie", x = NULL, y = expression(Volume~(m^3)),
+       subtitle = "Letras diferentes = diferença significativa (Tukey, p < 0.05)") +
+  theme(legend.position = "none")
+```
+
+### Delineamento experimental
+
+```{r}
+experimento <- read_csv("../data/experimento.csv")
+glimpse(experimento)
+```
+
+```{r}
+# ANOVA para delineamento experimental
+mod_exp <- aov(resposta ~ tratamento, data = experimento)
+summary(mod_exp)
+
+# Comparações múltiplas
+TukeyHSD(mod_exp) %>% 
+  broom::tidy() %>% 
+  filter(adj.p.value < 0.05)
+```
+
+---
+
+## Comunicando resultados
+
+### Tabela formatada com `knitr::kable()`
+
+```{r}
+inv_florestal %>% 
+  group_by(especie) %>% 
+  summarise(
+    `N° árvores` = n(),
+    `DAP médio (cm)` = round(mean(dap), 1),
+    `Altura média (m)` = round(mean(altura), 1),
+    `Volume total (m³)` = round(sum(volume), 2)
+  ) %>% 
+  knitr::kable(
+    caption = "Resumo do inventário florestal por espécie",
+    align = "c"
+  )
+```
+
+---
+
+## Projeto Final
+
+::: {.callout-important}
+## Seu desafio final
+
+Você recebeu um dataset de inventário florestal. Sua missão é produzir um **mini-relatório técnico** que responda às perguntas abaixo. Use tudo que aprendeu nos 4 dias.
+:::
+
+### Roteiro
+
+1. **Importar** o dataset `inv_florestal.csv`
+2. **Calcular** área basal e volume por árvore
+3. **Explorar** graficamente: distribuição diamétrica, relação hipsométrica, volume por espécie
+4. **Modelar** a relação altura ~ DAP e volume ~ DAP + altura
+5. **Comparar** volume entre espécies via ANOVA + Tukey
+6. **Produzir** uma tabela-resumo formatada com `gt`
+
+### Entregáveis
+
+- Um gráfico de distribuição diamétrica
+- Um gráfico de relação hipsométrica com curva ajustada
+- Um boxplot de volume por espécie com letras de Tukey
+- Uma tabela-resumo com estatísticas por espécie
+- A equação do modelo de volume com R²
+
+---
+
+## Exercícios
+
+### Exercício 1
+
+Ajuste `lm(altura ~ log(dap), data = inv_florestal)`. Qual o R² do modelo?
+
+**Resultado esperado:**
+```
+[1] 0.78
+```
+
+### Exercício 2
+
+Ajuste `lm(log(volume) ~ log(dap) + log(altura), data = inv_florestal)`. Qual variável tem maior influência (maior coeficiente padronizado)?
+
+**Resultado esperado:**
+```
+# A tibble: 3 × 2
+  term         estimate
+  <chr>           <dbl>
+1 (Intercept)    -9.59 
+2 log(dap)        1.89 
+3 log(altura)     0.90
+```
+*log(dap) tem o maior coeficiente (1.89).*
+
+### Exercício 3
+
+Faça uma ANOVA: `aov(volume ~ especie, data = inv_florestal)`. As espécies diferem significativamente em volume?
+
+**Resultado esperado:**
+```
+             Df Sum Sq Mean Sq F value Pr(>F)    
+especie       1   5.93   5.929   40.52 <2e-16 ***
+Residuals   990 144.84   0.146
+```
+*Sim, p < 0.001 — há diferença significativa entre as espécies.*
+
+### Exercício 4
+
+Use `TukeyHSD()` para verificar qual espécie tem maior volume. Qual a diferença média?
+
+**Resultado esperado:**
+```
+                                      diff      lwr      upr p adj
+Pinus Taeda-Eucalyptus Grandis -0.1664149 -0.21786 -0.11497     0
+```
+*Eucalyptus Grandis tem em média 0.17 m³ a mais que Pinus Taeda.*
+
+### Exercício 5 (Projeto final)
+
+Produza uma tabela-resumo com `gt()` contendo: n° de árvores, DAP médio, altura média, volume total e volume médio por espécie.
+
+**Resultado esperado:**
+
+*Tabela formatada com 2 linhas (uma por espécie) e 5 colunas.*

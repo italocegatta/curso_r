@@ -1,0 +1,51 @@
+# Dia 2 — Tarde
+
+**Dia 2 — Tarde (parte 1) | 2 horas**
+
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+inv_florestal <- read_csv("../data/inv_florestal.csv")
+```
+
+## Customização e exportação {.unnumbered}
+
+```{r}
+# Gráfico completo para relatório
+inv_florestal %>% 
+  ggplot(aes(x = dap, y = altura, color = especie)) +
+  geom_point(alpha = 0.5, size = 2) +
+  geom_smooth(method = "lm", formula = y ~ log(x), se = TRUE, alpha = 0.2) +
+  scale_color_brewer(palette = "Set1") +
+  labs(title = "Relação hipsométrica — Inventário Florestal",
+       subtitle = "Curvas ajustadas por espécie (IC 95%)",
+       x = "DAP (cm)", y = "Altura total (m)", color = "Espécie",
+       caption = "Fonte: Inventário florestal") +
+  theme_minimal(base_size = 13) +
+  theme(plot.title = element_text(face = "bold"), legend.position = "bottom")
+```
+
+```{r}
+# Dashboard com patchwork
+p1 <- inv_florestal %>% ggplot(aes(x = dap)) + geom_histogram(bins = 30, fill = "#18BC9C") + labs(title = "Dist. diamétrica")
+p2 <- inv_florestal %>% ggplot(aes(x = dap, y = altura, color = especie)) + geom_point(alpha = 0.5) + labs(title = "Hipsométrica")
+p3 <- inv_florestal %>% ggplot(aes(x = especie, y = volume, fill = especie)) + geom_boxplot() + theme(legend.position = "none")
+p4 <- inv_florestal %>% group_by(parcela) %>% summarise(v = sum(volume)) %>% 
+  ggplot(aes(x = factor(parcela), y = v)) + geom_col(fill = "#2C3E50") + labs(title = "Volume/parcela", x = "Parcela")
+
+(p1 + p2) / (p3 + p4)
+```
+
+```{r}
+# Exportar
+# ggsave("dashboard.png", width = 10, height = 7, dpi = 300)
+```
+
+## Exercícios {.unnumbered}
+
+1. Crie histograma do DAP com 30 bins, título e rótulos.
+2. Boxplot de volume por espécie. Qual tem maior variabilidade?
+3. Gráfico de barras do volume total por parcela (top 10), com `coord_flip()`.
+4. Exporte seu melhor gráfico como PNG (8×5 pol, 300 DPI).

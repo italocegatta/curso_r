@@ -1,12 +1,34 @@
-# Curso de 1 dia — R Express {.unnumbered}
+---
+title: "R Express — 1 dia"
+---
 
-**Carga horária:** 8 horas (2 períodos de 4h)  
-**Público:** Iniciantes absolutos que querem um primeiro contato rápido e prático com R  
+# R Express {.unnumbered}
 
-## Estrutura {.unnumbered}
+**8 horas** · **3 capítulos**
+
+Introdução rápida e prática ao R. Ao final do dia, você terá importado dados, criado tabelas e gráficos. O essencial para começar.
+
+## Estrutura
 
 | | Manhã (4h) | Tarde (4h) |
 |---|-----------|-----------|
-| **Dia 1** | Introdução ao R + Manipulação (dplyr) | Visualização (ggplot2) + Exercícios |
+| **Dia 1** | [Dia 1 — Manhã](d1-manha-parte1.qmd) · [Dia 1 — Manhã (continuação)](d1-manha-parte2.qmd) | [Dia 1 — Tarde](d1-tarde.qmd) |
 
-Ao final do dia, você terá importado dados, feito tabelas e criado gráficos. O essencial para começar!
+## Capítulos
+
+- [Dia 1 — Manhã](d1-manha-parte1.qmd) — Introdução ao R e primeiros dados
+- [Dia 1 — Manhã (continuação)](d1-manha-parte2.qmd) — Manipulação de dados com dplyr
+- [Dia 1 — Tarde](d1-tarde.qmd) — Visualização de dados e Exercícios
+
+## Datasets
+
+- 🎬 `filmes_imdb.csv` — filmes (nota, orçamento, faturamento, gênero)
+
+## Pré-requisitos
+
+- [R](https://cran.r-project.org/) (4.0+)
+- [RStudio](https://posit.co/download/rstudio-desktop/)
+
+## Repositório
+
+👉 [github.com/italocegatta/curso_r](https://github.com/italocegatta/curso_r)

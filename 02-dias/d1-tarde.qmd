@@ -1,0 +1,115 @@
+# Dia 1 — Tarde
+
+**Dia 1 — Tarde | 4 horas**
+
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+filmes <- read_csv2("../data/filmes_imdb.csv")
+inv_florestal <- read_csv("../data/inv_florestal.csv")
+parcelas <- read_csv("../data/parcelas.csv")
+```
+
+## O pipe: `%>%` {.unnumbered}
+
+Atalho: `Ctrl/Cmd + Shift + M`. Encadeia operações da esquerda para a direita:
+
+```{r}
+# Demonstração: o pipe encadeia operações
+filmes %>% 
+  filter(ano > 2000) %>% 
+  arrange(desc(nota))
+```
+
+## Os 6 verbos do dplyr {.unnumbered}
+
+| Verbo | O que faz |
+|-------|-----------|
+| `filter()` | Filtra linhas |
+| `select()` | Seleciona colunas |
+| `mutate()` | Cria/modifica colunas |
+| `arrange()` | Ordena |
+| `summarise()` | Resume |
+| `group_by()` | Agrupa |
+
+### `filter()`
+
+```{r}
+# Filmes com nota ≥ 8.5
+filmes %>% filter(nota >= 8.5)
+
+# Ação OU Comédia
+filmes %>% filter(genero %in% c("Ação", "Comédia"))
+```
+
+### `select()` e `mutate()`
+
+```{r}
+filmes %>% select(titulo, ano, nota)
+
+filmes %>% 
+  mutate(
+    lucro = faturamento - orcamento,
+    lucro_milhoes = lucro / 1000000
+  ) %>% 
+  arrange(desc(lucro)) %>% 
+  select(titulo, lucro_milhoes) %>% 
+  head(5)
+```
+
+### `group_by()` + `summarise()`
+
+```{r}
+# Nota média por gênero
+filmes %>% 
+  group_by(genero) %>% 
+  summarise(nota_media = mean(nota), n = n()) %>% 
+  arrange(desc(nota_media))
+```
+
+### `count()`
+
+```{r}
+filmes %>% count(genero, sort = TRUE)
+```
+
+## 🎬 Primeiros gráficos {.unnumbered}
+
+```{r}
+# Histograma
+filmes %>% ggplot(aes(x = nota)) + geom_histogram(bins = 30, fill = "#18BC9C")
+
+# Dispersão
+filmes %>% ggplot(aes(x = orcamento, y = faturamento)) + geom_point(alpha = 0.3)
+
+# Barras — top 10 gêneros
+filmes %>% count(genero, sort = TRUE) %>% head(10) %>% 
+  ggplot(aes(x = reorder(genero, n), y = n)) + geom_col(fill = "#18BC9C") + coord_flip()
+
+# Boxplot
+filmes %>% filter(genero %in% c("Ação", "Drama", "Comédia")) %>% 
+  ggplot(aes(x = genero, y = nota, fill = genero)) + geom_boxplot()
+```
+
+## Exercícios {.unnumbered}
+
+### Exercício 1
+
+Filtre filmes com nota ≥ 8.5. Quantos são?  
+**Resultado esperado:** 103 filmes.
+
+### Exercício 2
+
+Crie `lucro = faturamento - orcamento`. Qual o filme mais lucrativo?  
+**Resultado esperado:** `"The story of cap and trade"` com lucro de 48.7 milhões.
+
+### Exercício 3
+
+Nota média por gênero, ordenada da maior para a menor.  
+**Resultado esperado:** Documentário (6.84), Guerra (6.75), História (6.73)...
+
+### Exercício 4
+
+Crie um histograma de `duracao` com 40 bins.  
+**Resultado esperado:** Pico em 90-100 min, assimétrica à direita.

@@ -10,31 +10,31 @@ book:
   language: pt
   chapters:
     - index.qmd
-    - part: "Curso de 4 dias — R Completo"
-      chapters:
-        - 04-dias/index.qmd
-        - 04-dias/01-introducao.qmd
-        - 04-dias/02-manipulacao.qmd
-        - 04-dias/03-manipulacao-avancada.qmd
-        - 04-dias/04-visualizacao.qmd
-        - 04-dias/05-strings-fatores-datas.qmd
-        - 04-dias/06-tidy-data.qmd
-        - 04-dias/07-iteracao-funcoes.qmd
-        - 04-dias/08-modelagem.qmd
-    - part: "Curso de 2 dias — R Fundamentos"
-      chapters:
-        - 02-dias/index.qmd
-        - 02-dias/01-introducao.qmd
-        - 02-dias/02-manipulacao.qmd
-        - 02-dias/03-joins.qmd
-        - 02-dias/04-visualizacao.qmd
-        - 02-dias/05-exercicios.qmd
-    - part: "Curso de 1 dia — R Express"
+    - part: "1 dia"
       chapters:
         - 01-dia/index.qmd
-        - 01-dia/01-introducao.qmd
-        - 01-dia/02-manipulacao.qmd
-        - 01-dia/03-visualizacao.qmd
+        - 01-dia/d1-manha-parte1.qmd
+        - 01-dia/d1-manha-parte2.qmd
+        - 01-dia/d1-tarde.qmd
+    - part: "2 dias"
+      chapters:
+        - 02-dias/index.qmd
+        - 02-dias/d1-manha.qmd
+        - 02-dias/d1-tarde.qmd
+        - 02-dias/d2-manha.qmd
+        - 02-dias/d2-tarde.qmd
+        - 02-dias/d2-tarde-parte2.qmd
+    - part: "4 dias"
+      chapters:
+        - 04-dias/index.qmd
+        - 04-dias/d1-manha.qmd
+        - 04-dias/d1-tarde.qmd
+        - 04-dias/d2-manha.qmd
+        - 04-dias/d2-tarde.qmd
+        - 04-dias/d3-manha.qmd
+        - 04-dias/d3-tarde.qmd
+        - 04-dias/d4-manha.qmd
+        - 04-dias/d4-tarde.qmd
 
   page-footer:
     left: |

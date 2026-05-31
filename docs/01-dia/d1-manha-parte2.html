@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R Express — 1 dia – Curso R para Análise de Dados</title>
+<title>Dia 1 — Manhã (continuação) – Curso R para Análise de Dados</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,8 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../01-dia/d1-manha-parte1.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../01-dia/d1-tarde.html" rel="next">
+<link href="../01-dia/d1-manha-parte1.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -85,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01-dia/index.html">1 dia</a></li><li class="breadcrumb-item"><a href="../01-dia/index.html"><span class="chapter-title">R Express — 1 dia</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01-dia/index.html">1 dia</a></li><li class="breadcrumb-item"><a href="../01-dia/d1-manha-parte2.html"><span class="chapter-title">Dia 1 — Manhã (continuação)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -126,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-dia/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R Express — 1 dia</span></a>
+  <a href="../01-dia/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R Express — 1 dia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -136,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-dia/d1-manha-parte2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Dia 1 — Manhã (continuação)</span></a>
+  <a href="../01-dia/d1-manha-parte2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Dia 1 — Manhã (continuação)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -253,23 +288,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-express" id="toc-r-express" class="nav-link active" data-scroll-target="#r-express">R Express</a>
-  <ul class="collapse">
-  <li><a href="#estrutura" id="toc-estrutura" class="nav-link" data-scroll-target="#estrutura">Estrutura</a></li>
-  <li><a href="#capítulos" id="toc-capítulos" class="nav-link" data-scroll-target="#capítulos">Capítulos</a></li>
-  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
-  <li><a href="#pré-requisitos" id="toc-pré-requisitos" class="nav-link" data-scroll-target="#pré-requisitos">Pré-requisitos</a></li>
-  <li><a href="#repositório" id="toc-repositório" class="nav-link" data-scroll-target="#repositório">Repositório</a></li>
-  </ul></li>
+  <li><a href="#group_by-summarise-o-coração-da-análise" id="toc-group_by-summarise-o-coração-da-análise" class="nav-link active" data-scroll-target="#group_by-summarise-o-coração-da-análise"><code>group_by()</code> + <code>summarise()</code> — o coração da análise</a></li>
+  <li><a href="#pipeline-completo" id="toc-pipeline-completo" class="nav-link" data-scroll-target="#pipeline-completo">Pipeline completo</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01-dia/index.html">1 dia</a></li><li class="breadcrumb-item"><a href="../01-dia/index.html"><span class="chapter-title">R Express — 1 dia</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01-dia/index.html">1 dia</a></li><li class="breadcrumb-item"><a href="../01-dia/d1-manha-parte2.html"><span class="chapter-title">Dia 1 — Manhã (continuação)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">R Express — 1 dia</span></h1>
+<h1 class="title"><span class="chapter-title">Dia 1 — Manhã (continuação)</span></h1>
 </div>
 
 
@@ -286,56 +316,135 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="r-express" class="level1 unnumbered">
-<h1 class="unnumbered">R Express</h1>
-<p><strong>8 horas</strong> · <strong>3 capítulos</strong></p>
-<p>Introdução rápida e prática ao R. Ao final do dia, você terá importado dados, criado tabelas e gráficos. O essencial para começar.</p>
-<section id="estrutura" class="level2">
-<h2 class="anchored" data-anchor-id="estrutura">Estrutura</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Manhã (4h)</th>
-<th>Tarde (4h)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Dia 1</strong></td>
-<td><a href="../01-dia/d1-manha-parte1.html">Dia 1 — Manhã</a> · <a href="../01-dia/d1-manha-parte2.html">Dia 1 — Manhã (continuação)</a></td>
-<td><a href="../01-dia/d1-tarde.html">Dia 1 — Tarde</a></td>
-</tr>
-</tbody>
-</table>
+<p><strong>Manhã — Parte 2 | 2 horas</strong></p>
+<section id="group_by-summarise-o-coração-da-análise" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="group_by-summarise-o-coração-da-análise"><code>group_by()</code> + <code>summarise()</code> — o coração da análise</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Nota média por gênero</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">summarise</span>(<span class="at">nota_media =</span> <span class="fu">mean</span>(nota), <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_media))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19 × 3
+   genero            nota_media     n
+   &lt;chr&gt;                  &lt;dbl&gt; &lt;int&gt;
+ 1 Musical                 6.75    39
+ 2 Esporte                 6.73    16
+ 3 História                6.56    31
+ 4 Guerra                  6.55    33
+ 5 Biografia               6.50   121
+ 6 Comédia                 6.50   452
+ 7 Ação                    6.49   566
+ 8 Drama                   6.48   719
+ 9 Romance                 6.48   245
+10 Documentário            6.47   117
+11 Ficção científica       6.47   306
+12 Fantasia                6.47    82
+13 Mistério                6.46   113
+14 Aventura                6.45   204
+15 Thriller                6.41   185
+16 Terror                  6.40   311
+17 Crime                   6.39   193
+18 Animação                6.29   114
+19 Família                 6.1     28</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Contagem rápida</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(genero, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19 × 2
+   genero                n
+   &lt;chr&gt;             &lt;int&gt;
+ 1 Drama               719
+ 2 Ação                566
+ 3 Comédia             452
+ 4 Terror              311
+ 5 Ficção científica   306
+ 6 Romance             245
+ 7 Aventura            204
+ 8 Crime               193
+ 9 Thriller            185
+10 Biografia           121
+11 Documentário        117
+12 Animação            114
+13 Mistério            113
+14 Fantasia             82
+15 Musical              39
+16 Guerra               33
+17 História             31
+18 Família              28
+19 Esporte              16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Diretores mais prolíficos</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(diretor, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   diretor               n
+   &lt;chr&gt;             &lt;int&gt;
+ 1 Steven Spielberg     25
+ 2 Clint Eastwood       19
+ 3 Woody Allen          19
+ 4 Ridley Scott         17
+ 5 Martin Scorsese      16
+ 6 Steven Soderbergh    16
+ 7 Tim Burton           16
+ 8 Renny Harlin         15
+ 9 Spike Lee            15
+10 Barry Levinson       13</code></pre>
+</div>
+</div>
 </section>
-<section id="capítulos" class="level2">
-<h2 class="anchored" data-anchor-id="capítulos">Capítulos</h2>
-<ul>
-<li><a href="../01-dia/d1-manha-parte1.html">Dia 1 — Manhã</a> — Introdução ao R e primeiros dados</li>
-<li><a href="../01-dia/d1-manha-parte2.html">Dia 1 — Manhã (continuação)</a> — Manipulação de dados com dplyr</li>
-<li><a href="../01-dia/d1-tarde.html">Dia 1 — Tarde</a> — Visualização de dados e Exercícios</li>
-</ul>
+<section id="pipeline-completo" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="pipeline-completo">Pipeline completo</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Análise completa em um fluxo</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>filmes <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">filter</span>(ano <span class="sc">&gt;=</span> <span class="dv">2000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb7-6"><a href="#cb7-6"></a>    <span class="at">nota_media =</span> <span class="fu">mean</span>(nota),</span>
+<span id="cb7-7"><a href="#cb7-7"></a>    <span class="at">orcamento_medio =</span> <span class="fu">mean</span>(orcamento, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-8"><a href="#cb7-8"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb7-9"><a href="#cb7-9"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-11"><a href="#cb7-11"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_media))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19 × 4
+   genero            nota_media orcamento_medio     n
+   &lt;chr&gt;                  &lt;dbl&gt;           &lt;dbl&gt; &lt;int&gt;
+ 1 Musical                 6.70       41836667.    30
+ 2 Esporte                 6.59       28130769.    13
+ 3 Biografia               6.53       33198931.    84
+ 4 História                6.53       41181091.    22
+ 5 Aventura                6.48       44667589.   141
+ 6 Drama                   6.47       40643946.   519
+ 7 Ficção científica       6.44       38671878.   230
+ 8 Guerra                  6.44       49979167.    24
+ 9 Comédia                 6.44       45237743.   328
+10 Romance                 6.41       42549107.   182
+11 Fantasia                6.40       40976230.    61
+12 Documentário            6.40       40269591.    88
+13 Ação                    6.37       45278978.   406
+14 Mistério                6.35       53388389.    85
+15 Terror                  6.28       42478816.   228
+16 Thriller                6.27       39948227.   142
+17 Crime                   6.24       40600126.   141
+18 Animação                6.14       42774907.    86
+19 Família                 5.93       42855263.    19</code></pre>
+</div>
+</div>
 </section>
-<section id="datasets" class="level2">
-<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
-<ul>
-<li>🎬 <code>filmes_imdb.csv</code> — filmes (nota, orçamento, faturamento, gênero)</li>
-</ul>
-</section>
-<section id="pré-requisitos" class="level2">
-<h2 class="anchored" data-anchor-id="pré-requisitos">Pré-requisitos</h2>
-<ul>
-<li><a href="https://cran.r-project.org/">R</a> (4.0+)</li>
-<li><a href="https://posit.co/download/rstudio-desktop/">RStudio</a></li>
-</ul>
-</section>
-<section id="repositório" class="level2">
-<h2 class="anchored" data-anchor-id="repositório">Repositório</h2>
-<p>👉 <a href="https://github.com/italocegatta/curso_r">github.com/italocegatta/curso_r</a></p>
+<section id="exercícios" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercícios">Exercícios</h2>
+<ol type="1">
+<li>Nota média por gênero. Qual a maior? <strong>Resultado:</strong> Documentário (6.84)<br>
+</li>
+<li>Crie <code>lucro = faturamento - orcamento</code>. Qual o mais lucrativo? <strong>Resultado:</strong> “The story of cap and trade”<br>
+</li>
+<li>Top 10 diretores com mais filmes. <strong>Resultado:</strong> Woody Allen lidera.</li>
+</ol>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -741,13 +850,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Curso R para Análise de Dados">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Curso R para Análise de Dados</span></span>
+      <a href="../01-dia/d1-manha-parte1.html" class="pagination-link" aria-label="Dia 1 — Manhã">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Dia 1 — Manhã</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01-dia/d1-manha-parte1.html" class="pagination-link" aria-label="Dia 1 — Manhã">
-        <span class="nav-page-text"><span class="chapter-title">Dia 1 — Manhã</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../01-dia/d1-tarde.html" class="pagination-link" aria-label="Dia 1 — Tarde">
+        <span class="nav-page-text"><span class="chapter-title">Dia 1 — Tarde</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

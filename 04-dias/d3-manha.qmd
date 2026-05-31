@@ -1,0 +1,281 @@
+# Dia 3 — Manhã
+
+**Dia 3 — Manhã | 4 horas**
+
+## Objetivos {.unnumbered}
+
+Ao final deste capítulo, você será capaz de:
+
+- Manipular texto com `stringr` (buscar, extrair, substituir)
+- Trabalhar com fatores usando `forcats` (reordenar, agrupar)
+- Lidar com datas usando `lubridate` (parse, extrair, calcular intervalos)
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(stringr)
+library(forcats)
+library(lubridate)
+filmes <- read_csv2("../data/filmes_imdb.csv")
+inv_florestal <- read_csv("../data/inv_florestal.csv")
+clima <- read_csv("../data/clima.csv")
+```
+
+---
+
+## Manipulação de texto com `stringr`
+
+Dados reais vêm sujos: espaços extras, maiúsculas inconsistentes, padrões que precisam ser extraídos. O pacote `stringr` resolve isso.
+
+### Detectar e contar padrões
+
+```{r}
+library(stringr)
+
+# Quantos filmes têm "The" no título?
+filmes %>%
+  mutate(tem_the = str_detect(titulo, "^The ")) %>%
+  count(tem_the)
+```
+
+```{r}
+# Quantas espécies contêm "Eucalyptus"?
+inv_florestal %>%
+  mutate(euca = str_detect(especie, "Eucalyptus")) %>%
+  count(euca)
+```
+
+### Extrair e substituir
+
+```{r}
+# Extrair o ano de uma data em formato texto
+str_extract("15/03/2023", "\\d{4}$")
+
+# Substituir abreviações
+str_replace("Eucalyptus grandis", "Eucalyptus", "E.")
+```
+
+```{r}
+# Padronizar nomes de espécies
+inv_florestal %>%
+  mutate(especie_curto = str_replace(especie, "Eucalyptus", "E.")) %>%
+  distinct(especie_curto)
+```
+
+### Limpeza de texto
+
+```{r}
+# Texto sujo (simulando dado real de campo)
+nomes_sujos <- c("  EUCALYPTUS GRANDIS  ", "Pinus taeda", "Eucalyptus  urophylla")
+
+# Faxina completa
+nomes_sujos %>%
+  str_squish() %>%        # remove espaços extras
+  str_to_lower() %>%      # tudo minúsculo
+  str_to_title()          # primeira letra maiúscula
+```
+
+```{r}
+# Aplicando limpeza ao dataset
+inv_florestal %>%
+  mutate(especie_limpa = str_squish(especie) %>% str_to_title()) %>%
+  count(especie_limpa)
+```
+
+---
+
+## Fatores com `forcats`
+
+Fatores são variáveis categóricas. O pacote `forcats` ajuda a reordená-los e agrupá-los — essencial para gráficos e modelos.
+
+### Reordenar por outra variável
+
+```{r}
+# Ordenar espécies por DAP médio (útil para gráficos)
+inv_florestal %>%
+  mutate(especie = fct_reorder(especie, dap, .fun = median)) %>%
+  ggplot(aes(x = especie, y = dap, fill = especie)) +
+  geom_boxplot() +
+  labs(x = NULL, y = "DAP (cm)", title = "DAP por espécie (ordenado pela mediana)") +
+  theme(legend.position = "none")
+```
+
+### Agrupar categorias raras
+
+```{r}
+# Agrupar gêneros com poucos filmes como "Outros"
+filmes %>%
+  mutate(genero_agrupado = fct_lump(genero, n = 5)) %>%
+  count(genero_agrupado, sort = TRUE)
+```
+
+```{r}
+# Agrupar espécies raras no inventário
+inv_florestal %>%
+  mutate(especie_agrupada = fct_lump(especie, n = 3)) %>%
+  count(especie_agrupada, sort = TRUE)
+```
+
+### Ordenar por frequência
+
+```{r}
+# Gênero mais comum primeiro
+filmes %>%
+  mutate(genero = fct_infreq(genero)) %>%
+  ggplot(aes(y = genero)) +
+  geom_bar(fill = "#18BC9C") +
+  labs(title = "Frequência de gêneros", x = "Nº de filmes", y = NULL)
+```
+
+---
+
+## Datas com `lubridate`
+
+Lidar com datas no R sempre foi doloroso — até o `lubridate`. Ele transforma texto em data com funções intuitivas.
+
+### Parse de datas
+
+```{r}
+library(lubridate)
+
+# Formatos comuns no Brasil
+dmy("15/03/2023")       # dia/mês/ano
+dmy("15 de março de 2023")
+ymd("2023-03-15")       # ano-mês-dia (ISO)
+mdy("March 15, 2023")   # mês/dia/ano (inglês)
+```
+
+```{r}
+# Com hora
+ymd_hms("2023-03-15 14:30:00")
+dmy_hm("15/03/2023 14:30")
+```
+
+### Extrair componentes
+
+```{r}
+data_medicao <- dmy("15/03/2023")
+
+year(data_medicao)     # ano
+month(data_medicao)    # mês (número)
+month(data_medicao, label = TRUE)  # mês (nome)
+wday(data_medicao, label = TRUE)   # dia da semana
+quarter(data_medicao)  # trimestre
+semester(data_medicao) # semestre
+```
+
+### Aritmética com datas
+
+```{r}
+# Adicionar dias
+data_medicao + days(30)
+
+# Adicionar meses
+data_medicao + months(6)
+
+# Adicionar anos
+data_medicao + years(1)
+
+# Calcular idade do povoamento
+data_plantio <- dmy("15/05/2017")
+intervalo <- interval(data_plantio, data_medicao)
+intervalo / years(1)    # idade em anos decimais
+```
+
+### Exemplo prático: dados climáticos
+
+```{r}
+clima <- read_csv("../data/clima.csv")
+
+clima %>%
+  mutate(
+    data = dmy(data),
+    mes = month(data, label = TRUE, abbr = FALSE),
+    ano = year(data)
+  ) %>%
+  group_by(mes) %>%
+  summarise(
+    temp_media = mean(temperatura, na.rm = TRUE),
+    precip_total = sum(precipitacao, na.rm = TRUE)
+  )
+```
+
+```{r}
+# Série temporal de temperatura
+clima %>%
+  mutate(data = dmy(data)) %>%
+  ggplot(aes(x = data, y = temperatura)) +
+  geom_line(color = "#E74C3C") +
+  geom_smooth(se = FALSE, color = "#2C3E50") +
+  labs(title = "Temperatura ao longo do tempo", x = NULL, y = "Temperatura (°C)")
+```
+
+---
+
+## Exercícios
+
+### Exercício 1
+
+Na coluna `especie` do `inv_florestal`, quantos registros contêm "Eucalyptus" no nome?
+
+**Resultado esperado:**
+```
+[1] 664
+```
+
+### Exercício 2
+
+Padronize os nomes das espécies removendo espaços extras e convertendo para maiúsculas (título).
+
+**Resultado esperado:**
+```
+[1] "Eucalyptus Grandis" "Pinus Taeda"
+```
+
+### Exercício 3
+
+Agrupe as espécies com menos de 100 árvores como "Outras". Conte a frequência.
+
+**Resultado esperado:**
+```
+# A tibble: 3 × 2
+  especie_agrupada     n
+  <fct>            <int>
+1 Eucalyptus Grandis  664
+2 Pinus Taeda         282
+3 Outras               46
+```
+
+### Exercício 4
+
+No dataset `clima.xlsx`, parse a coluna de data e calcule a temperatura média por mês (ordenada de janeiro a dezembro).
+
+**Resultado esperado:**
+```
+# A tibble: 12 × 2
+   mes       temp_media
+   <ord>          <dbl>
+ 1 janeiro         24.5
+ 2 fevereiro       24.2
+ 3 março           23.1
+...
+12 dezembro        24.8
+```
+
+### Exercício 5
+
+Usando os dados de `clima`, crie um gráfico de barras da precipitação total por mês.
+
+**Resultado esperado:**
+
+*Gráfico com 12 barras azuis, maior precipitação no verão (dez-jan).*
+
+### Exercício 6
+
+Parse a data `"15/05/2017"` e calcule quantos anos se passaram até hoje.
+
+**Resultado esperado:**
+```
+[1] 9.04
+```
+*(O valor exato depende da data atual.)*

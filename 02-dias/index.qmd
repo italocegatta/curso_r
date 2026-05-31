@@ -1,13 +1,38 @@
-# Curso de 2 dias — R Fundamentos {.unnumbered}
+---
+title: "R Fundamentos — 2 dias"
+---
 
-**Carga horária:** 16 horas (4 períodos de 4h)  
-**Público:** Profissionais que querem dominar o básico do R para análise de dados  
+# R Fundamentos {.unnumbered}
 
-## Estrutura {.unnumbered}
+**16 horas** · **5 capítulos**
+
+Domine o fluxo completo de análise de dados em R. Ao final dos dois dias, você будет capaz de importar, manipular, visualizar e modelar dados de forma independente.
+
+## Estrutura
 
 | | Manhã (4h) | Tarde (4h) |
 |---|-----------|-----------|
-| **Dia 1** | Introdução ao R e RStudio | Manipulação de dados (dplyr) |
-| **Dia 2** | Joins + Visualização (ggplot2) | Exercícios integrados |
+| **Dia 1** | [Dia 1 — Manhã](d1-manha.qmd) | [Dia 1 — Tarde](d1-tarde.qmd) |
+| **Dia 2** | [Dia 2 — Manhã](d2-manha.qmd) | [Dia 2 — Tarde](d2-tarde.qmd) · [Dia 2 — Tarde (continuação)](d2-tarde-parte2.qmd) |
 
-Os capítulos a seguir condensam o conteúdo essencial do curso de 4 dias, mantendo todos os exemplos e exercícios mais importantes.
+## Capítulos
+
+- [Dia 1 — Manhã](d1-manha.qmd) — Introdução ao R e RStudio
+- [Dia 1 — Tarde](d1-tarde.qmd) — Manipulação de dados com dplyr
+- [Dia 2 — Manhã](d2-manha.qmd) — Joins e Visualização
+- [Dia 2 — Tarde](d2-tarde.qmd) — Visualização de dados (aprofundamento)
+- [Dia 2 — Tarde (continuação)](d2-tarde-parte2.qmd) — Exercícios integrados
+
+## Datasets
+
+- 🎬 `filmes_imdb.csv` — filmes (nota, orçamento, faturamento, gênero)
+- 🌲 `inv_florestal.csv` — inventário florestal
+
+## Pré-requisitos
+
+- [R](https://cran.r-project.org/) (4.0+)
+- [RStudio](https://posit.co/download/rstudio-desktop/)
+
+## Repositório
+
+👉 [github.com/italocegatta/curso_r](https://github.com/italocegatta/curso_r)

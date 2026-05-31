@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R Express — 1 dia – Curso R para Análise de Dados</title>
+<title>Dia 2 — Tarde (continuação) – Curso R para Análise de Dados</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../01-dia/d1-manha-parte1.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../04-dias/index.html" rel="next">
+<link href="../02-dias/d2-tarde.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01-dia/index.html">1 dia</a></li><li class="breadcrumb-item"><a href="../01-dia/index.html"><span class="chapter-title">R Express — 1 dia</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02-dias/index.html">2 dias</a></li><li class="breadcrumb-item"><a href="../02-dias/d2-tarde-parte2.html"><span class="chapter-title">Dia 2 — Tarde (continuação)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -126,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-dia/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">R Express — 1 dia</span></a>
+  <a href="../01-dia/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R Express — 1 dia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -182,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02-dias/d2-tarde-parte2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Dia 2 — Tarde (continuação)</span></a>
+  <a href="../02-dias/d2-tarde-parte2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Dia 2 — Tarde (continuação)</span></a>
   </div>
 </li>
       </ul>
@@ -253,23 +253,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-express" id="toc-r-express" class="nav-link active" data-scroll-target="#r-express">R Express</a>
-  <ul class="collapse">
-  <li><a href="#estrutura" id="toc-estrutura" class="nav-link" data-scroll-target="#estrutura">Estrutura</a></li>
-  <li><a href="#capítulos" id="toc-capítulos" class="nav-link" data-scroll-target="#capítulos">Capítulos</a></li>
-  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
-  <li><a href="#pré-requisitos" id="toc-pré-requisitos" class="nav-link" data-scroll-target="#pré-requisitos">Pré-requisitos</a></li>
-  <li><a href="#repositório" id="toc-repositório" class="nav-link" data-scroll-target="#repositório">Repositório</a></li>
-  </ul></li>
+  <li><a href="#instruções" id="toc-instruções" class="nav-link active" data-scroll-target="#instruções">Instruções</a></li>
+  <li><a href="#exercício-1-explorando-o-dataset" id="toc-exercício-1-explorando-o-dataset" class="nav-link" data-scroll-target="#exercício-1-explorando-o-dataset">Exercício 1 — Explorando o dataset</a></li>
+  <li><a href="#exercício-2-visualização" id="toc-exercício-2-visualização" class="nav-link" data-scroll-target="#exercício-2-visualização">Exercício 2 — Visualização</a></li>
+  <li><a href="#exercício-3-análise-por-gênero-filmes" id="toc-exercício-3-análise-por-gênero-filmes" class="nav-link" data-scroll-target="#exercício-3-análise-por-gênero-filmes">Exercício 3 — Análise por gênero (filmes)</a></li>
+  <li><a href="#exercício-4-desafio-final" id="toc-exercício-4-desafio-final" class="nav-link" data-scroll-target="#exercício-4-desafio-final">Exercício 4 — Desafio final</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01-dia/index.html">1 dia</a></li><li class="breadcrumb-item"><a href="../01-dia/index.html"><span class="chapter-title">R Express — 1 dia</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02-dias/index.html">2 dias</a></li><li class="breadcrumb-item"><a href="../02-dias/d2-tarde-parte2.html"><span class="chapter-title">Dia 2 — Tarde (continuação)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">R Express — 1 dia</span></h1>
+<h1 class="title"><span class="chapter-title">Dia 2 — Tarde (continuação)</span></h1>
 </div>
 
 
@@ -286,56 +283,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="r-express" class="level1 unnumbered">
-<h1 class="unnumbered">R Express</h1>
-<p><strong>8 horas</strong> · <strong>3 capítulos</strong></p>
-<p>Introdução rápida e prática ao R. Ao final do dia, você terá importado dados, criado tabelas e gráficos. O essencial para começar.</p>
-<section id="estrutura" class="level2">
-<h2 class="anchored" data-anchor-id="estrutura">Estrutura</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Manhã (4h)</th>
-<th>Tarde (4h)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Dia 1</strong></td>
-<td><a href="../01-dia/d1-manha-parte1.html">Dia 1 — Manhã</a> · <a href="../01-dia/d1-manha-parte2.html">Dia 1 — Manhã (continuação)</a></td>
-<td><a href="../01-dia/d1-tarde.html">Dia 1 — Tarde</a></td>
-</tr>
-</tbody>
-</table>
+<p><strong>Dia 2 — Tarde (parte 2) | 2 horas</strong></p>
+<p>Este capítulo consolida o aprendizado do curso de 2 dias com exercícios práticos que integram todas as técnicas.</p>
+<section id="instruções" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="instruções">Instruções</h2>
+<p>Cada exercício mostra o <strong>resultado esperado</strong>. Escreva o código e confira se sua solução produz o mesmo resultado.</p>
+<hr>
 </section>
-<section id="capítulos" class="level2">
-<h2 class="anchored" data-anchor-id="capítulos">Capítulos</h2>
-<ul>
-<li><a href="../01-dia/d1-manha-parte1.html">Dia 1 — Manhã</a> — Introdução ao R e primeiros dados</li>
-<li><a href="../01-dia/d1-manha-parte2.html">Dia 1 — Manhã (continuação)</a> — Manipulação de dados com dplyr</li>
-<li><a href="../01-dia/d1-tarde.html">Dia 1 — Tarde</a> — Visualização de dados e Exercícios</li>
-</ul>
+<section id="exercício-1-explorando-o-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="exercício-1-explorando-o-dataset">Exercício 1 — Explorando o dataset</h2>
+<p>Carregue <code>inv_florestal.csv</code> e <code>parcelas.csv</code>. Faça o join entre eles e responda:</p>
+<p><strong>a)</strong> Quantas árvores no total? E quantas parcelas?<br>
+<strong>Resultado esperado:</strong> 992 árvores, 30 parcelas.</p>
+<p><strong>b)</strong> Qual o DAP médio geral? E por espécie?<br>
+<strong>Resultado esperado:</strong> Eucalipto: 20.6 cm, Pinus: 17.8 cm.</p>
+<p><strong>c)</strong> Qual parcela tem o maior volume por hectare?<br>
+<strong>Resultado esperado:</strong> Parcela 7 com 420 m³/ha.</p>
+<hr>
 </section>
-<section id="datasets" class="level2">
-<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
-<ul>
-<li>🎬 <code>filmes_imdb.csv</code> — filmes (nota, orçamento, faturamento, gênero)</li>
-</ul>
+<section id="exercício-2-visualização" class="level2">
+<h2 class="anchored" data-anchor-id="exercício-2-visualização">Exercício 2 — Visualização</h2>
+<p><strong>a)</strong> Crie um histograma da distribuição diamétrica.<br>
+<strong>Resultado esperado:</strong> Pico em 15-20 cm, assimétrica à direita.</p>
+<p><strong>b)</strong> Crie um gráfico de dispersão <code>dap</code> × <code>altura</code> com cor por espécie e curva de tendência.<br>
+<strong>Resultado esperado:</strong> Duas curvas quase paralelas, Eucalipto ligeiramente acima.</p>
+<p><strong>c)</strong> Crie um dashboard com 4 gráficos: histograma do DAP, relação hipsométrica, boxplot de volume por espécie e barras de volume por parcela.<br>
+<strong>Resultado esperado:</strong> Painel 2×2 com tema consistente.</p>
+<hr>
 </section>
-<section id="pré-requisitos" class="level2">
-<h2 class="anchored" data-anchor-id="pré-requisitos">Pré-requisitos</h2>
-<ul>
-<li><a href="https://cran.r-project.org/">R</a> (4.0+)</li>
-<li><a href="https://posit.co/download/rstudio-desktop/">RStudio</a></li>
-</ul>
+<section id="exercício-3-análise-por-gênero-filmes" class="level2">
+<h2 class="anchored" data-anchor-id="exercício-3-análise-por-gênero-filmes">Exercício 3 — Análise por gênero (filmes)</h2>
+<p>Usando <code>filmes_imdb.csv</code>:</p>
+<p><strong>a)</strong> Gênero com maior nota média (mínimo 50 filmes)?<br>
+<strong>Resultado esperado:</strong> Documentário com 6.84.</p>
+<p><strong>b)</strong> Gráfico de dispersão <code>orcamento</code> × <code>faturamento</code>, com cor por gênero.<br>
+<strong>Resultado esperado:</strong> Correlação positiva, Ação e Aventura com maiores valores.</p>
+<p><strong>c)</strong> Qual diretor tem mais filmes no dataset?<br>
+<strong>Resultado esperado:</strong> Woody Allen.</p>
+<hr>
 </section>
-<section id="repositório" class="level2">
-<h2 class="anchored" data-anchor-id="repositório">Repositório</h2>
-<p>👉 <a href="https://github.com/italocegatta/curso_r">github.com/italocegatta/curso_r</a></p>
+<section id="exercício-4-desafio-final" class="level2">
+<h2 class="anchored" data-anchor-id="exercício-4-desafio-final">Exercício 4 — Desafio final</h2>
+<p>Usando <code>inv_florestal</code>, faça uma análise completa:</p>
+<ol type="1">
+<li>Calcule área basal por árvore: <code>ab = pi * (dap/200)^2</code></li>
+<li>Calcule volume: <code>vol = ab * altura * 0.5</code></li>
+<li>Agrupe por parcela e calcule volume/ha (área da parcela = 600 m²)</li>
+<li>Crie um gráfico de barras do volume/ha por parcela (top 10)</li>
+<li>Ajuste <code>lm(log(volume) ~ log(dap) + log(altura))</code> e reporte o R²</li>
+</ol>
+<p><strong>Resultado esperado do R²:</strong> 0.96</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -741,13 +740,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Curso R para Análise de Dados">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Curso R para Análise de Dados</span></span>
+      <a href="../02-dias/d2-tarde.html" class="pagination-link" aria-label="Dia 2 — Tarde">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Dia 2 — Tarde</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01-dia/d1-manha-parte1.html" class="pagination-link" aria-label="Dia 1 — Manhã">
-        <span class="nav-page-text"><span class="chapter-title">Dia 1 — Manhã</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../04-dias/index.html" class="pagination-link" aria-label="R Completo — 4 dias">
+        <span class="nav-page-text"><span class="chapter-title">R Completo — 4 dias</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

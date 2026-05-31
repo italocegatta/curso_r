@@ -1,0 +1,47 @@
+# Dia 1 — Manhã (continuação)
+
+**Manhã — Parte 2 | 2 horas**
+
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+filmes <- read_csv2("../data/filmes_imdb.csv")
+```
+
+## `group_by()` + `summarise()` — o coração da análise {.unnumbered}
+
+```{r}
+# Nota média por gênero
+filmes %>% 
+  group_by(genero) %>% 
+  summarise(nota_media = mean(nota), n = n()) %>% 
+  arrange(desc(nota_media))
+
+# Contagem rápida
+filmes %>% count(genero, sort = TRUE)
+
+# Diretores mais prolíficos
+filmes %>% count(diretor, sort = TRUE) %>% head(10)
+```
+
+## Pipeline completo {.unnumbered}
+
+```{r}
+# Análise completa em um fluxo
+filmes %>% 
+  filter(ano >= 2000) %>% 
+  group_by(genero) %>% 
+  summarise(
+    nota_media = mean(nota),
+    orcamento_medio = mean(orcamento, na.rm = TRUE),
+    n = n()
+  ) %>% 
+  filter(n >= 10) %>% 
+  arrange(desc(nota_media))
+```
+
+## Exercícios {.unnumbered}
+
+1. Nota média por gênero. Qual a maior? **Resultado:** Documentário (6.84)  
+2. Crie `lucro = faturamento - orcamento`. Qual o mais lucrativo? **Resultado:** "The story of cap and trade"  
+3. Top 10 diretores com mais filmes. **Resultado:** Woody Allen lidera.

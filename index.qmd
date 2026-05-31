@@ -1,30 +1,24 @@
 ---
 title: "Curso R para Análise de Dados"
-subtitle: "Do zero ao relatório técnico em 4 dias"
+subtitle: "Do zero ao relatório técnico"
 author: "Ítalo Cegatta"
 ---
 
 # Bem-vindo(a) {.unnumbered}
 
-Este livro reúne o material completo de três cursos de introdução ao R para análise de dados. O conteúdo parte do zero — você não precisa saber programar — e avança até a produção de análises completas com modelagem estatística.
+Este livro reúne o material de três cursos de introdução ao R para análise de dados. O conteúdo parte do zero — sem necessidade de programação prévia — e avança até a produção de análises completas com modelagem estatística.
 
-## Para quem é este livro? {.unnumbered}
+## Escolha seu curso
 
-Profissionais que desejam aprender R para processar, visualizar e modelar dados. O conteúdo é voltado para a área florestal, mas as técnicas se aplicam a qualquer domínio.
+| | Duração | Capítulos | Conteúdo |
+|--|:-------:|:---------:|----------|
+| **[R Express — 1 dia](01-dia/index.qmd)** | 8h | 3 | Primeiro contato com R: importar, manipular, visualizar |
+| **[R Fundamentos — 2 dias](02-dias/index.qmd)** | 16h | 5 | Dominar o fluxo completo: dplyr, joins, ggplot2 |
+| **[R Completo — 4 dias](04-dias/index.qmd)** | 32h | 8 | Dominar R — da importação à modelagem estatística |
 
-## Como está organizado? {.unnumbered}
+Todos compartilham a mesma base. O curso de **4 dias** é o mais completo. O de **2 dias** condensa os tópicos principais. O de **1 dia** é uma introdução rápida e prática.
 
-O livro contém **três cursos**, do mais curto ao mais completo. Escolha o que melhor se encaixa no seu objetivo:
-
-| Curso | Carga horária | Períodos | Foco |
-|-------|:------------:|:--------:|------|
-| **☀️ R Express** | 1 dia (8h) | 3 capítulos | Essencial para começar a usar R |
-| **🌤️ R Fundamentos** | 2 dias (16h) | 5 capítulos | Análise de dados do início ao fim |
-| **🌞 R Completo** | 4 dias (32h) | 8 capítulos | Domínio completo — da importação à modelagem |
-
-Todos os cursos compartilham a mesma base. O curso de 4 dias é o mais completo. O de 2 dias condensa os tópicos principais. O de 1 dia é uma introdução rápida e prática.
-
-## O que você vai aprender? {.unnumbered}
+## O que você vai aprender?
 
 - Usar o R e o RStudio
 - Importar dados de planilhas, CSVs e outras fontes
@@ -32,39 +26,30 @@ Todos os cursos compartilham a mesma base. O curso de 4 dias é o mais completo.
 - Criar gráficos profissionais com `ggplot2`
 - Cruzar tabelas com joins
 - Lidar com texto, datas e fatores
-- Automatizar tarefas repetitivas com funções e `purrr`
+- Automatizar tarefas com funções e `purrr`
 - Ajustar modelos estatísticos (regressão, ANOVA)
 - Produzir relatórios técnicos completos
 
-## Pré-requisitos {.unnumbered}
+## Pré-requisitos
 
 - Um computador com Windows, Mac ou Linux
-- [R](https://cran.r-project.org/) (versão 4.0 ou superior)
-- [RStudio](https://posit.co/download/rstudio-desktop/) (versão mais recente)
-- Os pacotes do `tidyverse`, `readxl`, `lubridate`, `broom`, `patchwork`, `gt` e `gapminder`
+- [R](https://cran.r-project.org/) (4.0 ou superior)
+- [RStudio](https://posit.co/download/rstudio-desktop/)
 
 ::: {.callout-tip}
 ## Não sabe instalar?
-O **Capítulo 1** de qualquer um dos cursos ensina como instalar o R e o RStudio passo a passo. Não se preocupe!
+O **Capítulo 1** de qualquer curso ensina como instalar o R e o RStudio passo a passo.
 :::
 
-## Como usar este livro? {.unnumbered}
+## Dados utilizados
 
-1. **Se você tem 1 dia:** siga o curso **☀️ R Express**
-2. **Se você tem 2 dias:** siga o curso **🌤️ R Fundamentos**
-3. **Se você tem 4 dias:** siga o curso **🌞 R Completo**
+- 🎬 **`filmes_imdb`** — filmes (nota, orçamento, faturamento, gênero). Dado universal para engajamento.
+- 🌲 **`inv_florestal.csv`**, **`parcelas.csv`**, **`clima.xlsx`**, **`talhoes.xlsx`**, **`experimento.xlsx`** — aplicação profissional em dados florestais.
 
-Cada capítulo alterna entre explicações, exemplos com código e exercícios. Os exercícios mostram o **resultado esperado** — o código é com você! Depois você confere se sua solução produziu o mesmo resultado.
+## Repositório
 
-## Dados utilizados {.unnumbered}
+👉 [github.com/italocegatta/curso_r](https://github.com/italocegatta/curso_r)
 
-Usamos dois conjuntos de dados ao longo do curso:
+## Licença
 
-- 🎬 **`filmes_imdb`** — informações sobre filmes (nota, orçamento, faturamento, gênero). Ideal para aprender: todo mundo entende o contexto.
-- 🌲 **Dados florestais** — inventário de parcelas, medições de árvores, dados climáticos e experimentos. Aplicação profissional do dia a dia.
-
-Os arquivos de dados estão disponíveis na pasta `data/` do repositório do curso.
-
-## Licença {.unnumbered}
-
-Este material está licenciado sob [Creative Commons BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Você pode usar e adaptar livremente para fins não comerciais, desde que atribua o crédito ao autor.
+[Creative Commons BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)

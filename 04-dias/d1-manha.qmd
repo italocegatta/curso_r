@@ -1,0 +1,382 @@
+# Dia 1 — Manhã
+
+**Dia 1 — Manhã | 4 horas**
+
+## Objetivos {.unnumbered}
+
+Ao final deste capítulo, você será capaz de:
+
+- Entender o que é o R e por que usá-lo
+- Instalar o R e o RStudio
+- Navegar pelo ambiente do RStudio
+- Criar e manipular objetos (vetores, fatores, data frames)
+- Executar seus primeiros scripts em R
+
+---
+
+## O que é o R?
+
+O R é uma linguagem de programação e um ambiente para computação estatística e gráficos. É mantido por um grupo de voluntários de vários países, o **R-core team**, e distribuído gratuitamente pelo site do [CRAN](https://cran.r-project.org/).
+
+O R nasceu nos anos 90 a partir de uma implementação da linguagem S, criada por John Chambers no Bell Laboratories. Desde então, cresceu em ritmo acelerado e hoje é um dos principais softwares de análise de dados do mundo.
+
+::: {.callout-tip}
+## Por que aprender R?
+
+- **Gratuito** — sem licenças, sem custos
+- **Comunidade enorme** — mais de 20.000 pacotes disponíveis
+- **Reprodutibilidade** — scripts documentam toda a análise
+- **Gráficos profissionais** — ggplot2 é referência em visualização
+- **Integração** — RMarkdown/Quarto geram relatórios, sites, dashboards e slides
+:::
+
+---
+
+## Instalação
+
+### R
+
+1. Acesse [cran.r-project.org](https://cran.r-project.org/)
+2. Escolha seu sistema operacional (Windows, Mac ou Linux)
+3. Faça o download e execute o instalador
+4. Siga as instruções padrão
+
+### RStudio
+
+O RStudio é um ambiente de desenvolvimento integrado (IDE) que facilita muito o trabalho com R. Ele oferece editor de código, console, visualizador de gráficos, gerenciador de arquivos e muito mais.
+
+1. Acesse [posit.co/download/rstudio-desktop](https://posit.co/download/rstudio-desktop/)
+2. Faça o download da versão gratuita (RStudio Desktop)
+3. Instale normalmente
+
+::: {.callout-warning}
+## Atenção!
+
+Instale o **R primeiro**, depois o RStudio. O RStudio precisa encontrar o R instalado no sistema para funcionar.
+:::
+
+---
+
+## Conhecendo o RStudio
+
+Ao abrir o RStudio, você verá 4 painéis principais:
+
+| Painel | Localização | Função |
+|--------|:----------:|--------|
+| **Editor** | Superior esquerdo | Escrever scripts `.R` |
+| **Console** | Inferior esquerdo | Executar comandos e ver resultados |
+| **Environment** | Superior direito | Ver objetos criados |
+| **Files/Plots/Help** | Inferior direito | Arquivos, gráficos e ajuda |
+
+::: {.callout-tip}
+## Atalho essencial
+
+`Ctrl + Enter` (ou `Cmd + Enter` no Mac) executa a linha atual do editor no console. É o atalho que você mais vai usar!
+:::
+
+---
+
+## Primeiros passos no console
+
+O console é onde o R recebe comandos e mostra resultados. Vamos começar usando o R como uma calculadora:
+
+```{r}
+# Soma
+2 + 3
+
+# Multiplicação
+4 * 5
+
+# Potência
+2^3
+
+# Raiz quadrada
+sqrt(81)
+
+# Expressão completa
+(10 + 5) * 3 / 2
+```
+
+### Atribuição: guardando valores em objetos
+
+Para guardar resultados e reutilizá-los depois, usamos o operador de atribuição `<-`:
+
+```{r}
+# Guardando um número
+nota_filme <- 8.5
+nota_filme
+
+# Guardando texto
+titulo <- "O Poderoso Chefão"
+titulo
+
+# Usando o objeto em operações
+nota_filme * 2
+nota_filme + 1.5
+```
+
+::: {.callout-important}
+## `<-` ou `=`?
+
+Em R, o operador tradicional de atribuição é `<-` (atalho: `Alt + -`). Você também pode usar `=`, mas `<-` é o padrão da comunidade R. Use o que preferir, mas seja consistente.
+:::
+
+### Comentários
+
+Tudo que vem depois de `#` é ignorado pelo R. Use comentários para explicar seu código:
+
+```{r}
+# Isto é um comentário — o R ignora esta linha
+x <- 10  # comentário ao lado do código também funciona
+```
+
+### Pedindo ajuda
+
+```{r}
+# Ajuda de uma função específica
+# ?mean
+# ?ggplot
+
+# Busca por termo
+# ??histograma
+```
+
+---
+
+## Estruturas de dados no R
+
+No R, tudo é um **objeto**. Os objetos podem ser de diferentes tipos e estruturas. Entender essas estruturas é fundamental — é com elas que você vai trabalhar todos os dias.
+
+### Vetores atômicos
+
+O vetor é a estrutura mais básica: uma sequência de valores do mesmo tipo.
+
+```{r}
+# Vetor numérico
+notas <- c(7.5, 8.0, 9.2, 6.8, 8.7)
+notas
+
+# Vetor de texto (character)
+filmes <- c("Matrix", "Interestelar", "Parasita")
+filmes
+
+# Vetor lógico (TRUE/FALSE)
+filmes_brasileiros <- c(TRUE, FALSE, FALSE)
+filmes_brasileiros
+
+# Operações com vetores
+mean(notas)       # média
+sum(notas)        # soma
+length(notas)     # comprimento
+max(notas)        # máximo
+min(notas)        # mínimo
+```
+
+::: {.callout-tip}
+## Use `c()` para criar vetores
+
+A função `c()` significa *combine* (combinar). Use-a sempre que quiser juntar valores em um vetor.
+:::
+
+### Valores especiais
+
+```{r}
+# NA = Not Available (dado ausente)
+dados <- c(23, 45, NA, 32, NA)
+dados
+
+mean(dados)             # NA — precisa lidar com os ausentes
+mean(dados, na.rm = TRUE)  # remove os NA antes de calcular
+```
+
+```{r}
+# NaN = Not a Number
+0 / 0
+```
+
+```{r}
+# NULL = ausência de valor (objeto vazio)
+NULL
+
+# Inf = infinito
+1 / 0
+```
+
+### Conversão entre tipos (coerção)
+
+Às vezes você precisa converter um tipo de dado em outro:
+
+```{r}
+# Texto para número
+as.numeric("42")
+
+# Número para texto
+as.character(42)
+
+# Número para lógico
+as.logical(c(1, 0, 1, 0))
+
+# Cuidado: conversão impossível gera NA
+as.numeric("quarenta e dois")
+```
+
+### Fatores
+
+Fatores são usados para representar **variáveis categóricas** — como gênero de filme, espécie de árvore ou tipo de tratamento.
+
+```{r}
+# Criando um fator
+genero <- factor(c("Ação", "Drama", "Comédia", "Drama", "Ação"))
+genero
+
+# Níveis do fator
+levels(genero)
+
+# Contagem por nível
+table(genero)
+```
+
+### Listas
+
+Listas podem conter elementos de **tipos diferentes** — diferente dos vetores, onde tudo precisa ser do mesmo tipo.
+
+```{r}
+# Uma lista com número, texto e vetor
+filme_info <- list(
+  titulo = "Matrix",
+  ano = 1999,
+  generos = c("Ação", "Ficção científica"),
+  nota = 8.7
+)
+filme_info
+
+# Acessando elementos da lista
+filme_info$titulo
+filme_info$ano
+```
+
+### Data frames e tibbles
+
+O data frame é a estrutura mais importante para análise de dados: uma **tabela** com linhas (observações) e colunas (variáveis).
+
+```{r}
+# Criando um data frame manualmente
+df <- data.frame(
+  titulo = c("Matrix", "Interestelar", "Parasita"),
+  ano = c(1999, 2014, 2019),
+  nota = c(8.7, 8.6, 8.5)
+)
+df
+```
+
+No `tidyverse`, usamos uma versão moderna do data frame chamada **tibble**:
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(tidyr)
+library(stringr)
+library(forcats)
+library(purrr)
+library(tibble)
+
+tibble(
+  titulo = c("Matrix", "Interestelar", "Parasita"),
+  ano = c(1999, 2014, 2019),
+  nota = c(8.7, 8.6, 8.5)
+)
+```
+
+### Conhecendo seus dados
+
+Três funções essenciais para inspecionar qualquer dataset:
+
+```{r}
+# Carregando o dataset de filmes
+library(readr)
+filmes <- read_csv2("../data/filmes_imdb.csv")
+
+# Estrutura do dataset
+glimpse(filmes)
+
+# Primeiras linhas
+head(filmes, 5)
+
+# Resumo estatístico das colunas
+summary(filmes)
+```
+
+```{r}
+# Dimensões
+dim(filmes)     # linhas × colunas
+nrow(filmes)    # número de linhas
+ncol(filmes)    # número de colunas
+names(filmes)   # nomes das colunas
+```
+
+---
+
+## Exercícios
+
+::: {.callout-note}
+## Como fazer os exercícios
+
+Cada exercício mostra o **enunciado** e o **resultado esperado**. O código é com você! Escreva sua solução, execute e confira se o resultado bate com o que está no livro.
+:::
+
+### Exercício 1
+
+Crie um vetor com as notas de 5 filmes e calcule a média.
+
+**Resultado esperado:**
+```
+[1] 8.4
+```
+
+### Exercício 2
+
+Crie um vetor `c(8.5, 9.0, NA, 7.5, NA)` e calcule a média sem os valores ausentes.
+
+**Resultado esperado:**
+```
+[1] 8.333333
+```
+
+### Exercício 3
+
+Crie um fator com os gêneros `"Ação"`, `"Drama"`, `"Comédia"`, `"Drama"`, `"Ação"`. Mostre a tabela de frequência.
+
+**Resultado esperado:**
+```
+Ação   Comédia   Drama 
+   2         1       2 
+```
+
+### Exercício 4
+
+Carregue o dataset `filmes_imdb.csv` e responda:
+
+**a)** Quantas linhas e quantas colunas o dataset possui?
+
+**Resultado esperado:**
+```
+[1] 4826   11
+```
+
+**b)** Qual é a nota média dos filmes?
+
+**Resultado esperado:**
+```
+[1] 6.37
+```
+
+**c)** Qual é o filme mais recente e qual o mais antigo?
+
+**Resultado esperado:**
+```
+# A tibble: 1 × 2
+   ano    n
+  <dbl> <int>
+1  2016  4826
+```
