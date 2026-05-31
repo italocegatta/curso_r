@@ -8,15 +8,6 @@ title: "R Completo — 4 dias"
 
 Domine R para análise de dados — da importação à modelagem estatística, produzindo relatórios técnicos completos.
 
-## Estrutura
-
-| | Manhã (4h) | Tarde (4h) |
-|:---:|------------|------------|
-| **Dia 1** | [Dia 1 — Manhã](d1-manha.qmd) | [Dia 1 — Tarde](d1-tarde.qmd) |
-| **Dia 2** | [Dia 2 — Manhã](d2-manha.qmd) | [Dia 2 — Tarde](d2-tarde.qmd) |
-| **Dia 3** | [Dia 3 — Manhã](d3-manha.qmd) | [Dia 3 — Tarde](d3-tarde.qmd) |
-| **Dia 4** | [Dia 4 — Manhã](d4-manha.qmd) | [Dia 4 — Tarde](d4-tarde.qmd) |
-
 ## Capítulos
 
 - [Dia 1 — Manhã](d1-manha.qmd) — Introdução ao R e RStudio

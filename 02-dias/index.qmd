@@ -8,13 +8,6 @@ title: "R Fundamentos — 2 dias"
 
 Domine o fluxo completo de análise de dados em R. Ao final dos dois dias, você будет capaz de importar, manipular, visualizar e modelar dados de forma independente.
 
-## Estrutura
-
-| | Manhã (4h) | Tarde (4h) |
-|---|-----------|-----------|
-| **Dia 1** | [Dia 1 — Manhã](d1-manha.qmd) | [Dia 1 — Tarde](d1-tarde.qmd) |
-| **Dia 2** | [Dia 2 — Manhã](d2-manha.qmd) | [Dia 2 — Tarde](d2-tarde.qmd) · [Dia 2 — Tarde (continuação)](d2-tarde-parte2.qmd) |
-
 ## Capítulos
 
 - [Dia 1 — Manhã](d1-manha.qmd) — Introdução ao R e RStudio

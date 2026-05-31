@@ -8,12 +8,6 @@ title: "R Express — 1 dia"
 
 Introdução rápida e prática ao R. Ao final do dia, você terá importado dados, criado tabelas e gráficos. O essencial para começar.
 
-## Estrutura
-
-| | Manhã (4h) | Tarde (4h) |
-|---|-----------|-----------|
-| **Dia 1** | [Dia 1 — Manhã](d1-manha-parte1.qmd) · [Dia 1 — Manhã (continuação)](d1-manha-parte2.qmd) | [Dia 1 — Tarde](d1-tarde.qmd) |
-
 ## Capítulos
 
 - [Dia 1 — Manhã](d1-manha-parte1.qmd) — Introdução ao R e primeiros dados
