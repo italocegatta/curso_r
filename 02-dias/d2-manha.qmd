@@ -26,7 +26,7 @@ inv_florestal %>% anti_join(parcelas, by = "parcela")
 
 ```{r}
 # Dispersão + tendência
-inv_florestal %>% 
+inv_florestal %>%
   ggplot(aes(x = dap, y = altura, color = especie)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", se = FALSE) +
@@ -35,33 +35,57 @@ inv_florestal %>%
   theme_minimal()
 
 # Facetas
-inv_florestal %>% 
+inv_florestal %>%
   ggplot(aes(x = dap, y = altura)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", formula = y ~ log(x), se = FALSE) +
   facet_wrap(~especie)
 
 # Boxplot
-inv_florestal %>% 
+inv_florestal %>%
   ggplot(aes(x = especie, y = volume, fill = especie)) +
   geom_boxplot() + theme(legend.position = "none")
 
 # Barras — volume por parcela
-inv_florestal %>% group_by(parcela) %>% summarise(v = sum(volume)) %>% 
+inv_florestal %>% group_by(parcela) %>% summarise(v = sum(volume)) %>%
   ggplot(aes(x = reorder(factor(parcela), v), y = v)) +
   geom_col(fill = "#18BC9C") + coord_flip() + labs(x = "Parcela", y = "Volume (m³)")
 ```
 
-## Exercícios {.unnumbered}
+---
+
+## Exercícios
+
+::: {.callout-note}
+## Como fazer os exercícios
+
+Cada exercício mostra o **enunciado** e o **resultado esperado**. O código é com você!
+:::
 
 ### Exercício 1
-Faça `left_join` entre `inv_florestal` e `parcelas`. Calcule volume/ha e encontre a parcela mais produtiva.  
-**Resultado esperado:** Parcela 7 com 420 m³/ha.
+
+Faça um `left_join` entre `inv_florestal` e `parcelas`. Calcule o volume por hectare para cada parcela e encontre a parcela mais produtiva.
+
+**Resultado esperado:**
+```
+# A tibble: 1 × 2
+  parcela volume_ha
+  <chr>       <dbl>
+1 Parcela 7     420
+```
 
 ### Exercício 2
-Crie boxplot de `dap` por `especie` com cores.  
-**Resultado esperado:** Eucalipto com DAP mediano ~20 cm, Pinus ~17 cm.
+
+Crie um boxplot de `dap` por `especie` com cores diferentes para cada espécie.
+
+**Resultado esperado:**
+
+*Boxplot mostrando Eucalipto com DAP mediano ~20 cm e Pinus ~17 cm.*
 
 ### Exercício 3
-Plote `dap` × `volume` com `geom_point()` + `geom_smooth()`, cor por espécie.  
-**Resultado esperado:** Curva exponencial — volume cresce com DAP².
+
+Plote `dap` × `volume` com `geom_point()` e `geom_smooth()`, colorido por espécie. Qual o padrão observado?
+
+**Resultado esperado:**
+
+*Curva exponencial — o volume cresce proporcionalmente ao DAP².*

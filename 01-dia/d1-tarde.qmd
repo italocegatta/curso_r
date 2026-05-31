@@ -22,11 +22,11 @@ filmes %>% ggplot(aes(x = nota)) + geom_histogram(bins = 30, fill = "#18BC9C", c
 filmes %>% ggplot(aes(x = orcamento, y = faturamento)) + geom_point(alpha = 0.3)
 
 # Barras — top 10 gêneros
-filmes %>% count(genero, sort = TRUE) %>% head(10) %>% 
+filmes %>% count(genero, sort = TRUE) %>% head(10) %>%
   ggplot(aes(x = reorder(genero, n), y = n)) + geom_col(fill = "#18BC9C") + coord_flip()
 
 # Boxplot — nota por gênero
-filmes %>% filter(genero %in% c("Ação", "Drama", "Comédia")) %>% 
+filmes %>% filter(genero %in% c("Ação", "Drama", "Comédia")) %>%
   ggplot(aes(x = genero, y = nota, fill = genero)) + geom_boxplot() + theme(legend.position = "none")
 ```
 
@@ -43,10 +43,52 @@ inv_florestal %>% ggplot(aes(x = dap, y = altura, color = especie)) + geom_point
 inv_florestal %>% ggplot(aes(x = especie, y = volume, fill = especie)) + geom_boxplot()
 ```
 
-## Exercícios {.unnumbered}
+---
 
-1. Histograma de `duracao` com 40 bins. **Resultado:** Pico em 90-100 min.  
-2. Gráfico de dispersão `dap` × `altura`, cor por espécie.  
-3. Boxplot de `volume` por `especie`. Qual a mediana de cada? **Resultado:** Eucalipto ~0.35 m³, Pinus ~0.20 m³.  
-4. Gráfico de barras: volume total por espécie.  
-5. Exporte seu melhor gráfico: `ggsave("meu_grafico.png", width = 8, height = 5, dpi = 300)`
+## Exercícios
+
+::: {.callout-note}
+## Como fazer os exercícios
+
+Cada exercício mostra o **enunciado** e o **resultado esperado**. O código é com você!
+:::
+
+### Exercício 1
+
+Crie um histograma da coluna `duracao` com 40 bins. Descreva a distribuição.
+
+**Resultado esperado:**
+
+*Um histograma com pico em torno de 90-100 minutos, distribuição assimétrica à direita.*
+
+### Exercício 2
+
+Crie um gráfico de dispersão com `dap` no eixo x e `altura` no eixo y, com cor por espécie.
+
+**Resultado esperado:**
+
+*Nuvem de pontos com duas cores (Eucalipto e Pinus), mostrando a relação hipsométrica positiva.*
+
+### Exercício 3
+
+Crie um boxplot de `volume` por `especie`. Qual é a mediana de cada espécie?
+
+**Resultado esperado:**
+
+*Boxplot mostrando Eucalipto com mediana ~0.35 m³ e Pinus ~0.20 m³.*
+
+### Exercício 4
+
+Crie um gráfico de barras com o volume total por espécie.
+
+**Resultado esperado:**
+
+*Gráfico de barras mostrando Eucalipto com volume total maior que Pinus.*
+
+### Exercício 5
+
+Exporte seu melhor gráfico com `ggsave("meu_grafico.png", width = 8, height = 5, dpi = 300)`.
+
+**Resultado esperado:**
+
+*Arquivo `meu_grafico.png` salvo no diretório de trabalho.*

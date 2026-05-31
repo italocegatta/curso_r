@@ -335,8 +335,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Atalho: <code>Ctrl/Cmd + Shift + M</code>. Encadeia operações da esquerda para a direita:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Demonstração: o pipe encadeia operações</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>filmes <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">filter</span>(ano <span class="sc">&gt;</span> <span class="dv">2000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="#cb1-2"></a>filmes <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">filter</span>(ano <span class="sc">&gt;</span> <span class="dv">2000</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,667 × 10
@@ -456,13 +456,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 10 Batman v Superman: Dawn of Justice&nbsp;        2016   6.9
 # ℹ 3,865 more rows</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>filmes <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>filmes <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb9-3"><a href="#cb9-3"></a>    <span class="at">lucro =</span> faturamento <span class="sc">-</span> orcamento,</span>
 <span id="cb9-4"><a href="#cb9-4"></a>    <span class="at">lucro_milhoes =</span> lucro <span class="sc">/</span> <span class="dv">1000000</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(lucro)) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-7"><a href="#cb9-7"></a>  <span class="fu">select</span>(titulo, lucro_milhoes) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="#cb9-5"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(lucro)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>  <span class="fu">select</span>(titulo, lucro_milhoes) <span class="sc">%&gt;%</span></span>
 <span id="cb9-8"><a href="#cb9-8"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
@@ -480,9 +480,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="group_by-summarise"><code>group_by()</code> + <code>summarise()</code></h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Nota média por gênero</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>filmes <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">summarise</span>(<span class="at">nota_media =</span> <span class="fu">mean</span>(nota), <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>filmes <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">summarise</span>(<span class="at">nota_media =</span> <span class="fu">mean</span>(nota), <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_media))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 19 × 3
@@ -563,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Barras — top 10 gêneros</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(genero, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(genero, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(genero, n), <span class="at">y =</span> n)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#18BC9C"</span>) <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -573,7 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Boxplot</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(genero <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ação"</span>, <span class="st">"Drama"</span>, <span class="st">"Comédia"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(genero <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ação"</span>, <span class="st">"Drama"</span>, <span class="st">"Comédia"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> genero, <span class="at">y =</span> nota, <span class="at">fill =</span> genero)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -583,28 +583,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<hr>
 </section>
-<section id="exercícios" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="exercícios">Exercícios</h2>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Como fazer os exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cada exercício mostra o <strong>enunciado</strong> e o <strong>resultado esperado</strong>. O código é com você!</p>
+</div>
+</div>
 <section id="exercício-1" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
-<p>Filtre filmes com nota ≥ 8.5. Quantos são?<br>
-<strong>Resultado esperado:</strong> 103 filmes.</p>
+<p>Filtre os filmes com nota maior ou igual a 8.5. Quantos filmes atendem a esse critério?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 1 × 1
+      n
+  &lt;int&gt;
+1   103</code></pre>
 </section>
 <section id="exercício-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
-<p>Crie <code>lucro = faturamento - orcamento</code>. Qual o filme mais lucrativo?<br>
-<strong>Resultado esperado:</strong> <code>"The story of cap and trade"</code> com lucro de 48.7 milhões.</p>
+<p>Crie uma coluna <code>lucro = faturamento - orcamento</code> e encontre os 5 filmes mais lucrativos.</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 5 × 2
+  titulo                        lucro
+  &lt;chr&gt;                         &lt;dbl&gt;
+1 The story of cap and trade 48699922
+2 Sholay                     18599922
+3 Ram Teri Ganga Maili       12599881
+4 ET                          8999901
+5 Black Friday                1999989</code></pre>
 </section>
 <section id="exercício-3" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
-<p>Nota média por gênero, ordenada da maior para a menor.<br>
-<strong>Resultado esperado:</strong> Documentário (6.84), Guerra (6.75), História (6.73)…</p>
+<p>Calcule a nota média e o número de filmes por gênero. Ordene da maior para a menor nota média.</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 19 × 3
+   genero          nota_media     n
+   &lt;chr&gt;                &lt;dbl&gt; &lt;int&gt;
+ 1 Documentário          6.84    70
+ 2 Guerra                6.75    19
+ 3 História              6.73    21
+ 4 Drama                 6.56   964
+ ...</code></pre>
 </section>
 <section id="exercício-4" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-4">Exercício 4</h3>
-<p>Crie um histograma de <code>duracao</code> com 40 bins.<br>
-<strong>Resultado esperado:</strong> Pico em 90-100 min, assimétrica à direita.</p>
+<p>Crie um histograma da coluna <code>duracao</code> (duração dos filmes em minutos). Use 40 bins.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Um histograma com pico em torno de 90-100 minutos, distribuição assimétrica à direita.</em></p>
 
 
 </section>

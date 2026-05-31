@@ -292,7 +292,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#estruturas-de-dados" id="toc-estruturas-de-dados" class="nav-link" data-scroll-target="#estruturas-de-dados">Estruturas de dados</a></li>
   <li><a href="#carregando-dados-reais" id="toc-carregando-dados-reais" class="nav-link" data-scroll-target="#carregando-dados-reais">Carregando dados reais</a></li>
   <li><a href="#dplyr-seus-primeiros-verbos" id="toc-dplyr-seus-primeiros-verbos" class="nav-link" data-scroll-target="#dplyr-seus-primeiros-verbos">dplyr: seus primeiros verbos</a></li>
-  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -508,18 +513,43 @@ $ elenco_principal &lt;chr&gt; "Viola Davis", "Cate Blanchett", "Natalie Portman
 5 The Lord of the Rings: The Return of the King&nbsp;   8.9</code></pre>
 </div>
 </div>
+<hr>
 </section>
-<section id="exercícios" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="exercícios">Exercícios</h2>
-<ol type="1">
-<li>Crie um vetor com 5 notas e calcule a média. <strong>Resultado:</strong> <code>8.4</code><br>
-</li>
-<li>Carregue <code>filmes_imdb.csv</code>. Quantas linhas e colunas? <strong>Resultado:</strong> 4826 × 11<br>
-</li>
-<li>Filtre filmes com nota ≥ 9.0. Quantos? <strong>Resultado:</strong> 18</li>
-</ol>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Como fazer os exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cada exercício mostra o <strong>enunciado</strong> e o <strong>resultado esperado</strong>. O código é com você!</p>
+</div>
+</div>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Crie um vetor <code>c(8.5, 9.0, 7.5, 8.0, 9.2)</code> com as notas de 5 filmes e calcule a média.</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code>[1] 8.44</code></pre>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Carregue <code>filmes_imdb.csv</code> e responda: quantas linhas e quantas colunas o dataset possui?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code>[1] 4826   11</code></pre>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Filtre os filmes com nota maior ou igual a 9.0. Quantos filmes atendem a esse critério?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code>[1] 18</code></pre>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

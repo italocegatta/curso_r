@@ -289,7 +289,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#customização-e-exportação" id="toc-customização-e-exportação" class="nav-link active" data-scroll-target="#customização-e-exportação">Customização e exportação</a></li>
-  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  <li><a href="#exercício-4" id="toc-exercício-4" class="nav-link" data-scroll-target="#exercício-4">Exercício 4</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -320,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="customização-e-exportação">Customização e exportação</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Gráfico completo para relatório</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>inv_florestal <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="#cb1-2"></a>inv_florestal <span class="sc">%&gt;%</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dap, <span class="at">y =</span> altura, <span class="at">color =</span> especie)) <span class="sc">+</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">log</span>(x), <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
@@ -344,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2"></a>p1 <span class="ot">&lt;-</span> inv_florestal <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dap)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"#18BC9C"</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Dist. diamétrica"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3"></a>p2 <span class="ot">&lt;-</span> inv_florestal <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dap, <span class="at">y =</span> altura, <span class="at">color =</span> especie)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Hipsométrica"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4"></a>p3 <span class="ot">&lt;-</span> inv_florestal <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> especie, <span class="at">y =</span> volume, <span class="at">fill =</span> especie)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>p4 <span class="ot">&lt;-</span> inv_florestal <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(parcela) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">v =</span> <span class="fu">sum</span>(volume)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5"></a>p4 <span class="ot">&lt;-</span> inv_florestal <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(parcela) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">v =</span> <span class="fu">sum</span>(volume)) <span class="sc">%&gt;%</span></span>
 <span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(parcela), <span class="at">y =</span> v)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#2C3E50"</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Volume/parcela"</span>, <span class="at">x =</span> <span class="st">"Parcela"</span>)</span>
 <span id="cb2-7"><a href="#cb2-7"></a></span>
 <span id="cb2-8"><a href="#cb2-8"></a>(p1 <span class="sc">+</span> p2) <span class="sc">/</span> (p3 <span class="sc">+</span> p4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -360,17 +366,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Exportar</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co"># ggsave("dashboard.png", width = 10, height = 7, dpi = 300)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<hr>
 </section>
-<section id="exercícios" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="exercícios">Exercícios</h2>
-<ol type="1">
-<li>Crie histograma do DAP com 30 bins, título e rótulos.</li>
-<li>Boxplot de volume por espécie. Qual tem maior variabilidade?</li>
-<li>Gráfico de barras do volume total por parcela (top 10), com <code>coord_flip()</code>.</li>
-<li>Exporte seu melhor gráfico como PNG (8×5 pol, 300 DPI).</li>
-</ol>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Como fazer os exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cada exercício mostra o <strong>enunciado</strong> e o <strong>resultado esperado</strong>. O código é com você!</p>
+</div>
+</div>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Crie um histograma do DAP com 30 bins, título descritivo e rótulos dos eixos.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Um histograma com 30 barras, título “Distribuição diamétrica” no topo e labels “DAP (cm)” no eixo x e “Contagem” no eixo y.</em></p>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Crie um boxplot de volume por espécie. Qual espécie apresenta maior variabilidade?</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Boxplot mostrando Eucalipto com amplitude maior que Pinus, indicando maior variabilidade no volume.</em></p>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Crie um gráfico de barras com o volume total por parcela (apenas as 10 mais produtivas), com <code>coord_flip()</code> para facilitar a leitura.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Gráfico de barras horizontal com as 10 parcelas mais produtivas no eixo y, ordered by volume.</em></p>
+</section>
+<section id="exercício-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-4">Exercício 4</h3>
+<p>Exporte seu melhor gráfico como PNG com 8×5 polegadas e 300 DPI.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Arquivo PNG salvo no diretório de trabalho.</em></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

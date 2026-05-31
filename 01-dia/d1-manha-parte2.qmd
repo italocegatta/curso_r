@@ -12,9 +12,9 @@ filmes <- read_csv2("../data/filmes_imdb.csv")
 
 ```{r}
 # Nota média por gênero
-filmes %>% 
-  group_by(genero) %>% 
-  summarise(nota_media = mean(nota), n = n()) %>% 
+filmes %>%
+  group_by(genero) %>%
+  summarise(nota_media = mean(nota), n = n()) %>%
   arrange(desc(nota_media))
 
 # Contagem rápida
@@ -28,20 +28,68 @@ filmes %>% count(diretor, sort = TRUE) %>% head(10)
 
 ```{r}
 # Análise completa em um fluxo
-filmes %>% 
-  filter(ano >= 2000) %>% 
-  group_by(genero) %>% 
+filmes %>%
+  filter(ano >= 2000) %>%
+  group_by(genero) %>%
   summarise(
     nota_media = mean(nota),
     orcamento_medio = mean(orcamento, na.rm = TRUE),
     n = n()
-  ) %>% 
-  filter(n >= 10) %>% 
+  ) %>%
+  filter(n >= 10) %>%
   arrange(desc(nota_media))
 ```
 
-## Exercícios {.unnumbered}
+---
 
-1. Nota média por gênero. Qual a maior? **Resultado:** Documentário (6.84)  
-2. Crie `lucro = faturamento - orcamento`. Qual o mais lucrativo? **Resultado:** "The story of cap and trade"  
-3. Top 10 diretores com mais filmes. **Resultado:** Woody Allen lidera.
+## Exercícios
+
+::: {.callout-note}
+## Como fazer os exercícios
+
+Cada exercício mostra o **enunciado** e o **resultado esperado**. O código é com você!
+:::
+
+### Exercício 1
+
+Calcule a nota média por gênero. Ordene da maior para a menor nota. Qual gênero tem a maior nota média?
+
+**Resultado esperado:**
+```
+# A tibble: 19 × 2
+   genero     nota_media
+   <chr>           <dbl>
+ 1 Documentário     6.84
+ 2 Guerra           6.75
+ 3 História         6.73
+ 4 Drama            6.56
+ 5 Musical          6.56
+ ...
+```
+
+### Exercício 2
+
+Crie uma coluna `lucro = faturamento - orcamento`. Qual é o filme mais lucrativo?
+
+**Resultado esperado:**
+```
+# A tibble: 1 × 2
+  titulo                   lucro
+  <chr>                    <dbl>
+1 The story of cap and trade  48699922
+```
+
+### Exercício 3
+
+Quais são os 10 diretores que mais aparecem no dataset?
+
+**Resultado esperado:**
+```
+# A tibble: 10 × 2
+   diretor           n
+   <chr>         <int>
+ 1 Woody Allen      22
+ 2 Steven Spielberg 16
+ 3 Clint Eastwood   15
+ ...
+```

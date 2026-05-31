@@ -14,7 +14,7 @@ inv_florestal <- read_csv("../data/inv_florestal.csv")
 
 ```{r}
 # Gráfico completo para relatório
-inv_florestal %>% 
+inv_florestal %>%
   ggplot(aes(x = dap, y = altura, color = especie)) +
   geom_point(alpha = 0.5, size = 2) +
   geom_smooth(method = "lm", formula = y ~ log(x), se = TRUE, alpha = 0.2) +
@@ -32,7 +32,7 @@ inv_florestal %>%
 p1 <- inv_florestal %>% ggplot(aes(x = dap)) + geom_histogram(bins = 30, fill = "#18BC9C") + labs(title = "Dist. diamétrica")
 p2 <- inv_florestal %>% ggplot(aes(x = dap, y = altura, color = especie)) + geom_point(alpha = 0.5) + labs(title = "Hipsométrica")
 p3 <- inv_florestal %>% ggplot(aes(x = especie, y = volume, fill = especie)) + geom_boxplot() + theme(legend.position = "none")
-p4 <- inv_florestal %>% group_by(parcela) %>% summarise(v = sum(volume)) %>% 
+p4 <- inv_florestal %>% group_by(parcela) %>% summarise(v = sum(volume)) %>%
   ggplot(aes(x = factor(parcela), y = v)) + geom_col(fill = "#2C3E50") + labs(title = "Volume/parcela", x = "Parcela")
 
 (p1 + p2) / (p3 + p4)
@@ -43,9 +43,44 @@ p4 <- inv_florestal %>% group_by(parcela) %>% summarise(v = sum(volume)) %>%
 # ggsave("dashboard.png", width = 10, height = 7, dpi = 300)
 ```
 
-## Exercícios {.unnumbered}
+---
 
-1. Crie histograma do DAP com 30 bins, título e rótulos.
-2. Boxplot de volume por espécie. Qual tem maior variabilidade?
-3. Gráfico de barras do volume total por parcela (top 10), com `coord_flip()`.
-4. Exporte seu melhor gráfico como PNG (8×5 pol, 300 DPI).
+## Exercícios
+
+::: {.callout-note}
+## Como fazer os exercícios
+
+Cada exercício mostra o **enunciado** e o **resultado esperado**. O código é com você!
+:::
+
+### Exercício 1
+
+Crie um histograma do DAP com 30 bins, título descritivo e rótulos dos eixos.
+
+**Resultado esperado:**
+
+*Um histograma com 30 barras, título "Distribuição diamétrica" no topo e labels "DAP (cm)" no eixo x e "Contagem" no eixo y.*
+
+### Exercício 2
+
+Crie um boxplot de volume por espécie. Qual espécie apresenta maior variabilidade?
+
+**Resultado esperado:**
+
+*Boxplot mostrando Eucalipto com amplitude maior que Pinus, indicando maior variabilidade no volume.*
+
+### Exercício 3
+
+Crie um gráfico de barras com o volume total por parcela (apenas as 10 mais produtivas), com `coord_flip()` para facilitar a leitura.
+
+**Resultado esperado:**
+
+*Gráfico de barras horizontal com as 10 parcelas mais produtivas no eixo y, ordered by volume.*
+
+### Exercício 4
+
+Exporte seu melhor gráfico como PNG com 8×5 polegadas e 300 DPI.
+
+**Resultado esperado:**
+
+*Arquivo PNG salvo no diretório de trabalho.*

@@ -290,7 +290,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#group_by-summarise-o-coração-da-análise" id="toc-group_by-summarise-o-coração-da-análise" class="nav-link active" data-scroll-target="#group_by-summarise-o-coração-da-análise"><code>group_by()</code> + <code>summarise()</code> — o coração da análise</a></li>
   <li><a href="#pipeline-completo" id="toc-pipeline-completo" class="nav-link" data-scroll-target="#pipeline-completo">Pipeline completo</a></li>
-  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -321,9 +326,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="group_by-summarise-o-coração-da-análise"><code>group_by()</code> + <code>summarise()</code> — o coração da análise</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Nota média por gênero</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>filmes <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">summarise</span>(<span class="at">nota_media =</span> <span class="fu">mean</span>(nota), <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="#cb1-2"></a>filmes <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">summarise</span>(<span class="at">nota_media =</span> <span class="fu">mean</span>(nota), <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_media))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 19 × 3
@@ -398,15 +403,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="pipeline-completo">Pipeline completo</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Análise completa em um fluxo</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>filmes <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">filter</span>(ano <span class="sc">&gt;=</span> <span class="dv">2000</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a>filmes <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">filter</span>(ano <span class="sc">&gt;=</span> <span class="dv">2000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">group_by</span>(genero) <span class="sc">%&gt;%</span></span>
 <span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb7-6"><a href="#cb7-6"></a>    <span class="at">nota_media =</span> <span class="fu">mean</span>(nota),</span>
 <span id="cb7-7"><a href="#cb7-7"></a>    <span class="at">orcamento_medio =</span> <span class="fu">mean</span>(orcamento, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb7-8"><a href="#cb7-8"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb7-9"><a href="#cb7-9"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-9"><a href="#cb7-9"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb7-11"><a href="#cb7-11"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_media))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 19 × 4
@@ -433,18 +438,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 19 Família                 5.93       42855263.    19</code></pre>
 </div>
 </div>
+<hr>
 </section>
-<section id="exercícios" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="exercícios">Exercícios</h2>
-<ol type="1">
-<li>Nota média por gênero. Qual a maior? <strong>Resultado:</strong> Documentário (6.84)<br>
-</li>
-<li>Crie <code>lucro = faturamento - orcamento</code>. Qual o mais lucrativo? <strong>Resultado:</strong> “The story of cap and trade”<br>
-</li>
-<li>Top 10 diretores com mais filmes. <strong>Resultado:</strong> Woody Allen lidera.</li>
-</ol>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Como fazer os exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cada exercício mostra o <strong>enunciado</strong> e o <strong>resultado esperado</strong>. O código é com você!</p>
+</div>
+</div>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Calcule a nota média por gênero. Ordene da maior para a menor nota. Qual gênero tem a maior nota média?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 19 × 2
+   genero     nota_media
+   &lt;chr&gt;           &lt;dbl&gt;
+ 1 Documentário     6.84
+ 2 Guerra           6.75
+ 3 História         6.73
+ 4 Drama            6.56
+ 5 Musical          6.56
+ ...</code></pre>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Crie uma coluna <code>lucro = faturamento - orcamento</code>. Qual é o filme mais lucrativo?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 1 × 2
+  titulo                   lucro
+  &lt;chr&gt;                    &lt;dbl&gt;
+1 The story of cap and trade  48699922</code></pre>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Quais são os 10 diretores que mais aparecem no dataset?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 10 × 2
+   diretor           n
+   &lt;chr&gt;         &lt;int&gt;
+ 1 Woody Allen      22
+ 2 Steven Spielberg 16
+ 3 Clint Eastwood   15
+ ...</code></pre>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

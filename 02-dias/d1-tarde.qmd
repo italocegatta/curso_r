@@ -17,8 +17,8 @@ Atalho: `Ctrl/Cmd + Shift + M`. Encadeia operações da esquerda para a direita:
 
 ```{r}
 # Demonstração: o pipe encadeia operações
-filmes %>% 
-  filter(ano > 2000) %>% 
+filmes %>%
+  filter(ano > 2000) %>%
   arrange(desc(nota))
 ```
 
@@ -48,13 +48,13 @@ filmes %>% filter(genero %in% c("Ação", "Comédia"))
 ```{r}
 filmes %>% select(titulo, ano, nota)
 
-filmes %>% 
+filmes %>%
   mutate(
     lucro = faturamento - orcamento,
     lucro_milhoes = lucro / 1000000
-  ) %>% 
-  arrange(desc(lucro)) %>% 
-  select(titulo, lucro_milhoes) %>% 
+  ) %>%
+  arrange(desc(lucro)) %>%
+  select(titulo, lucro_milhoes) %>%
   head(5)
 ```
 
@@ -62,9 +62,9 @@ filmes %>%
 
 ```{r}
 # Nota média por gênero
-filmes %>% 
-  group_by(genero) %>% 
-  summarise(nota_media = mean(nota), n = n()) %>% 
+filmes %>%
+  group_by(genero) %>%
+  summarise(nota_media = mean(nota), n = n()) %>%
   arrange(desc(nota_media))
 ```
 
@@ -84,32 +84,72 @@ filmes %>% ggplot(aes(x = nota)) + geom_histogram(bins = 30, fill = "#18BC9C")
 filmes %>% ggplot(aes(x = orcamento, y = faturamento)) + geom_point(alpha = 0.3)
 
 # Barras — top 10 gêneros
-filmes %>% count(genero, sort = TRUE) %>% head(10) %>% 
+filmes %>% count(genero, sort = TRUE) %>% head(10) %>%
   ggplot(aes(x = reorder(genero, n), y = n)) + geom_col(fill = "#18BC9C") + coord_flip()
 
 # Boxplot
-filmes %>% filter(genero %in% c("Ação", "Drama", "Comédia")) %>% 
+filmes %>% filter(genero %in% c("Ação", "Drama", "Comédia")) %>%
   ggplot(aes(x = genero, y = nota, fill = genero)) + geom_boxplot()
 ```
 
-## Exercícios {.unnumbered}
+---
+
+## Exercícios
+
+::: {.callout-note}
+## Como fazer os exercícios
+
+Cada exercício mostra o **enunciado** e o **resultado esperado**. O código é com você!
+:::
 
 ### Exercício 1
 
-Filtre filmes com nota ≥ 8.5. Quantos são?  
-**Resultado esperado:** 103 filmes.
+Filtre os filmes com nota maior ou igual a 8.5. Quantos filmes atendem a esse critério?
+
+**Resultado esperado:**
+```
+# A tibble: 1 × 1
+      n
+  <int>
+1   103
+```
 
 ### Exercício 2
 
-Crie `lucro = faturamento - orcamento`. Qual o filme mais lucrativo?  
-**Resultado esperado:** `"The story of cap and trade"` com lucro de 48.7 milhões.
+Crie uma coluna `lucro = faturamento - orcamento` e encontre os 5 filmes mais lucrativos.
+
+**Resultado esperado:**
+```
+# A tibble: 5 × 2
+  titulo                        lucro
+  <chr>                         <dbl>
+1 The story of cap and trade 48699922
+2 Sholay                     18599922
+3 Ram Teri Ganga Maili       12599881
+4 ET                          8999901
+5 Black Friday                1999989
+```
 
 ### Exercício 3
 
-Nota média por gênero, ordenada da maior para a menor.  
-**Resultado esperado:** Documentário (6.84), Guerra (6.75), História (6.73)...
+Calcule a nota média e o número de filmes por gênero. Ordene da maior para a menor nota média.
+
+**Resultado esperado:**
+```
+# A tibble: 19 × 3
+   genero          nota_media     n
+   <chr>                <dbl> <int>
+ 1 Documentário          6.84    70
+ 2 Guerra                6.75    19
+ 3 História              6.73    21
+ 4 Drama                 6.56   964
+ ...
+```
 
 ### Exercício 4
 
-Crie um histograma de `duracao` com 40 bins.  
-**Resultado esperado:** Pico em 90-100 min, assimétrica à direita.
+Crie um histograma da coluna `duracao` (duração dos filmes em minutos). Use 40 bins.
+
+**Resultado esperado:**
+
+*Um histograma com pico em torno de 90-100 minutos, distribuição assimétrica à direita.*

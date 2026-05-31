@@ -253,11 +253,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#instruções" id="toc-instruções" class="nav-link active" data-scroll-target="#instruções">Instruções</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link active" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
   <li><a href="#exercício-1-explorando-o-dataset" id="toc-exercício-1-explorando-o-dataset" class="nav-link" data-scroll-target="#exercício-1-explorando-o-dataset">Exercício 1 — Explorando o dataset</a></li>
   <li><a href="#exercício-2-visualização" id="toc-exercício-2-visualização" class="nav-link" data-scroll-target="#exercício-2-visualização">Exercício 2 — Visualização</a></li>
   <li><a href="#exercício-3-análise-por-gênero-filmes" id="toc-exercício-3-análise-por-gênero-filmes" class="nav-link" data-scroll-target="#exercício-3-análise-por-gênero-filmes">Exercício 3 — Análise por gênero (filmes)</a></li>
   <li><a href="#exercício-4-desafio-final" id="toc-exercício-4-desafio-final" class="nav-link" data-scroll-target="#exercício-4-desafio-final">Exercício 4 — Desafio final</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -285,45 +287,62 @@ ul.task-list li input[type="checkbox"] {
 
 <p><strong>Dia 2 — Tarde (parte 2) | 2 horas</strong></p>
 <p>Este capítulo consolida o aprendizado do curso de 2 dias com exercícios práticos que integram todas as técnicas.</p>
-<section id="instruções" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="instruções">Instruções</h2>
-<p>Cada exercício mostra o <strong>resultado esperado</strong>. Escreva o código e confira se sua solução produz o mesmo resultado.</p>
 <hr>
-</section>
-<section id="exercício-1-explorando-o-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="exercício-1-explorando-o-dataset">Exercício 1 — Explorando o dataset</h2>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Como fazer os exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cada exercício mostra o <strong>enunciado</strong> e o <strong>resultado esperado</strong>. O código é com você!</p>
+</div>
+</div>
+<section id="exercício-1-explorando-o-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1-explorando-o-dataset">Exercício 1 — Explorando o dataset</h3>
 <p>Carregue <code>inv_florestal.csv</code> e <code>parcelas.csv</code>. Faça o join entre eles e responda:</p>
-<p><strong>a)</strong> Quantas árvores no total? E quantas parcelas?<br>
-<strong>Resultado esperado:</strong> 992 árvores, 30 parcelas.</p>
-<p><strong>b)</strong> Qual o DAP médio geral? E por espécie?<br>
-<strong>Resultado esperado:</strong> Eucalipto: 20.6 cm, Pinus: 17.8 cm.</p>
-<p><strong>c)</strong> Qual parcela tem o maior volume por hectare?<br>
-<strong>Resultado esperado:</strong> Parcela 7 com 420 m³/ha.</p>
-<hr>
+<p><strong>a)</strong> Quantas árvores no total? E quantas parcelas?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code>992 árvores, 30 parcelas</code></pre>
+<p><strong>b)</strong> Qual o DAP médio por espécie?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code>Eucalipto: 20.6 cm, Pinus: 17.8 cm</code></pre>
+<p><strong>c)</strong> Qual parcela tem o maior volume por hectare?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code>Parcela 7 com 420 m³/ha</code></pre>
 </section>
-<section id="exercício-2-visualização" class="level2">
-<h2 class="anchored" data-anchor-id="exercício-2-visualização">Exercício 2 — Visualização</h2>
-<p><strong>a)</strong> Crie um histograma da distribuição diamétrica.<br>
-<strong>Resultado esperado:</strong> Pico em 15-20 cm, assimétrica à direita.</p>
-<p><strong>b)</strong> Crie um gráfico de dispersão <code>dap</code> × <code>altura</code> com cor por espécie e curva de tendência.<br>
-<strong>Resultado esperado:</strong> Duas curvas quase paralelas, Eucalipto ligeiramente acima.</p>
-<p><strong>c)</strong> Crie um dashboard com 4 gráficos: histograma do DAP, relação hipsométrica, boxplot de volume por espécie e barras de volume por parcela.<br>
-<strong>Resultado esperado:</strong> Painel 2×2 com tema consistente.</p>
-<hr>
+<section id="exercício-2-visualização" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2-visualização">Exercício 2 — Visualização</h3>
+<p><strong>a)</strong> Crie um histograma da distribuição diamétrica.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Pico em 15-20 cm, assimétrica à direita.</em></p>
+<p><strong>b)</strong> Crie um gráfico de dispersão <code>dap</code> × <code>altura</code> com cor por espécie e curva de tendência.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Duas curvas quase paralelas, Eucalipto ligeiramente acima do Pinus.</em></p>
+<p><strong>c)</strong> Crie um dashboard com 4 gráficos: histograma do DAP, relação hipsométrica, boxplot de volume por espécie e barras de volume por parcela.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Painel 2×2 com tema consistente.</em></p>
 </section>
-<section id="exercício-3-análise-por-gênero-filmes" class="level2">
-<h2 class="anchored" data-anchor-id="exercício-3-análise-por-gênero-filmes">Exercício 3 — Análise por gênero (filmes)</h2>
+<section id="exercício-3-análise-por-gênero-filmes" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3-análise-por-gênero-filmes">Exercício 3 — Análise por gênero (filmes)</h3>
 <p>Usando <code>filmes_imdb.csv</code>:</p>
-<p><strong>a)</strong> Gênero com maior nota média (mínimo 50 filmes)?<br>
-<strong>Resultado esperado:</strong> Documentário com 6.84.</p>
-<p><strong>b)</strong> Gráfico de dispersão <code>orcamento</code> × <code>faturamento</code>, com cor por gênero.<br>
-<strong>Resultado esperado:</strong> Correlação positiva, Ação e Aventura com maiores valores.</p>
-<p><strong>c)</strong> Qual diretor tem mais filmes no dataset?<br>
-<strong>Resultado esperado:</strong> Woody Allen.</p>
-<hr>
+<p><strong>a)</strong> Gênero com maior nota média (mínimo 50 filmes)?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code>Documentário com nota média 6.84</code></pre>
+<p><strong>b)</strong> Crie um gráfico de dispersão <code>orcamento</code> × <code>faturamento</code>, com cor por gênero.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Correlação positiva entre orçamento e faturamento, Ação e Aventura com maiores valores.</em></p>
+<p><strong>c)</strong> Qual diretor tem mais filmes no dataset?</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code>Woody Allen (22 filmes)</code></pre>
 </section>
-<section id="exercício-4-desafio-final" class="level2">
-<h2 class="anchored" data-anchor-id="exercício-4-desafio-final">Exercício 4 — Desafio final</h2>
+<section id="exercício-4-desafio-final" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-4-desafio-final">Exercício 4 — Desafio final</h3>
 <p>Usando <code>inv_florestal</code>, faça uma análise completa:</p>
 <ol type="1">
 <li>Calcule área basal por árvore: <code>ab = pi * (dap/200)^2</code></li>
@@ -332,9 +351,11 @@ ul.task-list li input[type="checkbox"] {
 <li>Crie um gráfico de barras do volume/ha por parcela (top 10)</li>
 <li>Ajuste <code>lm(log(volume) ~ log(dap) + log(altura))</code> e reporte o R²</li>
 </ol>
-<p><strong>Resultado esperado do R²:</strong> 0.96</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code>R² = 0.96</code></pre>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

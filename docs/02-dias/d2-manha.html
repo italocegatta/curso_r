@@ -341,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="visualização-com-ggplot2">Visualização com ggplot2</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Dispersão + tendência</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>inv_florestal <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>inv_florestal <span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dap, <span class="at">y =</span> altura, <span class="at">color =</span> especie)) <span class="sc">+</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
@@ -356,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Facetas</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>inv_florestal <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>inv_florestal <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dap, <span class="at">y =</span> altura)) <span class="sc">+</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">log</span>(x), <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
@@ -369,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Boxplot</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>inv_florestal <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>inv_florestal <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> especie, <span class="at">y =</span> volume, <span class="at">fill =</span> especie)) <span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -380,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Barras — volume por parcela</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>inv_florestal <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(parcela) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">v =</span> <span class="fu">sum</span>(volume)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>inv_florestal <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(parcela) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">v =</span> <span class="fu">sum</span>(volume)) <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(<span class="fu">factor</span>(parcela), v), <span class="at">y =</span> v)) <span class="sc">+</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#18BC9C"</span>) <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Parcela"</span>, <span class="at">y =</span> <span class="st">"Volume (m³)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -391,23 +391,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<hr>
 </section>
-<section id="exercícios" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="exercícios">Exercícios</h2>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Como fazer os exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cada exercício mostra o <strong>enunciado</strong> e o <strong>resultado esperado</strong>. O código é com você!</p>
+</div>
+</div>
 <section id="exercício-1" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
-<p>Faça <code>left_join</code> entre <code>inv_florestal</code> e <code>parcelas</code>. Calcule volume/ha e encontre a parcela mais produtiva.<br>
-<strong>Resultado esperado:</strong> Parcela 7 com 420 m³/ha.</p>
+<p>Faça um <code>left_join</code> entre <code>inv_florestal</code> e <code>parcelas</code>. Calcule o volume por hectare para cada parcela e encontre a parcela mais produtiva.</p>
+<p><strong>Resultado esperado:</strong></p>
+<pre><code># A tibble: 1 × 2
+  parcela volume_ha
+  &lt;chr&gt;       &lt;dbl&gt;
+1 Parcela 7     420</code></pre>
 </section>
 <section id="exercício-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
-<p>Crie boxplot de <code>dap</code> por <code>especie</code> com cores.<br>
-<strong>Resultado esperado:</strong> Eucalipto com DAP mediano ~20 cm, Pinus ~17 cm.</p>
+<p>Crie um boxplot de <code>dap</code> por <code>especie</code> com cores diferentes para cada espécie.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Boxplot mostrando Eucalipto com DAP mediano ~20 cm e Pinus ~17 cm.</em></p>
 </section>
 <section id="exercício-3" class="level3">
 <h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
-<p>Plote <code>dap</code> × <code>volume</code> com <code>geom_point()</code> + <code>geom_smooth()</code>, cor por espécie.<br>
-<strong>Resultado esperado:</strong> Curva exponencial — volume cresce com DAP².</p>
+<p>Plote <code>dap</code> × <code>volume</code> com <code>geom_point()</code> e <code>geom_smooth()</code>, colorido por espécie. Qual o padrão observado?</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Curva exponencial — o volume cresce proporcionalmente ao DAP².</em></p>
 
 
 </section>

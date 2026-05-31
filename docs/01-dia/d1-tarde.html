@@ -290,7 +290,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#seus-primeiros-gráficos" id="toc-seus-primeiros-gráficos" class="nav-link active" data-scroll-target="#seus-primeiros-gráficos">Seus primeiros gráficos 🎬</a></li>
   <li><a href="#com-dados-florestais" id="toc-com-dados-florestais" class="nav-link" data-scroll-target="#com-dados-florestais">Com dados florestais 🌲</a></li>
-  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1">Exercício 1</a></li>
+  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2">Exercício 2</a></li>
+  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3">Exercício 3</a></li>
+  <li><a href="#exercício-4" id="toc-exercício-4" class="nav-link" data-scroll-target="#exercício-4">Exercício 4</a></li>
+  <li><a href="#exercício-5" id="toc-exercício-5" class="nav-link" data-scroll-target="#exercício-5">Exercício 5</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -340,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Barras — top 10 gêneros</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(genero, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">count</span>(genero, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(genero, n), <span class="at">y =</span> n)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#18BC9C"</span>) <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -350,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Boxplot — nota por gênero</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(genero <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ação"</span>, <span class="st">"Drama"</span>, <span class="st">"Comédia"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>filmes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(genero <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ação"</span>, <span class="st">"Drama"</span>, <span class="st">"Comédia"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> genero, <span class="at">y =</span> nota, <span class="at">fill =</span> genero)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -392,22 +399,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<hr>
 </section>
-<section id="exercícios" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="exercícios">Exercícios</h2>
-<ol type="1">
-<li>Histograma de <code>duracao</code> com 40 bins. <strong>Resultado:</strong> Pico em 90-100 min.<br>
-</li>
-<li>Gráfico de dispersão <code>dap</code> × <code>altura</code>, cor por espécie.<br>
-</li>
-<li>Boxplot de <code>volume</code> por <code>especie</code>. Qual a mediana de cada? <strong>Resultado:</strong> Eucalipto ~0.35 m³, Pinus ~0.20 m³.<br>
-</li>
-<li>Gráfico de barras: volume total por espécie.<br>
-</li>
-<li>Exporte seu melhor gráfico: <code>ggsave("meu_grafico.png", width = 8, height = 5, dpi = 300)</code></li>
-</ol>
+<section id="exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios">Exercícios</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Como fazer os exercícios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cada exercício mostra o <strong>enunciado</strong> e o <strong>resultado esperado</strong>. O código é com você!</p>
+</div>
+</div>
+<section id="exercício-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-1">Exercício 1</h3>
+<p>Crie um histograma da coluna <code>duracao</code> com 40 bins. Descreva a distribuição.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Um histograma com pico em torno de 90-100 minutos, distribuição assimétrica à direita.</em></p>
+</section>
+<section id="exercício-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-2">Exercício 2</h3>
+<p>Crie um gráfico de dispersão com <code>dap</code> no eixo x e <code>altura</code> no eixo y, com cor por espécie.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Nuvem de pontos com duas cores (Eucalipto e Pinus), mostrando a relação hipsométrica positiva.</em></p>
+</section>
+<section id="exercício-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-3">Exercício 3</h3>
+<p>Crie um boxplot de <code>volume</code> por <code>especie</code>. Qual é a mediana de cada espécie?</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Boxplot mostrando Eucalipto com mediana ~0.35 m³ e Pinus ~0.20 m³.</em></p>
+</section>
+<section id="exercício-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-4">Exercício 4</h3>
+<p>Crie um gráfico de barras com o volume total por espécie.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Gráfico de barras mostrando Eucalipto com volume total maior que Pinus.</em></p>
+</section>
+<section id="exercício-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercício-5">Exercício 5</h3>
+<p>Exporte seu melhor gráfico com <code>ggsave("meu_grafico.png", width = 8, height = 5, dpi = 300)</code>.</p>
+<p><strong>Resultado esperado:</strong></p>
+<p><em>Arquivo <code>meu_grafico.png</code> salvo no diretório de trabalho.</em></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
